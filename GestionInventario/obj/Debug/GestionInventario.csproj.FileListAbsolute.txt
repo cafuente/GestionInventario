@@ -26,7 +26,6 @@ C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\bin\Debug\Sy
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\bin\Debug\System.Buffers.dll
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\bin\Debug\MySql.Data.xml
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.csproj.AssemblyReference.cache
-C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.Form1.resources
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmLogin.resources
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.Properties.Resources.resources
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.csproj.GenerateResource.cache
@@ -34,3 +33,4 @@ C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\Ge
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionI.14355B1F.Up2Date
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.exe
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.pdb
+C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmGestionUsuarios.resources
