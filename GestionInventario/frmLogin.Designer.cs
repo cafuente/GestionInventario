@@ -33,9 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblEtiqueta = new System.Windows.Forms.Label();
+            this.lblError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,6 +48,7 @@
             this.btnIniciarSesion.TabIndex = 2;
             this.btnIniciarSesion.Text = "Ingresar";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
+            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 
             // label1
             // 
@@ -77,13 +78,13 @@
             this.txtUsuario.Size = new System.Drawing.Size(203, 22);
             this.txtUsuario.TabIndex = 0;
             // 
-            // txtpassword
+            // txtPassword
             // 
-            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.Location = new System.Drawing.Point(12, 187);
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Size = new System.Drawing.Size(203, 22);
-            this.txtpassword.TabIndex = 1;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(12, 187);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(203, 22);
+            this.txtPassword.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -95,14 +96,14 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // lblEtiqueta
+            // lblError
             // 
-            this.lblEtiqueta.AutoSize = true;
-            this.lblEtiqueta.Location = new System.Drawing.Point(12, 229);
-            this.lblEtiqueta.Name = "lblEtiqueta";
-            this.lblEtiqueta.Size = new System.Drawing.Size(13, 13);
-            this.lblEtiqueta.TabIndex = 13;
-            this.lblEtiqueta.Text = "1";
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Maroon;
+            this.lblError.Location = new System.Drawing.Point(10, 229);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 13);
+            this.lblError.TabIndex = 13;
             // 
             // frmLogin
             // 
@@ -110,9 +111,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(227, 311);
-            this.Controls.Add(this.lblEtiqueta);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtpassword);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -132,8 +133,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.TextBox txtpassword;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblEtiqueta;
+        private System.Windows.Forms.Label lblError;
     }
 }
