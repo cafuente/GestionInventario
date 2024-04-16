@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -175,6 +176,57 @@ namespace GestionInventario
             }
 
             return usuarios;
+        }
+
+        // Método para cargar los usuarios en el DataGridView
+        // Método para cargar los usuarios en el DataGridView
+        public void CargarUsuarios(DataGridView dataGridView)
+        {
+            try
+            {
+                conexion.AbrirConexion(); // Abrimos la conexión utilizando la instancia de ConexionBD
+                string query = "SELECT id_usuario, usuario, password, nombre, id_perfil FROM usuarios";
+
+                MySqlCommand command = new MySqlCommand(query, conexion.ObtenerConexion());
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                // Agregar una columna adicional para mostrar el nombre del perfil en lugar del ID
+                DataColumn nombrePerfilColumna = new DataColumn("Perfil", typeof(string));
+                dataTable.Columns.Add(nombrePerfilColumna);
+
+                // Recorrer cada fila y obtener el nombre del perfil
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    int idPerfil = Convert.ToInt32(row["id_perfil"]);
+                    string nombrePerfil = ObtenerNombrePerfil(idPerfil);
+                    row["Perfil"] = nombrePerfil;
+                }
+
+                dataGridView.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los usuarios: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.CerrarConexion(); // Cerramos la conexión al finalizar la operación
+            }
+        }
+        private string ObtenerNombrePerfil(int idPerfil)
+        {
+            switch (idPerfil)
+            {
+                case 1:
+                    return "Administrador";
+                case 2:
+                    return "Usuario";
+                default:
+                    return "Desconocido";
+            }
         }
     }
 }

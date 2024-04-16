@@ -1,9 +1,11 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -172,41 +174,118 @@ namespace GestionInventario
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            // Verificar si el DataSource no es nulo
-            if (dgGestionUsuarios.DataSource != null)
+              string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
+
+              // Recorremos todas las filas del DataGridView
+              foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
+              {
+                  // Verificamos si la fila no es una fila nueva sin confirmar
+                  if (!row.IsNewRow)
+                  {
+                      bool encontrada = false;
+
+                      // Recorremos todas las celdas de la fila actual
+                      foreach (DataGridViewCell cell in row.Cells)
+                      {
+                          // Verificamos si el valor de la celda contiene el texto de búsqueda
+                          if (cell.Value != null && cell.Value.ToString().ToLowerInvariant().Contains(textoBusqueda))
+                          {
+                              encontrada = true;
+                              break; // Si encontramos una coincidencia, salimos del bucle interno
+                          }
+                      }
+
+                      // Mostramos u ocultamos la fila dependiendo de si se encontró alguna coincidencia
+                      row.Visible = encontrada;
+                  }
+              }
+          //  --------------------------------------------------------------------------------------------
+            /*string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
+
+            // Recorremos todas las filas del DataGridView
+            foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
             {
-                // Verificar si hay texto de búsqueda y al menos un CheckBox seleccionado
-                if (!string.IsNullOrWhiteSpace(txtBuscar.Text) && (chbId.Checked || chbUsuario.Checked || chbNombre.Checked || chbPerfil.Checked))
+                // Verificamos si la fila no es una fila nueva sin confirmar
+                if (!row.IsNewRow)
                 {
-                    string textoBusqueda = txtBuscar.Text.Trim().ToLower(); // Obtener el texto de búsqueda en minúsculas
+                    bool encontrada = false;
 
-                    // Obtener las columnas seleccionadas para la búsqueda
-                    List<string> columnasSeleccionadas = new List<string>();
-                    if (chbId.Checked) columnasSeleccionadas.Add("Id");
-                    if (chbUsuario.Checked) columnasSeleccionadas.Add("Usuario");
-                    if (chbNombre.Checked) columnasSeleccionadas.Add("Nombre");
-                    if (chbPerfil.Checked) columnasSeleccionadas.Add("Perfil");
-
-                    // Realizar la búsqueda en las columnas seleccionadas
-                    string filtro = string.Empty;
-                    if (columnasSeleccionadas.Count > 0) // Si se ha seleccionado al menos una columna
+                    // Recorremos todas las celdas de la fila actual
+                    foreach (DataGridViewCell cell in row.Cells)
                     {
-                        // Construir la expresión de búsqueda dinámica
-                        filtro = string.Join(" OR ", columnasSeleccionadas.Select(columna => $"{columna} LIKE '%{textoBusqueda}%'"));
-                    }
-                    else // Si no se ha seleccionado ninguna columna, buscar en todas las columnas
-                    {
-                        // Construir la expresión de búsqueda para todas las columnas
-                        filtro = string.Join(" OR ", dgGestionUsuarios.Columns.Cast<DataGridViewColumn>().Select(columna => $"{columna.DataPropertyName} LIKE '%{textoBusqueda}%'"));
+                        // Verificamos si el CheckBox correspondiente a la columna está seleccionado
+                        if (ShouldSearchColumn(cell.ColumnIndex))
+                        {
+                            // Verificamos si el valor de la celda contiene el texto de búsqueda
+                            if (cell.Value != null && cell.Value.ToString().ToLowerInvariant().Contains(textoBusqueda))
+                            {
+                                encontrada = true;
+                                break; // Si encontramos una coincidencia, salimos del bucle interno
+                            }
+                        }
                     }
 
-                    // Aplicar el filtro al DataGridView
-                    ((DataTable)dgGestionUsuarios.DataSource).DefaultView.RowFilter = filtro;
+                    // Mostramos u ocultamos la fila dependiendo de si se encontró alguna coincidencia
+                    row.Visible = encontrada;
                 }
-                else // Si no hay texto de búsqueda o ningún CheckBox seleccionado, mostrar todos los registros
+            }
+            ---------------------hasta aqui es solo busqueda--------------------------------------------------------------------*/
+            //aqui empieza busqueda solo con check
+            /*
+            string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
+
+            // Recorremos todas las filas del DataGridView
+            foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
+            {
+                // Verificamos si la fila no es una fila nueva sin confirmar
+                if (!row.IsNewRow)
                 {
-                    ((DataTable)dgGestionUsuarios.DataSource).DefaultView.RowFilter = string.Empty;
+                    bool encontrada = false;
+
+                    // Recorremos las columnas del DataGridView
+                    foreach (DataGridViewColumn column in dgGestionUsuarios.Columns)
+                    {
+                        // Verificamos si la columna actual debe ser considerada para la búsqueda
+                        if (ShouldSearchColumn(column.Index))
+                        {
+                            // Obtenemos el valor de la celda en la fila actual y la columna correspondiente
+                            DataGridViewCell cell = row.Cells[column.Index];
+
+                            // Verificamos si el valor de la celda contiene el texto de búsqueda
+                            if (cell.Value != null && cell.Value.ToString().ToLowerInvariant().Contains(textoBusqueda))
+                            {
+                                encontrada = true;
+                                break; // Si encontramos una coincidencia, salimos del bucle interno
+                            }
+                        }
+                    }
+
+                    // Mostramos u ocultamos la fila dependiendo de si se encontró alguna coincidencia
+                    row.Visible = encontrada;
                 }
+            }
+            //-------------------------aqui termina la busqueda con check
+            */
+
+        }
+        // Método para verificar si la columna debe ser considerada para la búsqueda
+        private bool ShouldSearchColumn(int columnIndex)
+        {
+            // Verificamos si la columna corresponde a uno de los CheckBox seleccionados
+            switch (columnIndex)
+            {
+                case 0: // Columna de ID
+                    return chbId.Checked;
+                case 1: // Columna de Usuario
+                    return chbUsuario.Checked;
+                case 2: // Columna de Password
+                    return false; // No buscamos en la columna de contraseña
+                case 3: // Columna de Nombre
+                    return chbNombre.Checked;
+                case 4: // Columna de Perfil
+                    return chbPerfil.Checked;
+                default:
+                    return false; // No se considera ninguna otra columna
             }
         }
     }
