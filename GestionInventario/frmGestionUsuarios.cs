@@ -174,7 +174,7 @@ namespace GestionInventario
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-              string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
+            /*  string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
 
               // Recorremos todas las filas del DataGridView
               foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
@@ -198,8 +198,8 @@ namespace GestionInventario
                       // Mostramos u ocultamos la fila dependiendo de si se encontró alguna coincidencia
                       row.Visible = encontrada;
                   }
-              }
-          //  --------------------------------------------------------------------------------------------
+              }*/
+            //  --------------------------------------------------------------------------------------------
             /*string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
 
             // Recorremos todas las filas del DataGridView
@@ -266,7 +266,56 @@ namespace GestionInventario
             }
             //-------------------------aqui termina la busqueda con check
             */
+            string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
 
+            // Verificar si algún CheckBox está seleccionado
+            bool alMenosUnCheckboxSeleccionado = chbId.Checked || chbUsuario.Checked || chbNombre.Checked || chbPerfil.Checked;
+
+            // Determinar qué enfoque utilizar para la búsqueda
+            if (!alMenosUnCheckboxSeleccionado)
+            {
+                // Si ningún CheckBox está seleccionado, utilizar el primer enfoque de búsqueda
+                foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        bool encontrada = false;
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.Value != null && cell.Value.ToString().ToLowerInvariant().Contains(textoBusqueda))
+                            {
+                                encontrada = true;
+                                break;
+                            }
+                        }
+                        row.Visible = encontrada;
+                    }
+                }
+            }
+            else
+            {
+                // Si algún CheckBox está seleccionado, utilizar el segundo enfoque de búsqueda
+                foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        bool encontrada = false;
+                        foreach (DataGridViewColumn column in dgGestionUsuarios.Columns)
+                        {
+                            if (ShouldSearchColumn(column.Index))
+                            {
+                                DataGridViewCell cell = row.Cells[column.Index];
+                                if (cell.Value != null && cell.Value.ToString().ToLowerInvariant().Contains(textoBusqueda))
+                                {
+                                    encontrada = true;
+                                    break;
+                                }
+                            }
+                        }
+                        row.Visible = encontrada;
+                    }
+                }
+            }
         }
         // Método para verificar si la columna debe ser considerada para la búsqueda
         private bool ShouldSearchColumn(int columnIndex)
