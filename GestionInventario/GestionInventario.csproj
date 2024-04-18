@@ -51,6 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
+    <Compile Include="frmGestionInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionInventario.Designer.cs">
+      <DependentUpon>frmGestionInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,18 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRecepcionCarne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRecepcionCarne.Designer.cs">
+      <DependentUpon>frmRecepcionCarne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTrazalibildad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTrazalibildad.Designer.cs">
+      <DependentUpon>frmTrazalibildad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
@@ -78,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecepcionCarne.resx">
+      <DependentUpon>frmRecepcionCarne.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
