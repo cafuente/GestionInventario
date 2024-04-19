@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarcodeGenerator.cs" />
     <Compile Include="ConexionBD.cs" />
     <Compile Include="frmGestionInventario.cs">
       <SubType>Form</SubType>

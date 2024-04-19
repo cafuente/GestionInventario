@@ -35,3 +35,7 @@ C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\Ge
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.pdb
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmGestionUsuarios.resources
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmRecepcionCarne.resources
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\bin\Debug\zxing.dll
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\bin\Debug\zxing.presentation.dll
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\bin\Debug\zxing.xml
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\bin\Debug\zxing.presentation.xml
