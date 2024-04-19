@@ -34,3 +34,4 @@ C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\Ge
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.exe
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.pdb
 C:\Users\cafuentes\Source\Repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmGestionUsuarios.resources
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmRecepcionCarne.resources

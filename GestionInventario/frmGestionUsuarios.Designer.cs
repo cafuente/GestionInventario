@@ -105,7 +105,7 @@
             // 
             this.btnAgregar.Location = new System.Drawing.Point(291, 42);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(180, 35);
+            this.btnAgregar.Size = new System.Drawing.Size(212, 35);
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -159,7 +159,7 @@
             // 
             this.btnActualizar.Location = new System.Drawing.Point(291, 99);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(180, 35);
+            this.btnActualizar.Size = new System.Drawing.Size(212, 35);
             this.btnActualizar.TabIndex = 13;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -169,7 +169,7 @@
             // 
             this.btnEliminar.Location = new System.Drawing.Point(291, 156);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(180, 35);
+            this.btnEliminar.Size = new System.Drawing.Size(212, 35);
             this.btnEliminar.TabIndex = 14;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -207,7 +207,7 @@
             // 
             this.chbPerfil.AutoSize = true;
             this.chbPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPerfil.Location = new System.Drawing.Point(379, 254);
+            this.chbPerfil.Location = new System.Drawing.Point(399, 254);
             this.chbPerfil.Name = "chbPerfil";
             this.chbPerfil.Size = new System.Drawing.Size(49, 17);
             this.chbPerfil.TabIndex = 22;
@@ -218,7 +218,7 @@
             // 
             this.chbNombre.AutoSize = true;
             this.chbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbNombre.Location = new System.Drawing.Point(254, 254);
+            this.chbNombre.Location = new System.Drawing.Point(271, 254);
             this.chbNombre.Name = "chbNombre";
             this.chbNombre.Size = new System.Drawing.Size(63, 17);
             this.chbNombre.TabIndex = 21;
@@ -229,7 +229,7 @@
             // 
             this.chbUsuario.AutoSize = true;
             this.chbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbUsuario.Location = new System.Drawing.Point(130, 254);
+            this.chbUsuario.Location = new System.Drawing.Point(144, 254);
             this.chbUsuario.Name = "chbUsuario";
             this.chbUsuario.Size = new System.Drawing.Size(62, 17);
             this.chbUsuario.TabIndex = 20;
@@ -240,7 +240,7 @@
             // 
             this.chbId.AutoSize = true;
             this.chbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbId.Location = new System.Drawing.Point(33, 254);
+            this.chbId.Location = new System.Drawing.Point(44, 254);
             this.chbId.Name = "chbId";
             this.chbId.Size = new System.Drawing.Size(35, 17);
             this.chbId.TabIndex = 19;
@@ -269,7 +269,7 @@
             // 
             this.txtBuscar.Location = new System.Drawing.Point(115, 208);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(356, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(388, 22);
             this.txtBuscar.TabIndex = 16;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 

@@ -16,5 +16,20 @@ namespace GestionInventario
         {
             InitializeComponent();
         }
+
+        private void frmRecepcionCarne_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
