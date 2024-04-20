@@ -22,7 +22,7 @@ namespace GestionInventario
                     Height = 180
                 }
             };
-            return writer.Write(contenido);
+            return writer.Write(contenido);            
         }
     }
 }

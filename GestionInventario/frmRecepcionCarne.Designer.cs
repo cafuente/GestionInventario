@@ -51,7 +51,6 @@
             this.txtFleje = new System.Windows.Forms.TextBox();
             this.cbTurno = new System.Windows.Forms.ComboBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.cbContenedor = new System.Windows.Forms.ComboBox();
             this.txtFactura = new System.Windows.Forms.TextBox();
             this.txtOrdenCompra = new System.Windows.Forms.TextBox();
             this.txtMarca = new System.Windows.Forms.TextBox();
@@ -66,6 +65,7 @@
             this.btnModificarDatosCarne = new System.Windows.Forms.Button();
             this.pbImpresionCb = new System.Windows.Forms.PictureBox();
             this.pbGuardarCb = new System.Windows.Forms.PictureBox();
+            this.txtCajas = new System.Windows.Forms.TextBox();
             dpSacrificio = new System.Windows.Forms.DateTimePicker();
             dpFecha = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -85,16 +85,6 @@
             dpSacrificio.TabIndex = 30;
             dpSacrificio.Value = new System.DateTime(2024, 4, 19, 6, 29, 5, 0);
             // 
-            // dpEmpaque
-            // 
-            this.dpEmpaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpEmpaque.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpEmpaque.Location = new System.Drawing.Point(367, 94);
-            this.dpEmpaque.Name = "dpEmpaque";
-            this.dpEmpaque.Size = new System.Drawing.Size(121, 23);
-            this.dpEmpaque.TabIndex = 31;
-            this.dpEmpaque.Value = new System.DateTime(2024, 4, 19, 6, 29, 5, 0);
-            // 
             // dpFecha
             // 
             dpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,6 +94,16 @@
             dpFecha.Size = new System.Drawing.Size(121, 23);
             dpFecha.TabIndex = 32;
             dpFecha.Value = new System.DateTime(2024, 4, 19, 0, 0, 0, 0);
+            // 
+            // dpEmpaque
+            // 
+            this.dpEmpaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpEmpaque.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpEmpaque.Location = new System.Drawing.Point(367, 94);
+            this.dpEmpaque.Name = "dpEmpaque";
+            this.dpEmpaque.Size = new System.Drawing.Size(121, 23);
+            this.dpEmpaque.TabIndex = 31;
+            this.dpEmpaque.Value = new System.DateTime(2024, 4, 19, 6, 29, 5, 0);
             // 
             // label1
             // 
@@ -181,9 +181,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(269, 185);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 16);
+            this.label8.Size = new System.Drawing.Size(45, 16);
             this.label8.TabIndex = 9;
-            this.label8.Text = "Contenedor:";
+            this.label8.Text = "Cajas:";
             // 
             // label9
             // 
@@ -286,15 +286,6 @@
             this.txtCantidad.Size = new System.Drawing.Size(113, 22);
             this.txtCantidad.TabIndex = 22;
             // 
-            // cbContenedor
-            // 
-            this.cbContenedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbContenedor.FormattingEnabled = true;
-            this.cbContenedor.Location = new System.Drawing.Point(367, 182);
-            this.cbContenedor.Name = "cbContenedor";
-            this.cbContenedor.Size = new System.Drawing.Size(121, 24);
-            this.cbContenedor.TabIndex = 23;
-            // 
             // txtFactura
             // 
             this.txtFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -357,6 +348,7 @@
             // 
             // gbRomaneo
             // 
+            this.gbRomaneo.Controls.Add(this.txtCajas);
             this.gbRomaneo.Controls.Add(dpFecha);
             this.gbRomaneo.Controls.Add(this.dpEmpaque);
             this.gbRomaneo.Controls.Add(dpSacrificio);
@@ -377,7 +369,6 @@
             this.gbRomaneo.Controls.Add(this.txtFactura);
             this.gbRomaneo.Controls.Add(this.txtProcedencia);
             this.gbRomaneo.Controls.Add(this.label13);
-            this.gbRomaneo.Controls.Add(this.cbContenedor);
             this.gbRomaneo.Controls.Add(this.label2);
             this.gbRomaneo.Controls.Add(this.label11);
             this.gbRomaneo.Controls.Add(this.cbTurno);
@@ -414,6 +405,7 @@
             this.pbCodigoBarras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCodigoBarras.TabIndex = 34;
             this.pbCodigoBarras.TabStop = false;
+            this.pbCodigoBarras.DoubleClick += new System.EventHandler(this.pbCodigoBarras_DoubleClick);
             // 
             // btnGenerarCodigoBarras
             // 
@@ -459,6 +451,13 @@
             this.pbGuardarCb.TabStop = false;
             this.pbGuardarCb.Click += new System.EventHandler(this.pbGuardarCb_Click);
             // 
+            // txtCajas
+            // 
+            this.txtCajas.Location = new System.Drawing.Point(367, 182);
+            this.txtCajas.Name = "txtCajas";
+            this.txtCajas.Size = new System.Drawing.Size(120, 22);
+            this.txtCajas.TabIndex = 33;
+            // 
             // frmRecepcionCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,6 +473,7 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.pbLogo);
             this.Name = "frmRecepcionCarne";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recepcion de Carne";
             this.Load += new System.EventHandler(this.frmRecepcionCarne_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
@@ -508,7 +508,6 @@
         private System.Windows.Forms.TextBox txtFleje;
         private System.Windows.Forms.ComboBox cbTurno;
         private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.ComboBox cbContenedor;
         private System.Windows.Forms.TextBox txtFactura;
         private System.Windows.Forms.TextBox txtOrdenCompra;
         private System.Windows.Forms.TextBox txtMarca;
@@ -524,5 +523,6 @@
         private System.Windows.Forms.PictureBox pbImpresionCb;
         private System.Windows.Forms.PictureBox pbGuardarCb;
         private System.Windows.Forms.DateTimePicker dpEmpaque;
+        private System.Windows.Forms.TextBox txtCajas;
     }
 }
