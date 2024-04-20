@@ -17,6 +17,12 @@ namespace GestionInventario
         public frmRecepcionCarne()
         {
             InitializeComponent();
+
+            // Define los supervisores disponibles
+            string[] supervisores = { "Pablo B.", "Hugo B.", "José R." };
+
+            // Agrega los supervisores al ComboBox
+            cbTurno.Items.AddRange(supervisores);
         }
 
         private void frmRecepcionCarne_Load(object sender, EventArgs e)
@@ -171,7 +177,7 @@ namespace GestionInventario
                 string.IsNullOrEmpty(txtFleje.Text) ||
                 //cbTurno.SelectedItem == null ||
                 string.IsNullOrEmpty(txtCantidad.Text) ||
-                //cbContenedor.SelectedItem == null ||
+                string.IsNullOrEmpty(txtCajas.Text) ||
                 string.IsNullOrEmpty(txtFactura.Text) ||
                 string.IsNullOrEmpty(txtOrdenCompra.Text) ||
                 string.IsNullOrEmpty(txtMarca.Text) ||
@@ -295,8 +301,8 @@ namespace GestionInventario
             Bitmap barcodeImage = barcodeGenerator.GenerateBarcode(txtFactura.Text);
 
             // Generar la imagen para la leyenda
-            Font font = new Font("Arial", 15);
-            Color colorTexto = Color.Red;
+            Font font = new Font("Arial", 16);
+            Color colorTexto = Color.Black;
             Color colorFondo = Color.White;
             Bitmap leyendaImage = AyudanteImagen.TextoAImagen($"Producto: {producto} | Lote: {lote} | Cantidad: {cantidad}kg", font, colorTexto, colorFondo);
 
