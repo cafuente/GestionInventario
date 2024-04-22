@@ -15,7 +15,7 @@ namespace GestionInventario
         {
             BarcodeWriter writer = new BarcodeWriter
             {
-                Format = BarcodeFormat.CODE_128, //Se puede cambiar el formato según dr requiera
+                Format = BarcodeFormat.CODE_128, //Se puede cambiar el formato según se requiera
                 Options = new EncodingOptions
                 {
                     Width = 500,

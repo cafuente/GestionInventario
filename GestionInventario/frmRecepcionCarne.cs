@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,10 +24,18 @@ namespace GestionInventario
 
             // Agrega los supervisores al ComboBox
             cbTurno.Items.AddRange(supervisores);
+
         }
 
         private void frmRecepcionCarne_Load(object sender, EventArgs e)
         {
+            // Deshabilitar el CheckBox al iniciar el formulario
+            chbFijarDatos.Checked = false;
+            chbFijarDatos.Enabled = false;
+            // Habilitar todos los campos
+            HabilitarCampos(true);
+            pbCodigoBarras.Visible = true;
+            pbCodigoBarras.Enabled = false;
             btnAgregarCarne.Visible = true;
             btnAgregarCarne.Enabled = false;
             btnModificarDatosCarne.Visible = true;
@@ -34,7 +43,20 @@ namespace GestionInventario
             //pbImpresionCb.Visible = true;
             pbImpresionCb.Enabled = false;
             //pbGuardarCb.Visible = true;
-            pbGuardarCb.Enabled = false;            
+            pbGuardarCb.Enabled = false;
+            // Se inician los datetimepicker en al fecha actual
+            dpSacrificio.Value = DateTime.Now;
+            dpEmpaque.Value = DateTime.Now;
+            dpFecha.Value = DateTime.Now;
+
+            // Crear una instancia de la clase InsercionDatosDAO
+            InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
+
+            // Obtener el último ID de la tabla recepcion_carne
+            string ultimoId = insercionDatosDAO.ObtenerUltimoId();
+
+            // Mostrar el último ID en el idLabel
+            idLabel.Text = ultimoId;
         }              
 
         private void btnGenerarCodigoBarras_Click(object sender, EventArgs e)
@@ -175,7 +197,7 @@ namespace GestionInventario
             if (string.IsNullOrEmpty(txtLinea.Text) ||
                 string.IsNullOrEmpty(txtProcedencia.Text) ||
                 string.IsNullOrEmpty(txtFleje.Text) ||
-                //cbTurno.SelectedItem == null ||
+                cbTurno.SelectedItem == null ||
                 string.IsNullOrEmpty(txtCantidad.Text) ||
                 string.IsNullOrEmpty(txtCajas.Text) ||
                 string.IsNullOrEmpty(txtFactura.Text) ||
@@ -195,23 +217,25 @@ namespace GestionInventario
 
         private void btnModificarDatosCarne_Click(object sender, EventArgs e)
         {
-           // Habilitar todos los campos de entrada
-            txtLinea.Enabled = true;
-            txtProcedencia.Enabled = true;
-            txtFleje.Enabled = true;
-            cbTurno.Enabled = true;
-            txtFleje.Enabled = true;
-            txtCantidad.Enabled = true;
-            txtCajas.Enabled = true;
-            txtFactura.Enabled = true;
-            txtOrdenCompra.Enabled = true;
-            txtMarca.Enabled = true;
-            txtLote.Enabled = true;
-            txtProducto.Enabled = true;
-            btnAgregarCarne.Enabled = true;
-            pbImpresionCb.Enabled = true;
-            pbGuardarCb.Enabled = true;
-            // Otros campos aquí...
+            // Habilitar todos los campos de entrada
+            //txtLinea.Enabled = true;
+            //txtProcedencia.Enabled = true;
+            //txtFleje.Enabled = true;
+            //cbTurno.Enabled = true;
+            //txtFleje.Enabled = true;
+            //txtCantidad.Enabled = true;
+            //txtCajas.Enabled = true;
+            //txtFactura.Enabled = true;
+            //txtOrdenCompra.Enabled = true;
+            //txtMarca.Enabled = true;
+            //txtLote.Enabled = true;
+            //txtProducto.Enabled = true;
+            //btnAgregarCarne.Enabled = true;
+            //pbImpresionCb.Enabled = true;
+            //pbGuardarCb.Enabled = true;
+
+            HabilitarCampos(true);            
+            
 
             // Desabilitar el botón para agregar carne
             btnAgregarCarne.Visible = true;
@@ -223,7 +247,12 @@ namespace GestionInventario
             btnGenerarCodigoBarras.Enabled = true;
             pbImpresionCb.Enabled = false;
             pbGuardarCb.Enabled = false;
-            
+            pbCodigoBarras.Image = null;
+            // Cargar la imagen predeterminada desde los recursos
+            Image imagenPredeterminada = Properties.Resources.barcode_scan;
+            // Asignar la imagen predeterminada al PictureBox
+            pbCodigoBarras.Image = imagenPredeterminada;
+            pbCodigoBarras.Enabled = false;
 
         }
 
@@ -298,7 +327,7 @@ namespace GestionInventario
 
             // Generar el código de barras
             BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
-            Bitmap barcodeImage = barcodeGenerator.GenerateBarcode(txtFactura.Text);
+            Bitmap barcodeImage = barcodeGenerator.GenerateBarcode(idLabel.Text);
 
             // Generar la imagen para la leyenda
             Font font = new Font("Arial", 16);
@@ -313,21 +342,26 @@ namespace GestionInventario
             pbCodigoBarras.Image = combinedImage;
 
             // Deshabilitar todos los campos de entrada
-            txtLinea.Enabled = false;
-            txtProcedencia.Enabled = false;
-            txtFleje.Enabled = false;
-            cbTurno.Enabled = false;
-            txtFleje.Enabled = false;
-            txtCantidad.Enabled = false;
-            txtCajas.Enabled = false;
-            txtFactura.Enabled = false;
-            txtOrdenCompra.Enabled = false;
-            txtMarca.Enabled = false;
-            txtLote.Enabled = false;
-            txtProducto.Enabled = false;
+            //txtLinea.Enabled = false;
+            //txtProcedencia.Enabled = false;
+            //dpSacrificio.Enabled = false;
+            //dpEmpaque.Enabled = false;
+            //txtFleje.Enabled = false;
+            //cbTurno.Enabled = false;
+            //txtCantidad.Enabled = false;
+            //txtCajas.Enabled = false;
+            //txtFactura.Enabled = false;
+            //txtOrdenCompra.Enabled = false;
+            //txtMarca.Enabled = false;
+            //txtLote.Enabled = false;
+            //txtProducto.Enabled = false;
+            //dpFecha.Enabled = false;
+            HabilitarCampos(false);
+
             btnAgregarCarne.Enabled = false;
             pbImpresionCb.Enabled = Enabled;
             pbGuardarCb.Enabled = Enabled;
+            pbCodigoBarras.Enabled = Enabled;
             
             // Habilitar el botón para agregar carne
             btnAgregarCarne.Enabled = true;
@@ -416,6 +450,146 @@ namespace GestionInventario
 
         private void btnAgregarCarne_Click(object sender, EventArgs e)
         {
+            // Obtener los valores ingresados por el usuario
+            string id = idLabel.Text;
+            string linea = txtLinea.Text;
+            string procedencia = txtProcedencia.Text;
+            DateTime fechaSacrificio = dpSacrificio.Value;
+            DateTime fechaEmpaque = dpEmpaque.Value;
+            string fleje = txtFleje.Text;
+            string turno = cbTurno.SelectedItem.ToString();
+            int cantidad = Convert.ToInt32(txtCantidad.Text);
+            int cajas = Convert.ToInt32(txtCajas.Text);
+            string factura = txtFactura.Text;
+            string ordenCompra = txtOrdenCompra.Text;
+            string marca = txtMarca.Text;
+            string lote = txtLote.Text;
+            string producto = txtProducto.Text;
+            DateTime fecha = dpFecha.Value;
+
+            // Crear una instancia de la clase InsercionDatosDAO
+            InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
+
+            // Llamar al método InsertarDatosRecepcionCarne para insertar los datos en la base de datos
+            bool insercionExitosa = insercionDatosDAO.InsertarDatosRecepcionCarne(id,linea, procedencia, fechaSacrificio, fechaEmpaque, fleje, turno, cantidad, cajas, factura, ordenCompra, marca, lote, producto, fecha);
+
+            // Verificar si la inserción fue exitosa
+            if (insercionExitosa)
+            {
+                MessageBox.Show("Los datos se han agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (chbFijarDatos.Checked)
+                {
+                    // Si el CheckBox está marcado, deshabilitar todos los campos excepto el de cantidad
+                    HabilitarCampos(false);
+                    txtCantidad.Enabled = true; // Habilitar el campo de cantidad
+                }
+                else
+                {
+
+                    //Habilitar los campos
+                    HabilitarCampos(true);
+                    // Limpiar los campos después de la inserción
+                    LimpiarCampos();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error al agregar los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void HabilitarCampos(bool habilitar) 
+        {
+            txtLinea.Enabled = habilitar;
+            txtProcedencia.Enabled = habilitar;
+            dpSacrificio.Enabled = habilitar;
+            dpEmpaque.Enabled = habilitar;
+            txtFleje.Enabled = habilitar;
+            cbTurno.Enabled = habilitar;
+            txtCantidad.Enabled = habilitar;
+            txtCajas.Enabled = habilitar;
+            txtFactura.Enabled = habilitar;
+            txtOrdenCompra.Enabled = habilitar;
+            txtMarca.Enabled = habilitar;
+            txtLote.Enabled = habilitar;
+            txtProducto.Enabled = habilitar;
+            dpFecha.Enabled = habilitar;
+            chbFijarDatos.Enabled = habilitar;
+             
+        }
+                
+        // Método para limpiar los campos del formulario
+        private void LimpiarCampos()
+        {
+            // Habilitar todos los campos de entrada
+            //txtLinea.Enabled = true;
+            //txtProcedencia.Enabled = true;
+            //dpSacrificio.Enabled = true;
+            //dpEmpaque.Enabled = true;
+            //txtFleje.Enabled = true;
+            //cbTurno.Enabled = true;
+            //txtFleje.Enabled = true;
+            //txtCantidad.Enabled = true;
+            //txtCajas.Enabled = true;
+            //txtFactura.Enabled = true;
+            //txtOrdenCompra.Enabled = true;
+            //txtMarca.Enabled = true;
+            //txtLote.Enabled = true;
+            //txtProducto.Enabled = true;
+            //dpFecha.Enabled = true;
+            //btnAgregarCarne.Enabled = true;
+            pbImpresionCb.Enabled = false;
+            pbGuardarCb.Enabled = false;
+
+
+            // Desabilitar el botón para agregar carne
+            btnAgregarCarne.Visible = true;
+            btnAgregarCarne.Enabled = false;
+            btnModificarDatosCarne.Visible = true;
+            btnModificarDatosCarne.Enabled = false;
+            // habilitar todos los campos
+            //btnGenerarCodigoBarras.Visible = true;
+            //btnGenerarCodigoBarras.Enabled = true;
+            pbImpresionCb.Enabled = false;
+            pbGuardarCb.Enabled = false;
+
+            //limpiar campos
+            txtLinea.Text = "";
+            txtProcedencia.Text = "";
+            dpSacrificio.Value = DateTime.Now;
+            dpEmpaque.Value = DateTime.Now;
+            txtFleje.Text = "";
+            cbTurno.SelectedIndex = -1;
+            txtCantidad.Text = "";
+            txtCajas.Text = "";
+            txtFactura.Text = "";
+            txtOrdenCompra.Text = "";
+            txtMarca.Text = "";
+            txtLote.Text = "";
+            txtProducto.Text = "";
+            dpFecha.Value = DateTime.Now;// Asignar la fecha actual
+            txtLinea.Text = "";
+            txtProcedencia.Text = "";
+            dpSacrificio.Value = DateTime.Now;
+            dpEmpaque.Value = DateTime.Now;
+            txtFleje.Text = "";
+            cbTurno.SelectedIndex = -1;
+            txtCantidad.Text = "";
+            txtCajas.Text = "";
+            txtFactura.Text = "";
+            txtOrdenCompra.Text = "";
+            txtMarca.Text = "";
+            txtLote.Text = "";
+            txtProducto.Text = "";
+            dpFecha.Value = DateTime.Now;// Asignar la fecha actual
+            pbCodigoBarras.Image = null;
+            // Cargar la imagen predeterminada desde los recursos
+            Image imagenPredeterminada = Properties.Resources.barcode_scan;
+            // Asignar la imagen predeterminada al PictureBox
+            pbCodigoBarras.Image = imagenPredeterminada;
+
 
         }
 

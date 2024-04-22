@@ -17,7 +17,7 @@ namespace GestionInventario
         {
             conexion = new ConexionBD();
         }
-
+        /*
         public bool VerificarCredenciales(string username, string password)
         {
             bool loginSuccessful = false;
@@ -34,6 +34,35 @@ namespace GestionInventario
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     loginSuccessful = count > 0;
                 }
+            }
+
+            return loginSuccessful;
+        }
+        */
+        public bool VerificarCredenciales(string username, string password)
+        {
+            bool loginSuccessful = false;
+
+            string query = "SELECT COUNT(*) FROM usuarios WHERE usuario = @usuario AND password = @password";
+
+            try
+            {
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    con.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@usuario", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        loginSuccessful = count > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar credenciales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return loginSuccessful;
