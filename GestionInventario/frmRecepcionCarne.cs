@@ -31,7 +31,7 @@ namespace GestionInventario
         {
             // Deshabilitar el CheckBox al iniciar el formulario
             chbFijarDatos.Checked = false;
-            chbFijarDatos.Enabled = false;
+            chbFijarDatos.Enabled = true;
             // Habilitar todos los campos
             HabilitarCampos(true);
             pbCodigoBarras.Visible = true;
@@ -204,7 +204,9 @@ namespace GestionInventario
                 string.IsNullOrEmpty(txtOrdenCompra.Text) ||
                 string.IsNullOrEmpty(txtMarca.Text) ||
                 string.IsNullOrEmpty(txtLote.Text) ||
-                string.IsNullOrEmpty(txtProducto.Text))
+                string.IsNullOrEmpty(txtProducto.Text) ||
+                string.IsNullOrEmpty(txtTara.Text)||
+                string.IsNullOrEmpty(txtPeso.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos antes de generar el código de barras.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -323,7 +325,7 @@ namespace GestionInventario
             // Obtener la información del producto, lote y cantidad
             string producto = txtProducto.Text;
             string lote = txtLote.Text;
-            string cantidad = txtCantidad.Text;
+            string cantidad = txtPeso.Text;
 
             // Generar el código de barras
             BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
@@ -418,7 +420,7 @@ namespace GestionInventario
 
         private void pbGuardarCb_Click(object sender, EventArgs e)
         {
-            string leyenda = txtProducto.Text+"-" + txtLote.Text +"-" + txtCantidad.Text+" kg";
+            string leyenda = txtProducto.Text+"-" + txtLote.Text +"-" + txtPeso.Text+" kg";
             // Verificar si hay una imagen en el PictureBox
             if (pbCodigoBarras.Image != null)
             {
@@ -458,7 +460,7 @@ namespace GestionInventario
             DateTime fechaEmpaque = dpEmpaque.Value;
             string fleje = txtFleje.Text;
             string turno = cbTurno.SelectedItem.ToString();
-            int cantidad = Convert.ToInt32(txtCantidad.Text);
+            float cantidad = float.Parse(txtCantidad.Text);
             int cajas = Convert.ToInt32(txtCajas.Text);
             string factura = txtFactura.Text;
             string ordenCompra = txtOrdenCompra.Text;
@@ -466,12 +468,14 @@ namespace GestionInventario
             string lote = txtLote.Text;
             string producto = txtProducto.Text;
             DateTime fecha = dpFecha.Value;
+            int tara = Convert.ToInt32(txtTara.Text);
+            float peso = float.Parse(txtPeso.Text);
 
             // Crear una instancia de la clase InsercionDatosDAO
             InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
 
             // Llamar al método InsertarDatosRecepcionCarne para insertar los datos en la base de datos
-            bool insercionExitosa = insercionDatosDAO.InsertarDatosRecepcionCarne(id,linea, procedencia, fechaSacrificio, fechaEmpaque, fleje, turno, cantidad, cajas, factura, ordenCompra, marca, lote, producto, fecha);
+            bool insercionExitosa = insercionDatosDAO.InsertarDatosRecepcionCarne(id,linea, procedencia, fechaSacrificio, fechaEmpaque, fleje, turno, cantidad, cajas, factura, ordenCompra, marca, lote, producto, fecha, tara, peso);
 
             // Verificar si la inserción fue exitosa
             if (insercionExitosa)
@@ -482,20 +486,37 @@ namespace GestionInventario
                 {
                     // Si el CheckBox está marcado, deshabilitar todos los campos excepto el de cantidad
                     HabilitarCampos(false);
-                    txtCantidad.Enabled = true; // Habilitar el campo de cantidad
+                    txtPeso.Enabled = true;
+                    txtTara.Enabled = true;
+                    txtPeso.Text = "";
+                    txtTara.Text = "";
+                    btnGenerarCodigoBarras.Enabled = true;
+                    pbImpresionCb.Enabled = false;
+                    pbGuardarCb.Enabled = false;                                        
+                    Image imagenPredeterminada = Properties.Resources.barcode_scan;                    
+                    pbCodigoBarras.Image = imagenPredeterminada;
+                    btnAgregarCarne.Enabled = false;
+                    btnModificarDatosCarne.Enabled = false;
+                    string nuevoId = insercionDatosDAO.ObtenerUltimoId();
+                    idLabel.Text = nuevoId;
                 }
                 else
                 {
-
-                    //Habilitar los campos
+                                        
                     HabilitarCampos(true);
-                    // Limpiar los campos después de la inserción
                     LimpiarCampos();
+                    string nuevoId = insercionDatosDAO.ObtenerUltimoId();
+                    idLabel.Text = nuevoId;
+                    Image imagenPredeterminada = Properties.Resources.barcode_scan;
+                    pbCodigoBarras.Image = imagenPredeterminada;
+                    pbCodigoBarras.Enabled = false;
+                    btnGenerarCodigoBarras.Enabled= true;
                 }
             }
             else
             {
                 MessageBox.Show("Error al agregar los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
 
         }
@@ -516,8 +537,9 @@ namespace GestionInventario
             txtLote.Enabled = habilitar;
             txtProducto.Enabled = habilitar;
             dpFecha.Enabled = habilitar;
-            chbFijarDatos.Enabled = habilitar;
-             
+            //chbFijarDatos.Enabled = habilitar;
+            txtTara.Enabled = habilitar;
+            txtPeso.Enabled = habilitar;
         }
                 
         // Método para limpiar los campos del formulario
@@ -585,6 +607,8 @@ namespace GestionInventario
             txtProducto.Text = "";
             dpFecha.Value = DateTime.Now;// Asignar la fecha actual
             pbCodigoBarras.Image = null;
+            txtTara.Text = "";
+            txtPeso.Text = "";
             // Cargar la imagen predeterminada desde los recursos
             Image imagenPredeterminada = Properties.Resources.barcode_scan;
             // Asignar la imagen predeterminada al PictureBox

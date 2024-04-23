@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,12 +64,12 @@ namespace GestionInventario
             return ultimoId;
         }
 
-        public bool InsertarDatosRecepcionCarne(string id, string linea, string procedencia, DateTime fechaSacrificio, DateTime fechaEmpaque, string fleje, string turno, int cantidad, int cajas, string factura, string ordenCompra, string marca, string lote, string producto, DateTime fecha)
+        public bool InsertarDatosRecepcionCarne(string id, string linea, string procedencia, DateTime fechaSacrificio, DateTime fechaEmpaque, string fleje, string turno, float cantidad, int cajas, string factura, string ordenCompra, string marca, string lote, string producto, DateTime fecha, int tara, float peso)
         {
             try
             {
-                string consulta = "INSERT INTO recepcion_carne (id, linea, procedencia, fecha_sacrificio, fecha_empaque, fleje, turno, cantidad, cajas, factura, orden_compra, marca, lote, producto, fecha) " +
-                                  "VALUES (@id, @Linea, @Procedencia, @FechaSacrificio, @FechaEmpaque, @Fleje, @Turno, @Cantidad, @Cajas, @Factura, @OrdenCompra, @Marca, @Lote, @Producto, @Fecha)";
+                string consulta = "INSERT INTO recepcion_carne (id, linea, procedencia, fecha_sacrificio, fecha_empaque, fleje, turno, cantidad, cajas, factura, orden_compra, marca, lote, producto, fecha, tara, peso) " +
+                                  "VALUES (@id, @Linea, @Procedencia, @FechaSacrificio, @FechaEmpaque, @Fleje, @Turno, @Cantidad, @Cajas, @Factura, @OrdenCompra, @Marca, @Lote, @Producto, @Fecha, @tara, @peso)";
 
                 using (MySqlConnection con = conexion.ObtenerConexion())
                 {
@@ -90,6 +91,8 @@ namespace GestionInventario
                         cmd.Parameters.AddWithValue("@Lote", lote);
                         cmd.Parameters.AddWithValue("@Producto", producto);
                         cmd.Parameters.AddWithValue("@Fecha", fecha);
+                        cmd.Parameters.AddWithValue("@tara", tara);
+                        cmd.Parameters.AddWithValue("@peso", peso);
 
                         int filasAfectadas = cmd.ExecuteNonQuery();
                         return filasAfectadas > 0;

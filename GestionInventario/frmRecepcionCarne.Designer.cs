@@ -55,6 +55,8 @@
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.gbFactura = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.chbFijarDatos = new System.Windows.Forms.CheckBox();
             this.idLabel = new System.Windows.Forms.Label();
             this.dpFecha = new System.Windows.Forms.DateTimePicker();
             this.dpEmpaque = new System.Windows.Forms.DateTimePicker();
@@ -65,17 +67,15 @@
             this.btnAgregarCarne = new System.Windows.Forms.Button();
             this.btnGenerarCodigoBarras = new System.Windows.Forms.Button();
             this.btnModificarDatosCarne = new System.Windows.Forms.Button();
-            this.chbFijarDatos = new System.Windows.Forms.CheckBox();
             this.pbGuardarCb = new System.Windows.Forms.PictureBox();
             this.pbImpresionCb = new System.Windows.Forms.PictureBox();
             this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.gbRegistro = new System.Windows.Forms.GroupBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtTara = new System.Windows.Forms.TextBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
+            this.txtTara = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.gbFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
@@ -359,6 +359,26 @@
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Datos Factura";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(275, 47);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(94, 16);
+            this.label17.TabIndex = 41;
+            this.label17.Text = "Datos Factura:";
+            // 
+            // chbFijarDatos
+            // 
+            this.chbFijarDatos.AutoSize = true;
+            this.chbFijarDatos.Location = new System.Drawing.Point(371, 47);
+            this.chbFijarDatos.Name = "chbFijarDatos";
+            this.chbFijarDatos.Size = new System.Drawing.Size(100, 20);
+            this.chbFijarDatos.TabIndex = 40;
+            this.chbFijarDatos.Text = "FIjar datos";
+            this.chbFijarDatos.UseVisualStyleBackColor = true;
+            // 
             // idLabel
             // 
             this.idLabel.AutoSize = true;
@@ -425,10 +445,10 @@
             // btnAgregarCarne
             // 
             this.btnAgregarCarne.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCarne.Location = new System.Drawing.Point(44, 588);
+            this.btnAgregarCarne.Location = new System.Drawing.Point(123, 592);
             this.btnAgregarCarne.Name = "btnAgregarCarne";
-            this.btnAgregarCarne.Size = new System.Drawing.Size(456, 34);
-            this.btnAgregarCarne.TabIndex = 33;
+            this.btnAgregarCarne.Size = new System.Drawing.Size(315, 34);
+            this.btnAgregarCarne.TabIndex = 19;
             this.btnAgregarCarne.Text = "Agregar";
             this.btnAgregarCarne.UseVisualStyleBackColor = true;
             this.btnAgregarCarne.Click += new System.EventHandler(this.btnAgregarCarne_Click);
@@ -439,7 +459,7 @@
             this.btnGenerarCodigoBarras.Location = new System.Drawing.Point(551, 412);
             this.btnGenerarCodigoBarras.Name = "btnGenerarCodigoBarras";
             this.btnGenerarCodigoBarras.Size = new System.Drawing.Size(228, 34);
-            this.btnGenerarCodigoBarras.TabIndex = 35;
+            this.btnGenerarCodigoBarras.TabIndex = 17;
             this.btnGenerarCodigoBarras.Text = "Generar codigo de barras";
             this.btnGenerarCodigoBarras.UseVisualStyleBackColor = true;
             this.btnGenerarCodigoBarras.Click += new System.EventHandler(this.btnGenerarCodigoBarras_Click);
@@ -450,20 +470,10 @@
             this.btnModificarDatosCarne.Location = new System.Drawing.Point(551, 464);
             this.btnModificarDatosCarne.Name = "btnModificarDatosCarne";
             this.btnModificarDatosCarne.Size = new System.Drawing.Size(228, 34);
-            this.btnModificarDatosCarne.TabIndex = 36;
+            this.btnModificarDatosCarne.TabIndex = 18;
             this.btnModificarDatosCarne.Text = "Modificar Datos";
             this.btnModificarDatosCarne.UseVisualStyleBackColor = true;
             this.btnModificarDatosCarne.Click += new System.EventHandler(this.btnModificarDatosCarne_Click);
-            // 
-            // chbFijarDatos
-            // 
-            this.chbFijarDatos.AutoSize = true;
-            this.chbFijarDatos.Location = new System.Drawing.Point(371, 47);
-            this.chbFijarDatos.Name = "chbFijarDatos";
-            this.chbFijarDatos.Size = new System.Drawing.Size(100, 20);
-            this.chbFijarDatos.TabIndex = 40;
-            this.chbFijarDatos.Text = "FIjar datos";
-            this.chbFijarDatos.UseVisualStyleBackColor = true;
             // 
             // pbGuardarCb
             // 
@@ -509,16 +519,6 @@
             this.pbLogo.TabIndex = 30;
             this.pbLogo.TabStop = false;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(275, 47);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(94, 16);
-            this.label17.TabIndex = 41;
-            this.label17.Text = "Datos Factura:";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -543,6 +543,22 @@
             this.gbRegistro.TabStop = false;
             this.gbRegistro.Text = "Registro de tarima o combo";
             // 
+            // txtPeso
+            // 
+            this.txtPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPeso.Location = new System.Drawing.Point(367, 34);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(121, 22);
+            this.txtPeso.TabIndex = 16;
+            // 
+            // txtTara
+            // 
+            this.txtTara.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTara.Location = new System.Drawing.Point(111, 34);
+            this.txtTara.Name = "txtTara";
+            this.txtTara.Size = new System.Drawing.Size(113, 22);
+            this.txtTara.TabIndex = 15;
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -552,20 +568,6 @@
             this.label19.Size = new System.Drawing.Size(68, 16);
             this.label19.TabIndex = 40;
             this.label19.Text = "Peso real:";
-            // 
-            // txtTara
-            // 
-            this.txtTara.Location = new System.Drawing.Point(111, 34);
-            this.txtTara.Name = "txtTara";
-            this.txtTara.Size = new System.Drawing.Size(113, 22);
-            this.txtTara.TabIndex = 41;
-            // 
-            // txtPeso
-            // 
-            this.txtPeso.Location = new System.Drawing.Point(367, 34);
-            this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(121, 22);
-            this.txtPeso.TabIndex = 42;
             // 
             // checkBox2
             // 
