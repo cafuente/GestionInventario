@@ -82,7 +82,7 @@ namespace GestionInventario
             }
         }
 
-        public bool CrearUsuario(string usuario, string password, string nombre, string perfil)
+        public bool CrearUsuario(string usuario, string password, string nombre, string departamento, string perfil)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace GestionInventario
                     return false; // El perfil no existe
                 }
 
-                string query = "INSERT INTO usuarios (usuario, password, nombre, id_perfil) VALUES (@usuario, @password, @nombre, @idPerfil)";
+                string query = "INSERT INTO usuarios (usuario, password, nombre, departamento, id_perfil) VALUES (@usuario, @password, @nombre,@departamento, @idPerfil)";
 
                 using (MySqlConnection con = conexion.ObtenerConexion())
                 {
@@ -102,7 +102,9 @@ namespace GestionInventario
                         cmd.Parameters.AddWithValue("@usuario", usuario);
                         cmd.Parameters.AddWithValue("@password", password);
                         cmd.Parameters.AddWithValue("@nombre", nombre);
+                        cmd.Parameters.AddWithValue("@departamento", departamento);
                         cmd.Parameters.AddWithValue("@idPerfil", idPerfil);
+                        
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
@@ -116,7 +118,7 @@ namespace GestionInventario
             }
         }
 
-        public bool ActualizarUsuario(int idUsuario, string usuario, string password, string nombre, string perfil)
+        public bool ActualizarUsuario(int idUsuario, string usuario, string password, string nombre, string departamento, string perfil)
         {
             try
             {
@@ -126,7 +128,7 @@ namespace GestionInventario
                     return false; // El perfil no existe
                 }
 
-                string query = "UPDATE usuarios SET usuario = @usuario, password = @password, nombre = @nombre, id_perfil = @idPerfil WHERE id_usuario = @idUsuario";
+                string query = "UPDATE usuarios SET usuario = @usuario, password = @password, nombre = @nombre,departamento = @departamento, id_perfil = @idPerfil WHERE id_usuario = @idUsuario";
 
                 using (MySqlConnection con = conexion.ObtenerConexion())
                 {
@@ -137,7 +139,9 @@ namespace GestionInventario
                         cmd.Parameters.AddWithValue("@usuario", usuario);
                         cmd.Parameters.AddWithValue("@password", password);
                         cmd.Parameters.AddWithValue("@nombre", nombre);
+                        cmd.Parameters.AddWithValue("@departamento", departamento);
                         cmd.Parameters.AddWithValue("@idPerfil", idPerfil);
+                        
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
@@ -196,6 +200,7 @@ namespace GestionInventario
                                 usuario = reader["usuario"].ToString(),
                                 Password = reader["password"].ToString(),
                                 Nombre = reader["nombre"].ToString(),
+                                Departamento = reader["departamento"].ToString(),
                                 IdPerfil = Convert.ToInt32(reader["id_perfil"])
                             };
                             usuarios.Add(usuario);
@@ -214,7 +219,7 @@ namespace GestionInventario
             try
             {
                 conexion.AbrirConexion(); // Abrimos la conexión utilizando la instancia de ConexionBD
-                string query = "SELECT id_usuario, usuario, password, nombre, id_perfil FROM usuarios";
+                string query = "SELECT id_usuario, usuario, password, nombre, departamento, id_perfil FROM usuarios";
 
                 MySqlCommand command = new MySqlCommand(query, conexion.ObtenerConexion());
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);

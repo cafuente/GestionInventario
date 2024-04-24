@@ -23,6 +23,17 @@ namespace GestionInventario
         {
             cbPerfil.Items.Add("Administrador");
             cbPerfil.Items.Add("Usuario");
+            cbDepartamento.Items.Add("Almacen carnicos");
+            cbDepartamento.Items.Add("Control de Produccion");
+            cbDepartamento.Items.Add("Limpieza y Formulacion");
+            cbDepartamento.Items.Add("Recepcion(mocha)");
+            cbDepartamento.Items.Add("Mezclado");
+
+            btnActualizar.Visible = true;
+            btnActualizar.Enabled = false;
+            btnEliminar.Visible = true;
+            btnEliminar.Enabled = false;
+            txtUsuario.Focus();
             CargarUsuarios();
         }
         private void CargarUsuarios()
@@ -36,7 +47,7 @@ namespace GestionInventario
             // Agregar los usuarios al DataGridView
             foreach (Usuario usuario in usuarios)
             {
-                dgGestionUsuarios.Rows.Add(usuario.IdUsuario, usuario.usuario, usuario.Password, usuario.Nombre, ObtenerNombrePerfil(usuario.IdPerfil));
+                dgGestionUsuarios.Rows.Add(usuario.IdUsuario, usuario.usuario, usuario.Password, usuario.Nombre, usuario.Departamento, ObtenerNombrePerfil(usuario.IdPerfil));
             }
             // Ajustar automáticamente el ancho de las columnas después de cargar los datos
             foreach (DataGridViewColumn columna in dgGestionUsuarios.Columns)
@@ -60,16 +71,30 @@ namespace GestionInventario
 
         private void dgGestionUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow fila = dgGestionUsuarios.Rows[e.RowIndex];
-                // Mostrar la información del usuario seleccionado en los campos correspondientes
-                lblId.Text = fila.Cells["IdUsuario"].Value.ToString();
-                txtUsuario.Text = fila.Cells["NombreUsuario"].Value.ToString();
-                txtPassword.Text = fila.Cells["Password"].Value.ToString();
-                txtNombre.Text = fila.Cells["Nombre"].Value.ToString();
-                cbPerfil.Text = fila.Cells["Perfil"].Value.ToString();
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow fila = dgGestionUsuarios.Rows[e.RowIndex];
+                    // Mostrar la información del usuario seleccionado en los campos correspondientes
+                    lblId.Text = fila.Cells["IdUsuario"].Value.ToString();
+                    txtUsuario.Text = fila.Cells["NombreUsuario"].Value.ToString();
+                    txtPassword.Text = fila.Cells["Password"].Value.ToString();
+                    txtNombre.Text = fila.Cells["Nombre"].Value.ToString();
+                    cbDepartamento.Text = fila.Cells["Departamento"].Value.ToString();
+                    cbPerfil.Text = fila.Cells["Perfil"].Value.ToString();
+                    
+                }
+                btnAgregar.Enabled = false;
+                btnActualizar.Enabled = true;
+                btnEliminar.Enabled = true;
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Por favor, seleccione una fila valida");
+                return;
+            }  
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -78,22 +103,25 @@ namespace GestionInventario
             string usuario = txtUsuario.Text;
             string password = txtPassword.Text;
             string nombre = txtNombre.Text;
+            string departamento = cbDepartamento.Text;
             string perfil = cbPerfil.Text;
+           
 
             // Verificar que todos los campos estén completos
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(perfil))
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(departamento) || string.IsNullOrEmpty(perfil))
             {
                 MessageBox.Show("Por favor, capture todos los campos.");
                 return;
             }
 
             UsuariosDAO usuariosDAO = new UsuariosDAO();
-            bool usuarioAgregado = usuariosDAO.CrearUsuario(usuario, password, nombre, perfil);
+            bool usuarioAgregado = usuariosDAO.CrearUsuario(usuario, password, nombre, departamento, perfil);
 
             if (usuarioAgregado)
             {
                 MessageBox.Show("Usuario agregado correctamente.");
                 CargarUsuarios(); // Recargar la lista de usuarios en el DataGridView
+                LimpiarCampos();
             }
             else
             {
@@ -117,17 +145,23 @@ namespace GestionInventario
             string usuario = txtUsuario.Text;
             string password = txtPassword.Text;
             string nombre = txtNombre.Text;
+            string departamento = cbDepartamento.Text;
             string perfil = cbPerfil.Text;
+            
 
             UsuariosDAO usuariosDAO = new UsuariosDAO();
-            bool usuarioActualizado = usuariosDAO.ActualizarUsuario(idUsuario, usuario, password, nombre, perfil);
+            bool usuarioActualizado = usuariosDAO.ActualizarUsuario(idUsuario, usuario, password, nombre, departamento, perfil);
 
             if (usuarioActualizado)
             {
                 MessageBox.Show("Usuario actualizado correctamente.");
                 CargarUsuarios(); // Recargar la lista de usuarios en el DataGridView
                                   // Después de actualizar un usuario
-                LimpiarCampos(); // Llama a un método para limpiar los campos                
+                LimpiarCampos(); // Llama a un método para limpiar los campos
+                btnAgregar.Enabled = true;
+                btnActualizar.Enabled = false;
+                btnEliminar.Enabled = false;
+                txtUsuario.Focus();
             }
             else
             {
@@ -156,6 +190,7 @@ namespace GestionInventario
                 {
                     MessageBox.Show("Usuario eliminado correctamente.");
                     CargarUsuarios(); // Recargar la lista de usuarios en el DataGridView
+                    LimpiarCampos();
                 }
                 else
                 {
@@ -169,7 +204,9 @@ namespace GestionInventario
             txtUsuario.Text = "";
             txtPassword.Text = "";
             txtNombre.Text = "";
+            cbDepartamento.SelectedIndex = -1;
             cbPerfil.SelectedIndex = -1; // O establece el valor por defecto
+            
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)

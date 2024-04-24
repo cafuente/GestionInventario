@@ -36,8 +36,7 @@ namespace GestionInventario
             if (loginSuccessful)
             {
                 MessageBox.Show("Inicio de sesión exitoso");
-                // Aquí puedes abrir la siguiente ventana de tu aplicación
-                // Por ejemplo:
+                // abrir la siguiente ventana de tu aplicación                
                 frmPrincipal frm = new frmPrincipal();
                 frm.Show();
                 Hide();

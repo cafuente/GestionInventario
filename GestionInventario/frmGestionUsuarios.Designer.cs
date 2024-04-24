@@ -51,10 +51,14 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.cbPerfil = new System.Windows.Forms.ComboBox();
             this.dgGestionUsuarios = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbDepartamento = new System.Windows.Forms.ComboBox();
+            this.chbDepartamento = new System.Windows.Forms.CheckBox();
             this.IdUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbUsuario.SuspendLayout();
@@ -95,7 +99,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(30, 170);
+            this.label5.Location = new System.Drawing.Point(30, 215);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 16);
             this.label5.TabIndex = 4;
@@ -103,9 +107,10 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(291, 42);
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(291, 45);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(212, 35);
+            this.btnAgregar.Size = new System.Drawing.Size(212, 40);
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -122,7 +127,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(115, 83);
+            this.txtPassword.Location = new System.Drawing.Point(115, 84);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(143, 22);
             this.txtPassword.TabIndex = 8;
@@ -130,7 +135,7 @@
             // txtNombre
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(115, 124);
+            this.txtNombre.Location = new System.Drawing.Point(115, 126);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(143, 22);
             this.txtNombre.TabIndex = 9;
@@ -157,9 +162,10 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(291, 99);
+            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Location = new System.Drawing.Point(291, 118);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(212, 35);
+            this.btnActualizar.Size = new System.Drawing.Size(212, 40);
             this.btnActualizar.TabIndex = 13;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -167,9 +173,10 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(291, 156);
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(291, 191);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(212, 35);
+            this.btnEliminar.Size = new System.Drawing.Size(212, 40);
             this.btnEliminar.TabIndex = 14;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -177,6 +184,9 @@
             // 
             // gbUsuario
             // 
+            this.gbUsuario.Controls.Add(this.chbDepartamento);
+            this.gbUsuario.Controls.Add(this.cbDepartamento);
+            this.gbUsuario.Controls.Add(this.label6);
             this.gbUsuario.Controls.Add(this.chbPerfil);
             this.gbUsuario.Controls.Add(this.chbNombre);
             this.gbUsuario.Controls.Add(this.chbUsuario);
@@ -198,7 +208,7 @@
             this.gbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbUsuario.Location = new System.Drawing.Point(12, 95);
             this.gbUsuario.Name = "gbUsuario";
-            this.gbUsuario.Size = new System.Drawing.Size(509, 277);
+            this.gbUsuario.Size = new System.Drawing.Size(509, 323);
             this.gbUsuario.TabIndex = 15;
             this.gbUsuario.TabStop = false;
             this.gbUsuario.Text = "Datos de usuario";
@@ -207,7 +217,7 @@
             // 
             this.chbPerfil.AutoSize = true;
             this.chbPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbPerfil.Location = new System.Drawing.Point(399, 254);
+            this.chbPerfil.Location = new System.Drawing.Point(318, 299);
             this.chbPerfil.Name = "chbPerfil";
             this.chbPerfil.Size = new System.Drawing.Size(49, 17);
             this.chbPerfil.TabIndex = 22;
@@ -218,7 +228,7 @@
             // 
             this.chbNombre.AutoSize = true;
             this.chbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbNombre.Location = new System.Drawing.Point(271, 254);
+            this.chbNombre.Location = new System.Drawing.Point(217, 299);
             this.chbNombre.Name = "chbNombre";
             this.chbNombre.Size = new System.Drawing.Size(63, 17);
             this.chbNombre.TabIndex = 21;
@@ -229,7 +239,7 @@
             // 
             this.chbUsuario.AutoSize = true;
             this.chbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbUsuario.Location = new System.Drawing.Point(144, 254);
+            this.chbUsuario.Location = new System.Drawing.Point(117, 299);
             this.chbUsuario.Name = "chbUsuario";
             this.chbUsuario.Size = new System.Drawing.Size(62, 17);
             this.chbUsuario.TabIndex = 20;
@@ -240,7 +250,7 @@
             // 
             this.chbId.AutoSize = true;
             this.chbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbId.Location = new System.Drawing.Point(44, 254);
+            this.chbId.Location = new System.Drawing.Point(44, 299);
             this.chbId.Name = "chbId";
             this.chbId.Size = new System.Drawing.Size(35, 17);
             this.chbId.TabIndex = 19;
@@ -259,7 +269,7 @@
             // 
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscar.Location = new System.Drawing.Point(30, 212);
+            this.lblBuscar.Location = new System.Drawing.Point(30, 257);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(49, 16);
             this.lblBuscar.TabIndex = 17;
@@ -267,7 +277,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(115, 208);
+            this.txtBuscar.Location = new System.Drawing.Point(115, 253);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(388, 22);
             this.txtBuscar.TabIndex = 16;
@@ -276,7 +286,7 @@
             // cbPerfil
             // 
             this.cbPerfil.FormattingEnabled = true;
-            this.cbPerfil.Location = new System.Drawing.Point(115, 170);
+            this.cbPerfil.Location = new System.Drawing.Point(115, 212);
             this.cbPerfil.Name = "cbPerfil";
             this.cbPerfil.Size = new System.Drawing.Size(143, 24);
             this.cbPerfil.TabIndex = 15;
@@ -289,13 +299,43 @@
             this.NombreUsuario,
             this.Password,
             this.Nombre,
+            this.Departamento,
             this.Perfil});
-            this.dgGestionUsuarios.Location = new System.Drawing.Point(12, 380);
+            this.dgGestionUsuarios.Location = new System.Drawing.Point(12, 424);
             this.dgGestionUsuarios.Name = "dgGestionUsuarios";
             this.dgGestionUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgGestionUsuarios.Size = new System.Drawing.Size(509, 168);
             this.dgGestionUsuarios.TabIndex = 16;
             this.dgGestionUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGestionUsuarios_CellClick);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(33, 173);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 16);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Deptto:";
+            // 
+            // cbDepartamento
+            // 
+            this.cbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDepartamento.FormattingEnabled = true;
+            this.cbDepartamento.Location = new System.Drawing.Point(115, 168);
+            this.cbDepartamento.Name = "cbDepartamento";
+            this.cbDepartamento.Size = new System.Drawing.Size(143, 23);
+            this.cbDepartamento.TabIndex = 25;
+            // 
+            // chbDepartamento
+            // 
+            this.chbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbDepartamento.Location = new System.Drawing.Point(405, 297);
+            this.chbDepartamento.Name = "chbDepartamento";
+            this.chbDepartamento.Size = new System.Drawing.Size(67, 20);
+            this.chbDepartamento.TabIndex = 0;
+            this.chbDepartamento.Text = "Deptto";
+            this.chbDepartamento.UseVisualStyleBackColor = true;
             // 
             // IdUsuario
             // 
@@ -319,6 +359,11 @@
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             // 
+            // Departamento
+            // 
+            this.Departamento.HeaderText = "Departamento";
+            this.Departamento.Name = "Departamento";
+            // 
             // Perfil
             // 
             this.Perfil.HeaderText = "Perfil";
@@ -328,12 +373,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 555);
+            this.ClientSize = new System.Drawing.Size(534, 600);
             this.Controls.Add(this.dgGestionUsuarios);
             this.Controls.Add(this.gbUsuario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmGestionUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar Usuarios";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -364,15 +410,19 @@
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
         private System.Windows.Forms.CheckBox chbPerfil;
         private System.Windows.Forms.CheckBox chbNombre;
         private System.Windows.Forms.CheckBox chbUsuario;
         private System.Windows.Forms.CheckBox chbId;
+        private System.Windows.Forms.ComboBox cbDepartamento;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chbDepartamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
     }
 }
 
