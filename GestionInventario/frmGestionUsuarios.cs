@@ -35,7 +35,9 @@ namespace GestionInventario
             btnEliminar.Enabled = false;
             txtUsuario.Focus();
             CargarUsuarios();
+            MostrarInformacionUsuario();
         }
+
         private void CargarUsuarios()
         {
             UsuariosDAO usuariosDAO = new UsuariosDAO();
@@ -54,6 +56,20 @@ namespace GestionInventario
             {
                 //columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+        }
+        private void MostrarInformacionUsuario()
+        {
+            // Verificar si hay información del usuario actual disponible
+            if (frmLogin.UsuarioActual != null)
+            {
+                // Obtener el nombre y perfil del usuario actual
+                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
+
+                // Mostrar el nombre y el perfil del usuario en el panel superior
+                lbNombreGu.Text = $"Usuario: {frmLogin.UsuarioActual.Nombre}";
+                lbPerfilGu.Text = $"Perfil: {nombrePerfil}";
+
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)

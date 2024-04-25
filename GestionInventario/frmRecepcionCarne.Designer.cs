@@ -77,12 +77,16 @@
             this.txtTara = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbNombreRc = new System.Windows.Forms.Label();
+            this.lbPerfilRc = new System.Windows.Forms.Label();
             this.gbFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImpresionCb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.gbRegistro.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -512,7 +516,7 @@
             // pbLogo
             // 
             this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(3, 6);
+            this.pbLogo.Location = new System.Drawing.Point(3, 3);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(97, 72);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -579,11 +583,40 @@
             this.checkBox2.Text = "Codigo QR";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbPerfilRc);
+            this.panel1.Controls.Add(this.lbNombreRc);
+            this.panel1.Controls.Add(this.pbLogo);
+            this.panel1.Location = new System.Drawing.Point(3, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(233, 85);
+            this.panel1.TabIndex = 43;
+            // 
+            // lbNombreRc
+            // 
+            this.lbNombreRc.AutoSize = true;
+            this.lbNombreRc.Location = new System.Drawing.Point(109, 19);
+            this.lbNombreRc.Name = "lbNombreRc";
+            this.lbNombreRc.Size = new System.Drawing.Size(44, 13);
+            this.lbNombreRc.TabIndex = 31;
+            this.lbNombreRc.Text = "Nombre";
+            // 
+            // lbPerfilRc
+            // 
+            this.lbPerfilRc.AutoSize = true;
+            this.lbPerfilRc.Location = new System.Drawing.Point(109, 47);
+            this.lbPerfilRc.Name = "lbPerfilRc";
+            this.lbPerfilRc.Size = new System.Drawing.Size(30, 13);
+            this.lbPerfilRc.TabIndex = 32;
+            this.lbPerfilRc.Text = "Perfil";
+            // 
             // frmRecepcionCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 637);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.gbRegistro);
             this.Controls.Add(this.pbGuardarCb);
@@ -594,10 +627,10 @@
             this.Controls.Add(this.btnAgregarCarne);
             this.Controls.Add(this.gbFactura);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.pbLogo);
             this.Name = "frmRecepcionCarne";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recepcion de Carne";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRecepcionCarne_FormClosed);
             this.Load += new System.EventHandler(this.frmRecepcionCarne_Load);
             this.gbFactura.ResumeLayout(false);
             this.gbFactura.PerformLayout();
@@ -607,6 +640,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.gbRegistro.ResumeLayout(false);
             this.gbRegistro.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -662,5 +697,8 @@
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.TextBox txtTara;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbPerfilRc;
+        private System.Windows.Forms.Label lbNombreRc;
     }
 }

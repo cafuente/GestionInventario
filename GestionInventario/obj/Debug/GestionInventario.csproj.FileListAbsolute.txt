@@ -44,3 +44,4 @@ C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\bin\Debug\Fo
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\bin\Debug\Fonts\Font Awesome 6 Free-Solid-900.otf
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmGestionInventario.resources
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmPrincipal.resources
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmTrazalibildad.resources

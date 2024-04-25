@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbPerfilGi = new System.Windows.Forms.Label();
-            this.lbNombreGi = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbPerfilPr = new System.Windows.Forms.Label();
+            this.lbNombrePr = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtAdministrador = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
@@ -41,37 +43,50 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lbPerfilGi);
-            this.panel2.Controls.Add(this.lbNombreGi);
-            this.panel2.Location = new System.Drawing.Point(2, 1);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.lbPerfilPr);
+            this.panel2.Controls.Add(this.lbNombrePr);
+            this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 116);
+            this.panel2.Size = new System.Drawing.Size(230, 90);
             this.panel2.TabIndex = 3;
             // 
-            // lbPerfilGi
+            // pictureBox1
             // 
-            this.lbPerfilGi.AutoSize = true;
-            this.lbPerfilGi.Location = new System.Drawing.Point(67, 56);
-            this.lbPerfilGi.Name = "lbPerfilGi";
-            this.lbPerfilGi.Size = new System.Drawing.Size(10, 13);
-            this.lbPerfilGi.TabIndex = 1;
-            this.lbPerfilGi.Text = ":";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(97, 72);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
             // 
-            // lbNombreGi
+            // lbPerfilPr
             // 
-            this.lbNombreGi.AutoSize = true;
-            this.lbNombreGi.Location = new System.Drawing.Point(64, 24);
-            this.lbNombreGi.Name = "lbNombreGi";
-            this.lbNombreGi.Size = new System.Drawing.Size(44, 13);
-            this.lbNombreGi.TabIndex = 0;
-            this.lbNombreGi.Text = "Nombre";
+            this.lbPerfilPr.AutoSize = true;
+            this.lbPerfilPr.Location = new System.Drawing.Point(109, 47);
+            this.lbPerfilPr.Name = "lbPerfilPr";
+            this.lbPerfilPr.Size = new System.Drawing.Size(30, 13);
+            this.lbPerfilPr.TabIndex = 1;
+            this.lbPerfilPr.Text = "Perfil";
+            // 
+            // lbNombrePr
+            // 
+            this.lbNombrePr.AutoSize = true;
+            this.lbNombrePr.Location = new System.Drawing.Point(109, 19);
+            this.lbNombrePr.Name = "lbNombrePr";
+            this.lbNombrePr.Size = new System.Drawing.Size(44, 13);
+            this.lbNombrePr.TabIndex = 0;
+            this.lbNombrePr.Text = "Nombre";
             // 
             // panel1
             // 
@@ -94,6 +109,7 @@
             this.txtAdministrador.TabIndex = 5;
             this.txtAdministrador.Text = "Administrador";
             this.txtAdministrador.UseVisualStyleBackColor = true;
+            this.txtAdministrador.Click += new System.EventHandler(this.txtAdministrador_Click);
             // 
             // btnCerrarSesion
             // 
@@ -119,7 +135,7 @@
             this.btnRecibo.Name = "btnRecibo";
             this.btnRecibo.Size = new System.Drawing.Size(131, 45);
             this.btnRecibo.TabIndex = 2;
-            this.btnRecibo.Text = "Recibo de carne";
+            this.btnRecibo.Text = "Recibo (mocha)";
             this.btnRecibo.UseVisualStyleBackColor = true;
             // 
             // btnTraslado
@@ -128,7 +144,7 @@
             this.btnTraslado.Name = "btnTraslado";
             this.btnTraslado.Size = new System.Drawing.Size(131, 45);
             this.btnTraslado.TabIndex = 1;
-            this.btnTraslado.Text = "Traspaso de carne";
+            this.btnTraslado.Text = "LyF (traslado)";
             this.btnTraslado.UseVisualStyleBackColor = true;
             // 
             // btnAlmacen
@@ -158,6 +174,7 @@
             this.btnGestion.TabIndex = 1;
             this.btnGestion.Text = "Gestion de inventario";
             this.btnGestion.UseVisualStyleBackColor = true;
+            this.btnGestion.Click += new System.EventHandler(this.btnGestion_Click);
             // 
             // btnRecepcion
             // 
@@ -169,30 +186,44 @@
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnRecepcion_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(359, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(167, 25);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Menu principal";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 502);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPrincipal";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lbPerfilGi;
-        private System.Windows.Forms.Label lbNombreGi;
+        private System.Windows.Forms.Label lbPerfilPr;
+        private System.Windows.Forms.Label lbNombrePr;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button btnMezclado;
@@ -203,5 +234,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnGestion;
         private System.Windows.Forms.Button btnRecepcion;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

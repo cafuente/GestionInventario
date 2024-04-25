@@ -212,7 +212,56 @@ namespace GestionInventario
             return usuarios;
         }
 
-        // Método para cargar los usuarios en el DataGridView
+        public Usuario ObtenerInformacionUsuario(string nombreUsuario)
+        {
+            Usuario usuario = null;
+            string query = "SELECT * FROM usuarios WHERE usuario = @usuario";
+
+            try
+            {
+                // Abrir la conexión
+                conexion.AbrirConexion();
+
+                // Crear el comando SQL
+                using (MySqlCommand comando = new MySqlCommand(query, conexion.ObtenerConexion()))
+                {
+                    // Agregar parámetro
+                    comando.Parameters.AddWithValue("@usuario", nombreUsuario);
+
+                    // Ejecutar la consulta y obtener el resultado
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        // Verificar si se encontró el usuario
+                        if (reader.Read())
+                        {
+                            // Crear objeto Usuario con la información recuperada de la base de datos
+                            usuario = new Usuario
+                            {
+                                IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                                usuario = reader["usuario"].ToString(),
+                                Nombre = reader["nombre"].ToString(),
+                                IdPerfil = Convert.ToInt32(reader["id_perfil"])
+                                // aqui se agregan más propiedades si es necesario
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier error que ocurra durante la ejecución de la consulta
+                Console.WriteLine("Error al obtener la información del usuario: " + ex.Message);
+            }
+            finally
+            {
+                // Cerrar la conexión al finalizar la operación
+                conexion.CerrarConexion();
+            }
+
+            return usuario;
+        }
+
+
         // Método para cargar los usuarios en el DataGridView
         public void CargarUsuarios(DataGridView dataGridView)
         {

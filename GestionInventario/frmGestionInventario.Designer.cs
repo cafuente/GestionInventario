@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionInventario));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbNombreGi = new System.Windows.Forms.Label();
             this.lbPerfilGi = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbNombreGi = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dpFecha = new System.Windows.Forms.DateTimePicker();
             this.txtLoteGI = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNuevoRegistro = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
@@ -65,36 +65,17 @@
             this.panel2.Controls.Add(this.lbNombreGi);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 93);
+            this.panel2.Size = new System.Drawing.Size(214, 93);
             this.panel2.TabIndex = 1;
-            // 
-            // lbNombreGi
-            // 
-            this.lbNombreGi.AutoSize = true;
-            this.lbNombreGi.Location = new System.Drawing.Point(115, 16);
-            this.lbNombreGi.Name = "lbNombreGi";
-            this.lbNombreGi.Size = new System.Drawing.Size(44, 13);
-            this.lbNombreGi.TabIndex = 0;
-            this.lbNombreGi.Text = "Nombre";
             // 
             // lbPerfilGi
             // 
             this.lbPerfilGi.AutoSize = true;
-            this.lbPerfilGi.Location = new System.Drawing.Point(115, 62);
+            this.lbPerfilGi.Location = new System.Drawing.Point(109, 47);
             this.lbPerfilGi.Name = "lbPerfilGi";
             this.lbPerfilGi.Size = new System.Drawing.Size(29, 13);
             this.lbPerfilGi.TabIndex = 1;
             this.lbPerfilGi.Text = "perfil";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(380, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 25);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Gestion de inventario";
             // 
             // pictureBox1
             // 
@@ -106,10 +87,29 @@
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
+            // lbNombreGi
+            // 
+            this.lbNombreGi.AutoSize = true;
+            this.lbNombreGi.Location = new System.Drawing.Point(109, 19);
+            this.lbNombreGi.Name = "lbNombreGi";
+            this.lbNombreGi.Size = new System.Drawing.Size(44, 13);
+            this.lbNombreGi.TabIndex = 0;
+            this.lbNombreGi.Text = "Nombre";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(380, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(237, 25);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Gestion de inventario";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 315);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 423);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(782, 157);
             this.dataGridView1.TabIndex = 15;
@@ -241,14 +241,15 @@
             this.textBox1.Size = new System.Drawing.Size(356, 20);
             this.textBox1.TabIndex = 56;
             // 
-            // button1
+            // btnNuevoRegistro
             // 
-            this.button1.Location = new System.Drawing.Point(592, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 23);
-            this.button1.TabIndex = 57;
-            this.button1.Text = "Nuevo registro";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNuevoRegistro.Location = new System.Drawing.Point(592, 169);
+            this.btnNuevoRegistro.Name = "btnNuevoRegistro";
+            this.btnNuevoRegistro.Size = new System.Drawing.Size(161, 23);
+            this.btnNuevoRegistro.TabIndex = 57;
+            this.btnNuevoRegistro.Text = "Nuevo registro";
+            this.btnNuevoRegistro.UseVisualStyleBackColor = true;
+            this.btnNuevoRegistro.Click += new System.EventHandler(this.btnNuevoRegistro_Click);
             // 
             // button2
             // 
@@ -272,10 +273,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 484);
+            this.ClientSize = new System.Drawing.Size(800, 585);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnNuevoRegistro);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pbCodigoBarras);
@@ -294,7 +295,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Name = "frmGestionInventario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmGestionInventario";
+            this.Load += new System.EventHandler(this.frmGestionInventario_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -326,7 +329,7 @@
         private System.Windows.Forms.PictureBox pbCodigoBarras;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNuevoRegistro;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }

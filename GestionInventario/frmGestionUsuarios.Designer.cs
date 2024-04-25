@@ -37,11 +37,13 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.gbUsuario = new System.Windows.Forms.GroupBox();
+            this.chbDepartamento = new System.Windows.Forms.CheckBox();
+            this.cbDepartamento = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.chbPerfil = new System.Windows.Forms.CheckBox();
             this.chbNombre = new System.Windows.Forms.CheckBox();
             this.chbUsuario = new System.Windows.Forms.CheckBox();
@@ -51,18 +53,20 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.cbPerfil = new System.Windows.Forms.ComboBox();
             this.dgGestionUsuarios = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbDepartamento = new System.Windows.Forms.ComboBox();
-            this.chbDepartamento = new System.Windows.Forms.CheckBox();
             this.IdUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbPerfilGu = new System.Windows.Forms.Label();
+            this.lbNombreGu = new System.Windows.Forms.Label();
             this.gbUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -140,21 +144,11 @@
             this.txtNombre.Size = new System.Drawing.Size(143, 22);
             this.txtNombre.TabIndex = 9;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(97, 72);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(188, 35);
+            this.label1.Location = new System.Drawing.Point(239, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(205, 25);
             this.label1.TabIndex = 12;
@@ -212,6 +206,35 @@
             this.gbUsuario.TabIndex = 15;
             this.gbUsuario.TabStop = false;
             this.gbUsuario.Text = "Datos de usuario";
+            // 
+            // chbDepartamento
+            // 
+            this.chbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chbDepartamento.Location = new System.Drawing.Point(405, 297);
+            this.chbDepartamento.Name = "chbDepartamento";
+            this.chbDepartamento.Size = new System.Drawing.Size(67, 20);
+            this.chbDepartamento.TabIndex = 0;
+            this.chbDepartamento.Text = "Deptto";
+            this.chbDepartamento.UseVisualStyleBackColor = true;
+            // 
+            // cbDepartamento
+            // 
+            this.cbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDepartamento.FormattingEnabled = true;
+            this.cbDepartamento.Location = new System.Drawing.Point(115, 168);
+            this.cbDepartamento.Name = "cbDepartamento";
+            this.cbDepartamento.Size = new System.Drawing.Size(143, 23);
+            this.cbDepartamento.TabIndex = 25;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(33, 173);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 16);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Deptto:";
             // 
             // chbPerfil
             // 
@@ -308,35 +331,6 @@
             this.dgGestionUsuarios.TabIndex = 16;
             this.dgGestionUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGestionUsuarios_CellClick);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(33, 173);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 16);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Deptto:";
-            // 
-            // cbDepartamento
-            // 
-            this.cbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDepartamento.FormattingEnabled = true;
-            this.cbDepartamento.Location = new System.Drawing.Point(115, 168);
-            this.cbDepartamento.Name = "cbDepartamento";
-            this.cbDepartamento.Size = new System.Drawing.Size(143, 23);
-            this.cbDepartamento.TabIndex = 25;
-            // 
-            // chbDepartamento
-            // 
-            this.chbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbDepartamento.Location = new System.Drawing.Point(405, 297);
-            this.chbDepartamento.Name = "chbDepartamento";
-            this.chbDepartamento.Size = new System.Drawing.Size(67, 20);
-            this.chbDepartamento.TabIndex = 0;
-            this.chbDepartamento.Text = "Deptto";
-            this.chbDepartamento.UseVisualStyleBackColor = true;
-            // 
             // IdUsuario
             // 
             this.IdUsuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -369,23 +363,63 @@
             this.Perfil.HeaderText = "Perfil";
             this.Perfil.Name = "Perfil";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.lbPerfilGu);
+            this.panel2.Controls.Add(this.lbNombreGu);
+            this.panel2.Location = new System.Drawing.Point(3, 6);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(230, 83);
+            this.panel2.TabIndex = 17;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(97, 72);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lbPerfilGu
+            // 
+            this.lbPerfilGu.AutoSize = true;
+            this.lbPerfilGu.Location = new System.Drawing.Point(109, 47);
+            this.lbPerfilGu.Name = "lbPerfilGu";
+            this.lbPerfilGu.Size = new System.Drawing.Size(30, 13);
+            this.lbPerfilGu.TabIndex = 1;
+            this.lbPerfilGu.Text = "Perfil";
+            // 
+            // lbNombreGu
+            // 
+            this.lbNombreGu.AutoSize = true;
+            this.lbNombreGu.Location = new System.Drawing.Point(109, 19);
+            this.lbNombreGu.Name = "lbNombreGu";
+            this.lbNombreGu.Size = new System.Drawing.Size(44, 13);
+            this.lbNombreGu.TabIndex = 0;
+            this.lbNombreGu.Text = "Nombre";
+            // 
             // frmGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 600);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgGestionUsuarios);
             this.Controls.Add(this.gbUsuario);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
             this.Name = "frmGestionUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar Usuarios";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbUsuario.ResumeLayout(false);
             this.gbUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,7 +434,6 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
@@ -423,6 +456,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbPerfilGu;
+        private System.Windows.Forms.Label lbNombreGu;
     }
 }
 
