@@ -14,7 +14,7 @@ namespace GestionInventario
     {
         public frmPrincipal()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void btnAlmacen_Click(object sender, EventArgs e)
@@ -78,6 +78,42 @@ namespace GestionInventario
             frmGestionUsuarios frmGu = new frmGestionUsuarios();
             frmGu.Show();
             Hide() ;
+        }
+
+        private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        //private bool cerrarSesion = false;
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            // Mostrar un mensaje de confirmación antes de cerrar sesión
+            DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Mostrar el formulario de inicio de sesión y cerrar el formulario actual
+                frmLogin login = new frmLogin();
+                login.Show();
+                this.Hide();
+            }
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (!cerrarSesion)
+            //{
+            //    // Mostrar un mensaje de confirmación antes de cerrar la aplicación
+            //    DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas salir de la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //    if (resultado != DialogResult.Yes)
+            //    {
+            //        // Cancelar el cierre del formulario si el usuario elige No
+            //        e.Cancel = true;
+            //    }
+                
+            //}
         }
     }
 }

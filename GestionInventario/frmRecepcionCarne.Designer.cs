@@ -78,8 +78,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbNombreRc = new System.Windows.Forms.Label();
             this.lbPerfilRc = new System.Windows.Forms.Label();
+            this.lbNombreRc = new System.Windows.Forms.Label();
             this.gbFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImpresionCb)).BeginInit();
@@ -593,15 +593,6 @@
             this.panel1.Size = new System.Drawing.Size(233, 85);
             this.panel1.TabIndex = 43;
             // 
-            // lbNombreRc
-            // 
-            this.lbNombreRc.AutoSize = true;
-            this.lbNombreRc.Location = new System.Drawing.Point(109, 19);
-            this.lbNombreRc.Name = "lbNombreRc";
-            this.lbNombreRc.Size = new System.Drawing.Size(44, 13);
-            this.lbNombreRc.TabIndex = 31;
-            this.lbNombreRc.Text = "Nombre";
-            // 
             // lbPerfilRc
             // 
             this.lbPerfilRc.AutoSize = true;
@@ -611,11 +602,20 @@
             this.lbPerfilRc.TabIndex = 32;
             this.lbPerfilRc.Text = "Perfil";
             // 
+            // lbNombreRc
+            // 
+            this.lbNombreRc.AutoSize = true;
+            this.lbNombreRc.Location = new System.Drawing.Point(109, 19);
+            this.lbNombreRc.Name = "lbNombreRc";
+            this.lbNombreRc.Size = new System.Drawing.Size(44, 13);
+            this.lbNombreRc.TabIndex = 31;
+            this.lbNombreRc.Text = "Nombre";
+            // 
             // frmRecepcionCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 637);
+            this.ClientSize = new System.Drawing.Size(815, 637);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.gbRegistro);

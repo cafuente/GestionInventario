@@ -15,12 +15,7 @@ namespace GestionInventario
         public frmGestionInventario()
         {
             InitializeComponent();
-        }
-
-        private void btnNuevoRegistro_Click(object sender, EventArgs e)
-        {
-
-        }
+        }        
 
         private void frmGestionInventario_Load(object sender, EventArgs e)
         {
@@ -53,5 +48,13 @@ namespace GestionInventario
                     return "Desconocido";
             }
         }
+
+        private void frmGestionInventario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmPrincipal frmPr = new frmPrincipal();
+            frmPr.Show();
+        }
+
+
     }
 }

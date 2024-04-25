@@ -115,7 +115,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(291, 45);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(212, 40);
-            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.TabIndex = 12;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -148,7 +148,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(239, 41);
+            this.label1.Location = new System.Drawing.Point(266, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(205, 25);
             this.label1.TabIndex = 12;
@@ -224,7 +224,7 @@
             this.cbDepartamento.Location = new System.Drawing.Point(115, 168);
             this.cbDepartamento.Name = "cbDepartamento";
             this.cbDepartamento.Size = new System.Drawing.Size(143, 23);
-            this.cbDepartamento.TabIndex = 25;
+            this.cbDepartamento.TabIndex = 10;
             // 
             // label6
             // 
@@ -312,7 +312,7 @@
             this.cbPerfil.Location = new System.Drawing.Point(115, 212);
             this.cbPerfil.Name = "cbPerfil";
             this.cbPerfil.Size = new System.Drawing.Size(143, 24);
-            this.cbPerfil.TabIndex = 15;
+            this.cbPerfil.TabIndex = 11;
             // 
             // dgGestionUsuarios
             // 
@@ -413,6 +413,7 @@
             this.Name = "frmGestionUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar Usuarios";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGestionUsuarios_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbUsuario.ResumeLayout(false);
             this.gbUsuario.PerformLayout();

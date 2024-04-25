@@ -390,5 +390,11 @@ namespace GestionInventario
                     return false; // No se considera ninguna otra columna
             }
         }
+
+        private void frmGestionUsuarios_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmPrincipal frmPr = new frmPrincipal();
+            frmPr.Show();
+        }
     }
 }
