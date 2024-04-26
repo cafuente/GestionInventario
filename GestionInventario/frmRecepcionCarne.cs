@@ -70,8 +70,13 @@ namespace GestionInventario
                 string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombreRc.Text = $"Usuario: {frmLogin.UsuarioActual.Nombre}";
-                lbPerfilRc.Text = $"Perfil: {nombrePerfil}";
+                //lbNombreRc.Text = $"Usuario: {frmLogin.UsuarioActual.Nombre}";
+                //lbDepartamentoRc.Text = $"Deptto: { frmLogin.UsuarioActual.Departamento}";
+                //lbPerfilRc.Text = $"Perfil: {nombrePerfil}";
+
+                lbNombreRc.Text = $"{frmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoRc.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbPerfilRc.Text = $"{nombrePerfil}";
 
             }
         }
@@ -499,12 +504,16 @@ namespace GestionInventario
             DateTime fecha = dpFecha.Value;
             int tara = Convert.ToInt32(txtTara.Text);
             float peso = float.Parse(txtPeso.Text);
+            string departamento = lbDepartamentoRc.Text;
+            float disponible = float.Parse(txtPeso.Text);
+            string nombreUsuario = lbNombreRc.Text;
+
 
             // Crear una instancia de la clase InsercionDatosDAO
             InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
 
             // Llamar al método InsertarDatosRecepcionCarne para insertar los datos en la base de datos
-            bool insercionExitosa = insercionDatosDAO.InsertarDatosRecepcionCarne(id,linea, procedencia, fechaSacrificio, fechaEmpaque, fleje, turno, cantidad, cajas, factura, ordenCompra, marca, lote, producto, fecha, tara, peso);
+            bool insercionExitosa = insercionDatosDAO.InsertarDatosRecepcionCarne(id,linea, procedencia, fechaSacrificio, fechaEmpaque, fleje, turno, cantidad, cajas, factura, ordenCompra, marca, lote, producto, fecha, tara, peso,departamento, disponible, nombreUsuario);
 
             // Verificar si la inserción fue exitosa
             if (insercionExitosa)

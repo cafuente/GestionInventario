@@ -40,7 +40,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.gbFactura = new System.Windows.Forms.GroupBox();
-            this.idLabel = new System.Windows.Forms.Label();
+            this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.Label();
             this.dpFecha = new System.Windows.Forms.DateTimePicker();
             this.dpEmpaque = new System.Windows.Forms.DateTimePicker();
             this.dpSacrificio = new System.Windows.Forms.DateTimePicker();
@@ -74,45 +76,30 @@
             this.gbRegistro = new System.Windows.Forms.GroupBox();
             this.btnActualizarGi = new System.Windows.Forms.Button();
             this.btnEliminarGi = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Procedencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.F_Sacrificio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.F_Empaque = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cajas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fleje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sup_Turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Orden_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tara = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbDepartamentoGi = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).BeginInit();
             this.gbFactura.SuspendLayout();
-            this.gbRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).BeginInit();
+            this.gbRegistro.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lbDepartamentoGi);
             this.panel2.Controls.Add(this.lbPerfilGi);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.lbNombreGi);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(214, 93);
+            this.panel2.Size = new System.Drawing.Size(290, 93);
             this.panel2.TabIndex = 1;
             // 
             // lbPerfilGi
             // 
             this.lbPerfilGi.AutoSize = true;
-            this.lbPerfilGi.Location = new System.Drawing.Point(109, 47);
+            this.lbPerfilGi.Location = new System.Drawing.Point(109, 56);
             this.lbPerfilGi.Name = "lbPerfilGi";
             this.lbPerfilGi.Size = new System.Drawing.Size(29, 13);
             this.lbPerfilGi.TabIndex = 1;
@@ -131,7 +118,7 @@
             // lbNombreGi
             // 
             this.lbNombreGi.AutoSize = true;
-            this.lbNombreGi.Location = new System.Drawing.Point(109, 19);
+            this.lbNombreGi.Location = new System.Drawing.Point(109, 12);
             this.lbNombreGi.Name = "lbNombreGi";
             this.lbNombreGi.Size = new System.Drawing.Size(44, 13);
             this.lbNombreGi.TabIndex = 0;
@@ -150,26 +137,11 @@
             // dgRecepcionCarne
             // 
             this.dgRecepcionCarne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRecepcionCarne.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Procedencia,
-            this.F_Sacrificio,
-            this.F_Empaque,
-            this.Cajas,
-            this.Fleje,
-            this.Sup_Turno,
-            this.Cantidad,
-            this.Factura,
-            this.Orden_Compra,
-            this.Marca,
-            this.Lote,
-            this.Fecha,
-            this.Tara,
-            this.Peso});
             this.dgRecepcionCarne.Location = new System.Drawing.Point(3, 461);
             this.dgRecepcionCarne.Name = "dgRecepcionCarne";
-            this.dgRecepcionCarne.Size = new System.Drawing.Size(991, 276);
+            this.dgRecepcionCarne.Size = new System.Drawing.Size(991, 242);
             this.dgRecepcionCarne.TabIndex = 15;
+            this.dgRecepcionCarne.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRecepcionCarne_CellClick);
             // 
             // txtPeso
             // 
@@ -211,7 +183,7 @@
             // 
             this.gbFactura.Controls.Add(this.pbCodigoBarras);
             this.gbFactura.Controls.Add(this.textBox1);
-            this.gbFactura.Controls.Add(this.idLabel);
+            this.gbFactura.Controls.Add(this.txtId);
             this.gbFactura.Controls.Add(this.dpFecha);
             this.gbFactura.Controls.Add(this.dpEmpaque);
             this.gbFactura.Controls.Add(this.dpSacrificio);
@@ -250,14 +222,32 @@
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Datos Factura";
             // 
-            // idLabel
+            // pbCodigoBarras
             // 
-            this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(119, 45);
-            this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(11, 16);
-            this.idLabel.TabIndex = 39;
-            this.idLabel.Text = ":";
+            this.pbCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbCodigoBarras.Image = global::GestionInventario.Properties.Resources.barcode_scan;
+            this.pbCodigoBarras.Location = new System.Drawing.Point(256, 27);
+            this.pbCodigoBarras.Name = "pbCodigoBarras";
+            this.pbCodigoBarras.Size = new System.Drawing.Size(58, 41);
+            this.pbCodigoBarras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCodigoBarras.TabIndex = 41;
+            this.pbCodigoBarras.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(340, 38);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(602, 22);
+            this.textBox1.TabIndex = 40;
+            // 
+            // txtId
+            // 
+            this.txtId.AutoSize = true;
+            this.txtId.Location = new System.Drawing.Point(119, 45);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(11, 16);
+            this.txtId.TabIndex = 39;
+            this.txtId.Text = ":";
             // 
             // dpFecha
             // 
@@ -267,7 +257,7 @@
             this.dpFecha.Name = "dpFecha";
             this.dpFecha.Size = new System.Drawing.Size(121, 22);
             this.dpFecha.TabIndex = 14;
-            this.dpFecha.Value = new System.DateTime(2024, 4, 22, 7, 53, 14, 0);
+            this.dpFecha.Value = new System.DateTime(2024, 4, 26, 0, 0, 0, 0);
             // 
             // dpEmpaque
             // 
@@ -277,6 +267,7 @@
             this.dpEmpaque.Name = "dpEmpaque";
             this.dpEmpaque.Size = new System.Drawing.Size(121, 22);
             this.dpEmpaque.TabIndex = 3;
+            this.dpEmpaque.Value = new System.DateTime(2024, 4, 26, 10, 23, 24, 0);
             // 
             // dpSacrificio
             // 
@@ -286,7 +277,7 @@
             this.dpSacrificio.Name = "dpSacrificio";
             this.dpSacrificio.Size = new System.Drawing.Size(121, 22);
             this.dpSacrificio.TabIndex = 2;
-            this.dpSacrificio.Value = new System.DateTime(2024, 4, 22, 7, 48, 0, 0);
+            this.dpSacrificio.Value = new System.DateTime(2024, 4, 26, 0, 0, 0, 0);
             // 
             // IdRegistro
             // 
@@ -566,104 +557,20 @@
             this.btnEliminarGi.Text = "Eliminar";
             this.btnEliminarGi.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // lbDepartamentoGi
             // 
-            this.textBox1.Location = new System.Drawing.Point(340, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(602, 22);
-            this.textBox1.TabIndex = 40;
-            // 
-            // pbCodigoBarras
-            // 
-            this.pbCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbCodigoBarras.Image = global::GestionInventario.Properties.Resources.barcode_scan;
-            this.pbCodigoBarras.Location = new System.Drawing.Point(256, 27);
-            this.pbCodigoBarras.Name = "pbCodigoBarras";
-            this.pbCodigoBarras.Size = new System.Drawing.Size(58, 41);
-            this.pbCodigoBarras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCodigoBarras.TabIndex = 41;
-            this.pbCodigoBarras.TabStop = false;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // Procedencia
-            // 
-            this.Procedencia.HeaderText = "Procedencia";
-            this.Procedencia.Name = "Procedencia";
-            // 
-            // F_Sacrificio
-            // 
-            this.F_Sacrificio.HeaderText = "F_Sacrificio";
-            this.F_Sacrificio.Name = "F_Sacrificio";
-            // 
-            // F_Empaque
-            // 
-            this.F_Empaque.HeaderText = "F_Empaque";
-            this.F_Empaque.Name = "F_Empaque";
-            // 
-            // Cajas
-            // 
-            this.Cajas.HeaderText = "Cajas";
-            this.Cajas.Name = "Cajas";
-            // 
-            // Fleje
-            // 
-            this.Fleje.HeaderText = "Fleje";
-            this.Fleje.Name = "Fleje";
-            // 
-            // Sup_Turno
-            // 
-            this.Sup_Turno.HeaderText = "Sup_Turno";
-            this.Sup_Turno.Name = "Sup_Turno";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Factura
-            // 
-            this.Factura.HeaderText = "Factura";
-            this.Factura.Name = "Factura";
-            // 
-            // Orden_Compra
-            // 
-            this.Orden_Compra.HeaderText = "Orden Compra";
-            this.Orden_Compra.Name = "Orden_Compra";
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
-            // Lote
-            // 
-            this.Lote.HeaderText = "Lote";
-            this.Lote.Name = "Lote";
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            // 
-            // Tara
-            // 
-            this.Tara.HeaderText = "Tara";
-            this.Tara.Name = "Tara";
-            // 
-            // Peso
-            // 
-            this.Peso.HeaderText = "Peso";
-            this.Peso.Name = "Peso";
+            this.lbDepartamentoGi.AutoSize = true;
+            this.lbDepartamentoGi.Location = new System.Drawing.Point(109, 34);
+            this.lbDepartamentoGi.Name = "lbDepartamentoGi";
+            this.lbDepartamentoGi.Size = new System.Drawing.Size(39, 13);
+            this.lbDepartamentoGi.TabIndex = 14;
+            this.lbDepartamentoGi.Text = "Deptto";
             // 
             // frmGestionInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 749);
+            this.ClientSize = new System.Drawing.Size(998, 711);
             this.Controls.Add(this.btnEliminarGi);
             this.Controls.Add(this.btnActualizarGi);
             this.Controls.Add(this.gbRegistro);
@@ -682,9 +589,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).EndInit();
             this.gbFactura.ResumeLayout(false);
             this.gbFactura.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).EndInit();
             this.gbRegistro.ResumeLayout(false);
             this.gbRegistro.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,7 +609,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox gbFactura;
-        private System.Windows.Forms.Label idLabel;
+        private System.Windows.Forms.Label txtId;
         private System.Windows.Forms.DateTimePicker dpFecha;
         private System.Windows.Forms.DateTimePicker dpEmpaque;
         private System.Windows.Forms.DateTimePicker dpSacrificio;
@@ -738,20 +645,6 @@
         private System.Windows.Forms.Button btnActualizarGi;
         private System.Windows.Forms.Button btnEliminarGi;
         private System.Windows.Forms.PictureBox pbCodigoBarras;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Procedencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn F_Sacrificio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn F_Empaque;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cajas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fleje;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sup_Turno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Factura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Orden_Compra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Lote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tara;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Peso;
+        private System.Windows.Forms.Label lbDepartamentoGi;
     }
 }

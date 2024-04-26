@@ -44,6 +44,7 @@
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbDepartamentoMu = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -52,12 +53,13 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lbDepartamentoMu);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.lbPerfilPr);
             this.panel2.Controls.Add(this.lbNombrePr);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 90);
+            this.panel2.Size = new System.Drawing.Size(307, 90);
             this.panel2.TabIndex = 3;
             // 
             // pictureBox1
@@ -73,7 +75,7 @@
             // lbPerfilPr
             // 
             this.lbPerfilPr.AutoSize = true;
-            this.lbPerfilPr.Location = new System.Drawing.Point(109, 47);
+            this.lbPerfilPr.Location = new System.Drawing.Point(109, 56);
             this.lbPerfilPr.Name = "lbPerfilPr";
             this.lbPerfilPr.Size = new System.Drawing.Size(30, 13);
             this.lbPerfilPr.TabIndex = 1;
@@ -82,7 +84,7 @@
             // lbNombrePr
             // 
             this.lbNombrePr.AutoSize = true;
-            this.lbNombrePr.Location = new System.Drawing.Point(109, 19);
+            this.lbNombrePr.Location = new System.Drawing.Point(109, 12);
             this.lbNombrePr.Name = "lbNombrePr";
             this.lbNombrePr.Size = new System.Drawing.Size(44, 13);
             this.lbNombrePr.TabIndex = 0;
@@ -197,6 +199,15 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Menu principal";
             // 
+            // lbDepartamentoMu
+            // 
+            this.lbDepartamentoMu.AutoSize = true;
+            this.lbDepartamentoMu.Location = new System.Drawing.Point(109, 36);
+            this.lbDepartamentoMu.Name = "lbDepartamentoMu";
+            this.lbDepartamentoMu.Size = new System.Drawing.Size(39, 13);
+            this.lbDepartamentoMu.TabIndex = 15;
+            this.lbDepartamentoMu.Text = "Deptto";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,5 +250,6 @@
         private System.Windows.Forms.Button btnRecepcion;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbDepartamentoMu;
     }
 }

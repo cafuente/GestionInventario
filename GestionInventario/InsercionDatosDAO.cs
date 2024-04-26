@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.SqlServer.Server;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace GestionInventario
                         // Obtener el último ID y sumarle 1 para el nuevo ID
                         int ultimoIdInt = Convert.ToInt32(resultado);
                         int nuevoIdInt = ultimoIdInt + 1;
-
+                         
                         // Formatear el nuevo ID con el formato "D000001"
                         ultimoId = $"D{nuevoIdInt:D6}";
                     }
@@ -64,12 +65,12 @@ namespace GestionInventario
             return ultimoId;
         }
 
-        public bool InsertarDatosRecepcionCarne(string id, string linea, string procedencia, DateTime fechaSacrificio, DateTime fechaEmpaque, string fleje, string turno, float cantidad, int cajas, string factura, string ordenCompra, string marca, string lote, string producto, DateTime fecha, int tara, float peso)
+        public bool InsertarDatosRecepcionCarne(string id, string linea, string procedencia, DateTime fechaSacrificio, DateTime fechaEmpaque, string fleje, string turno, float cantidad, int cajas, string factura, string ordenCompra, string marca, string lote, string producto, DateTime fecha, int tara, float peso, string departamento, float disponible, string nombreUsuario)
         {
             try
             {
-                string consulta = "INSERT INTO recepcion_carne (id, linea, procedencia, fecha_sacrificio, fecha_empaque, fleje, turno, cantidad, cajas, factura, orden_compra, marca, lote, producto, fecha, tara, peso) " +
-                                  "VALUES (@id, @Linea, @Procedencia, @FechaSacrificio, @FechaEmpaque, @Fleje, @Turno, @Cantidad, @Cajas, @Factura, @OrdenCompra, @Marca, @Lote, @Producto, @Fecha, @tara, @peso)";
+                string consulta = "INSERT INTO recepcion_carne (id, linea, procedencia, fecha_sacrificio, fecha_empaque, fleje, turno, cantidad, cajas, factura, orden_compra, marca, lote, producto, fecha, tara, peso, departamento, cantidad_disponible, nombreUsuario) " +
+                                  "VALUES (@id, @Linea, @Procedencia, @FechaSacrificio, @FechaEmpaque, @Fleje, @Turno, @Cantidad, @Cajas, @Factura, @OrdenCompra, @Marca, @Lote, @Producto, @Fecha, @tara, @peso, @departamento, @disponible, @nombreUsuario)";
 
                 using (MySqlConnection con = conexion.ObtenerConexion())
                 {
@@ -93,6 +94,9 @@ namespace GestionInventario
                         cmd.Parameters.AddWithValue("@Fecha", fecha);
                         cmd.Parameters.AddWithValue("@tara", tara);
                         cmd.Parameters.AddWithValue("@peso", peso);
+                        cmd.Parameters.AddWithValue("@departamento", departamento);
+                        cmd.Parameters.AddWithValue("@disponible", disponible);
+                        cmd.Parameters.AddWithValue("@nombreUsuario",nombreUsuario);
 
                         int filasAfectadas = cmd.ExecuteNonQuery();
                         return filasAfectadas > 0;

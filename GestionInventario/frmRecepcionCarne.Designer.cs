@@ -78,6 +78,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbDepartamentoRc = new System.Windows.Forms.Label();
             this.lbPerfilRc = new System.Windows.Forms.Label();
             this.lbNombreRc = new System.Windows.Forms.Label();
             this.gbFactura.SuspendLayout();
@@ -585,18 +586,28 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbDepartamentoRc);
             this.panel1.Controls.Add(this.lbPerfilRc);
             this.panel1.Controls.Add(this.lbNombreRc);
             this.panel1.Controls.Add(this.pbLogo);
             this.panel1.Location = new System.Drawing.Point(3, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 85);
+            this.panel1.Size = new System.Drawing.Size(290, 85);
             this.panel1.TabIndex = 43;
+            // 
+            // lbDepartamentoRc
+            // 
+            this.lbDepartamentoRc.AutoSize = true;
+            this.lbDepartamentoRc.Location = new System.Drawing.Point(109, 34);
+            this.lbDepartamentoRc.Name = "lbDepartamentoRc";
+            this.lbDepartamentoRc.Size = new System.Drawing.Size(74, 13);
+            this.lbDepartamentoRc.TabIndex = 33;
+            this.lbDepartamentoRc.Text = "Departamento";
             // 
             // lbPerfilRc
             // 
             this.lbPerfilRc.AutoSize = true;
-            this.lbPerfilRc.Location = new System.Drawing.Point(109, 47);
+            this.lbPerfilRc.Location = new System.Drawing.Point(109, 56);
             this.lbPerfilRc.Name = "lbPerfilRc";
             this.lbPerfilRc.Size = new System.Drawing.Size(30, 13);
             this.lbPerfilRc.TabIndex = 32;
@@ -605,7 +616,7 @@
             // lbNombreRc
             // 
             this.lbNombreRc.AutoSize = true;
-            this.lbNombreRc.Location = new System.Drawing.Point(109, 19);
+            this.lbNombreRc.Location = new System.Drawing.Point(109, 12);
             this.lbNombreRc.Name = "lbNombreRc";
             this.lbNombreRc.Size = new System.Drawing.Size(44, 13);
             this.lbNombreRc.TabIndex = 31;
@@ -700,5 +711,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbPerfilRc;
         private System.Windows.Forms.Label lbNombreRc;
+        private System.Windows.Forms.Label lbDepartamentoRc;
     }
 }

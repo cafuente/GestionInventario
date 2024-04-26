@@ -240,6 +240,7 @@ namespace GestionInventario
                                 IdUsuario = Convert.ToInt32(reader["id_usuario"]),
                                 usuario = reader["usuario"].ToString(),
                                 Nombre = reader["nombre"].ToString(),
+                                Departamento= reader["departamento"].ToString(),
                                 IdPerfil = Convert.ToInt32(reader["id_perfil"])
                                 // aqui se agregan más propiedades si es necesario
                             };

@@ -63,6 +63,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbPerfilGu = new System.Windows.Forms.Label();
             this.lbNombreGu = new System.Windows.Forms.Label();
+            this.lbDepartamentoCa = new System.Windows.Forms.Label();
             this.gbUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
@@ -365,6 +366,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lbDepartamentoCa);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.lbPerfilGu);
             this.panel2.Controls.Add(this.lbNombreGu);
@@ -386,7 +388,7 @@
             // lbPerfilGu
             // 
             this.lbPerfilGu.AutoSize = true;
-            this.lbPerfilGu.Location = new System.Drawing.Point(109, 47);
+            this.lbPerfilGu.Location = new System.Drawing.Point(109, 56);
             this.lbPerfilGu.Name = "lbPerfilGu";
             this.lbPerfilGu.Size = new System.Drawing.Size(30, 13);
             this.lbPerfilGu.TabIndex = 1;
@@ -395,11 +397,20 @@
             // lbNombreGu
             // 
             this.lbNombreGu.AutoSize = true;
-            this.lbNombreGu.Location = new System.Drawing.Point(109, 19);
+            this.lbNombreGu.Location = new System.Drawing.Point(109, 12);
             this.lbNombreGu.Name = "lbNombreGu";
             this.lbNombreGu.Size = new System.Drawing.Size(44, 13);
             this.lbNombreGu.TabIndex = 0;
             this.lbNombreGu.Text = "Nombre";
+            // 
+            // lbDepartamentoCa
+            // 
+            this.lbDepartamentoCa.AutoSize = true;
+            this.lbDepartamentoCa.Location = new System.Drawing.Point(109, 34);
+            this.lbDepartamentoCa.Name = "lbDepartamentoCa";
+            this.lbDepartamentoCa.Size = new System.Drawing.Size(39, 13);
+            this.lbDepartamentoCa.TabIndex = 15;
+            this.lbDepartamentoCa.Text = "Deptto";
             // 
             // frmGestionUsuarios
             // 
@@ -461,6 +472,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbPerfilGu;
         private System.Windows.Forms.Label lbNombreGu;
+        private System.Windows.Forms.Label lbDepartamentoCa;
     }
 }
 

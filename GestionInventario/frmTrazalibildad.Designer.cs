@@ -33,12 +33,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbPerfilTr = new System.Windows.Forms.Label();
             this.lbNombreTr = new System.Windows.Forms.Label();
+            this.lbDepartamentoTr = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lbDepartamentoTr);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.lbPerfilTr);
             this.panel2.Controls.Add(this.lbNombreTr);
@@ -60,7 +62,7 @@
             // lbPerfilTr
             // 
             this.lbPerfilTr.AutoSize = true;
-            this.lbPerfilTr.Location = new System.Drawing.Point(109, 47);
+            this.lbPerfilTr.Location = new System.Drawing.Point(109, 56);
             this.lbPerfilTr.Name = "lbPerfilTr";
             this.lbPerfilTr.Size = new System.Drawing.Size(30, 13);
             this.lbPerfilTr.TabIndex = 1;
@@ -69,11 +71,20 @@
             // lbNombreTr
             // 
             this.lbNombreTr.AutoSize = true;
-            this.lbNombreTr.Location = new System.Drawing.Point(109, 19);
+            this.lbNombreTr.Location = new System.Drawing.Point(109, 12);
             this.lbNombreTr.Name = "lbNombreTr";
             this.lbNombreTr.Size = new System.Drawing.Size(44, 13);
             this.lbNombreTr.TabIndex = 0;
             this.lbNombreTr.Text = "Nombre";
+            // 
+            // lbDepartamentoTr
+            // 
+            this.lbDepartamentoTr.AutoSize = true;
+            this.lbDepartamentoTr.Location = new System.Drawing.Point(109, 34);
+            this.lbDepartamentoTr.Name = "lbDepartamentoTr";
+            this.lbDepartamentoTr.Size = new System.Drawing.Size(39, 13);
+            this.lbDepartamentoTr.TabIndex = 15;
+            this.lbDepartamentoTr.Text = "Deptto";
             // 
             // frmTrazalibildad
             // 
@@ -97,5 +108,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbPerfilTr;
         private System.Windows.Forms.Label lbNombreTr;
+        private System.Windows.Forms.Label lbDepartamentoTr;
     }
 }

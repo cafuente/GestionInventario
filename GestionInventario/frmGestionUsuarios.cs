@@ -67,8 +67,9 @@ namespace GestionInventario
                 string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombreGu.Text = $"Usuario: {frmLogin.UsuarioActual.Nombre}";
-                lbPerfilGu.Text = $"Perfil: {nombrePerfil}";
+                lbNombreGu.Text = $"{frmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoCa.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbPerfilGu.Text = $"{nombrePerfil}";
 
             }
         }
