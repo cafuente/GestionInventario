@@ -16,7 +16,7 @@ namespace GestionInventario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmGestionInventario());
+            Application.Run(new frmRecepcionCarne());
         }
     }
 }

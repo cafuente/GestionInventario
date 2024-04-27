@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,11 @@ namespace GestionInventario
 {
     public partial class frmRecepcionCarne : Form
     {
+        private ConexionBD conexion;
         public frmRecepcionCarne()
         {
             InitializeComponent();
+            conexion = new ConexionBD();
 
             // Define los supervisores disponibles
             string[] supervisores = { "Pablo B.", "Hugo B.", "José R." };
@@ -38,8 +41,8 @@ namespace GestionInventario
             pbCodigoBarras.Enabled = false;
             btnAgregarCarne.Visible = true;
             btnAgregarCarne.Enabled = false;
-            btnModificarDatosCarne.Visible = true;
-            btnModificarDatosCarne.Enabled = false;
+            btnActualizarCodigoBarras.Visible = true;
+            btnActualizarCodigoBarras.Enabled = false;
             //pbImpresionCb.Visible = true;
             pbImpresionCb.Enabled = false;
             //pbGuardarCb.Visible = true;
@@ -48,6 +51,9 @@ namespace GestionInventario
             dpSacrificio.Value = DateTime.Now;
             dpEmpaque.Value = DateTime.Now;
             dpFecha.Value = DateTime.Now;
+            btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnCancelar.Enabled = false;
 
             // Crear una instancia de la clase InsercionDatosDAO
             InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
@@ -60,6 +66,8 @@ namespace GestionInventario
 
             // Mostrar la información del usuario de sesion en el panel superior
             MostrarInformacionUsuario();
+            //mostrar informacion en el datagrid
+            CargarDatosRecepcionCarne();
         }
         private void MostrarInformacionUsuario()
         {
@@ -248,49 +256,11 @@ namespace GestionInventario
 
             // Generar el código de barras y mostrarlo en el PictureBox
             GenerarCodigoBarras();
+            btnAgregarCarne.Enabled = true;
 
         }
 
-        private void btnModificarDatosCarne_Click(object sender, EventArgs e)
-        {
-            // Habilitar todos los campos de entrada
-            //txtLinea.Enabled = true;
-            //txtProcedencia.Enabled = true;
-            //txtFleje.Enabled = true;
-            //cbTurno.Enabled = true;
-            //txtFleje.Enabled = true;
-            //txtCantidad.Enabled = true;
-            //txtCajas.Enabled = true;
-            //txtFactura.Enabled = true;
-            //txtOrdenCompra.Enabled = true;
-            //txtMarca.Enabled = true;
-            //txtLote.Enabled = true;
-            //txtProducto.Enabled = true;
-            //btnAgregarCarne.Enabled = true;
-            //pbImpresionCb.Enabled = true;
-            //pbGuardarCb.Enabled = true;
-
-            HabilitarCampos(true);            
-            
-
-            // Desabilitar el botón para agregar carne
-            btnAgregarCarne.Visible = true;
-            btnAgregarCarne.Enabled = false;
-            btnModificarDatosCarne.Visible = true;
-            btnModificarDatosCarne.Enabled = false;
-
-            btnGenerarCodigoBarras.Visible = true;
-            btnGenerarCodigoBarras.Enabled = true;
-            pbImpresionCb.Enabled = false;
-            pbGuardarCb.Enabled = false;
-            pbCodigoBarras.Image = null;
-            // Cargar la imagen predeterminada desde los recursos
-            Image imagenPredeterminada = Properties.Resources.barcode_scan;
-            // Asignar la imagen predeterminada al PictureBox
-            pbCodigoBarras.Image = imagenPredeterminada;
-            pbCodigoBarras.Enabled = false;
-
-        }
+       
 
         private void GenerarCodigoBarras()
         {
@@ -394,20 +364,19 @@ namespace GestionInventario
             //dpFecha.Enabled = false;
             HabilitarCampos(false);
 
-            btnAgregarCarne.Enabled = false;
-            pbImpresionCb.Enabled = Enabled;
-            pbGuardarCb.Enabled = Enabled;
-            pbCodigoBarras.Enabled = Enabled;
-            
-            // Habilitar el botón para agregar carne
-            btnAgregarCarne.Enabled = true;
+            //btnAgregarCarne.Enabled = false;
+            //btnActualizar.Enabled = true;
+            //btnEliminar.Enabled = true;
+            //pbImpresionCb.Enabled = true;
+            //pbGuardarCb.Enabled = true;
+            //pbCodigoBarras.Enabled = true;            
 
-            // Mostrar el botón para modificar y deshabilitarlo
-            btnModificarDatosCarne.Visible = true;
-            btnModificarDatosCarne.Enabled = true;
+            //// Mostrar el botón para modificar y deshabilitarlo
+            //btnActualizarCodigoBarras.Visible = true;
+            //btnActualizarCodigoBarras.Enabled = true;
 
-            btnGenerarCodigoBarras.Visible = true;
-            btnGenerarCodigoBarras.Enabled = false;
+            //btnGenerarCodigoBarras.Visible = true;
+            //btnGenerarCodigoBarras.Enabled = false;
 
         }
 
@@ -534,7 +503,7 @@ namespace GestionInventario
                     Image imagenPredeterminada = Properties.Resources.barcode_scan;                    
                     pbCodigoBarras.Image = imagenPredeterminada;
                     btnAgregarCarne.Enabled = false;
-                    btnModificarDatosCarne.Enabled = false;
+                    btnActualizarCodigoBarras.Enabled = false;
                     string nuevoId = insercionDatosDAO.ObtenerUltimoId();
                     idLabel.Text = nuevoId;
                 }
@@ -583,35 +552,13 @@ namespace GestionInventario
         // Método para limpiar los campos del formulario
         private void LimpiarCampos()
         {
-            // Habilitar todos los campos de entrada
-            //txtLinea.Enabled = true;
-            //txtProcedencia.Enabled = true;
-            //dpSacrificio.Enabled = true;
-            //dpEmpaque.Enabled = true;
-            //txtFleje.Enabled = true;
-            //cbTurno.Enabled = true;
-            //txtFleje.Enabled = true;
-            //txtCantidad.Enabled = true;
-            //txtCajas.Enabled = true;
-            //txtFactura.Enabled = true;
-            //txtOrdenCompra.Enabled = true;
-            //txtMarca.Enabled = true;
-            //txtLote.Enabled = true;
-            //txtProducto.Enabled = true;
-            //dpFecha.Enabled = true;
-            //btnAgregarCarne.Enabled = true;
             pbImpresionCb.Enabled = false;
             pbGuardarCb.Enabled = false;
 
-
-            // Desabilitar el botón para agregar carne
-            btnAgregarCarne.Visible = true;
-            btnAgregarCarne.Enabled = false;
-            btnModificarDatosCarne.Visible = true;
-            btnModificarDatosCarne.Enabled = false;
-            // habilitar todos los campos
-            //btnGenerarCodigoBarras.Visible = true;
-            //btnGenerarCodigoBarras.Enabled = true;
+            // Desabilitar el botón para agregar carne            
+            btnActualizarCodigoBarras.Visible = true;
+            btnActualizarCodigoBarras.Enabled = false;
+            
             pbImpresionCb.Enabled = false;
             pbGuardarCb.Enabled = false;
 
@@ -683,10 +630,143 @@ namespace GestionInventario
             }
         }
 
+        private void CargarDatosRecepcionCarne()
+        {
+            try
+            {
+                string consulta = "SELECT * FROM recepcion_carne";
+
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    con.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            dgRecepcionCarne.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos de recepcion_carne: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void frmRecepcionCarne_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmPrincipal frmP = new frmPrincipal();
             frmP.Show();
+        }
+
+        private void dgRecepcionCarne_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verificar si se hizo clic en una fila válida
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgRecepcionCarne.Rows[e.RowIndex];
+
+                // Obtener los valores de la fila seleccionada
+                string id = fila.Cells["Id"].Value.ToString();
+                string linea = fila.Cells["Linea"].Value.ToString();
+                string procedencia = fila.Cells["Procedencia"].Value.ToString();
+                DateTime fechaSacrificio = Convert.ToDateTime(fila.Cells["Fecha_Sacrificio"].Value);
+                DateTime fechaEmpaque = Convert.ToDateTime(fila.Cells["Fecha_Empaque"].Value);
+                string fleje = fila.Cells["Fleje"].Value.ToString();
+                string turno = fila.Cells["Turno"].Value.ToString();
+                float cantidad = Convert.ToSingle(fila.Cells["Cantidad"].Value);
+                int cajas = Convert.ToInt32(fila.Cells["Cajas"].Value);
+                string factura = fila.Cells["Factura"].Value.ToString();
+                string ordenCompra = fila.Cells["Orden_Compra"].Value.ToString();
+                string marca = fila.Cells["Marca"].Value.ToString();
+                string lote = fila.Cells["Lote"].Value.ToString();
+                string producto = fila.Cells["Producto"].Value.ToString();
+                DateTime fecha = Convert.ToDateTime(fila.Cells["Fecha"].Value);
+                int tara = Convert.ToInt32(fila.Cells["Tara"].Value);
+                float peso = Convert.ToSingle(fila.Cells["Peso"].Value);
+
+                // Asignar los valores a los controles correspondientes
+                idLabel.Text = id;
+                txtLinea.Text = linea;
+                txtProcedencia.Text = procedencia;
+                dpSacrificio.Value = fechaSacrificio;
+                dpEmpaque.Value = fechaEmpaque;
+                txtFleje.Text = fleje;
+                cbTurno.Text = turno;
+                txtCantidad.Text = cantidad.ToString();
+                txtCajas.Text = cajas.ToString();
+                txtFactura.Text = factura;
+                txtOrdenCompra.Text = ordenCompra;
+                txtMarca.Text = marca;
+                txtLote.Text = lote;
+                txtProducto.Text = producto;
+                dpFecha.Value = fecha;
+                txtTara.Text = tara.ToString();
+                txtPeso.Text = peso.ToString();
+            }
+            //btnAgregarCarne.Enabled = false;
+            btnActualizarCodigoBarras.Enabled = true;
+            btnGenerarCodigoBarras.Enabled = false;            
+            btnEliminar.Enabled = true;
+            btnCancelar.Enabled = true;
+           
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            HabilitarCampos(true);
+
+            // Desabilitar el botón para agregar carne
+            btnAgregarCarne.Visible = true;
+            btnAgregarCarne.Enabled = false;
+            btnActualizarCodigoBarras.Visible = false;
+            btnActualizarCodigoBarras.Enabled = false;
+            // codigo de barras
+            btnGenerarCodigoBarras.Visible = true;
+            btnGenerarCodigoBarras.Enabled = true;
+            pbImpresionCb.Enabled = false;
+            pbGuardarCb.Enabled = false;
+            pbCodigoBarras.Image = null;
+            // Cargar la imagen predeterminada desde los recursos
+            Image imagenPredeterminada = Properties.Resources.barcode_scan;
+            // Asignar la imagen predeterminada al PictureBox
+            pbCodigoBarras.Image = imagenPredeterminada;
+            pbCodigoBarras.Enabled = false;
+
+            LimpiarCampos();
+            btnEliminar.Enabled = false;
+            btnCancelar.Enabled = false;            
+        }
+
+        private void btnActualizarCodigoBarras_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtLinea.Text) ||
+                string.IsNullOrEmpty(txtProcedencia.Text) ||
+                string.IsNullOrEmpty(txtFleje.Text) ||
+                cbTurno.SelectedItem == null ||
+                string.IsNullOrEmpty(txtCantidad.Text) ||
+                string.IsNullOrEmpty(txtCajas.Text) ||
+                string.IsNullOrEmpty(txtFactura.Text) ||
+                string.IsNullOrEmpty(txtOrdenCompra.Text) ||
+                string.IsNullOrEmpty(txtMarca.Text) ||
+                string.IsNullOrEmpty(txtLote.Text) ||
+                string.IsNullOrEmpty(txtProducto.Text) ||
+                string.IsNullOrEmpty(txtTara.Text) ||
+                string.IsNullOrEmpty(txtPeso.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos antes de generar el código de barras.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Generar el código de barras y mostrarlo en el PictureBox
+            GenerarCodigoBarras();
+            btnCancelar.Enabled = true;
         }
     }
 }

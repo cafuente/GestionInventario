@@ -67,6 +67,8 @@ namespace GestionInventario
         }
         private void CargarDatosRecepcionCarne()
         {
+            dgRecepcionCarne.Rows.Clear();
+
             try
             {
                 string consulta = "SELECT * FROM recepcion_carne";
@@ -118,7 +120,6 @@ namespace GestionInventario
                 DateTime fecha = Convert.ToDateTime(fila.Cells["Fecha"].Value);
                 int tara = Convert.ToInt32(fila.Cells["Tara"].Value);
                 float peso = Convert.ToSingle(fila.Cells["Peso"].Value);
-
 
                 // Asignar los valores a los controles correspondientes
                 txtId.Text = id;
