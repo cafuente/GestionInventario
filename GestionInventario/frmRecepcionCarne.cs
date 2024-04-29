@@ -257,7 +257,11 @@ namespace GestionInventario
             // Generar el código de barras y mostrarlo en el PictureBox
             GenerarCodigoBarras();
             btnAgregarCarne.Enabled = true;
-
+            btnGenerarCodigoBarras.Enabled = false;
+            pbCodigoBarras.Enabled = true;
+            pbImpresionCb.Enabled = true;
+            pbGuardarCb.Enabled = true;
+            btnCancelar.Enabled = true;
         }
 
        
@@ -478,6 +482,7 @@ namespace GestionInventario
             string nombreUsuario = lbNombreRc.Text;
 
 
+
             // Crear una instancia de la clase InsercionDatosDAO
             InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
 
@@ -506,6 +511,7 @@ namespace GestionInventario
                     btnActualizarCodigoBarras.Enabled = false;
                     string nuevoId = insercionDatosDAO.ObtenerUltimoId();
                     idLabel.Text = nuevoId;
+                    CargarDatosRecepcionCarne();
                 }
                 else
                 {
@@ -518,6 +524,10 @@ namespace GestionInventario
                     pbCodigoBarras.Image = imagenPredeterminada;
                     pbCodigoBarras.Enabled = false;
                     btnGenerarCodigoBarras.Enabled= true;
+                    pbGuardarCb.Enabled = false;
+                    pbImpresionCb.Enabled= false;
+                    btnAgregarCarne.Enabled = false;
+                    CargarDatosRecepcionCarne();
                 }
             }
             else
@@ -720,12 +730,15 @@ namespace GestionInventario
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
+            string nuevoId = insercionDatosDAO.ObtenerUltimoId();
+            idLabel.Text = nuevoId;
             HabilitarCampos(true);
 
             // Desabilitar el botón para agregar carne
             btnAgregarCarne.Visible = true;
             btnAgregarCarne.Enabled = false;
-            btnActualizarCodigoBarras.Visible = false;
+            btnActualizarCodigoBarras.Visible = true;
             btnActualizarCodigoBarras.Enabled = false;
             // codigo de barras
             btnGenerarCodigoBarras.Visible = true;
@@ -741,7 +754,9 @@ namespace GestionInventario
 
             LimpiarCampos();
             btnEliminar.Enabled = false;
-            btnCancelar.Enabled = false;            
+            btnCancelar.Enabled = false;
+            btnActualizar.Enabled = false;
+            
         }
 
         private void btnActualizarCodigoBarras_Click(object sender, EventArgs e)
@@ -766,7 +781,103 @@ namespace GestionInventario
 
             // Generar el código de barras y mostrarlo en el PictureBox
             GenerarCodigoBarras();
+            btnEliminar.Enabled=false;
+            chbFijarDatos.Enabled=false;
             btnCancelar.Enabled = true;
+            btnActualizar.Enabled = true;
+            pbCodigoBarras.Enabled = true;
+            pbGuardarCb.Enabled = true;
+            pbImpresionCb.Enabled = true;
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            // Obtener los valores de los controles en el formulario
+            string id = idLabel.Text;
+            string linea = txtLinea.Text;
+            string procedencia = txtProcedencia.Text;
+            DateTime fechaSacrificio = dpSacrificio.Value;
+            DateTime fechaEmpaque = dpEmpaque.Value;
+            string fleje = txtFleje.Text;
+            string turno = cbTurno.SelectedItem.ToString();
+            float cantidad = float.Parse(txtCantidad.Text);
+            int cajas = Convert.ToInt32(txtCajas.Text);
+            string factura = txtFactura.Text;
+            string ordenCompra = txtOrdenCompra.Text;
+            string marca = txtMarca.Text;
+            string lote = txtLote.Text;
+            string producto = txtProducto.Text;
+            DateTime fecha = dpFecha.Value;
+            int tara = Convert.ToInt32(txtTara.Text);
+            float peso = float.Parse(txtPeso.Text);
+            string departamento = lbDepartamentoRc.Text;
+            float disponible = float.Parse(txtPeso.Text);
+            string nombreUsuario = lbNombreRc.Text;
+
+            // Crear una instancia de la clase InsercionDatosDAO
+            InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
+
+            // Llamar al método ActualizarDatosRecepcionCarne para actualizar los datos en la base de datos
+            bool operacionExitosa = insercionDatosDAO.ActualizarDatosRecepcionCarne(id, linea, procedencia, fechaSacrificio, fechaEmpaque, fleje, turno, cantidad, cajas, factura, ordenCompra, marca, lote, producto, fecha, tara, peso, departamento, disponible, nombreUsuario);
+
+            if (operacionExitosa)
+            {
+                MessageBox.Show("Los datos se han actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            HabilitarCampos(true);
+            LimpiarCampos();
+            btnGenerarCodigoBarras.Enabled = true;
+            btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnCancelar.Enabled = false;
+            chbFijarDatos.Enabled = true;
+            CargarDatosRecepcionCarne();
+            string nuevoId = insercionDatosDAO.ObtenerUltimoId();
+            idLabel.Text = nuevoId;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            // Verificar si se ha seleccionado una fila en el DataGridView
+            if (dgRecepcionCarne.SelectedRows.Count > 0)
+            {
+                // Obtener el ID del registro seleccionado
+                string id = dgRecepcionCarne.SelectedRows[0].Cells["Id"].Value.ToString();
+
+                // Mostrar un mensaje de confirmación antes de eliminar el registro
+                DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    // Crear una instancia de la clase InsercionDatosDAO
+                    InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
+
+                    // Llamar al método EliminarDatosRecepcionCarne para eliminar el registro
+                    bool eliminacionExitosa = insercionDatosDAO.EliminarDatosRecepcionCarne(id);
+
+                    // Verificar si la eliminación fue exitosa
+                    if (eliminacionExitosa)
+                    {
+                        MessageBox.Show("El registro se ha eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Actualizar el DataGridView para reflejar los cambios
+                        CargarDatosRecepcionCarne();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un registro para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }    
     }
 }

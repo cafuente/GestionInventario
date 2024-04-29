@@ -109,5 +109,73 @@ namespace GestionInventario
                 return false;
             }
         }
+
+        public bool ActualizarDatosRecepcionCarne(string id, string linea, string procedencia, DateTime fechaSacrificio, DateTime fechaEmpaque, string fleje, string turno, float cantidad, int cajas, string factura, string ordenCompra, string marca, string lote, string producto, DateTime fecha, int tara, float peso, string departamento, float disponible, string nombreUsuario)
+        {
+            try
+            {
+                string consulta = "UPDATE recepcion_carne SET linea = @Linea, procedencia = @Procedencia, fecha_sacrificio = @FechaSacrificio, fecha_empaque = @FechaEmpaque, fleje = @Fleje, turno = @Turno, cantidad = @Cantidad, cajas = @Cajas, factura = @Factura, orden_compra = @OrdenCompra, marca = @Marca, lote = @Lote, producto = @Producto, fecha = @Fecha, tara = @Tara, peso = @Peso, departamento = @Departamento, cantidad_disponible = @Disponible, nombreUsuario = @NombreUsuario WHERE id = @Id";
+
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    con.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", id);
+                        cmd.Parameters.AddWithValue("@Linea", linea);
+                        cmd.Parameters.AddWithValue("@Procedencia", procedencia);
+                        cmd.Parameters.AddWithValue("@FechaSacrificio", fechaSacrificio);
+                        cmd.Parameters.AddWithValue("@FechaEmpaque", fechaEmpaque);
+                        cmd.Parameters.AddWithValue("@Fleje", fleje);
+                        cmd.Parameters.AddWithValue("@Turno", turno);
+                        cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                        cmd.Parameters.AddWithValue("@Cajas", cajas);
+                        cmd.Parameters.AddWithValue("@Factura", factura);
+                        cmd.Parameters.AddWithValue("@OrdenCompra", ordenCompra);
+                        cmd.Parameters.AddWithValue("@Marca", marca);
+                        cmd.Parameters.AddWithValue("@Lote", lote);
+                        cmd.Parameters.AddWithValue("@Producto", producto);
+                        cmd.Parameters.AddWithValue("@Fecha", fecha);
+                        cmd.Parameters.AddWithValue("@Tara", tara);
+                        cmd.Parameters.AddWithValue("@Peso", peso);
+                        cmd.Parameters.AddWithValue("@Departamento", departamento);
+                        cmd.Parameters.AddWithValue("@Disponible", disponible);
+                        cmd.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al actualizar datos: " + ex.Message);
+                return false;
+            }
+        }
+        public bool EliminarDatosRecepcionCarne(string id)
+        {
+            try
+            {
+                string consulta = "DELETE FROM recepcion_carne WHERE id = @id";
+
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    con.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al eliminar datos: " + ex.Message);
+                return false;
+            }
+        }
     }
 }
