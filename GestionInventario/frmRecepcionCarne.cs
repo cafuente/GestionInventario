@@ -67,6 +67,7 @@ namespace GestionInventario
             // Mostrar la información del usuario de sesion en el panel superior
             MostrarInformacionUsuario();
             //mostrar informacion en el datagrid
+            dgRecepcionCarne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             CargarDatosRecepcionCarne();
         }
         private void MostrarInformacionUsuario()
@@ -847,7 +848,7 @@ namespace GestionInventario
             if (dgRecepcionCarne.SelectedRows.Count > 0)
             {
                 // Obtener el ID del registro seleccionado
-                string id = dgRecepcionCarne.SelectedRows[0].Cells["Id"].Value.ToString();
+                string id = dgRecepcionCarne.SelectedRows[0].Cells["id"].Value.ToString();
 
                 // Mostrar un mensaje de confirmación antes de eliminar el registro
                 DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este registro?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -878,6 +879,11 @@ namespace GestionInventario
             {
                 MessageBox.Show("Por favor, selecciona un registro para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }    
+        }
+
+        private void txtBusquedaRc_TextChanged(object sender, EventArgs e)
+        {
+            
+        }        
     }
 }

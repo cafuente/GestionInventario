@@ -27,6 +27,7 @@ namespace GestionInventario
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible = false;
+            
 
             // Mostrar la información del usuario de sesion en el panel superior
             MostrarInformacionUsuario();

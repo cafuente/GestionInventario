@@ -125,5 +125,10 @@ namespace GestionInventario
                 txtPassword.Text = "";
             }
         }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

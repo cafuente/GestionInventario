@@ -100,6 +100,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuariosDAO.cs" />
+    <None Include="Resources\logo amarillo.png" />
+    <None Include="Resources\logo negro.png" />
+    <None Include="Resources\sigma rojo.jpg" />
+    <None Include="Resources\user-account.png" />
     <EmbeddedResource Include="frmGestionInventario.resx">
       <DependentUpon>frmGestionInventario.cs</DependentUpon>
     </EmbeddedResource>
