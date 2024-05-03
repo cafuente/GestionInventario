@@ -883,7 +883,121 @@ namespace GestionInventario
 
         private void txtBusquedaRc_TextChanged(object sender, EventArgs e)
         {
-            
-        }        
+            // Obtener el término de búsqueda ingresado por el usuario
+            string terminoBusqueda = txtBusquedaRc.Text.Trim();
+
+            // Construir la consulta SQL para buscar en varias columnas
+            string consulta = "SELECT * FROM recepcion_carne WHERE " +
+                              "id LIKE @termino OR " +
+                              "linea LIKE @termino OR " +
+                              "procedencia LIKE @termino OR " +
+                              "fecha_sacrificio LIKE @termino OR " +
+                              "fecha_empaque LIKE @termino OR " +
+                              "fleje LIKE @termino OR " +
+                              "turno LIKE @termino OR " +
+                              "cantidad LIKE @termino OR " +
+                              "cajas LIKE @termino OR " +
+                              "factura LIKE @termino OR " +
+                              "orden_compra LIKE @termino OR " +
+                              "marca LIKE @termino OR " +
+                              "lote LIKE @termino OR " +
+                              "producto LIKE @termino OR " +
+                              "fecha LIKE @termino OR " +
+                              "tara LIKE @termino OR " +
+                              "peso LIKE @termino OR " +
+                              "departamento LIKE @termino OR " +
+                              "cantidad_disponible LIKE @termino OR " +
+                              "nombreUsuario LIKE @termino";
+
+            try
+            {
+                // Crear la conexión a la base de datos
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    // Abrir la conexión
+                    con.Open();
+
+                    // Crear el comando SQL
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        // Asignar el término de búsqueda como parámetro
+                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
+
+                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+
+                            // Llenar el DataTable con los resultados de la consulta
+                            adapter.Fill(dt);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            dgRecepcionCarne.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si se presionó la tecla "Enter"
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Obtener el código de barras ingresado en el TextBox
+                string codigoBarras = txtCodigoBarrasRc.Text.Trim();
+
+                // Procesar el código de barras (realizar búsqueda en la base de datos, etc.)
+                ProcesarCodigoBarras(codigoBarras);
+
+                // Limpiar el TextBox para el próximo escaneo
+                txtBusquedaRc.Clear();
+
+                // Indicar que hemos manejado la tecla presionada
+                e.Handled = true;
+            }
+        }
+        private void ProcesarCodigoBarras(string idLabel)
+        {
+            // Construir la consulta SQL para buscar el ID en la base de datos
+            string consulta = "SELECT * FROM recepcion_carne WHERE id = @id";
+
+            try
+            {
+                // Crear la conexión a la base de datos
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    // Abrir la conexión
+                    con.Open();
+
+                    // Crear el comando SQL
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        // Asignar el ID como parámetro
+                        cmd.Parameters.AddWithValue("@id", idLabel);
+
+                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+
+                            // Llenar el DataTable con los resultados de la consulta
+                            adapter.Fill(dt);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            dgRecepcionCarne.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al procesar el ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

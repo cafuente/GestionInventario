@@ -91,6 +91,7 @@
             this.chkFechaEmpaque = new System.Windows.Forms.CheckBox();
             this.chkMarca = new System.Windows.Forms.CheckBox();
             this.chkProducto = new System.Windows.Forms.CheckBox();
+            this.txtCodigoBarrasRc = new System.Windows.Forms.TextBox();
             this.gbFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
@@ -535,7 +536,7 @@
             // btnGenerarCodigoBarras
             // 
             this.btnGenerarCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarCodigoBarras.Location = new System.Drawing.Point(16, 239);
+            this.btnGenerarCodigoBarras.Location = new System.Drawing.Point(16, 233);
             this.btnGenerarCodigoBarras.Name = "btnGenerarCodigoBarras";
             this.btnGenerarCodigoBarras.Size = new System.Drawing.Size(228, 34);
             this.btnGenerarCodigoBarras.TabIndex = 17;
@@ -546,7 +547,7 @@
             // btnActualizarCodigoBarras
             // 
             this.btnActualizarCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarCodigoBarras.Location = new System.Drawing.Point(16, 291);
+            this.btnActualizarCodigoBarras.Location = new System.Drawing.Point(16, 285);
             this.btnActualizarCodigoBarras.Name = "btnActualizarCodigoBarras";
             this.btnActualizarCodigoBarras.Size = new System.Drawing.Size(228, 34);
             this.btnActualizarCodigoBarras.TabIndex = 18;
@@ -558,7 +559,7 @@
             // 
             this.pbGuardarCb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbGuardarCb.Image = global::GestionInventario.Properties.Resources.save;
-            this.pbGuardarCb.Location = new System.Drawing.Point(151, 172);
+            this.pbGuardarCb.Location = new System.Drawing.Point(151, 166);
             this.pbGuardarCb.Name = "pbGuardarCb";
             this.pbGuardarCb.Size = new System.Drawing.Size(50, 47);
             this.pbGuardarCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -570,7 +571,7 @@
             // 
             this.pbImpresionCb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbImpresionCb.Image = global::GestionInventario.Properties.Resources.printer;
-            this.pbImpresionCb.Location = new System.Drawing.Point(57, 172);
+            this.pbImpresionCb.Location = new System.Drawing.Point(57, 166);
             this.pbImpresionCb.Name = "pbImpresionCb";
             this.pbImpresionCb.Size = new System.Drawing.Size(50, 46);
             this.pbImpresionCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -641,6 +642,7 @@
             // 
             // gbCodigoBarras
             // 
+            this.gbCodigoBarras.Controls.Add(this.txtCodigoBarrasRc);
             this.gbCodigoBarras.Controls.Add(this.pbCodigoBarras);
             this.gbCodigoBarras.Controls.Add(this.pbImpresionCb);
             this.gbCodigoBarras.Controls.Add(this.pbGuardarCb);
@@ -649,7 +651,7 @@
             this.gbCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCodigoBarras.Location = new System.Drawing.Point(985, 105);
             this.gbCodigoBarras.Name = "gbCodigoBarras";
-            this.gbCodigoBarras.Size = new System.Drawing.Size(260, 340);
+            this.gbCodigoBarras.Size = new System.Drawing.Size(260, 372);
             this.gbCodigoBarras.TabIndex = 44;
             this.gbCodigoBarras.TabStop = false;
             this.gbCodigoBarras.Text = "Creación Codigo de barras";
@@ -746,6 +748,14 @@
             this.chkProducto.Text = "Producto";
             this.chkProducto.UseVisualStyleBackColor = true;
             // 
+            // txtCodigoBarrasRc
+            // 
+            this.txtCodigoBarrasRc.Location = new System.Drawing.Point(98, 335);
+            this.txtCodigoBarrasRc.Name = "txtCodigoBarrasRc";
+            this.txtCodigoBarrasRc.Size = new System.Drawing.Size(146, 22);
+            this.txtCodigoBarrasRc.TabIndex = 39;
+            this.txtCodigoBarrasRc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarrasRc_KeyPress);
+            // 
             // frmRecepcionCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -782,6 +792,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.gbCodigoBarras.ResumeLayout(false);
+            this.gbCodigoBarras.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -852,5 +863,6 @@
         private System.Windows.Forms.CheckBox chkFechaEmpaque;
         private System.Windows.Forms.CheckBox chkMarca;
         private System.Windows.Forms.CheckBox chkProducto;
+        private System.Windows.Forms.TextBox txtCodigoBarrasRc;
     }
 }
