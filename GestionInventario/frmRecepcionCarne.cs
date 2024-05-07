@@ -945,22 +945,95 @@ namespace GestionInventario
 
         private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Verificar si se presionó la tecla "Enter"
+            /* // Verificar si se presionó la tecla "Enter"
+             if (e.KeyChar == (char)Keys.Enter)
+             {
+                 // Obtener el código de barras ingresado en el TextBox
+                 string codigoBarras = txtCodigoBarrasRc.Text.Trim();
+
+                 // Procesar el código de barras (realizar búsqueda en la base de datos, etc.)
+                 ProcesarCodigoBarras(codigoBarras);
+
+                 // Limpiar el TextBox para el próximo escaneo
+                 txtBusquedaRc.Clear();
+
+                 // Indicar que hemos manejado la tecla presionada
+                 e.Handled = true;
+             }*/
+
+            /* // opcion con clase busqueda
+            BusquedaCb objetoBusqueda = new BusquedaCb();
+            objetoBusqueda.ProcesarCodigoBarras(txtCodigoBarrasRc, idLabel, txtLinea, txtProcedencia, dpSacrificio);
+            */
+
+            // otra opcion
+
+            // Verificar si se presionó la tecla Enter
             if (e.KeyChar == (char)Keys.Enter)
             {
-                // Obtener el código de barras ingresado en el TextBox
-                string codigoBarras = txtCodigoBarrasRc.Text.Trim();
+                // Realizar la búsqueda y mostrar la información en los campos del formulario
+                BuscarYMostrarInformacion();
+            }
+            btnActualizarCodigoBarras.Enabled = true;
 
-                // Procesar el código de barras (realizar búsqueda en la base de datos, etc.)
-                ProcesarCodigoBarras(codigoBarras);
+        }
 
-                // Limpiar el TextBox para el próximo escaneo
-                txtBusquedaRc.Clear();
+        private void BuscarYMostrarInformacion()
+        {
+            // Obtener el código de barras ingresado por el usuario
+            string codigoBarras = txtCodigoBarrasRc.Text.Trim();
 
-                // Indicar que hemos manejado la tecla presionada
-                e.Handled = true;
+            // Realizar la búsqueda en el DataGridView y obtener el índice de la fila correspondiente
+            int indiceFila = BuscarFilaPorCodigoBarras(codigoBarras);
+
+            // Mostrar la información en los campos del formulario
+            MostrarInformacionEnCampos(indiceFila);
+        }
+
+        private int BuscarFilaPorCodigoBarras(string codigoBarras)
+        {
+            // Iterar sobre todas las filas del DataGridView
+            for (int i = 0; i < dgRecepcionCarne.Rows.Count; i++)
+            {
+                // Obtener el valor de la celda correspondiente a la columna de código de barras
+                string valorCelda = dgRecepcionCarne.Rows[i].Cells["id"].Value.ToString();
+
+                // Comparar el valor de la celda con el código de barras buscado
+                if (valorCelda == codigoBarras)
+                {
+                    // Si se encuentra el código de barras, devolver el índice de la fila
+                    return i;
+                }
+            }
+
+            // Si no se encuentra el código de barras, devolver -1 para indicar que no se encontró
+            return -1;
+        }
+
+        private void MostrarInformacionEnCampos(int indiceFila)
+        {
+            if (indiceFila >= 0)
+            {
+                // Obtener la fila correspondiente al índice
+                DataGridViewRow fila = dgRecepcionCarne.Rows[indiceFila];
+
+                // Mostrar la información en los campos del formulario
+                idLabel.Text = fila.Cells["id"].Value.ToString();
+                txtLinea.Text = fila.Cells["linea"].Value.ToString();
+                txtProcedencia.Text = fila.Cells["procedencia"].Value.ToString();
+                // Continuar con el resto de los campos...
+
+                // También puedes mostrar un mensaje o realizar otras acciones si lo deseas
+            }
+            else
+            {
+                // Manejar el caso en el que no se encontró ninguna fila con el código de barras
+                MessageBox.Show("No se encontró ningún artículo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+          // busqueda y llenado en datagrid
         private void ProcesarCodigoBarras(string idLabel)
         {
             // Construir la consulta SQL para buscar el ID en la base de datos
@@ -999,5 +1072,7 @@ namespace GestionInventario
                 MessageBox.Show("Error al procesar el ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
     }
 }

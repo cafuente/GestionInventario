@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="AyudanteImagen.cs" />
     <Compile Include="BarcodeGenerator.cs" />
+    <Compile Include="BusquedaCb.cs" />
     <Compile Include="ConexionBD.cs" />
     <Compile Include="frmGestionInventario.cs">
       <SubType>Form</SubType>
