@@ -725,8 +725,6 @@ namespace GestionInventario
             btnGenerarCodigoBarras.Enabled = false;            
             btnEliminar.Enabled = true;
             btnCancelar.Enabled = true;
-           
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -744,9 +742,12 @@ namespace GestionInventario
             // codigo de barras
             btnGenerarCodigoBarras.Visible = true;
             btnGenerarCodigoBarras.Enabled = true;
+            chbFijarDatos.Enabled = true;
+            chbFijarDatos.Checked = false;
             pbImpresionCb.Enabled = false;
             pbGuardarCb.Enabled = false;
             pbCodigoBarras.Image = null;
+            dgRecepcionCarne.Enabled = true;
             // Cargar la imagen predeterminada desde los recursos
             Image imagenPredeterminada = Properties.Resources.barcode_scan;
             // Asignar la imagen predeterminada al PictureBox
@@ -789,6 +790,8 @@ namespace GestionInventario
             pbCodigoBarras.Enabled = true;
             pbGuardarCb.Enabled = true;
             pbImpresionCb.Enabled = true;
+            btnActualizarCodigoBarras.Enabled=false;
+            dgRecepcionCarne.Enabled = false;
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -824,20 +827,56 @@ namespace GestionInventario
             if (operacionExitosa)
             {
                 MessageBox.Show("Los datos se han actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (chbFijarDatos.Checked)
+                {
+                    // Si el CheckBox está marcado, deshabilitar todos los campos excepto el de cantidad
+                    HabilitarCampos(false);
+                    txtPeso.Enabled = true;
+                    txtTara.Enabled = true;
+                    txtPeso.Text = "";
+                    txtTara.Text = "";
+                    btnGenerarCodigoBarras.Enabled = true;
+                    pbImpresionCb.Enabled = false;
+                    pbGuardarCb.Enabled = false;
+                    Image imagenPredeterminada = Properties.Resources.barcode_scan;
+                    pbCodigoBarras.Image = imagenPredeterminada;
+                    btnAgregarCarne.Enabled = false;
+                    btnActualizar.Enabled = false;
+                    btnActualizarCodigoBarras.Enabled = false;                    
+                    CargarDatosRecepcionCarne();
+                }
+                else
+                {
+                    HabilitarCampos(true);
+                    LimpiarCampos();
+                    string newId = insercionDatosDAO.ObtenerUltimoId();
+                    idLabel.Text = newId;
+                    Image imagenPredeterminada = Properties.Resources.barcode_scan;
+                    pbCodigoBarras.Image = imagenPredeterminada;
+                    pbCodigoBarras.Enabled = false;
+                    btnGenerarCodigoBarras.Enabled = true;
+                    pbGuardarCb.Enabled = false;
+                    pbImpresionCb.Enabled = false;
+                    btnAgregarCarne.Enabled = false;
+                    btnActualizar.Enabled = false;
+                    chbFijarDatos.Enabled = true;
+                    CargarDatosRecepcionCarne();
+                }
             }
             else
             {
                 MessageBox.Show("Error al actualizar los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            HabilitarCampos(true);
-            LimpiarCampos();
-            btnGenerarCodigoBarras.Enabled = true;
-            btnActualizar.Enabled = false;
-            btnEliminar.Enabled = false;
-            btnCancelar.Enabled = false;
-            chbFijarDatos.Enabled = true;
-            CargarDatosRecepcionCarne();
+            //HabilitarCampos(true);
+            //LimpiarCampos();
+            //btnGenerarCodigoBarras.Enabled = true;
+            //btnActualizar.Enabled = false;
+            //btnEliminar.Enabled = false;
+            //btnCancelar.Enabled = false;
+            //chbFijarDatos.Enabled = true;
+            //CargarDatosRecepcionCarne();
             string nuevoId = insercionDatosDAO.ObtenerUltimoId();
             idLabel.Text = nuevoId;
         }
@@ -944,23 +983,7 @@ namespace GestionInventario
         }
 
         private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            /* // Verificar si se presionó la tecla "Enter"
-             if (e.KeyChar == (char)Keys.Enter)
-             {
-                 // Obtener el código de barras ingresado en el TextBox
-                 string codigoBarras = txtCodigoBarrasRc.Text.Trim();
-
-                 // Procesar el código de barras (realizar búsqueda en la base de datos, etc.)
-                 ProcesarCodigoBarras(codigoBarras);
-
-                 // Limpiar el TextBox para el próximo escaneo
-                 txtBusquedaRc.Clear();
-
-                 // Indicar que hemos manejado la tecla presionada
-                 e.Handled = true;
-             }*/
-
+        {       
             /* // opcion con clase busqueda
             BusquedaCb objetoBusqueda = new BusquedaCb();
             objetoBusqueda.ProcesarCodigoBarras(txtCodigoBarrasRc, idLabel, txtLinea, txtProcedencia, dpSacrificio);
@@ -973,9 +996,12 @@ namespace GestionInventario
             {
                 // Realizar la búsqueda y mostrar la información en los campos del formulario
                 BuscarYMostrarInformacion();
+                txtCodigoBarrasRc.Clear();
+                btnActualizarCodigoBarras.Enabled = true;
+                btnGenerarCodigoBarras.Enabled = false;
+                btnCancelar.Enabled = true;
             }
-            btnActualizarCodigoBarras.Enabled = true;
-
+            
         }
 
         private void BuscarYMostrarInformacion()
@@ -1021,24 +1047,33 @@ namespace GestionInventario
                 idLabel.Text = fila.Cells["id"].Value.ToString();
                 txtLinea.Text = fila.Cells["linea"].Value.ToString();
                 txtProcedencia.Text = fila.Cells["procedencia"].Value.ToString();
-                // Continuar con el resto de los campos...
-
-                // También puedes mostrar un mensaje o realizar otras acciones si lo deseas
+                dpSacrificio.Text = fila.Cells["fecha_sacrificio"].Value.ToString();
+                dpEmpaque.Text = fila.Cells["fecha_empaque"].Value.ToString();
+                txtFleje.Text= fila.Cells["fleje"].Value.ToString();
+                cbTurno.Text = fila.Cells["turno"].Value.ToString();
+                txtCantidad.Text = fila.Cells["cantidad"].Value.ToString();
+                txtCajas.Text = fila.Cells["cajas"].Value.ToString();
+                txtFactura.Text = fila.Cells["factura"].Value.ToString();
+                txtOrdenCompra.Text = fila.Cells["orden_compra"].Value.ToString();
+                txtMarca.Text = fila.Cells["marca"].Value.ToString();
+                txtLote.Text = fila.Cells["lote"].Value.ToString();
+                txtProducto.Text = fila.Cells["producto"].Value.ToString();
+                dpFecha.Text = fila.Cells["fecha"].Value.ToString();
+                txtTara.Text = fila.Cells["tara"].Value.ToString();
+                txtPeso.Text = fila.Cells["peso"].Value.ToString();                                
             }
             else
             {
-                // Manejar el caso en el que no se encontró ninguna fila con el código de barras
+                // Mensaje en caso de no encontrar ninguna fila con el código de barras
                 MessageBox.Show("No se encontró ningún artículo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-          // busqueda y llenado en datagrid
+          //metodo de busqueda y llenado en datagrid por lector codigo de barras y clase
         private void ProcesarCodigoBarras(string idLabel)
         {
             // Construir la consulta SQL para buscar el ID en la base de datos
             string consulta = "SELECT * FROM recepcion_carne WHERE id = @id";
-
             try
             {
                 // Crear la conexión a la base de datos
@@ -1057,10 +1092,8 @@ namespace GestionInventario
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                         {
                             DataTable dt = new DataTable();
-
                             // Llenar el DataTable con los resultados de la consulta
                             adapter.Fill(dt);
-
                             // Asignar el DataTable como origen de datos del DataGridView
                             dgRecepcionCarne.DataSource = dt;
                         }

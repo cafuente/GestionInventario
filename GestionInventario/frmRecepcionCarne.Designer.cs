@@ -82,6 +82,7 @@
             this.lbPerfilRc = new System.Windows.Forms.Label();
             this.lbNombreRc = new System.Windows.Forms.Label();
             this.gbCodigoBarras = new System.Windows.Forms.GroupBox();
+            this.txtCodigoBarrasRc = new System.Windows.Forms.TextBox();
             this.dgRecepcionCarne = new System.Windows.Forms.DataGridView();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -91,7 +92,7 @@
             this.chkFechaEmpaque = new System.Windows.Forms.CheckBox();
             this.chkMarca = new System.Windows.Forms.CheckBox();
             this.chkProducto = new System.Windows.Forms.CheckBox();
-            this.txtCodigoBarrasRc = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.gbFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
@@ -336,9 +337,9 @@
             // 
             // gbFactura
             // 
+            this.gbFactura.Controls.Add(this.label20);
             this.gbFactura.Controls.Add(this.txtPeso);
             this.gbFactura.Controls.Add(this.label19);
-            this.gbFactura.Controls.Add(this.pictureBox1);
             this.gbFactura.Controls.Add(this.txtTara);
             this.gbFactura.Controls.Add(this.txtBusquedaRc);
             this.gbFactura.Controls.Add(this.label18);
@@ -404,10 +405,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.barcode_scan;
-            this.pictureBox1.Location = new System.Drawing.Point(242, 32);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(20, 332);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(58, 41);
+            this.pictureBox1.Size = new System.Drawing.Size(55, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 43;
             this.pictureBox1.TabStop = false;
@@ -415,16 +416,16 @@
             // txtTara
             // 
             this.txtTara.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTara.Location = new System.Drawing.Point(577, 229);
+            this.txtTara.Location = new System.Drawing.Point(579, 229);
             this.txtTara.Name = "txtTara";
             this.txtTara.Size = new System.Drawing.Size(113, 22);
             this.txtTara.TabIndex = 15;
             // 
             // txtBusquedaRc
             // 
-            this.txtBusquedaRc.Location = new System.Drawing.Point(326, 43);
+            this.txtBusquedaRc.Location = new System.Drawing.Point(335, 43);
             this.txtBusquedaRc.Name = "txtBusquedaRc";
-            this.txtBusquedaRc.Size = new System.Drawing.Size(363, 22);
+            this.txtBusquedaRc.Size = new System.Drawing.Size(357, 22);
             this.txtBusquedaRc.TabIndex = 42;
             this.txtBusquedaRc.TextChanged += new System.EventHandler(this.txtBusquedaRc_TextChanged);
             // 
@@ -644,6 +645,7 @@
             // 
             this.gbCodigoBarras.Controls.Add(this.txtCodigoBarrasRc);
             this.gbCodigoBarras.Controls.Add(this.pbCodigoBarras);
+            this.gbCodigoBarras.Controls.Add(this.pictureBox1);
             this.gbCodigoBarras.Controls.Add(this.pbImpresionCb);
             this.gbCodigoBarras.Controls.Add(this.pbGuardarCb);
             this.gbCodigoBarras.Controls.Add(this.btnGenerarCodigoBarras);
@@ -655,6 +657,14 @@
             this.gbCodigoBarras.TabIndex = 44;
             this.gbCodigoBarras.TabStop = false;
             this.gbCodigoBarras.Text = "Creación Codigo de barras";
+            // 
+            // txtCodigoBarrasRc
+            // 
+            this.txtCodigoBarrasRc.Location = new System.Drawing.Point(81, 336);
+            this.txtCodigoBarrasRc.Name = "txtCodigoBarrasRc";
+            this.txtCodigoBarrasRc.Size = new System.Drawing.Size(163, 22);
+            this.txtCodigoBarrasRc.TabIndex = 39;
+            this.txtCodigoBarrasRc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarrasRc_KeyPress);
             // 
             // dgRecepcionCarne
             // 
@@ -748,13 +758,15 @@
             this.chkProducto.Text = "Producto";
             this.chkProducto.UseVisualStyleBackColor = true;
             // 
-            // txtCodigoBarrasRc
+            // label20
             // 
-            this.txtCodigoBarrasRc.Location = new System.Drawing.Point(98, 335);
-            this.txtCodigoBarrasRc.Name = "txtCodigoBarrasRc";
-            this.txtCodigoBarrasRc.Size = new System.Drawing.Size(146, 22);
-            this.txtCodigoBarrasRc.TabIndex = 39;
-            this.txtCodigoBarrasRc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarrasRc_KeyPress);
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(245, 51);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(52, 16);
+            this.label20.TabIndex = 43;
+            this.label20.Text = "Buscar:";
             // 
             // frmRecepcionCarne
             // 
@@ -864,5 +876,6 @@
         private System.Windows.Forms.CheckBox chkMarca;
         private System.Windows.Forms.CheckBox chkProducto;
         private System.Windows.Forms.TextBox txtCodigoBarrasRc;
+        private System.Windows.Forms.Label label20;
     }
 }

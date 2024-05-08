@@ -97,7 +97,7 @@ namespace GestionInventario
 
             if (loginSuccessful)
             {
-                MessageBox.Show("Inicio de sesión exitoso");
+                MessageBox.Show($"Iniciando sesión exitosa. \n\n    ¡ Bienvenido {username} !");
 
                 // Obtener la información del usuario y almacenarla en la variable estática UsuarioActual
                 UsuarioActual = usuariosDAO.ObtenerInformacionUsuario(username);
