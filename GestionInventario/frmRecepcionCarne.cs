@@ -981,7 +981,6 @@ namespace GestionInventario
                 MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)
         {       
             /* // opcion con clase busqueda
@@ -1000,8 +999,7 @@ namespace GestionInventario
                 btnActualizarCodigoBarras.Enabled = true;
                 btnGenerarCodigoBarras.Enabled = false;
                 btnCancelar.Enabled = true;
-            }
-            
+            }            
         }
 
         private void BuscarYMostrarInformacion()
@@ -1069,7 +1067,7 @@ namespace GestionInventario
             }
         }
 
-          //metodo de busqueda y llenado en datagrid por lector codigo de barras y clase
+        /*  //metodo de busqueda y llenado en datagrid por lector codigo de barras y clase
         private void ProcesarCodigoBarras(string idLabel)
         {
             // Construir la consulta SQL para buscar el ID en la base de datos
@@ -1104,8 +1102,6 @@ namespace GestionInventario
             {
                 MessageBox.Show("Error al procesar el ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-
+        }*/
     }
 }

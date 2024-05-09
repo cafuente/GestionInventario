@@ -57,7 +57,6 @@
             this.gbFactura = new System.Windows.Forms.GroupBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtTara = new System.Windows.Forms.TextBox();
             this.txtBusquedaRc = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -73,10 +72,6 @@
             this.btnAgregarCarne = new System.Windows.Forms.Button();
             this.btnGenerarCodigoBarras = new System.Windows.Forms.Button();
             this.btnActualizarCodigoBarras = new System.Windows.Forms.Button();
-            this.pbGuardarCb = new System.Windows.Forms.PictureBox();
-            this.pbImpresionCb = new System.Windows.Forms.PictureBox();
-            this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbDepartamentoRc = new System.Windows.Forms.Label();
             this.lbPerfilRc = new System.Windows.Forms.Label();
@@ -93,15 +88,20 @@
             this.chkMarca = new System.Windows.Forms.CheckBox();
             this.chkProducto = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbImpresionCb = new System.Windows.Forms.PictureBox();
+            this.pbGuardarCb = new System.Windows.Forms.PictureBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.gbFactura.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImpresionCb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbCodigoBarras.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImpresionCb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -323,7 +323,7 @@
             this.txtProducto.Location = new System.Drawing.Point(335, 231);
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(155, 21);
-            this.txtProducto.TabIndex = 13;
+            this.txtProducto.TabIndex = 14;
             // 
             // label15
             // 
@@ -402,17 +402,6 @@
             this.label19.TabIndex = 40;
             this.label19.Text = "Peso real:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(20, 332);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 31);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 43;
-            this.pictureBox1.TabStop = false;
-            // 
             // txtTara
             // 
             this.txtTara.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -476,7 +465,7 @@
             this.dpFecha.Location = new System.Drawing.Point(87, 230);
             this.dpFecha.Name = "dpFecha";
             this.dpFecha.Size = new System.Drawing.Size(113, 22);
-            this.dpFecha.TabIndex = 14;
+            this.dpFecha.TabIndex = 13;
             this.dpFecha.Value = new System.DateTime(2024, 4, 22, 7, 53, 14, 0);
             // 
             // dpEmpaque
@@ -555,53 +544,6 @@
             this.btnActualizarCodigoBarras.Text = "Actualizar codigo de barras";
             this.btnActualizarCodigoBarras.UseVisualStyleBackColor = true;
             this.btnActualizarCodigoBarras.Click += new System.EventHandler(this.btnActualizarCodigoBarras_Click);
-            // 
-            // pbGuardarCb
-            // 
-            this.pbGuardarCb.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbGuardarCb.Image = global::GestionInventario.Properties.Resources.save;
-            this.pbGuardarCb.Location = new System.Drawing.Point(151, 166);
-            this.pbGuardarCb.Name = "pbGuardarCb";
-            this.pbGuardarCb.Size = new System.Drawing.Size(50, 47);
-            this.pbGuardarCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbGuardarCb.TabIndex = 38;
-            this.pbGuardarCb.TabStop = false;
-            this.pbGuardarCb.Click += new System.EventHandler(this.pbGuardarCb_Click);
-            // 
-            // pbImpresionCb
-            // 
-            this.pbImpresionCb.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbImpresionCb.Image = global::GestionInventario.Properties.Resources.printer;
-            this.pbImpresionCb.Location = new System.Drawing.Point(57, 166);
-            this.pbImpresionCb.Name = "pbImpresionCb";
-            this.pbImpresionCb.Size = new System.Drawing.Size(50, 46);
-            this.pbImpresionCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImpresionCb.TabIndex = 37;
-            this.pbImpresionCb.TabStop = false;
-            this.pbImpresionCb.Click += new System.EventHandler(this.pbImpresionCb_Click);
-            // 
-            // pbCodigoBarras
-            // 
-            this.pbCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbCodigoBarras.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbCodigoBarras.Image = global::GestionInventario.Properties.Resources.barcode_scan;
-            this.pbCodigoBarras.Location = new System.Drawing.Point(16, 32);
-            this.pbCodigoBarras.Name = "pbCodigoBarras";
-            this.pbCodigoBarras.Size = new System.Drawing.Size(228, 117);
-            this.pbCodigoBarras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCodigoBarras.TabIndex = 34;
-            this.pbCodigoBarras.TabStop = false;
-            this.pbCodigoBarras.DoubleClick += new System.EventHandler(this.pbCodigoBarras_DoubleClick);
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(3, 3);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(97, 72);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo.TabIndex = 30;
-            this.pbLogo.TabStop = false;
             // 
             // panel1
             // 
@@ -768,6 +710,64 @@
             this.label20.TabIndex = 43;
             this.label20.Text = "Buscar:";
             // 
+            // pbCodigoBarras
+            // 
+            this.pbCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbCodigoBarras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCodigoBarras.Image = global::GestionInventario.Properties.Resources.barcode_scan;
+            this.pbCodigoBarras.Location = new System.Drawing.Point(16, 32);
+            this.pbCodigoBarras.Name = "pbCodigoBarras";
+            this.pbCodigoBarras.Size = new System.Drawing.Size(228, 117);
+            this.pbCodigoBarras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCodigoBarras.TabIndex = 34;
+            this.pbCodigoBarras.TabStop = false;
+            this.pbCodigoBarras.DoubleClick += new System.EventHandler(this.pbCodigoBarras_DoubleClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.buscar_barcode;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 332);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 31);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 43;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pbImpresionCb
+            // 
+            this.pbImpresionCb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbImpresionCb.Image = global::GestionInventario.Properties.Resources.printer;
+            this.pbImpresionCb.Location = new System.Drawing.Point(57, 166);
+            this.pbImpresionCb.Name = "pbImpresionCb";
+            this.pbImpresionCb.Size = new System.Drawing.Size(50, 46);
+            this.pbImpresionCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImpresionCb.TabIndex = 37;
+            this.pbImpresionCb.TabStop = false;
+            this.pbImpresionCb.Click += new System.EventHandler(this.pbImpresionCb_Click);
+            // 
+            // pbGuardarCb
+            // 
+            this.pbGuardarCb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbGuardarCb.Image = global::GestionInventario.Properties.Resources.save;
+            this.pbGuardarCb.Location = new System.Drawing.Point(151, 166);
+            this.pbGuardarCb.Name = "pbGuardarCb";
+            this.pbGuardarCb.Size = new System.Drawing.Size(50, 47);
+            this.pbGuardarCb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbGuardarCb.TabIndex = 38;
+            this.pbGuardarCb.TabStop = false;
+            this.pbGuardarCb.Click += new System.EventHandler(this.pbGuardarCb_Click);
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
+            this.pbLogo.Location = new System.Drawing.Point(3, 3);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(97, 72);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogo.TabIndex = 30;
+            this.pbLogo.TabStop = false;
+            // 
             // frmRecepcionCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,16 +796,16 @@
             this.Load += new System.EventHandler(this.frmRecepcionCarne_Load);
             this.gbFactura.ResumeLayout(false);
             this.gbFactura.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImpresionCb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.gbCodigoBarras.ResumeLayout(false);
             this.gbCodigoBarras.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImpresionCb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
