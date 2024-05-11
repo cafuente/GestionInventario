@@ -921,7 +921,8 @@ namespace GestionInventario
         }
 
         private void txtBusquedaRc_TextChanged(object sender, EventArgs e)
-        {
+       {
+            /*
             // Obtener el término de búsqueda ingresado por el usuario
             string terminoBusqueda = txtBusquedaRc.Text.Trim();
 
@@ -980,6 +981,77 @@ namespace GestionInventario
             {
                 MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            */ //HandleProcessCorruptedStateExceptionsAttribute aqui funciona bien
+
+            // Obtener el término de búsqueda ingresado por el usuario
+            string terminoBusqueda = txtBusquedaRc.Text.Trim();
+
+            // Construir la consulta SQL base
+            string consultaBase = "SELECT * FROM recepcion_carne WHERE ";
+            StringBuilder condicion = new StringBuilder();
+
+            // Verificar qué columnas están seleccionadas para la búsqueda
+            if (chkId.Checked)
+            {
+                condicion.Append("id LIKE @termino OR ");
+            }
+            if (chkFechaSacrificio.Checked)
+            {
+                condicion.Append("fecha_sacrificio LIKE @termino OR ");
+            }
+            if (chkFechaEmpaque.Checked)
+            {
+                condicion.Append("fecha_empaque LIKE @termino OR ");                
+            }
+            if (chkMarca.Checked)
+            {
+                condicion.Append("marca LIKE @termino");
+            }
+            // Repite este bloque para cada columna CheckBox que desees incluir en la búsqueda
+
+            // Eliminar el último "OR" si existe
+            if (condicion.Length > 0)
+            {
+                condicion.Remove(condicion.Length - 4, 4); // Elimina los últimos 4 caracteres (" OR ")
+            }
+
+            // Concatenar la consulta base con la condición de búsqueda
+            string consultaFinal = consultaBase + condicion.ToString();
+
+            try
+            {
+                // Crear la conexión a la base de datos
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    // Abrir la conexión
+                    con.Open();
+
+                    // Crear el comando SQL
+                    using (MySqlCommand cmd = new MySqlCommand(consultaFinal, con))
+                    {
+                        // Asignar el término de búsqueda como parámetro
+                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
+
+                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+
+                            // Llenar el DataTable con los resultados de la consulta
+                            adapter.Fill(dt);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            dgRecepcionCarne.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
         private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)
         {       

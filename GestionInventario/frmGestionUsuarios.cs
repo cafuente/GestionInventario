@@ -33,6 +33,8 @@ namespace GestionInventario
             btnActualizar.Enabled = false;
             btnEliminar.Visible = true;
             btnEliminar.Enabled = false;
+            btnCancelar.Visible = true;
+            btnCancelar.Enabled = false;
             txtUsuario.Focus();
             CargarUsuarios();
             MostrarInformacionUsuario();
@@ -105,6 +107,7 @@ namespace GestionInventario
                 btnAgregar.Enabled = false;
                 btnActualizar.Enabled = true;
                 btnEliminar.Enabled = true;
+                btnCancelar.Enabled = true;
             }
             catch (Exception)
             {
@@ -396,6 +399,15 @@ namespace GestionInventario
         {
             frmPrincipal frmPr = new frmPrincipal();
             frmPr.Show();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            btnAgregar.Enabled = true;
+            btnActualizar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnCancelar.Enabled = false;
         }
     }
 }

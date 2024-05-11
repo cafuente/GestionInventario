@@ -60,9 +60,10 @@
             this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoCa = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbPerfilGu = new System.Windows.Forms.Label();
             this.lbNombreGu = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.gbUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
@@ -158,7 +159,7 @@
             // btnActualizar
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(384, 118);
+            this.btnActualizar.Location = new System.Drawing.Point(384, 99);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(212, 40);
             this.btnActualizar.TabIndex = 7;
@@ -169,7 +170,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(384, 191);
+            this.btnEliminar.Location = new System.Drawing.Point(384, 153);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(212, 40);
             this.btnEliminar.TabIndex = 8;
@@ -179,6 +180,7 @@
             // 
             // gbUsuario
             // 
+            this.gbUsuario.Controls.Add(this.btnCancelar);
             this.gbUsuario.Controls.Add(this.chbDepartamento);
             this.gbUsuario.Controls.Add(this.cbDepartamento);
             this.gbUsuario.Controls.Add(this.label6);
@@ -384,6 +386,16 @@
             this.lbDepartamentoCa.TabIndex = 15;
             this.lbDepartamentoCa.Text = "Deptto";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
             // lbPerfilGu
             // 
             this.lbPerfilGu.AutoSize = true;
@@ -402,15 +414,16 @@
             this.lbNombreGu.TabIndex = 0;
             this.lbNombreGu.Text = "Nombre";
             // 
-            // pictureBox1
+            // btnCancelar
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(384, 207);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(212, 40);
+            this.btnCancelar.TabIndex = 25;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmGestionUsuarios
             // 
@@ -473,6 +486,7 @@
         private System.Windows.Forms.Label lbPerfilGu;
         private System.Windows.Forms.Label lbNombreGu;
         private System.Windows.Forms.Label lbDepartamentoCa;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
 
