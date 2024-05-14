@@ -843,7 +843,9 @@ namespace GestionInventario
                     pbCodigoBarras.Image = imagenPredeterminada;
                     btnAgregarCarne.Enabled = false;
                     btnActualizar.Enabled = false;
-                    btnActualizarCodigoBarras.Enabled = false;                    
+                    btnActualizarCodigoBarras.Enabled = false;
+                    btnCancelar.Enabled = false;
+                    dgRecepcionCarne.Enabled = Enabled;
                     CargarDatosRecepcionCarne();
                 }
                 else
@@ -860,7 +862,9 @@ namespace GestionInventario
                     pbImpresionCb.Enabled = false;
                     btnAgregarCarne.Enabled = false;
                     btnActualizar.Enabled = false;
+                    btnCancelar .Enabled = false;
                     chbFijarDatos.Enabled = true;
+                    dgRecepcionCarne.Enabled = true;
                     CargarDatosRecepcionCarne();
                 }
             }
@@ -1005,7 +1009,7 @@ namespace GestionInventario
             }
             if (chkMarca.Checked)
             {
-                condicion.Append("marca LIKE @termino");
+                condicion.Append("marca LIKE");
             }
             // Repite este bloque para cada columna CheckBox que desees incluir en la búsqueda
 

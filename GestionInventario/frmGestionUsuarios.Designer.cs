@@ -40,6 +40,7 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.gbUsuario = new System.Windows.Forms.GroupBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.chbDepartamento = new System.Windows.Forms.CheckBox();
             this.cbDepartamento = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbPerfilGu = new System.Windows.Forms.Label();
             this.lbNombreGu = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.gbUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
@@ -209,6 +209,17 @@
             this.gbUsuario.TabIndex = 15;
             this.gbUsuario.TabStop = false;
             this.gbUsuario.Text = "Datos de usuario";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(384, 207);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(212, 40);
+            this.btnCancelar.TabIndex = 25;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // chbDepartamento
             // 
@@ -380,7 +391,7 @@
             // lbDepartamentoCa
             // 
             this.lbDepartamentoCa.AutoSize = true;
-            this.lbDepartamentoCa.Location = new System.Drawing.Point(86, 34);
+            this.lbDepartamentoCa.Location = new System.Drawing.Point(98, 34);
             this.lbDepartamentoCa.Name = "lbDepartamentoCa";
             this.lbDepartamentoCa.Size = new System.Drawing.Size(39, 13);
             this.lbDepartamentoCa.TabIndex = 15;
@@ -392,14 +403,14 @@
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
             // lbPerfilGu
             // 
             this.lbPerfilGu.AutoSize = true;
-            this.lbPerfilGu.Location = new System.Drawing.Point(86, 56);
+            this.lbPerfilGu.Location = new System.Drawing.Point(98, 56);
             this.lbPerfilGu.Name = "lbPerfilGu";
             this.lbPerfilGu.Size = new System.Drawing.Size(30, 13);
             this.lbPerfilGu.TabIndex = 1;
@@ -408,22 +419,11 @@
             // lbNombreGu
             // 
             this.lbNombreGu.AutoSize = true;
-            this.lbNombreGu.Location = new System.Drawing.Point(86, 12);
+            this.lbNombreGu.Location = new System.Drawing.Point(98, 12);
             this.lbNombreGu.Name = "lbNombreGu";
             this.lbNombreGu.Size = new System.Drawing.Size(44, 13);
             this.lbNombreGu.TabIndex = 0;
             this.lbNombreGu.Text = "Nombre";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(384, 207);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(212, 40);
-            this.btnCancelar.TabIndex = 25;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmGestionUsuarios
             // 

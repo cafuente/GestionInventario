@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecepcionCarne));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.gbFactura = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtTara = new System.Windows.Forms.TextBox();
@@ -76,8 +76,13 @@
             this.lbDepartamentoRc = new System.Windows.Forms.Label();
             this.lbPerfilRc = new System.Windows.Forms.Label();
             this.lbNombreRc = new System.Windows.Forms.Label();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.gbCodigoBarras = new System.Windows.Forms.GroupBox();
             this.txtCodigoBarrasRc = new System.Windows.Forms.TextBox();
+            this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbImpresionCb = new System.Windows.Forms.PictureBox();
+            this.pbGuardarCb = new System.Windows.Forms.PictureBox();
             this.dgRecepcionCarne = new System.Windows.Forms.DataGridView();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -87,21 +92,17 @@
             this.chkFechaEmpaque = new System.Windows.Forms.CheckBox();
             this.chkMarca = new System.Windows.Forms.CheckBox();
             this.chkProducto = new System.Windows.Forms.CheckBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbImpresionCb = new System.Windows.Forms.PictureBox();
-            this.pbGuardarCb = new System.Windows.Forms.PictureBox();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbFactura.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.gbCodigoBarras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImpresionCb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -329,7 +330,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(444, 37);
+            this.label15.Location = new System.Drawing.Point(457, 37);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(215, 30);
             this.label15.TabIndex = 31;
@@ -338,11 +339,7 @@
             // gbFactura
             // 
             this.gbFactura.Controls.Add(this.label20);
-            this.gbFactura.Controls.Add(this.txtPeso);
-            this.gbFactura.Controls.Add(this.label19);
-            this.gbFactura.Controls.Add(this.txtTara);
             this.gbFactura.Controls.Add(this.txtBusquedaRc);
-            this.gbFactura.Controls.Add(this.label18);
             this.gbFactura.Controls.Add(this.label17);
             this.gbFactura.Controls.Add(this.chbFijarDatos);
             this.gbFactura.Controls.Add(this.idLabel);
@@ -384,10 +381,20 @@
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Datos Factura";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(245, 51);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(52, 16);
+            this.label20.TabIndex = 43;
+            this.label20.Text = "Buscar:";
+            // 
             // txtPeso
             // 
             this.txtPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPeso.Location = new System.Drawing.Point(824, 229);
+            this.txtPeso.Location = new System.Drawing.Point(337, 39);
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(113, 22);
             this.txtPeso.TabIndex = 16;
@@ -396,7 +403,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(743, 235);
+            this.label19.Location = new System.Drawing.Point(256, 45);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(68, 16);
             this.label19.TabIndex = 40;
@@ -405,7 +412,7 @@
             // txtTara
             // 
             this.txtTara.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTara.Location = new System.Drawing.Point(579, 229);
+            this.txtTara.Location = new System.Drawing.Point(92, 39);
             this.txtTara.Name = "txtTara";
             this.txtTara.Size = new System.Drawing.Size(113, 22);
             this.txtTara.TabIndex = 15;
@@ -422,7 +429,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(506, 234);
+            this.label18.Location = new System.Drawing.Point(19, 44);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(39, 16);
             this.label18.TabIndex = 39;
@@ -515,7 +522,7 @@
             // btnAgregarCarne
             // 
             this.btnAgregarCarne.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCarne.Location = new System.Drawing.Point(29, 398);
+            this.btnAgregarCarne.Location = new System.Drawing.Point(549, 390);
             this.btnAgregarCarne.Name = "btnAgregarCarne";
             this.btnAgregarCarne.Size = new System.Drawing.Size(179, 34);
             this.btnAgregarCarne.TabIndex = 19;
@@ -559,7 +566,7 @@
             // lbDepartamentoRc
             // 
             this.lbDepartamentoRc.AutoSize = true;
-            this.lbDepartamentoRc.Location = new System.Drawing.Point(109, 34);
+            this.lbDepartamentoRc.Location = new System.Drawing.Point(87, 35);
             this.lbDepartamentoRc.Name = "lbDepartamentoRc";
             this.lbDepartamentoRc.Size = new System.Drawing.Size(74, 13);
             this.lbDepartamentoRc.TabIndex = 33;
@@ -568,7 +575,7 @@
             // lbPerfilRc
             // 
             this.lbPerfilRc.AutoSize = true;
-            this.lbPerfilRc.Location = new System.Drawing.Point(109, 56);
+            this.lbPerfilRc.Location = new System.Drawing.Point(87, 57);
             this.lbPerfilRc.Name = "lbPerfilRc";
             this.lbPerfilRc.Size = new System.Drawing.Size(30, 13);
             this.lbPerfilRc.TabIndex = 32;
@@ -577,11 +584,21 @@
             // lbNombreRc
             // 
             this.lbNombreRc.AutoSize = true;
-            this.lbNombreRc.Location = new System.Drawing.Point(109, 12);
+            this.lbNombreRc.Location = new System.Drawing.Point(87, 13);
             this.lbNombreRc.Name = "lbNombreRc";
             this.lbNombreRc.Size = new System.Drawing.Size(44, 13);
             this.lbNombreRc.TabIndex = 31;
             this.lbNombreRc.Text = "Nombre";
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogo.Location = new System.Drawing.Point(3, 3);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(75, 85);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 30;
+            this.pbLogo.TabStop = false;
             // 
             // gbCodigoBarras
             // 
@@ -607,108 +624,6 @@
             this.txtCodigoBarrasRc.Size = new System.Drawing.Size(163, 22);
             this.txtCodigoBarrasRc.TabIndex = 39;
             this.txtCodigoBarrasRc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarrasRc_KeyPress);
-            // 
-            // dgRecepcionCarne
-            // 
-            this.dgRecepcionCarne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRecepcionCarne.Location = new System.Drawing.Point(7, 483);
-            this.dgRecepcionCarne.Name = "dgRecepcionCarne";
-            this.dgRecepcionCarne.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgRecepcionCarne.Size = new System.Drawing.Size(1238, 243);
-            this.dgRecepcionCarne.TabIndex = 45;
-            this.dgRecepcionCarne.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRecepcionCarne_CellClick);
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Location = new System.Drawing.Point(276, 395);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(179, 34);
-            this.btnActualizar.TabIndex = 46;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(516, 395);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(179, 34);
-            this.btnEliminar.TabIndex = 47;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(765, 395);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(179, 34);
-            this.btnCancelar.TabIndex = 48;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // chkId
-            // 
-            this.chkId.AutoSize = true;
-            this.chkId.Location = new System.Drawing.Point(98, 452);
-            this.chkId.Name = "chkId";
-            this.chkId.Size = new System.Drawing.Size(35, 17);
-            this.chkId.TabIndex = 49;
-            this.chkId.Text = "Id";
-            this.chkId.UseVisualStyleBackColor = true;
-            // 
-            // chkFechaSacrificio
-            // 
-            this.chkFechaSacrificio.AutoSize = true;
-            this.chkFechaSacrificio.Location = new System.Drawing.Point(245, 452);
-            this.chkFechaSacrificio.Name = "chkFechaSacrificio";
-            this.chkFechaSacrificio.Size = new System.Drawing.Size(99, 17);
-            this.chkFechaSacrificio.TabIndex = 50;
-            this.chkFechaSacrificio.Text = "Fech. Sacrificio";
-            this.chkFechaSacrificio.UseVisualStyleBackColor = true;
-            // 
-            // chkFechaEmpaque
-            // 
-            this.chkFechaEmpaque.AutoSize = true;
-            this.chkFechaEmpaque.Location = new System.Drawing.Point(456, 452);
-            this.chkFechaEmpaque.Name = "chkFechaEmpaque";
-            this.chkFechaEmpaque.Size = new System.Drawing.Size(103, 17);
-            this.chkFechaEmpaque.TabIndex = 51;
-            this.chkFechaEmpaque.Text = "Fecha empaque";
-            this.chkFechaEmpaque.UseVisualStyleBackColor = true;
-            // 
-            // chkMarca
-            // 
-            this.chkMarca.AutoSize = true;
-            this.chkMarca.Location = new System.Drawing.Point(671, 452);
-            this.chkMarca.Name = "chkMarca";
-            this.chkMarca.Size = new System.Drawing.Size(56, 17);
-            this.chkMarca.TabIndex = 52;
-            this.chkMarca.Text = "Marca";
-            this.chkMarca.UseVisualStyleBackColor = true;
-            // 
-            // chkProducto
-            // 
-            this.chkProducto.AutoSize = true;
-            this.chkProducto.Location = new System.Drawing.Point(839, 452);
-            this.chkProducto.Name = "chkProducto";
-            this.chkProducto.Size = new System.Drawing.Size(69, 17);
-            this.chkProducto.TabIndex = 53;
-            this.chkProducto.Text = "Producto";
-            this.chkProducto.UseVisualStyleBackColor = true;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(245, 51);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(52, 16);
-            this.label20.TabIndex = 43;
-            this.label20.Text = "Buscar:";
             // 
             // pbCodigoBarras
             // 
@@ -758,23 +673,120 @@
             this.pbGuardarCb.TabStop = false;
             this.pbGuardarCb.Click += new System.EventHandler(this.pbGuardarCb_Click);
             // 
-            // pbLogo
+            // dgRecepcionCarne
             // 
-            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(3, 3);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(97, 72);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogo.TabIndex = 30;
-            this.pbLogo.TabStop = false;
+            this.dgRecepcionCarne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRecepcionCarne.Location = new System.Drawing.Point(7, 549);
+            this.dgRecepcionCarne.Name = "dgRecepcionCarne";
+            this.dgRecepcionCarne.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgRecepcionCarne.Size = new System.Drawing.Size(1238, 247);
+            this.dgRecepcionCarne.TabIndex = 45;
+            this.dgRecepcionCarne.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRecepcionCarne_CellClick);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Location = new System.Drawing.Point(764, 390);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(179, 34);
+            this.btnActualizar.TabIndex = 46;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(549, 443);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(179, 34);
+            this.btnEliminar.TabIndex = 47;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(764, 443);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(179, 34);
+            this.btnCancelar.TabIndex = 48;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // chkId
+            // 
+            this.chkId.AutoSize = true;
+            this.chkId.Location = new System.Drawing.Point(98, 510);
+            this.chkId.Name = "chkId";
+            this.chkId.Size = new System.Drawing.Size(35, 17);
+            this.chkId.TabIndex = 49;
+            this.chkId.Text = "Id";
+            this.chkId.UseVisualStyleBackColor = true;
+            // 
+            // chkFechaSacrificio
+            // 
+            this.chkFechaSacrificio.AutoSize = true;
+            this.chkFechaSacrificio.Location = new System.Drawing.Point(245, 510);
+            this.chkFechaSacrificio.Name = "chkFechaSacrificio";
+            this.chkFechaSacrificio.Size = new System.Drawing.Size(99, 17);
+            this.chkFechaSacrificio.TabIndex = 50;
+            this.chkFechaSacrificio.Text = "Fech. Sacrificio";
+            this.chkFechaSacrificio.UseVisualStyleBackColor = true;
+            // 
+            // chkFechaEmpaque
+            // 
+            this.chkFechaEmpaque.AutoSize = true;
+            this.chkFechaEmpaque.Location = new System.Drawing.Point(456, 510);
+            this.chkFechaEmpaque.Name = "chkFechaEmpaque";
+            this.chkFechaEmpaque.Size = new System.Drawing.Size(103, 17);
+            this.chkFechaEmpaque.TabIndex = 51;
+            this.chkFechaEmpaque.Text = "Fecha empaque";
+            this.chkFechaEmpaque.UseVisualStyleBackColor = true;
+            // 
+            // chkMarca
+            // 
+            this.chkMarca.AutoSize = true;
+            this.chkMarca.Location = new System.Drawing.Point(671, 510);
+            this.chkMarca.Name = "chkMarca";
+            this.chkMarca.Size = new System.Drawing.Size(56, 17);
+            this.chkMarca.TabIndex = 52;
+            this.chkMarca.Text = "Marca";
+            this.chkMarca.UseVisualStyleBackColor = true;
+            // 
+            // chkProducto
+            // 
+            this.chkProducto.AutoSize = true;
+            this.chkProducto.Location = new System.Drawing.Point(839, 510);
+            this.chkProducto.Name = "chkProducto";
+            this.chkProducto.Size = new System.Drawing.Size(69, 17);
+            this.chkProducto.TabIndex = 53;
+            this.chkProducto.Text = "Producto";
+            this.chkProducto.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.txtPeso);
+            this.groupBox1.Controls.Add(this.txtTara);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(7, 390);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(490, 93);
+            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Registro de tarima o combo";
             // 
             // frmRecepcionCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(1271, 600);
+            this.AutoScrollMinSize = new System.Drawing.Size(1271, 800);
             this.ClientSize = new System.Drawing.Size(1254, 731);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkProducto);
             this.Controls.Add(this.chkMarca);
             this.Controls.Add(this.chkFechaEmpaque);
@@ -798,14 +810,16 @@
             this.gbFactura.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.gbCodigoBarras.ResumeLayout(false);
             this.gbCodigoBarras.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImpresionCb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -877,5 +891,6 @@
         private System.Windows.Forms.CheckBox chkProducto;
         private System.Windows.Forms.TextBox txtCodigoBarrasRc;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
