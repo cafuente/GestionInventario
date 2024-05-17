@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Runtime.ExceptionServices;
@@ -844,9 +845,11 @@ namespace GestionInventario
                     btnAgregarCarne.Enabled = false;
                     btnActualizar.Enabled = false;
                     btnActualizarCodigoBarras.Enabled = false;
-                    btnCancelar.Enabled = false;
+                    btnCancelar.Enabled = true;
                     dgRecepcionCarne.Enabled = Enabled;
+                    //chbFijarDatos.Enabled = true;                    
                     CargarDatosRecepcionCarne();
+                    txtTara.Focus();
                 }
                 else
                 {
@@ -926,6 +929,21 @@ namespace GestionInventario
 
         private void txtBusquedaRc_TextChanged(object sender, EventArgs e)
        {
+            // Obtener el término de búsqueda ingresado por el usuario
+            string terminoBusqueda = txtBusquedaRc.Text.Trim();
+
+            if (chkId.Checked || chkFechaSacrificio.Checked || chkFechaEmpaque.Checked || chkMarca.Checked || chkProducto.Checked)
+            {
+                // Si hay algún CheckBox activado, ejecutar la búsqueda condicionada
+                EjecutarBusquedaCondicionada(terminoBusqueda);
+            }
+            else
+            {
+                // Si no hay ningún CheckBox activado, ejecutar la búsqueda sin condiciones
+                EjecutarBusquedaNoCondicionada(terminoBusqueda);
+            }
+
+
             /*
             // Obtener el término de búsqueda ingresado por el usuario
             string terminoBusqueda = txtBusquedaRc.Text.Trim();
@@ -986,7 +1004,8 @@ namespace GestionInventario
                 MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             */ //HandleProcessCorruptedStateExceptionsAttribute aqui funciona bien
-
+            
+            /*
             // Obtener el término de búsqueda ingresado por el usuario
             string terminoBusqueda = txtBusquedaRc.Text.Trim();
 
@@ -1054,9 +1073,256 @@ namespace GestionInventario
             {
                 MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
+            */
         }
+
+        private void EjecutarBusquedaCondicionada(string terminoBusqueda)
+        {
+
+
+            // Construir la consulta SQL dinámica según los CheckBox activados
+            List<string> condiciones = new List<string>();
+
+            if (chkId.Checked)
+                condiciones.Add("id LIKE @termino");
+            if (chkFechaSacrificio.Checked)
+                condiciones.Add("fecha_sacrificio LIKE @termino");
+            if (chkFechaEmpaque.Checked)
+                condiciones.Add("fecha_empaque LIKE @termino");
+            if (chkMarca.Checked)
+                condiciones.Add("marca LIKE @termino");
+            if (chkProducto.Checked)
+                condiciones.Add("producto LIKE @termino");
+
+            string consulta = "SELECT * FROM recepcion_carne WHERE " + string.Join(" OR ", condiciones);
+
+            try
+            {
+                // Crear la conexión a la base de datos
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    // Abrir la conexión
+                    con.Open();
+
+                    // Crear el comando SQL
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        // Asignar el término de búsqueda como parámetro
+                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
+
+                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+
+                            // Llenar el DataTable con los resultados de la consulta
+                            adapter.Fill(dt);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            dgRecepcionCarne.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar la búsqueda condicionada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            /*
+            // Obtener el término de búsqueda ingresado por el usuario
+            string terminoBusqueda = txtBusquedaRc.Text.Trim();
+
+            // Construir la consulta SQL base
+            string consultaBase = "SELECT * FROM recepcion_carne WHERE ";
+            StringBuilder condicion = new StringBuilder();
+
+            // Verificar qué columnas están seleccionadas para la búsqueda
+            if (chkId.Checked)
+            {
+                condicion.Append("id LIKE @termino OR ");
+            }
+            if (chkFechaSacrificio.Checked)
+            {
+                condicion.Append("fecha_sacrificio LIKE @termino OR ");
+            }
+            if (chkFechaEmpaque.Checked)
+            {
+                condicion.Append("fecha_empaque LIKE @termino OR ");
+            }
+            if (chkProducto.Checked)
+            {
+                condicion.Append("producto LIKE @termino OR ");
+            }
+            if (chkMarca.Checked)
+            {
+                condicion.Append("marca LIKE");
+            }
+            // Repite este bloque para cada columna CheckBox que desees incluir en la búsqueda
+
+            // Eliminar el último "OR" si existe
+            if (condicion.Length > 0)
+            {
+                condicion.Remove(condicion.Length - 4, 4); // Elimina los últimos 4 caracteres (" OR ")
+            }
+
+            // Concatenar la consulta base con la condición de búsqueda
+            string consultaFinal = consultaBase + condicion.ToString();
+
+            try
+            {
+                // Crear la conexión a la base de datos
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    // Abrir la conexión
+                    con.Open();
+
+                    // Crear el comando SQL
+                    using (MySqlCommand cmd = new MySqlCommand(consultaFinal, con))
+                    {
+                        // Asignar el término de búsqueda como parámetro
+                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
+
+                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+
+                            // Llenar el DataTable con los resultados de la consulta
+                            adapter.Fill(dt);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            dgRecepcionCarne.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            */
+        }
+
+        private void EjecutarBusquedaNoCondicionada(string terminoBusqueda)
+        {
+            // Consulta SQL para buscar en todas las columnas
+            string consulta = "SELECT * FROM recepcion_carne WHERE " +
+                              "id LIKE @termino OR " +
+                              "linea LIKE @termino OR " +
+                              "procedencia LIKE @termino OR " +
+                              "fecha_sacrificio LIKE @termino OR " +
+                              "fecha_empaque LIKE @termino OR " +
+                              "fleje LIKE @termino OR " +
+                              "turno LIKE @termino OR " +
+                              "cantidad LIKE @termino OR " +
+                              "cajas LIKE @termino OR " +
+                              "factura LIKE @termino OR " +
+                              "orden_compra LIKE @termino OR " +
+                              "marca LIKE @termino OR " +
+                              "lote LIKE @termino OR " +
+                              "producto LIKE @termino OR " +
+                              "fecha LIKE @termino OR " +
+                              "tara LIKE @termino OR " +
+                              "peso LIKE @termino OR " +
+                              "departamento LIKE @termino OR " +
+                              "cantidad_disponible LIKE @termino OR " +
+                              "nombreUsuario LIKE @termino";
+
+            try
+            {
+                // Crear la conexión a la base de datos
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    // Abrir la conexión
+                    con.Open();
+
+                    // Crear el comando SQL
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        // Asignar el término de búsqueda como parámetro
+                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
+
+                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+
+                            // Llenar el DataTable con los resultados de la consulta
+                            adapter.Fill(dt);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            dgRecepcionCarne.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar la búsqueda sin condición: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            /*
+            // Obtener el término de búsqueda ingresado por el usuario
+            string terminoBusqueda = txtBusquedaRc.Text.Trim();
+
+            // Construir la consulta SQL para buscar en varias columnas
+            string consulta = "SELECT * FROM recepcion_carne WHERE " +
+                              "id LIKE @termino OR " +
+                              "linea LIKE @termino OR " +
+                              "procedencia LIKE @termino OR " +
+                              "fecha_sacrificio LIKE @termino OR " +
+                              "fecha_empaque LIKE @termino OR " +
+                              "fleje LIKE @termino OR " +
+                              "turno LIKE @termino OR " +
+                              "cantidad LIKE @termino OR " +
+                              "cajas LIKE @termino OR " +
+                              "factura LIKE @termino OR " +
+                              "orden_compra LIKE @termino OR " +
+                              "marca LIKE @termino OR " +
+                              "lote LIKE @termino OR " +
+                              "producto LIKE @termino OR " +
+                              "fecha LIKE @termino OR " +
+                              "tara LIKE @termino OR " +
+                              "peso LIKE @termino OR " +
+                              "departamento LIKE @termino OR " +
+                              "cantidad_disponible LIKE @termino OR " +
+                              "nombreUsuario LIKE @termino";
+
+            try
+            {
+                // Crear la conexión a la base de datos
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    // Abrir la conexión
+                    con.Open();
+
+                    // Crear el comando SQL
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        // Asignar el término de búsqueda como parámetro
+                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
+
+                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+
+                            // Llenar el DataTable con los resultados de la consulta
+                            adapter.Fill(dt);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            dgRecepcionCarne.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            */
+        } 
+
         private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)
         {       
             /* // opcion con clase busqueda
