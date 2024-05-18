@@ -23,6 +23,7 @@ namespace GestionInventario
         {
             cbPerfil.Items.Add("Administrador");
             cbPerfil.Items.Add("Usuario");
+            cbPerfil.Items.Add("Supervisor");
             cbDepartamento.Items.Add("Almacen carnicos");
             cbDepartamento.Items.Add("Control de Produccion");
             cbDepartamento.Items.Add("Limpieza y Formulacion");
@@ -83,6 +84,8 @@ namespace GestionInventario
                     return "Administrador";
                 case 2:
                     return "Usuario";
+                case 3:
+                    return "Supervisor";
                 default:
                     return "Desconocido";
             }

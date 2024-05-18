@@ -117,5 +117,23 @@ namespace GestionInventario
                 
             //}
         }
+
+        private void btnTraslado_Click(object sender, EventArgs e)
+        {
+            btnRecepcion.Visible = false;
+            btnGestion.Visible = false;
+        }
+
+        private void btnRecibo_Click(object sender, EventArgs e)
+        {
+            btnRecepcion.Visible = false;
+            btnGestion.Visible = false;
+        }
+
+        private void btnMezclado_Click(object sender, EventArgs e)
+        {
+            btnRecepcion.Visible = false;
+            btnGestion.Visible = false;
+        }
     }
 }

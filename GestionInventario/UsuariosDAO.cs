@@ -77,6 +77,8 @@ namespace GestionInventario
                     return 1;
                 case "Usuario":
                     return 2;
+                case "Supervisor":
+                    return 3;
                 default:
                     return -1; // Perfil no válido
             }
@@ -308,6 +310,8 @@ namespace GestionInventario
                     return "Administrador";
                 case 2:
                     return "Usuario";
+                case 3:
+                    return "Supervisor";
                 default:
                     return "Desconocido";
             }

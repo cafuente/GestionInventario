@@ -58,8 +58,15 @@
   <ItemGroup>
     <Compile Include="AyudanteImagen.cs" />
     <Compile Include="BarcodeGenerator.cs" />
+    <Compile Include="BusquedaBD.cs" />
     <Compile Include="BusquedaCb.cs" />
     <Compile Include="ConexionBD.cs" />
+    <Compile Include="frmDevoluciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDevoluciones.Designer.cs">
+      <DependentUpon>frmDevoluciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestionInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +113,9 @@
     <None Include="Resources\logo negro.png" />
     <None Include="Resources\sigma rojo.jpg" />
     <None Include="Resources\user-account.png" />
+    <EmbeddedResource Include="frmDevoluciones.resx">
+      <DependentUpon>frmDevoluciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestionInventario.resx">
       <DependentUpon>frmGestionInventario.cs</DependentUpon>
     </EmbeddedResource>

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,17 +21,13 @@ namespace GestionInventario
             InitializeComponent();
             conexion = new ConexionBD();
             insercionDatosDAO = new InsercionDatosDAO();
+            CargarDatosInventario();
         }        
 
         private void frmGestionInventario_Load(object sender, EventArgs e)
         {
             // Mostrar la información del usuario de sesion en el panel superior
-            MostrarInformacionUsuario();
-            CargarDatosRecepcionCarne();
-
-            dpSacrificio.Value = DateTime.Now;
-            dpEmpaque.Value = DateTime.Now;
-            dpFecha.Value = DateTime.Now;
+            MostrarInformacionUsuario();           
         }
         private void MostrarInformacionUsuario()
         {
@@ -55,6 +52,8 @@ namespace GestionInventario
                     return "Administrador";
                 case 2:
                     return "Usuario";
+                case 3:
+                    return "Supervisor";
                 default:
                     return "Desconocido";
             }
@@ -65,42 +64,33 @@ namespace GestionInventario
             frmPrincipal frmPr = new frmPrincipal();
             frmPr.Show();
         }
-        private void CargarDatosRecepcionCarne()
+
+        private void CargarDatosInventario()
         {
-            dgRecepcionCarne.Rows.Clear();
+            DataTable dt = BusquedaBD.ObtenerInventario();
+            dgvInventario.DataSource = dt;
 
-            try
+            foreach (DataGridViewColumn columna in dgvInventario.Columns)
             {
-                string consulta = "SELECT * FROM recepcion_carne";
-
-                using (MySqlConnection con = conexion.ObtenerConexion())
-                {
-                    con.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
-                    {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
-
-                            // Asignar el DataTable como origen de datos del DataGridView
-                            dgRecepcionCarne.DataSource = dt;
-                        }
-                    }
-                }
+                //columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los datos de recepcion_carne: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }       
+        }
 
-        private void dgRecepcionCarne_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void btnDevolucion_Click(object sender, EventArgs e)
         {
-            // Verificar si se hizo clic en una fila válida
+            Devoluciones frmDev = new Devoluciones();
+            frmDev.Show();
+            Hide();
+        }
+
+        //aqui vamos.. hay q corregir
+        private void dgvInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow fila = dgRecepcionCarne.Rows[e.RowIndex];
+                DataGridViewRow fila = dgvInventario.Rows[e.RowIndex];
 
                 // Obtener los valores de la fila seleccionada
                 string id = fila.Cells["Id"].Value.ToString();
@@ -122,7 +112,7 @@ namespace GestionInventario
                 float peso = Convert.ToSingle(fila.Cells["Peso"].Value);
 
                 // Asignar los valores a los controles correspondientes
-                txtId.Text = id;
+                idLabel.Text = id;
                 txtLinea.Text = linea;
                 txtProcedencia.Text = procedencia;
                 dpSacrificio.Value = fechaSacrificio;

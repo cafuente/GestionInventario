@@ -28,61 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionInventario));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbDepartamentoGi = new System.Windows.Forms.Label();
             this.lbPerfilGi = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbNombreGi = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgRecepcionCarne = new System.Windows.Forms.DataGridView();
-            this.txtPeso = new System.Windows.Forms.TextBox();
-            this.txtTara = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.gbFactura = new System.Windows.Forms.GroupBox();
-            this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtId = new System.Windows.Forms.Label();
-            this.dpFecha = new System.Windows.Forms.DateTimePicker();
-            this.dpEmpaque = new System.Windows.Forms.DateTimePicker();
-            this.dpSacrificio = new System.Windows.Forms.DateTimePicker();
-            this.IdRegistro = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtCajas = new System.Windows.Forms.TextBox();
-            this.txtLinea = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtLote = new System.Windows.Forms.TextBox();
-            this.txtProducto = new System.Windows.Forms.TextBox();
-            this.txtOrdenCompra = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.txtFleje = new System.Windows.Forms.TextBox();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.txtFactura = new System.Windows.Forms.TextBox();
-            this.txtProcedencia = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbTurno = new System.Windows.Forms.ComboBox();
+            this.dgvInventario = new System.Windows.Forms.DataGridView();
+            this.btnSalida = new System.Windows.Forms.Button();
+            this.btnDevolucion = new System.Windows.Forms.Button();
+            this.txtCodigoBarrasGi = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.gbRegistro = new System.Windows.Forms.GroupBox();
-            this.btnActualizarGi = new System.Windows.Forms.Button();
-            this.btnEliminarGi = new System.Windows.Forms.Button();
-            this.lbDepartamentoGi = new System.Windows.Forms.Label();
+            this.dtFechaGi = new System.Windows.Forms.Label();
+            this.txtCantidadGi = new System.Windows.Forms.Label();
+            this.txtLoteGi = new System.Windows.Forms.Label();
+            this.txtProductoGi = new System.Windows.Forms.Label();
+            this.idTarima = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtpFechaGi = new System.Windows.Forms.DateTimePicker();
+            this.cbDestino = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRegistrarSalida = new System.Windows.Forms.Button();
+            this.btnCacelarGi = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).BeginInit();
-            this.gbFactura.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).BeginInit();
-            this.gbRegistro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -93,13 +70,22 @@
             this.panel2.Controls.Add(this.lbNombreGi);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(290, 93);
+            this.panel2.Size = new System.Drawing.Size(239, 85);
             this.panel2.TabIndex = 1;
+            // 
+            // lbDepartamentoGi
+            // 
+            this.lbDepartamentoGi.AutoSize = true;
+            this.lbDepartamentoGi.Location = new System.Drawing.Point(90, 34);
+            this.lbDepartamentoGi.Name = "lbDepartamentoGi";
+            this.lbDepartamentoGi.Size = new System.Drawing.Size(39, 13);
+            this.lbDepartamentoGi.TabIndex = 14;
+            this.lbDepartamentoGi.Text = "Deptto";
             // 
             // lbPerfilGi
             // 
             this.lbPerfilGi.AutoSize = true;
-            this.lbPerfilGi.Location = new System.Drawing.Point(109, 56);
+            this.lbPerfilGi.Location = new System.Drawing.Point(90, 56);
             this.lbPerfilGi.Name = "lbPerfilGi";
             this.lbPerfilGi.Size = new System.Drawing.Size(29, 13);
             this.lbPerfilGi.TabIndex = 1;
@@ -107,18 +93,18 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(97, 72);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
             // lbNombreGi
             // 
             this.lbNombreGi.AutoSize = true;
-            this.lbNombreGi.Location = new System.Drawing.Point(109, 12);
+            this.lbNombreGi.Location = new System.Drawing.Point(90, 12);
             this.lbNombreGi.Name = "lbNombreGi";
             this.lbNombreGi.Size = new System.Drawing.Size(44, 13);
             this.lbNombreGi.TabIndex = 0;
@@ -128,470 +114,239 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(380, 38);
+            this.label1.Location = new System.Drawing.Point(354, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(237, 25);
             this.label1.TabIndex = 14;
             this.label1.Text = "Gestion de inventario";
             // 
-            // dgRecepcionCarne
-            // 
-            this.dgRecepcionCarne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRecepcionCarne.Location = new System.Drawing.Point(3, 461);
-            this.dgRecepcionCarne.Name = "dgRecepcionCarne";
-            this.dgRecepcionCarne.Size = new System.Drawing.Size(991, 242);
-            this.dgRecepcionCarne.TabIndex = 15;
-            this.dgRecepcionCarne.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRecepcionCarne_CellClick);
-            // 
-            // txtPeso
-            // 
-            this.txtPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPeso.Location = new System.Drawing.Point(373, 33);
-            this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(121, 22);
-            this.txtPeso.TabIndex = 16;
-            // 
-            // txtTara
-            // 
-            this.txtTara.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTara.Location = new System.Drawing.Point(111, 34);
-            this.txtTara.Name = "txtTara";
-            this.txtTara.Size = new System.Drawing.Size(113, 22);
-            this.txtTara.TabIndex = 15;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(294, 33);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 16);
-            this.label19.TabIndex = 40;
-            this.label19.Text = "Peso real:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(32, 39);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 16);
-            this.label18.TabIndex = 39;
-            this.label18.Text = "Tara:";
-            // 
-            // gbFactura
-            // 
-            this.gbFactura.Controls.Add(this.pbCodigoBarras);
-            this.gbFactura.Controls.Add(this.textBox1);
-            this.gbFactura.Controls.Add(this.txtId);
-            this.gbFactura.Controls.Add(this.dpFecha);
-            this.gbFactura.Controls.Add(this.dpEmpaque);
-            this.gbFactura.Controls.Add(this.dpSacrificio);
-            this.gbFactura.Controls.Add(this.IdRegistro);
-            this.gbFactura.Controls.Add(this.label16);
-            this.gbFactura.Controls.Add(this.txtCajas);
-            this.gbFactura.Controls.Add(this.txtLinea);
-            this.gbFactura.Controls.Add(this.label2);
-            this.gbFactura.Controls.Add(this.label3);
-            this.gbFactura.Controls.Add(this.label5);
-            this.gbFactura.Controls.Add(this.txtLote);
-            this.gbFactura.Controls.Add(this.txtProducto);
-            this.gbFactura.Controls.Add(this.txtOrdenCompra);
-            this.gbFactura.Controls.Add(this.label14);
-            this.gbFactura.Controls.Add(this.label7);
-            this.gbFactura.Controls.Add(this.label12);
-            this.gbFactura.Controls.Add(this.label10);
-            this.gbFactura.Controls.Add(this.txtMarca);
-            this.gbFactura.Controls.Add(this.txtFleje);
-            this.gbFactura.Controls.Add(this.txtCantidad);
-            this.gbFactura.Controls.Add(this.txtFactura);
-            this.gbFactura.Controls.Add(this.txtProcedencia);
-            this.gbFactura.Controls.Add(this.label13);
-            this.gbFactura.Controls.Add(this.label4);
-            this.gbFactura.Controls.Add(this.label11);
-            this.gbFactura.Controls.Add(this.cbTurno);
-            this.gbFactura.Controls.Add(this.label6);
-            this.gbFactura.Controls.Add(this.label9);
-            this.gbFactura.Controls.Add(this.label8);
-            this.gbFactura.Controls.Add(this.label15);
-            this.gbFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFactura.Location = new System.Drawing.Point(6, 105);
-            this.gbFactura.Name = "gbFactura";
-            this.gbFactura.Size = new System.Drawing.Size(988, 263);
-            this.gbFactura.TabIndex = 41;
-            this.gbFactura.TabStop = false;
-            this.gbFactura.Text = "Datos Factura";
-            // 
-            // pbCodigoBarras
-            // 
-            this.pbCodigoBarras.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbCodigoBarras.Image = global::GestionInventario.Properties.Resources.barcode_scan;
-            this.pbCodigoBarras.Location = new System.Drawing.Point(256, 27);
-            this.pbCodigoBarras.Name = "pbCodigoBarras";
-            this.pbCodigoBarras.Size = new System.Drawing.Size(58, 41);
-            this.pbCodigoBarras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCodigoBarras.TabIndex = 41;
-            this.pbCodigoBarras.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(340, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(602, 22);
-            this.textBox1.TabIndex = 40;
-            // 
-            // txtId
-            // 
-            this.txtId.AutoSize = true;
-            this.txtId.Location = new System.Drawing.Point(119, 45);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(11, 16);
-            this.txtId.TabIndex = 39;
-            this.txtId.Text = ":";
-            // 
-            // dpFecha
-            // 
-            this.dpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpFecha.Location = new System.Drawing.Point(84, 221);
-            this.dpFecha.Name = "dpFecha";
-            this.dpFecha.Size = new System.Drawing.Size(121, 22);
-            this.dpFecha.TabIndex = 14;
-            this.dpFecha.Value = new System.DateTime(2024, 4, 26, 0, 0, 0, 0);
-            // 
-            // dpEmpaque
-            // 
-            this.dpEmpaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpEmpaque.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpEmpaque.Location = new System.Drawing.Point(842, 90);
-            this.dpEmpaque.Name = "dpEmpaque";
-            this.dpEmpaque.Size = new System.Drawing.Size(121, 22);
-            this.dpEmpaque.TabIndex = 3;
-            this.dpEmpaque.Value = new System.DateTime(2024, 4, 26, 10, 23, 24, 0);
-            // 
-            // dpSacrificio
-            // 
-            this.dpSacrificio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpSacrificio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpSacrificio.Location = new System.Drawing.Point(580, 87);
-            this.dpSacrificio.Name = "dpSacrificio";
-            this.dpSacrificio.Size = new System.Drawing.Size(121, 22);
-            this.dpSacrificio.TabIndex = 2;
-            this.dpSacrificio.Value = new System.DateTime(2024, 4, 26, 0, 0, 0, 0);
-            // 
-            // IdRegistro
-            // 
-            this.IdRegistro.AutoSize = true;
-            this.IdRegistro.Location = new System.Drawing.Point(116, 45);
-            this.IdRegistro.Name = "IdRegistro";
-            this.IdRegistro.Size = new System.Drawing.Size(0, 16);
-            this.IdRegistro.TabIndex = 35;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(32, 43);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(24, 16);
-            this.label16.TabIndex = 34;
-            this.label16.Text = "Id:";
-            // 
-            // txtCajas
-            // 
-            this.txtCajas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCajas.Location = new System.Drawing.Point(84, 138);
-            this.txtCajas.Name = "txtCajas";
-            this.txtCajas.Size = new System.Drawing.Size(121, 22);
-            this.txtCajas.TabIndex = 7;
-            // 
-            // txtLinea
-            // 
-            this.txtLinea.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLinea.Location = new System.Drawing.Point(84, 91);
-            this.txtLinea.Name = "txtLinea";
-            this.txtLinea.Size = new System.Drawing.Size(121, 22);
-            this.txtLinea.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 94);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Linea:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(498, 92);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 16);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "F. Sacrificio:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(247, 142);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 16);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Fleje:";
-            // 
-            // txtLote
-            // 
-            this.txtLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLote.Location = new System.Drawing.Point(842, 175);
-            this.txtLote.Name = "txtLote";
-            this.txtLote.Size = new System.Drawing.Size(121, 22);
-            this.txtLote.TabIndex = 12;
-            // 
-            // txtProducto
-            // 
-            this.txtProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProducto.Location = new System.Drawing.Point(340, 220);
-            this.txtProducto.Name = "txtProducto";
-            this.txtProducto.Size = new System.Drawing.Size(623, 21);
-            this.txtProducto.TabIndex = 13;
-            // 
-            // txtOrdenCompra
-            // 
-            this.txtOrdenCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOrdenCompra.Location = new System.Drawing.Point(340, 175);
-            this.txtOrdenCompra.Name = "txtOrdenCompra";
-            this.txtOrdenCompra.Size = new System.Drawing.Size(121, 22);
-            this.txtOrdenCompra.TabIndex = 10;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(11, 223);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(48, 16);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Fecha:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(749, 142);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 16);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Cantidad:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(749, 178);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(36, 16);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Lote:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(247, 178);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(96, 16);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Orden compra:";
-            // 
-            // txtMarca
-            // 
-            this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMarca.Location = new System.Drawing.Point(580, 175);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(121, 22);
-            this.txtMarca.TabIndex = 11;
-            // 
-            // txtFleje
-            // 
-            this.txtFleje.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFleje.Location = new System.Drawing.Point(340, 138);
-            this.txtFleje.Name = "txtFleje";
-            this.txtFleje.Size = new System.Drawing.Size(121, 22);
-            this.txtFleje.TabIndex = 4;
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidad.Location = new System.Drawing.Point(842, 139);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(121, 22);
-            this.txtCantidad.TabIndex = 8;
-            // 
-            // txtFactura
-            // 
-            this.txtFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFactura.Location = new System.Drawing.Point(84, 175);
-            this.txtFactura.Name = "txtFactura";
-            this.txtFactura.Size = new System.Drawing.Size(121, 22);
-            this.txtFactura.TabIndex = 9;
-            // 
-            // txtProcedencia
-            // 
-            this.txtProcedencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProcedencia.Location = new System.Drawing.Point(340, 92);
-            this.txtProcedencia.Name = "txtProcedencia";
-            this.txtProcedencia.Size = new System.Drawing.Size(121, 22);
-            this.txtProcedencia.TabIndex = 1;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(247, 223);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 16);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Producto:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(247, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Procedencia:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(498, 178);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(48, 16);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Marca:";
-            // 
-            // cbTurno
-            // 
-            this.cbTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTurno.FormattingEnabled = true;
-            this.cbTurno.Location = new System.Drawing.Point(580, 139);
-            this.cbTurno.Name = "cbTurno";
-            this.cbTurno.Size = new System.Drawing.Size(121, 24);
-            this.cbTurno.TabIndex = 6;
+            // dgvInventario
+            // 
+            this.dgvInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInventario.Location = new System.Drawing.Point(12, 374);
+            this.dgvInventario.Name = "dgvInventario";
+            this.dgvInventario.Size = new System.Drawing.Size(773, 157);
+            this.dgvInventario.TabIndex = 15;
+            this.dgvInventario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventario_CellContentClick);
+            // 
+            // btnSalida
+            // 
+            this.btnSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalida.Location = new System.Drawing.Point(37, 46);
+            this.btnSalida.Name = "btnSalida";
+            this.btnSalida.Size = new System.Drawing.Size(127, 27);
+            this.btnSalida.TabIndex = 16;
+            this.btnSalida.Text = "Traspaso";
+            this.btnSalida.UseVisualStyleBackColor = true;
+            // 
+            // btnDevolucion
+            // 
+            this.btnDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDevolucion.Location = new System.Drawing.Point(37, 89);
+            this.btnDevolucion.Name = "btnDevolucion";
+            this.btnDevolucion.Size = new System.Drawing.Size(127, 27);
+            this.btnDevolucion.TabIndex = 17;
+            this.btnDevolucion.Text = "Devolución";
+            this.btnDevolucion.UseVisualStyleBackColor = true;
+            this.btnDevolucion.Click += new System.EventHandler(this.btnDevolucion_Click);
+            // 
+            // txtCodigoBarrasGi
+            // 
+            this.txtCodigoBarrasGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoBarrasGi.Location = new System.Drawing.Point(157, 54);
+            this.txtCodigoBarrasGi.Name = "txtCodigoBarrasGi";
+            this.txtCodigoBarrasGi.Size = new System.Drawing.Size(125, 23);
+            this.txtCodigoBarrasGi.TabIndex = 44;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Image = global::GestionInventario.Properties.Resources.buscar_barcode;
+            this.pictureBox2.Location = new System.Drawing.Point(116, 44);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 45;
+            this.pictureBox2.TabStop = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(749, 95);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(311, 172);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 16);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "F.Empaque:";
+            this.label6.Size = new System.Drawing.Size(104, 17);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "Deptto destino:";
             // 
-            // label9
+            // dtFechaGi
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(11, 178);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 16);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "Factura:";
+            this.dtFechaGi.AutoSize = true;
+            this.dtFechaGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFechaGi.Location = new System.Drawing.Point(340, 62);
+            this.dtFechaGi.Name = "dtFechaGi";
+            this.dtFechaGi.Size = new System.Drawing.Size(51, 17);
+            this.dtFechaGi.TabIndex = 66;
+            this.dtFechaGi.Text = "Fecha:";
             // 
-            // label8
+            // txtCantidadGi
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(498, 142);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 16);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Sup. Turno:";
+            this.txtCantidadGi.AutoSize = true;
+            this.txtCantidadGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadGi.Location = new System.Drawing.Point(20, 172);
+            this.txtCantidadGi.Name = "txtCantidadGi";
+            this.txtCantidadGi.Size = new System.Drawing.Size(68, 17);
+            this.txtCantidadGi.TabIndex = 65;
+            this.txtCantidadGi.Text = "Cantidad:";
             // 
-            // label15
+            // txtLoteGi
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(11, 142);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 16);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Cajas:";
+            this.txtLoteGi.AutoSize = true;
+            this.txtLoteGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoteGi.Location = new System.Drawing.Point(359, 112);
+            this.txtLoteGi.Name = "txtLoteGi";
+            this.txtLoteGi.Size = new System.Drawing.Size(40, 17);
+            this.txtLoteGi.TabIndex = 64;
+            this.txtLoteGi.Text = "Lote:";
             // 
-            // gbRegistro
+            // txtProductoGi
             // 
-            this.gbRegistro.Controls.Add(this.txtPeso);
-            this.gbRegistro.Controls.Add(this.txtTara);
-            this.gbRegistro.Controls.Add(this.label19);
-            this.gbRegistro.Controls.Add(this.label18);
-            this.gbRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbRegistro.Location = new System.Drawing.Point(6, 374);
-            this.gbRegistro.Name = "gbRegistro";
-            this.gbRegistro.Size = new System.Drawing.Size(527, 81);
-            this.gbRegistro.TabIndex = 42;
-            this.gbRegistro.TabStop = false;
-            this.gbRegistro.Text = "Registro de tarima o combo";
+            this.txtProductoGi.AutoSize = true;
+            this.txtProductoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProductoGi.Location = new System.Drawing.Point(6, 116);
+            this.txtProductoGi.Name = "txtProductoGi";
+            this.txtProductoGi.Size = new System.Drawing.Size(69, 17);
+            this.txtProductoGi.TabIndex = 63;
+            this.txtProductoGi.Text = "Producto:";
             // 
-            // btnActualizarGi
+            // idTarima
             // 
-            this.btnActualizarGi.Location = new System.Drawing.Point(584, 402);
-            this.btnActualizarGi.Name = "btnActualizarGi";
-            this.btnActualizarGi.Size = new System.Drawing.Size(149, 36);
-            this.btnActualizarGi.TabIndex = 43;
-            this.btnActualizarGi.Text = "Actualizar";
-            this.btnActualizarGi.UseVisualStyleBackColor = true;
+            this.idTarima.AutoSize = true;
+            this.idTarima.Location = new System.Drawing.Point(6, 54);
+            this.idTarima.Name = "idTarima";
+            this.idTarima.Size = new System.Drawing.Size(78, 17);
+            this.idTarima.TabIndex = 62;
+            this.idTarima.Text = "ID Tarima";
             // 
-            // btnEliminarGi
+            // textBox3
             // 
-            this.btnEliminarGi.Location = new System.Drawing.Point(799, 403);
-            this.btnEliminarGi.Name = "btnEliminarGi";
-            this.btnEliminarGi.Size = new System.Drawing.Size(149, 36);
-            this.btnEliminarGi.TabIndex = 44;
-            this.btnEliminarGi.Text = "Eliminar";
-            this.btnEliminarGi.UseVisualStyleBackColor = true;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(120, 169);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(162, 23);
+            this.textBox3.TabIndex = 59;
             // 
-            // lbDepartamentoGi
+            // textBox2
             // 
-            this.lbDepartamentoGi.AutoSize = true;
-            this.lbDepartamentoGi.Location = new System.Drawing.Point(109, 34);
-            this.lbDepartamentoGi.Name = "lbDepartamentoGi";
-            this.lbDepartamentoGi.Size = new System.Drawing.Size(39, 13);
-            this.lbDepartamentoGi.TabIndex = 14;
-            this.lbDepartamentoGi.Text = "Deptto";
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(415, 109);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(121, 23);
+            this.textBox2.TabIndex = 58;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(98, 109);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(184, 23);
+            this.textBox1.TabIndex = 57;
+            // 
+            // dtpFechaGi
+            // 
+            this.dtpFechaGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaGi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaGi.Location = new System.Drawing.Point(415, 54);
+            this.dtpFechaGi.Name = "dtpFechaGi";
+            this.dtpFechaGi.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaGi.TabIndex = 68;
+            this.dtpFechaGi.Value = new System.DateTime(2024, 5, 18, 7, 45, 34, 0);
+            // 
+            // cbDestino
+            // 
+            this.cbDestino.FormattingEnabled = true;
+            this.cbDestino.Location = new System.Drawing.Point(415, 169);
+            this.cbDestino.Name = "cbDestino";
+            this.cbDestino.Size = new System.Drawing.Size(121, 24);
+            this.cbDestino.TabIndex = 69;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cbDestino);
+            this.groupBox1.Controls.Add(this.idTarima);
+            this.groupBox1.Controls.Add(this.dtpFechaGi);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.dtFechaGi);
+            this.groupBox1.Controls.Add(this.pictureBox2);
+            this.groupBox1.Controls.Add(this.txtCantidadGi);
+            this.groupBox1.Controls.Add(this.txtCodigoBarrasGi);
+            this.groupBox1.Controls.Add(this.txtLoteGi);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtProductoGi);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(13, 100);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(547, 218);
+            this.groupBox1.TabIndex = 70;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Traspaso a otros almacenes";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnDevolucion);
+            this.groupBox2.Controls.Add(this.btnSalida);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(582, 100);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(204, 218);
+            this.groupBox2.TabIndex = 71;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tipo de movimiento";
+            // 
+            // btnRegistrarSalida
+            // 
+            this.btnRegistrarSalida.Location = new System.Drawing.Point(95, 327);
+            this.btnRegistrarSalida.Name = "btnRegistrarSalida";
+            this.btnRegistrarSalida.Size = new System.Drawing.Size(185, 35);
+            this.btnRegistrarSalida.TabIndex = 72;
+            this.btnRegistrarSalida.Text = "Aceptar";
+            this.btnRegistrarSalida.UseVisualStyleBackColor = true;
+            // 
+            // btnCacelarGi
+            // 
+            this.btnCacelarGi.Location = new System.Drawing.Point(361, 327);
+            this.btnCacelarGi.Name = "btnCacelarGi";
+            this.btnCacelarGi.Size = new System.Drawing.Size(185, 35);
+            this.btnCacelarGi.TabIndex = 73;
+            this.btnCacelarGi.Text = "Cancelar";
+            this.btnCacelarGi.UseVisualStyleBackColor = true;
             // 
             // frmGestionInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 711);
-            this.Controls.Add(this.btnEliminarGi);
-            this.Controls.Add(this.btnActualizarGi);
-            this.Controls.Add(this.gbRegistro);
-            this.Controls.Add(this.gbFactura);
-            this.Controls.Add(this.dgRecepcionCarne);
+            this.ClientSize = new System.Drawing.Size(798, 538);
+            this.Controls.Add(this.btnCacelarGi);
+            this.Controls.Add(this.btnRegistrarSalida);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dgvInventario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Name = "frmGestionInventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmGestionInventario";
+            this.Text = "GestionInventario";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGestionInventario_FormClosed);
             this.Load += new System.EventHandler(this.frmGestionInventario_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).EndInit();
-            this.gbFactura.ResumeLayout(false);
-            this.gbFactura.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).EndInit();
-            this.gbRegistro.ResumeLayout(false);
-            this.gbRegistro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,48 +358,26 @@
         private System.Windows.Forms.Label lbNombreGi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dgRecepcionCarne;
-        private System.Windows.Forms.TextBox txtPeso;
-        private System.Windows.Forms.TextBox txtTara;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.GroupBox gbFactura;
-        private System.Windows.Forms.Label txtId;
-        private System.Windows.Forms.DateTimePicker dpFecha;
-        private System.Windows.Forms.DateTimePicker dpEmpaque;
-        private System.Windows.Forms.DateTimePicker dpSacrificio;
-        private System.Windows.Forms.Label IdRegistro;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtCajas;
-        private System.Windows.Forms.TextBox txtLinea;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtLote;
-        private System.Windows.Forms.TextBox txtProducto;
-        private System.Windows.Forms.TextBox txtOrdenCompra;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtMarca;
-        private System.Windows.Forms.TextBox txtFleje;
-        private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.TextBox txtFactura;
-        private System.Windows.Forms.TextBox txtProcedencia;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbTurno;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.GroupBox gbRegistro;
-        private System.Windows.Forms.Button btnActualizarGi;
-        private System.Windows.Forms.Button btnEliminarGi;
-        private System.Windows.Forms.PictureBox pbCodigoBarras;
         private System.Windows.Forms.Label lbDepartamentoGi;
+        private System.Windows.Forms.DataGridView dgvInventario;
+        private System.Windows.Forms.Button btnSalida;
+        private System.Windows.Forms.Button btnDevolucion;
+        private System.Windows.Forms.TextBox txtCodigoBarrasGi;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label dtFechaGi;
+        private System.Windows.Forms.Label txtCantidadGi;
+        private System.Windows.Forms.Label txtLoteGi;
+        private System.Windows.Forms.Label txtProductoGi;
+        private System.Windows.Forms.Label idTarima;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtpFechaGi;
+        private System.Windows.Forms.ComboBox cbDestino;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnRegistrarSalida;
+        private System.Windows.Forms.Button btnCacelarGi;
     }
 }

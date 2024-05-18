@@ -182,6 +182,7 @@
             this.btnMezclado.TabIndex = 4;
             this.btnMezclado.Text = "Mezclado";
             this.btnMezclado.UseVisualStyleBackColor = true;
+            this.btnMezclado.Click += new System.EventHandler(this.btnMezclado_Click);
             // 
             // btnRecibo
             // 
@@ -194,6 +195,7 @@
             this.btnRecibo.TabIndex = 4;
             this.btnRecibo.Text = "Recibo (mocha)";
             this.btnRecibo.UseVisualStyleBackColor = true;
+            this.btnRecibo.Click += new System.EventHandler(this.btnRecibo_Click);
             // 
             // btnTraslado
             // 
@@ -206,6 +208,7 @@
             this.btnTraslado.TabIndex = 3;
             this.btnTraslado.Text = "LyF (traslado)";
             this.btnTraslado.UseVisualStyleBackColor = true;
+            this.btnTraslado.Click += new System.EventHandler(this.btnTraslado_Click);
             // 
             // btnAlmacen
             // 

@@ -45,3 +45,4 @@ C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\bin\Debug\Fo
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmGestionInventario.resources
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmPrincipal.resources
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmTrazalibildad.resources
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.Devoluciones.resources
