@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoGi = new System.Windows.Forms.Label();
             this.lbPerfilGi = new System.Windows.Forms.Label();
@@ -60,13 +60,9 @@
             this.txtCantidadGi = new System.Windows.Forms.TextBox();
             this.dgvInventario = new System.Windows.Forms.DataGridView();
             this.tabDevoluciones = new System.Windows.Forms.TabPage();
-            this.tabDetenidos = new System.Windows.Forms.TabPage();
-            this.dgvTraspasos = new System.Windows.Forms.DataGridView();
-            this.btnRegistrarDevolucion = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.cbDestinoDv = new System.Windows.Forms.ComboBox();
-            this.lbIdTraspasoDv = new System.Windows.Forms.Label();
+            this.lbIdTarimaDv = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -78,6 +74,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtLoteDv = new System.Windows.Forms.TextBox();
             this.txtCantidadDv = new System.Windows.Forms.TextBox();
+            this.btnRegistrarDevolucion = new System.Windows.Forms.Button();
+            this.dgvTraspasos = new System.Windows.Forms.DataGridView();
+            this.tabDetenidos = new System.Windows.Forms.TabPage();
+            this.lbIdTraspasoDv = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -88,9 +88,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
             this.tabDevoluciones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasos)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasos)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -179,33 +179,33 @@
             // dgvInventarioTotal
             // 
             this.dgvInventarioTotal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvInventarioTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventarioTotal.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventarioTotal.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvInventarioTotal.Location = new System.Drawing.Point(20, 44);
             this.dgvInventarioTotal.Name = "dgvInventarioTotal";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotal.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotal.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvInventarioTotal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventarioTotal.Size = new System.Drawing.Size(773, 404);
             this.dgvInventarioTotal.TabIndex = 75;
@@ -425,41 +425,11 @@
             this.tabDevoluciones.Text = "Devoluciones";
             this.tabDevoluciones.UseVisualStyleBackColor = true;
             // 
-            // tabDetenidos
-            // 
-            this.tabDetenidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabDetenidos.Location = new System.Drawing.Point(4, 25);
-            this.tabDetenidos.Name = "tabDetenidos";
-            this.tabDetenidos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDetenidos.Size = new System.Drawing.Size(812, 465);
-            this.tabDetenidos.TabIndex = 3;
-            this.tabDetenidos.Text = "Detenidos";
-            this.tabDetenidos.UseVisualStyleBackColor = true;
-            // 
-            // dgvTraspasos
-            // 
-            this.dgvTraspasos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTraspasos.Location = new System.Drawing.Point(6, 255);
-            this.dgvTraspasos.Name = "dgvTraspasos";
-            this.dgvTraspasos.Size = new System.Drawing.Size(800, 192);
-            this.dgvTraspasos.TabIndex = 0;
-            this.dgvTraspasos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraspasos_CellClick);
-            // 
-            // btnRegistrarDevolucion
-            // 
-            this.btnRegistrarDevolucion.Location = new System.Drawing.Point(686, 152);
-            this.btnRegistrarDevolucion.Name = "btnRegistrarDevolucion";
-            this.btnRegistrarDevolucion.Size = new System.Drawing.Size(75, 23);
-            this.btnRegistrarDevolucion.TabIndex = 1;
-            this.btnRegistrarDevolucion.Text = "Aceptar";
-            this.btnRegistrarDevolucion.UseVisualStyleBackColor = true;
-            this.btnRegistrarDevolucion.Click += new System.EventHandler(this.btnRegistrarDevolucion_Click);
-            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.cbDestinoDv);
             this.groupBox2.Controls.Add(this.lbIdTraspasoDv);
+            this.groupBox2.Controls.Add(this.cbDestinoDv);
+            this.groupBox2.Controls.Add(this.lbIdTarimaDv);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
@@ -479,16 +449,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Devoluciones";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 199);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 17);
-            this.label2.TabIndex = 70;
-            this.label2.Text = "traspaso";
-            this.label2.Visible = false;
-            // 
             // cbDestinoDv
             // 
             this.cbDestinoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -498,14 +458,14 @@
             this.cbDestinoDv.Size = new System.Drawing.Size(121, 24);
             this.cbDestinoDv.TabIndex = 69;
             // 
-            // lbIdTraspasoDv
+            // lbIdTarimaDv
             // 
-            this.lbIdTraspasoDv.AutoSize = true;
-            this.lbIdTraspasoDv.Location = new System.Drawing.Point(6, 54);
-            this.lbIdTraspasoDv.Name = "lbIdTraspasoDv";
-            this.lbIdTraspasoDv.Size = new System.Drawing.Size(78, 17);
-            this.lbIdTraspasoDv.TabIndex = 62;
-            this.lbIdTraspasoDv.Text = "ID Tarima";
+            this.lbIdTarimaDv.AutoSize = true;
+            this.lbIdTarimaDv.Location = new System.Drawing.Point(6, 54);
+            this.lbIdTarimaDv.Name = "lbIdTarimaDv";
+            this.lbIdTarimaDv.Size = new System.Drawing.Size(78, 17);
+            this.lbIdTarimaDv.TabIndex = 62;
+            this.lbIdTarimaDv.Text = "ID Tarima";
             // 
             // dateTimePicker1
             // 
@@ -609,6 +569,46 @@
             this.txtCantidadDv.Size = new System.Drawing.Size(162, 23);
             this.txtCantidadDv.TabIndex = 59;
             // 
+            // btnRegistrarDevolucion
+            // 
+            this.btnRegistrarDevolucion.Location = new System.Drawing.Point(663, 51);
+            this.btnRegistrarDevolucion.Name = "btnRegistrarDevolucion";
+            this.btnRegistrarDevolucion.Size = new System.Drawing.Size(126, 43);
+            this.btnRegistrarDevolucion.TabIndex = 1;
+            this.btnRegistrarDevolucion.Text = "Aceptar";
+            this.btnRegistrarDevolucion.UseVisualStyleBackColor = true;
+            this.btnRegistrarDevolucion.Click += new System.EventHandler(this.btnRegistrarDevolucion_Click);
+            // 
+            // dgvTraspasos
+            // 
+            this.dgvTraspasos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTraspasos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTraspasos.Location = new System.Drawing.Point(6, 255);
+            this.dgvTraspasos.Name = "dgvTraspasos";
+            this.dgvTraspasos.Size = new System.Drawing.Size(800, 192);
+            this.dgvTraspasos.TabIndex = 0;
+            this.dgvTraspasos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraspasos_CellClick);
+            // 
+            // tabDetenidos
+            // 
+            this.tabDetenidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabDetenidos.Location = new System.Drawing.Point(4, 25);
+            this.tabDetenidos.Name = "tabDetenidos";
+            this.tabDetenidos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDetenidos.Size = new System.Drawing.Size(812, 465);
+            this.tabDetenidos.TabIndex = 3;
+            this.tabDetenidos.Text = "Detenidos";
+            this.tabDetenidos.UseVisualStyleBackColor = true;
+            // 
+            // lbIdTraspasoDv
+            // 
+            this.lbIdTraspasoDv.AutoSize = true;
+            this.lbIdTraspasoDv.Location = new System.Drawing.Point(9, 19);
+            this.lbIdTraspasoDv.Name = "lbIdTraspasoDv";
+            this.lbIdTraspasoDv.Size = new System.Drawing.Size(96, 17);
+            this.lbIdTraspasoDv.TabIndex = 71;
+            this.lbIdTraspasoDv.Text = "ID Traspaso";
+            // 
             // frmGestionInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,10 +634,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).EndInit();
             this.tabDevoluciones.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,9 +677,8 @@
         private System.Windows.Forms.Button btnRegistrarDevolucion;
         private System.Windows.Forms.DataGridView dgvTraspasos;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbDestinoDv;
-        private System.Windows.Forms.Label lbIdTraspasoDv;
+        private System.Windows.Forms.Label lbIdTarimaDv;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -691,5 +690,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtLoteDv;
         private System.Windows.Forms.TextBox txtCantidadDv;
+        private System.Windows.Forms.Label lbIdTraspasoDv;
     }
 }

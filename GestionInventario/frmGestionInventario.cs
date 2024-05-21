@@ -35,6 +35,7 @@ namespace GestionInventario
             // Agrega los departamentos al ComboBox
             cbDestinoGi.Items.AddRange(destino); 
             cbDestinoDv.Items.AddRange(destino);
+            btnCancelarGi.Enabled = false; 
         }
         private void MostrarInformacionUsuario()
         {
@@ -84,6 +85,7 @@ namespace GestionInventario
 
         private void CargarDatosInventario()
         {
+            // llena datagrid de pestaña traspasos
             DataTable dt = BusquedaBD.ObtenerInventario();
             dgvInventario.DataSource = dt;
 
@@ -108,7 +110,7 @@ namespace GestionInventario
             String idTarima = lbIdTarima.Text;
             string producto = txtProductoGi.Text;
             string lote = txtLoteGi.Text;
-            int cantidad = int.Parse(txtCantidadGi.Text);
+            float cantidad = float.Parse(txtCantidadGi.Text);
             string tipoOperacion = "Traspaso";
             DateTime fechaOperacion = dtpFechaGi.Value;
             string destino = cbDestinoGi.SelectedItem.ToString();
@@ -118,7 +120,7 @@ namespace GestionInventario
             RegistrarTraspaso(idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento);
         }
 
-        private void RegistrarTraspaso(string idTarima, string producto, string lote, int cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
+        private void RegistrarTraspaso(string idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
         {
             using (MySqlConnection con = conexion.ObtenerConexion())
             //using (MySqlConnection conexion = new MySqlConnection("your_connection_string"))
@@ -154,7 +156,7 @@ namespace GestionInventario
                         insertCmd.Parameters.AddWithValue("@departamento", departamento);
                         insertCmd.ExecuteNonQuery();
                     }
-
+                    // se inserta la cantidad al inventario de lyfc
                     string insertLyfcQuery = @"
                         INSERT INTO inventario_lyfc 
                         (idTarima, producto, lote, cantidad, fechaOperacion, usuario, departamento) 
@@ -188,12 +190,9 @@ namespace GestionInventario
                 dtpFechaGi.Value = DateTime.Now;
 
                 CargarDatosInventarioTotal();
+                CargarDatosTraspasos();
             }
         }
-
-
-
-
 
         private void btnCancelarGi_Click(object sender, EventArgs e)
         {
@@ -226,7 +225,8 @@ namespace GestionInventario
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvTraspasos.Rows[e.RowIndex];
-                lbIdTraspasoDv.Text = row.Cells["idSalidas"].Value.ToString();
+                lbIdTraspasoDv.Text = row.Cells["idTraspaso"].Value.ToString();
+                lbIdTarimaDv.Text = row.Cells["idTarima"].Value.ToString();
                 txtProductoDv.Text = row.Cells["producto"].Value.ToString();
                 txtLoteDv.Text = row.Cells["lote"].Value.ToString();
                 txtCantidadDv.Text = row.Cells["cantidad"].Value.ToString();
@@ -236,11 +236,20 @@ namespace GestionInventario
 
         private void btnRegistrarDevolucion_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtProductoDv.Text) ||
+                string.IsNullOrEmpty(txtLoteDv.Text) ||
+                string.IsNullOrEmpty(txtCantidadDv.Text) ||
+                cbDestinoDv.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int idTraspaso = int.Parse(lbIdTraspasoDv.Text);
-            int idTarima = int.Parse(dgvTraspasos.SelectedRows[0].Cells["idTarima"].Value.ToString());
+            String idTarima = lbIdTarimaDv.Text;
             string producto = txtProductoDv.Text;
             string lote = txtLoteDv.Text;
-            int cantidad = int.Parse(txtCantidadDv.Text);
+            float cantidad = float.Parse(txtCantidadDv.Text);
             string tipoOperacion = "Devolución";
             DateTime fechaOperacion = DateTime.Now;
             string destino = cbDestinoDv.SelectedItem.ToString();
@@ -251,17 +260,17 @@ namespace GestionInventario
             RegistrarDevolucion(idTraspaso, idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento);
         }
 
-        private void RegistrarDevolucion(int idTraspaso, int idTarima, string producto, string lote, int cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
+        private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
         {
-            using (MySqlConnection conexion = new MySqlConnection("your_connection_string"))
+            using (MySqlConnection con = conexion.ObtenerConexion()) //using (MySqlConnection conexion = new MySqlConnection("connection_string"))
             {
                 try
                 {
-                    conexion.Open();
+                    con.Open();
 
                     // Actualizar cantidad disponible en recepcion_carne
                     string updateQuery = "UPDATE recepcion_carne SET cantidad_disponible = cantidad_disponible + @cantidad WHERE id = @idTarima";
-                    using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, conexion))
+                    using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, con))
                     {
                         updateCmd.Parameters.AddWithValue("@cantidad", cantidad);
                         updateCmd.Parameters.AddWithValue("@idTarima", idTarima);
@@ -270,10 +279,10 @@ namespace GestionInventario
 
                     // Insertar la devolución en salidas_devoluciones
                     string insertQuery = @"
-                INSERT INTO salidas_devoluciones 
-                (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento) 
-                VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento)";
-                    using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, conexion))
+                        INSERT INTO salidas_devoluciones 
+                        (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento) 
+                        VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento)";
+                    using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, con))
                     {
                         insertCmd.Parameters.AddWithValue("@idTarima", idTarima);
                         insertCmd.Parameters.AddWithValue("@producto", producto);
@@ -287,9 +296,17 @@ namespace GestionInventario
                         insertCmd.ExecuteNonQuery();
                     }
 
-                    // Eliminar el traspaso original si es necesario
-                    string deleteQuery = "DELETE FROM salidas_devoluciones WHERE id = @idTraspaso";
-                    using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conexion))
+                    // Eliminar la entrada de inventario_lyfc
+                    string deleteLyfcQuery = "DELETE FROM inventario_lyfc WHERE idTarima = @idTarima";
+                    using (MySqlCommand deleteLyfcCmd = new MySqlCommand(deleteLyfcQuery, con))
+                    {
+                        deleteLyfcCmd.Parameters.AddWithValue("@idTarima", idTarima);
+                        deleteLyfcCmd.ExecuteNonQuery();
+                    }
+
+                    // Eliminar el traspaso original de salidas_devoluciones
+                    string deleteQuery = "DELETE FROM salidas_devoluciones WHERE idTraspaso = @idTraspaso";
+                    using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, con))
                     {
                         deleteCmd.Parameters.AddWithValue("@idTraspaso", idTraspaso);
                         deleteCmd.ExecuteNonQuery();
@@ -298,6 +315,7 @@ namespace GestionInventario
                     MessageBox.Show("Devolución registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarDatosTraspasos(); // Recargar datos de traspasos después de la devolución
                     CargarDatosInventario(); // Recargar datos del inventario después de la devolución
+                    CargarDatosInventarioTotal(); // Recargar datos del inventario despues de la devolución
                 }
                 catch (Exception ex)
                 {

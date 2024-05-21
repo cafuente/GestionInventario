@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace GestionInventario
 {
+    /*
     public class BusquedaBD
     {
         public static DataTable ObtenerInventario()
@@ -45,6 +46,7 @@ namespace GestionInventario
                 string consulta = @"
                     SELECT producto, lote, SUM(cantidad_disponible) AS cantidad_total
                     FROM recepcion_carne
+                    WHERE cantidad_disponible > 0
                     GROUP BY producto, lote";
                 MySqlCommand comando = new MySqlCommand(consulta, conexion);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
@@ -69,7 +71,7 @@ namespace GestionInventario
             try
             {
                 conexion.Open();
-                string consulta = "SELECT idSalidas, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso'";
+                string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso'";
                 MySqlCommand comando = new MySqlCommand(consulta, conexion);
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 adaptador.Fill(dt);
@@ -85,6 +87,51 @@ namespace GestionInventario
             return dt;
         }
 
+    }*/
+    public class BusquedaBD
+    {
+        private static DataTable EjecutarConsulta(string consulta)
+        {
+            DataTable dt = new DataTable();
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                    adaptador.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                }
+            }
+            return dt;
+        }
+
+        public static DataTable ObtenerInventario()
+        {
+            string consulta = "SELECT id, producto, lote, cantidad_disponible FROM recepcion_carne WHERE cantidad_disponible > 0";
+            return EjecutarConsulta(consulta);
+        }
+
+        public static DataTable ObtenerInventarioAgrupado()
+        {
+            string consulta = @"
+                SELECT producto, lote, SUM(cantidad_disponible) AS cantidad_total
+                FROM recepcion_carne
+                WHERE cantidad_disponible > 0
+                GROUP BY producto, lote";
+            return EjecutarConsulta(consulta);
+        }
+
+        public static DataTable ObtenerTraspasos()
+        {
+            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso'";
+            return EjecutarConsulta(consulta);
+        }
     }
 
 }
