@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoGi = new System.Windows.Forms.Label();
             this.lbPerfilGi = new System.Windows.Forms.Label();
@@ -60,15 +60,17 @@
             this.txtCantidadGi = new System.Windows.Forms.TextBox();
             this.dgvInventario = new System.Windows.Forms.DataGridView();
             this.tabDevoluciones = new System.Windows.Forms.TabPage();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbIdTraspasoDv = new System.Windows.Forms.Label();
             this.cbDestinoDv = new System.Windows.Forms.ComboBox();
             this.lbIdTarimaDv = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaDevolucion = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBusquedaDevoGi = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtProductoDv = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -77,7 +79,6 @@
             this.btnRegistrarDevolucion = new System.Windows.Forms.Button();
             this.dgvTraspasos = new System.Windows.Forms.DataGridView();
             this.tabDetenidos = new System.Windows.Forms.TabPage();
-            this.lbIdTraspasoDv = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -179,33 +180,33 @@
             // dgvInventarioTotal
             // 
             this.dgvInventarioTotal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInventarioTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventarioTotal.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventarioTotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvInventarioTotal.Location = new System.Drawing.Point(20, 44);
             this.dgvInventarioTotal.Name = "dgvInventarioTotal";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotal.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotal.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvInventarioTotal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventarioTotal.Size = new System.Drawing.Size(773, 404);
             this.dgvInventarioTotal.TabIndex = 75;
@@ -357,6 +358,8 @@
             this.txtCodigoBarrasGi.Name = "txtCodigoBarrasGi";
             this.txtCodigoBarrasGi.Size = new System.Drawing.Size(125, 23);
             this.txtCodigoBarrasGi.TabIndex = 44;
+            this.txtCodigoBarrasGi.Click += new System.EventHandler(this.txtCodigoBarrasGi_Click);
+            this.txtCodigoBarrasGi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarrasGi_KeyPress);
             // 
             // label11
             // 
@@ -413,6 +416,7 @@
             // 
             // tabDevoluciones
             // 
+            this.tabDevoluciones.Controls.Add(this.btnCancelar);
             this.tabDevoluciones.Controls.Add(this.groupBox2);
             this.tabDevoluciones.Controls.Add(this.btnRegistrarDevolucion);
             this.tabDevoluciones.Controls.Add(this.dgvTraspasos);
@@ -425,17 +429,27 @@
             this.tabDevoluciones.Text = "Devoluciones";
             this.tabDevoluciones.UseVisualStyleBackColor = true;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(663, 150);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(126, 43);
+            this.btnCancelar.TabIndex = 77;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lbIdTraspasoDv);
             this.groupBox2.Controls.Add(this.cbDestinoDv);
             this.groupBox2.Controls.Add(this.lbIdTarimaDv);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dtpFechaDevolucion);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.pictureBox3);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtBusquedaDevoGi);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtProductoDv);
             this.groupBox2.Controls.Add(this.label9);
@@ -448,6 +462,15 @@
             this.groupBox2.TabIndex = 76;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Devoluciones";
+            // 
+            // lbIdTraspasoDv
+            // 
+            this.lbIdTraspasoDv.AutoSize = true;
+            this.lbIdTraspasoDv.Location = new System.Drawing.Point(5, 20);
+            this.lbIdTraspasoDv.Name = "lbIdTraspasoDv";
+            this.lbIdTraspasoDv.Size = new System.Drawing.Size(96, 17);
+            this.lbIdTraspasoDv.TabIndex = 71;
+            this.lbIdTraspasoDv.Text = "ID Traspaso";
             // 
             // cbDestinoDv
             // 
@@ -467,15 +490,15 @@
             this.lbIdTarimaDv.TabIndex = 62;
             this.lbIdTarimaDv.Text = "ID Tarima";
             // 
-            // dateTimePicker1
+            // dtpFechaDevolucion
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(415, 54);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 23);
-            this.dateTimePicker1.TabIndex = 68;
-            this.dateTimePicker1.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
+            this.dtpFechaDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaDevolucion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaDevolucion.Location = new System.Drawing.Point(415, 54);
+            this.dtpFechaDevolucion.Name = "dtpFechaDevolucion";
+            this.dtpFechaDevolucion.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaDevolucion.TabIndex = 68;
+            this.dtpFechaDevolucion.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
             // label4
             // 
@@ -518,13 +541,15 @@
             this.label7.TabIndex = 65;
             this.label7.Text = "Cantidad:";
             // 
-            // textBox1
+            // txtBusquedaDevoGi
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(157, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 23);
-            this.textBox1.TabIndex = 44;
+            this.txtBusquedaDevoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusquedaDevoGi.Location = new System.Drawing.Point(157, 54);
+            this.txtBusquedaDevoGi.Name = "txtBusquedaDevoGi";
+            this.txtBusquedaDevoGi.Size = new System.Drawing.Size(125, 23);
+            this.txtBusquedaDevoGi.TabIndex = 44;
+            this.txtBusquedaDevoGi.Click += new System.EventHandler(this.txtBusquedaDevoGi_Click);
+            this.txtBusquedaDevoGi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusquedaDevoGi_KeyPress);
             // 
             // label8
             // 
@@ -600,15 +625,6 @@
             this.tabDetenidos.Text = "Detenidos";
             this.tabDetenidos.UseVisualStyleBackColor = true;
             // 
-            // lbIdTraspasoDv
-            // 
-            this.lbIdTraspasoDv.AutoSize = true;
-            this.lbIdTraspasoDv.Location = new System.Drawing.Point(9, 19);
-            this.lbIdTraspasoDv.Name = "lbIdTraspasoDv";
-            this.lbIdTraspasoDv.Size = new System.Drawing.Size(96, 17);
-            this.lbIdTraspasoDv.TabIndex = 71;
-            this.lbIdTraspasoDv.Text = "ID Traspaso";
-            // 
             // frmGestionInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,17 +695,18 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbDestinoDv;
         private System.Windows.Forms.Label lbIdTarimaDv;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaDevolucion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBusquedaDevoGi;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtProductoDv;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtLoteDv;
         private System.Windows.Forms.TextBox txtCantidadDv;
         private System.Windows.Forms.Label lbIdTraspasoDv;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

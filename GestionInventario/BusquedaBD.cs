@@ -129,7 +129,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerTraspasos()
         {
-            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso'";
+            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso'AND estado = 'activo'";
             return EjecutarConsulta(consulta);
         }
     }

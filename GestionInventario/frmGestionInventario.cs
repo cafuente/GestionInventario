@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -31,11 +32,19 @@ namespace GestionInventario
             MostrarInformacionUsuario();
             //dtpFechaGi.Value = DateTime.Now;
             // Define los departamentos para realizar los traspasos
-            string[] destino = { "LyFC(traslado)" };
+            string[] destino = { "LyFC(traslado)", "Almacen"};
             // Agrega los departamentos al ComboBox
             cbDestinoGi.Items.AddRange(destino); 
             cbDestinoDv.Items.AddRange(destino);
-            btnCancelarGi.Enabled = false; 
+            btnCancelarGi.Enabled = false;
+            txtBusquedaDevoGi.ForeColor = Color.LightGray;
+            txtBusquedaDevoGi.Text = "DXXXXXX";
+            txtBusquedaDevoGi.GotFocus += new EventHandler(txtBusquedaDevoGi_GotFocus);
+            txtBusquedaDevoGi.LostFocus += new EventHandler(txtBusquedaDevoGi_LostFocus);
+            txtCodigoBarrasGi.ForeColor = Color.LightGray;
+            txtCodigoBarrasGi.Text = "DXXXXXX";
+            txtCodigoBarrasGi.GotFocus += new EventHandler(txtCodigoBarrasGi_GotFocus);
+            txtCodigoBarrasGi.LostFocus += new EventHandler(txtCodigoBarrasGi_LostFocus);
         }
         private void MostrarInformacionUsuario()
         {
@@ -183,9 +192,9 @@ namespace GestionInventario
                 }
 
                 lbIdTarima.Text = "";
-                txtProductoGi = null;
-                txtLoteGi = null;
-                txtCantidadGi = null;
+                txtProductoGi.Text = null;
+                txtLoteGi.Text = null;
+                txtCantidadGi.Text = null;
                 cbDestinoGi.SelectedIndex = -1;
                 dtpFechaGi.Value = DateTime.Now;
 
@@ -196,7 +205,14 @@ namespace GestionInventario
 
         private void btnCancelarGi_Click(object sender, EventArgs e)
         {
-            
+            lbIdTarima.Text = "ID Tarima";
+            txtProductoGi.Text = null;
+            txtLoteGi.Text = null;
+            txtCantidadGi.Text = null;
+            cbDestinoGi.SelectedIndex = -1;
+            dtpFechaGi.Value = DateTime.Now;
+            btnCancelarGi.Enabled = false;
+
         }
 
         private void dgvInventario_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -216,10 +232,11 @@ namespace GestionInventario
                 txtProductoGi.Text = producto;
                 txtLoteGi.Text = lote;
                 txtCantidadGi.Text = cantidad_disponible.ToString();
-
+                btnCancelarGi.Enabled = true;
             }
         }
 
+        //DATAGRID DE PESTAÑA DEVOLUCIONES
         private void dgvTraspasos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -230,21 +247,14 @@ namespace GestionInventario
                 txtProductoDv.Text = row.Cells["producto"].Value.ToString();
                 txtLoteDv.Text = row.Cells["lote"].Value.ToString();
                 txtCantidadDv.Text = row.Cells["cantidad"].Value.ToString();
-                cbDestinoDv.SelectedItem = row.Cells["destino"].Value.ToString();
+                cbDestinoDv.Text = "Almacen";
             }
         }
 
         private void btnRegistrarDevolucion_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtProductoDv.Text) ||
-                string.IsNullOrEmpty(txtLoteDv.Text) ||
-                string.IsNullOrEmpty(txtCantidadDv.Text) ||
-                cbDestinoDv.SelectedItem == null)
-            {
-                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+            /*
+                        
             int idTraspaso = int.Parse(lbIdTraspasoDv.Text);
             String idTarima = lbIdTarimaDv.Text;
             string producto = txtProductoDv.Text;
@@ -258,8 +268,302 @@ namespace GestionInventario
             string departamento = lbDepartamentoGi.Text;
 
             RegistrarDevolucion(idTraspaso, idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento);
+            */
+            if (string.IsNullOrEmpty(txtProductoDv.Text) ||
+                string.IsNullOrEmpty(txtLoteDv.Text) ||
+                string.IsNullOrEmpty(txtCantidadDv.Text) ||
+                cbDestinoDv.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int idTraspaso = Convert.ToInt32(lbIdTraspasoDv.Text);
+            String idTarima = lbIdTarimaDv.Text;
+            string producto = txtProductoDv.Text;
+            string lote = txtLoteDv.Text;
+            float cantidad = Convert.ToInt32(txtCantidadDv.Text);
+            string destino = "Almacen";
+            string tipoOperacion = "Devolucion";
+            DateTime fechaOperacion = DateTime.Now;
+            //string fechaOperacion = dtpFechaDevolucion.Value.ToString("dd-MM-yyyy");
+            string usuario = lbNombreGi.Text;
+            string departamento = lbDepartamentoGi.Text;
+
+            // Inserta la devolución en la tabla
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    string consultaInsertar = "INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento, estado) VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento, 'activo')";
+                    MySqlCommand comandoInsertar = new MySqlCommand(consultaInsertar, conexion);
+                    comandoInsertar.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoInsertar.Parameters.AddWithValue("@producto", producto);
+                    comandoInsertar.Parameters.AddWithValue("@lote", lote);
+                    comandoInsertar.Parameters.AddWithValue("@cantidad", cantidad);
+                    comandoInsertar.Parameters.AddWithValue("@tipoOperacion", tipoOperacion);
+                    comandoInsertar.Parameters.AddWithValue("@fechaOperacion", fechaOperacion);
+                    comandoInsertar.Parameters.AddWithValue("@destino", destino);
+                    comandoInsertar.Parameters.AddWithValue("@usuario", usuario);
+                    comandoInsertar.Parameters.AddWithValue("@departamento", departamento);
+                    comandoInsertar.ExecuteNonQuery();
+
+                    // Marca el traspaso original como anulado
+                    string consultaAnular = "UPDATE salidas_devoluciones SET estado = 'anulado' WHERE idTraspaso = @idTraspaso";
+                    MySqlCommand comandoAnular = new MySqlCommand(consultaAnular, conexion);
+                    comandoAnular.Parameters.AddWithValue("@idTraspaso", idTraspaso);
+                    comandoAnular.ExecuteNonQuery();
+
+                    // Actualiza la cantidad disponible en la tabla recepcion_carne
+                    string consultaActualizarInventario = "UPDATE recepcion_carne SET cantidad_disponible = cantidad_disponible + @cantidad WHERE id = @idTarima";
+                    MySqlCommand comandoActualizarInventario = new MySqlCommand(consultaActualizarInventario, conexion);
+                    comandoActualizarInventario.Parameters.AddWithValue("@cantidad", cantidad);
+                    comandoActualizarInventario.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoActualizarInventario.ExecuteNonQuery();
+
+                    // Elimina la entrada de inventario_lyfc
+                    string consultaEliminarLyfc = "DELETE FROM inventario_lyfc WHERE idTarima = @idTarima";
+                    MySqlCommand comandoEliminarLyfc = new MySqlCommand(consultaEliminarLyfc, conexion);
+                    comandoEliminarLyfc.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoEliminarLyfc.ExecuteNonQuery();
+
+                    MessageBox.Show("Devolución registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar la devolución: " + ex.Message);
+                }
+            }
+            // LIMPIAR CAMPOS
+            lbIdTraspasoDv.Text=null;
+            lbIdTarimaDv.Text="";
+            txtProductoDv.Text=null;
+            txtLoteDv.Text=null;
+            txtCantidadDv.Text=null;
+            cbDestinoDv.SelectedIndex = -1;
+            dtpFechaDevolucion.Value = DateTime.Now;
+            CargarDatosTraspasos(); // Recargar datos de traspasos después de la devolución
+            CargarDatosInventario(); // Recargar datos del inventario después de la devolución
+            CargarDatosInventarioTotal(); // Recargar datos del inventario despues de la devolución
         }
 
+        //limpiar campos devoluciones
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            lbIdTraspasoDv.Text = "ID Traspaso";
+            lbIdTarimaDv.Text = "ID Tarima";
+            txtProductoDv.Text = null;
+            txtLoteDv.Text = null;
+            txtCantidadDv.Text = null;
+            cbDestinoDv.SelectedIndex = -1;
+            dtpFechaDevolucion.Value = DateTime.Now;
+        }
+
+        private void txtBusquedaDevoGi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Regex regex = new Regex(@"^D\d{6}$");
+                // Realizar la búsqueda y mostrar la información en los campos del formulario
+                txtBusquedaDevoGi.Text = txtBusquedaDevoGi.Text.ToUpper();
+                Match match = regex.Match(txtBusquedaDevoGi.Text);
+                if (!match.Success)
+                {
+                    // Mostrar mensaje de error
+                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtBusquedaDevoGi = null;
+                }
+                else
+                {
+                    BuscarYMostrarInformacionDev();
+                    txtBusquedaDevoGi.Clear();
+                }
+
+            }
+        }
+
+        private void BuscarYMostrarInformacionDev()
+        {
+            // Obtener el código de barras ingresado por el usuario
+            string codigoBarras = txtBusquedaDevoGi.Text.Trim();
+
+            // Realizar la búsqueda en el DataGridView y obtener el índice de la fila correspondiente
+            int indiceFila = BuscarFilaPorCodigoBarrasDev(codigoBarras);
+
+            // Mostrar la información en los campos del formulario
+            MostrarInformacionEnCampos(indiceFila);
+        }
+
+        private int BuscarFilaPorCodigoBarrasDev(string codigoBarras)
+        {
+            // Iterar sobre todas las filas del DataGridView
+            for (int i = 0; i < dgvTraspasos.Rows.Count; i++)
+            {
+                // Obtener el valor de la celda correspondiente a la columna de código de barras
+                string valorCelda = dgvTraspasos.Rows[i].Cells["idTarima"].Value.ToString();
+
+                // Comparar el valor de la celda con el código de barras buscado
+                if (valorCelda == codigoBarras)
+                {
+                    // Si se encuentra el código de barras, devolver el índice de la fila
+                    return i;
+                }
+            }
+
+            // Si no se encuentra el código de barras, devolver -1 para indicar que no se encontró
+            return -1;
+        }
+
+        private void MostrarInformacionEnCampos(int indiceFila)
+        {
+            if (indiceFila >= 0)
+            {
+                // Obtener la fila correspondiente al índice
+                DataGridViewRow fila = dgvTraspasos.Rows[indiceFila];
+
+                // Mostrar la información en los campos del formulario
+                lbIdTraspasoDv.Text = fila.Cells["idTraspaso"].Value.ToString();
+                lbIdTarimaDv.Text = fila.Cells["idTarima"].Value.ToString();
+                dtpFechaDevolucion.Text = fila.Cells["fechaOperacion"].Value.ToString();
+                txtProductoDv.Text = fila.Cells["producto"].Value.ToString();
+                txtLoteDv.Text = fila.Cells["lote"].Value.ToString();
+                txtCantidadDv.Text = fila.Cells["cantidad"].Value.ToString();
+                cbDestinoDv.Text = "Almacen";                
+            }
+            else
+            {
+                // Mensaje en caso de no encontrar ninguna fila con el código de barras
+                MessageBox.Show("No se encontró ningún artículo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+
+        private void txtBusquedaDevoGi_Click(object sender, EventArgs e)
+        {
+            txtBusquedaDevoGi.Text = "";
+            txtBusquedaDevoGi.ForeColor = Color.Black;
+        }
+
+        private void txtBusquedaDevoGi_GotFocus(object sender, EventArgs e)
+        {
+            if (txtBusquedaDevoGi.Text.Trim().Length == 0)
+            {
+                txtBusquedaDevoGi.Text = "";
+                //txtBusquedaDevoGi.ForeColor = Color.Black;
+            }
+        }
+        private void txtBusquedaDevoGi_LostFocus(object sender, EventArgs e)
+        {
+            if (txtBusquedaDevoGi.Text.Trim().Length == 0)
+            {
+                txtBusquedaDevoGi.Text = "DXXXXXX";
+                txtBusquedaDevoGi.ForeColor = Color.LightGray;
+                
+            }
+        }
+
+        // busqueda en pestaña traspasos
+        private void txtCodigoBarrasGi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Regex regex = new Regex(@"^D\d{6}$");
+                // Realizar la búsqueda y mostrar la información en los campos del formulario
+                txtCodigoBarrasGi.Text = txtCodigoBarrasGi.Text.ToUpper();
+                Match match = regex.Match(txtCodigoBarrasGi.Text);
+                if (!match.Success)
+                {
+                    // Mostrar mensaje de error
+                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtCodigoBarrasGi.Text = "";
+                }
+                else
+                {
+                    BuscarYMostrarInformacionTrasp();
+                    txtCodigoBarrasGi.Clear();
+                }
+            }
+        }
+
+        private void BuscarYMostrarInformacionTrasp()
+        {
+            // Obtener el código de barras ingresado por el usuario
+            string codigoBarras = txtCodigoBarrasGi.Text.Trim();
+
+            // Realizar la búsqueda en el DataGridView y obtener el índice de la fila correspondiente
+            int indiceFila = BuscarFilaPorCodigoBarrasTrasp(codigoBarras);
+
+            // Mostrar la información en los campos del formulario
+            MostrarInformacionEnCamposTrasp(indiceFila);
+        }
+
+        private int BuscarFilaPorCodigoBarrasTrasp(string codigoBarras)
+        {
+            // Iterar sobre todas las filas del DataGridView
+            for (int i = 0; i < dgvInventario.Rows.Count; i++)
+            {
+                // Obtener el valor de la celda correspondiente a la columna de código de barras
+                string valorCelda = dgvInventario.Rows[i].Cells["id"].Value.ToString();
+
+                // Comparar el valor de la celda con el código de barras buscado
+                if (valorCelda == codigoBarras)
+                {
+                    // Si se encuentra el código de barras, devolver el índice de la fila
+                    return i;
+                }
+            }
+
+            // Si no se encuentra el código de barras, devolver -1 para indicar que no se encontró
+            return -1;
+        }
+
+        private void MostrarInformacionEnCamposTrasp(int indiceFila)
+        {
+            if (indiceFila >= 0)
+            {
+                // Obtener la fila correspondiente al índice
+                DataGridViewRow fila = dgvInventario.Rows[indiceFila];
+
+                // Mostrar la información en los campos del formulario                
+                lbIdTarima.Text = fila.Cells["id"].Value.ToString();
+                DateTime dtpFechaGi = DateTime.Now;
+                txtProductoGi.Text = fila.Cells["producto"].Value.ToString();
+                txtLoteGi.Text = fila.Cells["lote"].Value.ToString();
+                txtCantidadGi.Text = fila.Cells["cantidad_disponible"].Value.ToString();
+                //cbDestinoDv.Text = "Almacen";
+            }
+            else
+            {
+                // Mensaje en caso de no encontrar ninguna fila con el código de barras
+                MessageBox.Show("No se encontró ningún artículo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtCodigoBarrasGi_Click(object sender, EventArgs e)
+        {
+            txtCodigoBarrasGi.Text = "";
+            txtCodigoBarrasGi.ForeColor = Color.Black;
+        }
+
+        private void txtCodigoBarrasGi_GotFocus(object sender, EventArgs e)
+        {
+            if (txtCodigoBarrasGi.Text.Trim().Length == 0)
+            {
+                txtCodigoBarrasGi.Text = "";
+                //txtBusquedaDevoGi.ForeColor = Color.Black;
+            }
+        }
+        private void txtCodigoBarrasGi_LostFocus(object sender, EventArgs e)
+        {
+            if (txtCodigoBarrasGi.Text.Trim().Length == 0)
+            {
+                txtCodigoBarrasGi.Text = "DXXXXXX";
+                txtCodigoBarrasGi.ForeColor = Color.LightGray;
+            }
+        }
+
+        /*
         private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
         {
             using (MySqlConnection con = conexion.ObtenerConexion()) //using (MySqlConnection conexion = new MySqlConnection("connection_string"))
@@ -322,7 +626,7 @@ namespace GestionInventario
                     MessageBox.Show("Error al registrar la devolución: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
+        }*/
     }
 }
 
