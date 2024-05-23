@@ -85,6 +85,30 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogistica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogistica.Designer.cs">
+      <DependentUpon>frmLogistica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLyfc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLyfc.Designer.cs">
+      <DependentUpon>frmLyfc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMezclado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMezclado.Designer.cs">
+      <DependentUpon>frmMezclado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMocha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMocha.Designer.cs">
+      <DependentUpon>frmMocha.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +148,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogistica.resx">
+      <DependentUpon>frmLogistica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLyfc.resx">
+      <DependentUpon>frmLyfc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMezclado.resx">
+      <DependentUpon>frmMezclado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMocha.resx">
+      <DependentUpon>frmMocha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

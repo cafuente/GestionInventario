@@ -122,18 +122,36 @@ namespace GestionInventario
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible = false;
+            frmLyfc frmLyfc = new frmLyfc();
+            frmLyfc.Show();
+            this.Hide() ;
         }
 
         private void btnRecibo_Click(object sender, EventArgs e)
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible = false;
+            frmMocha frmMocha = new frmMocha();
+            frmMocha.Show();
+            this.Hide() ;
         }
 
         private void btnMezclado_Click(object sender, EventArgs e)
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible = false;
+            frmMezclado frmMezclado = new frmMezclado();
+            frmMezclado.Show();
+            this.Hide() ;
+        }
+
+        private void btnLogistica_Click(object sender, EventArgs e)
+        {
+            btnRecepcion.Visible=false;
+            btnGestion.Visible=false;
+            frmLogistica frmLogistica = new frmLogistica();
+            frmLogistica.Show();
+            this.Hide() ;
         }
     }
 }

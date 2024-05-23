@@ -46,3 +46,7 @@ C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\Ge
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmPrincipal.resources
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmTrazalibildad.resources
 C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.Devoluciones.resources
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmLyfc.resources
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmLogistica.resources
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmMezclado.resources
+C:\Users\cafuentes\source\repos\GestionInventario\GestionInventario\obj\Debug\GestionInventario.frmMocha.resources

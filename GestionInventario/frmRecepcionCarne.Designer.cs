@@ -55,11 +55,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.gbFactura = new System.Windows.Forms.GroupBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.txtPeso = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtTara = new System.Windows.Forms.TextBox();
             this.txtBusquedaRc = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.chbFijarDatos = new System.Windows.Forms.CheckBox();
             this.idLabel = new System.Windows.Forms.Label();
@@ -69,6 +65,10 @@
             this.IdRegistro = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtCajas = new System.Windows.Forms.TextBox();
+            this.txtPeso = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtTara = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.btnAgregarCarne = new System.Windows.Forms.Button();
             this.btnGenerarCodigoBarras = new System.Windows.Forms.Button();
             this.btnActualizarCodigoBarras = new System.Windows.Forms.Button();
@@ -323,7 +323,7 @@
             this.txtProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProducto.Location = new System.Drawing.Point(335, 231);
             this.txtProducto.Name = "txtProducto";
-            this.txtProducto.Size = new System.Drawing.Size(155, 21);
+            this.txtProducto.Size = new System.Drawing.Size(357, 21);
             this.txtProducto.TabIndex = 14;
             // 
             // label15
@@ -391,32 +391,6 @@
             this.label20.TabIndex = 43;
             this.label20.Text = "Buscar:";
             // 
-            // txtPeso
-            // 
-            this.txtPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPeso.Location = new System.Drawing.Point(337, 39);
-            this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(113, 22);
-            this.txtPeso.TabIndex = 16;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(256, 45);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 16);
-            this.label19.TabIndex = 40;
-            this.label19.Text = "Peso real:";
-            // 
-            // txtTara
-            // 
-            this.txtTara.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTara.Location = new System.Drawing.Point(92, 39);
-            this.txtTara.Name = "txtTara";
-            this.txtTara.Size = new System.Drawing.Size(113, 22);
-            this.txtTara.TabIndex = 15;
-            // 
             // txtBusquedaRc
             // 
             this.txtBusquedaRc.Location = new System.Drawing.Point(335, 43);
@@ -424,16 +398,6 @@
             this.txtBusquedaRc.Size = new System.Drawing.Size(357, 22);
             this.txtBusquedaRc.TabIndex = 42;
             this.txtBusquedaRc.TextChanged += new System.EventHandler(this.txtBusquedaRc_TextChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(19, 44);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 16);
-            this.label18.TabIndex = 39;
-            this.label18.Text = "Tara:";
             // 
             // label17
             // 
@@ -518,6 +482,42 @@
             this.txtCajas.Name = "txtCajas";
             this.txtCajas.Size = new System.Drawing.Size(113, 22);
             this.txtCajas.TabIndex = 7;
+            // 
+            // txtPeso
+            // 
+            this.txtPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPeso.Location = new System.Drawing.Point(337, 39);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(113, 22);
+            this.txtPeso.TabIndex = 16;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(256, 45);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(68, 16);
+            this.label19.TabIndex = 40;
+            this.label19.Text = "Peso real:";
+            // 
+            // txtTara
+            // 
+            this.txtTara.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTara.Location = new System.Drawing.Point(92, 39);
+            this.txtTara.Name = "txtTara";
+            this.txtTara.Size = new System.Drawing.Size(113, 22);
+            this.txtTara.TabIndex = 15;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(19, 44);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(39, 16);
+            this.label18.TabIndex = 39;
+            this.label18.Text = "Tara:";
             // 
             // btnAgregarCarne
             // 

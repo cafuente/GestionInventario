@@ -132,6 +132,12 @@ namespace GestionInventario
             string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso'AND estado = 'activo'";
             return EjecutarConsulta(consulta);
         }
+
+        public static DataTable ObtenerTarimasDetenidas()
+        {                
+            string consulta = "SELECT id, producto, lote, cantidad_disponible FROM recepcion_carne WHERE estado = 'detenido'";
+            return EjecutarConsulta(consulta);
+        }
     }
 
 }

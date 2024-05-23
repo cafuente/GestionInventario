@@ -36,6 +36,7 @@
             this.lbPerfilPr = new System.Windows.Forms.Label();
             this.lbNombrePr = new System.Windows.Forms.Label();
             this.panelVertical = new System.Windows.Forms.Panel();
+            this.btnLogistica = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtAdministrador = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
@@ -119,6 +120,7 @@
             // 
             // panelVertical
             // 
+            this.panelVertical.Controls.Add(this.btnLogistica);
             this.panelVertical.Controls.Add(this.pictureBox2);
             this.panelVertical.Controls.Add(this.lbDepartamentoMu);
             this.panelVertical.Controls.Add(this.txtAdministrador);
@@ -134,6 +136,19 @@
             this.panelVertical.Name = "panelVertical";
             this.panelVertical.Size = new System.Drawing.Size(245, 616);
             this.panelVertical.TabIndex = 2;
+            // 
+            // btnLogistica
+            // 
+            this.btnLogistica.FlatAppearance.BorderSize = 0;
+            this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogistica.Location = new System.Drawing.Point(0, 437);
+            this.btnLogistica.Name = "btnLogistica";
+            this.btnLogistica.Size = new System.Drawing.Size(245, 57);
+            this.btnLogistica.TabIndex = 16;
+            this.btnLogistica.Text = "Logistica";
+            this.btnLogistica.UseVisualStyleBackColor = true;
+            this.btnLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
             // 
             // pictureBox2
             // 
@@ -163,7 +178,7 @@
             this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 509);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 543);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(245, 45);
             this.btnCerrarSesion.TabIndex = 0;
@@ -249,6 +264,7 @@
             // btnGestion
             // 
             this.btnGestion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnGestion.BackColor = System.Drawing.Color.LightGray;
             this.btnGestion.Location = new System.Drawing.Point(386, 61);
             this.btnGestion.Name = "btnGestion";
             this.btnGestion.Size = new System.Drawing.Size(153, 50);
@@ -260,6 +276,7 @@
             // btnRecepcion
             // 
             this.btnRecepcion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRecepcion.BackColor = System.Drawing.Color.LightGray;
             this.btnRecepcion.Location = new System.Drawing.Point(152, 61);
             this.btnRecepcion.Name = "btnRecepcion";
             this.btnRecepcion.Size = new System.Drawing.Size(153, 50);
@@ -314,5 +331,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnLogistica;
     }
 }

@@ -23,6 +23,7 @@ namespace GestionInventario
             CargarDatosInventario();
             CargarDatosInventarioTotal();
             CargarDatosTraspasos();
+            CargarDatosDetenidos();
 
         }
 
@@ -86,10 +87,9 @@ namespace GestionInventario
             dgvTraspasos.DataSource = BusquedaBD.ObtenerTraspasos();
         }
 
-        private void frmGestionInventario_FormClosed(object sender, FormClosedEventArgs e)
+        private void CargarDatosDetenidos()
         {
-            frmPrincipal frmPr = new frmPrincipal();
-            frmPr.Show();
+            dgvDetenidos.DataSource = BusquedaBD.ObtenerTarimasDetenidas();
         }
 
         private void CargarDatosInventario()
@@ -97,16 +97,25 @@ namespace GestionInventario
             // llena datagrid de pestaña traspasos
             DataTable dt = BusquedaBD.ObtenerInventario();
             dgvInventario.DataSource = dt;
+            //dgvInventario.DataSource = BusquedaBD.ObtenerInventario(); //otra opcion
 
             foreach (DataGridViewColumn columna in dgvInventario.Columns)
             {
                 //columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-        }        
+        }
+
+        private void frmGestionInventario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmPrincipal frmPr = new frmPrincipal();
+            frmPr.Show();
+        }
+
+                
 
         private void btnRegistrarTraspasoGi_Click(object sender, EventArgs e)
-        {
+        {            
             if (string.IsNullOrEmpty(txtProductoGi.Text) ||
                 string.IsNullOrEmpty(txtLoteGi.Text) ||
                 string.IsNullOrEmpty(txtCantidadGi.Text) ||
@@ -115,8 +124,16 @@ namespace GestionInventario
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            // verificar estado de tarima
+            string idTarima = lbIdTarima.Text;
 
-            String idTarima = lbIdTarima.Text;
+            if (VerificarEstadoTarima(idTarima))
+            {
+                MessageBox.Show("No se puede traspasar una tarima que está detenida.");
+                return;
+            }
+
+            //String idTarima = lbIdTarima.Text;
             string producto = txtProductoGi.Text;
             string lote = txtLoteGi.Text;
             float cantidad = float.Parse(txtCantidadGi.Text);
@@ -277,8 +294,16 @@ namespace GestionInventario
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            string idTarima = lbIdTarimaDv.Text;
+            if (VerificarEstadoTarima(idTarima))
+            {
+                MessageBox.Show("No se puede devolver una tarima que está detenida.");
+                return;
+            }
+
             int idTraspaso = Convert.ToInt32(lbIdTraspasoDv.Text);
-            String idTarima = lbIdTarimaDv.Text;
+            //String idTarima = lbIdTarimaDv.Text;
             string producto = txtProductoDv.Text;
             string lote = txtLoteDv.Text;
             float cantidad = Convert.ToInt32(txtCantidadDv.Text);
@@ -561,6 +586,127 @@ namespace GestionInventario
                 txtCodigoBarrasGi.Text = "DXXXXXX";
                 txtCodigoBarrasGi.ForeColor = Color.LightGray;
             }
+        }
+
+        // detenidos
+        private void btnMarcarDetenido_Click(object sender, EventArgs e)
+        {
+            if (dgvInventario.SelectedRows.Count > 0)
+            {
+                string idTarima = dgvInventario.SelectedRows[0].Cells["id"].Value.ToString();
+                MarcarTarimaComoDetenida(idTarima);
+                MessageBox.Show("La tarima ha sido marcada como detenida.");
+                CargarDatosInventario(); // Recargar datos del inventario
+                CargarDatosTraspasos();
+                CargarDatosDetenidos();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una tarima para marcarla como detenida.");
+            }
+        }
+
+        private void MarcarTarimaComoDetenida(string idTarima)
+        {
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    string consulta = "UPDATE recepcion_carne SET estado = 'detenido' WHERE id = @idTarima";
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    comando.Parameters.AddWithValue("@idTarima", idTarima);
+                    comando.ExecuteNonQuery();
+
+                    // Registrar el movimiento en salidas_devoluciones
+                    string registrarMovimiento = @"
+                INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
+                SELECT id, producto, lote, cantidad_disponible, 'Detenido', NOW(), 'Almacen', @usuario, @departamento
+                FROM recepcion_carne WHERE id = @idTarima";
+                    MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
+                    comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreGi.Text); // Asume que tienes el nombre del usuario en lbNombreGi
+                    comandoMovimiento.Parameters.AddWithValue("@departamento", lbDepartamentoGi.Text); // Asume que tienes el departamento en lbDepartamentoGi
+                    comandoMovimiento.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al marcar tarima como detenida: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnDesmarcarDetenido_Click(object sender, EventArgs e)
+        {
+            if (dgvInventario.SelectedRows.Count > 0)
+            {
+                string idTarima = dgvInventario.SelectedRows[0].Cells["id"].Value.ToString();
+                DesmarcarTarimaComoDetenida(idTarima);
+                MessageBox.Show("La tarima ha sido desmarcada como detenida.");
+                CargarDatosInventario(); // Recargar datos del inventario
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+            }
+        }
+
+        private void DesmarcarTarimaComoDetenida(string idTarima)
+        {
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    string consulta = "UPDATE recepcion_carne SET estado = 'activo' WHERE id = @idTarima";
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    comando.Parameters.AddWithValue("@idTarima", idTarima);
+                    comando.ExecuteNonQuery();
+
+                    // Registrar el movimiento de desbloqueo en salidas_devoluciones
+                    string registrarMovimiento = @"
+                INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
+                SELECT id, producto, lote, cantidad_disponible, 'Desbloqueado', NOW(), 'Almacen', @usuario, @departamento
+                FROM recepcion_carne WHERE id = @idTarima";
+                    MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
+                    comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreGi.Text); // Asume que tienes el nombre del usuario en lbNombreGi
+                    comandoMovimiento.Parameters.AddWithValue("@departamento", lbDepartamentoGi.Text); // Asume que tienes el departamento en lbDepartamentoGi
+                    comandoMovimiento.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al desmarcar tarima como detenida: " + ex.Message);
+                }
+            }
+        }
+        // detenidos
+        private bool VerificarEstadoTarima(string idTarima)
+        {
+            bool estaDetenida = false;
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    string consulta = "SELECT estado FROM recepcion_carne WHERE id = @idTarima";
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    comando.Parameters.AddWithValue("@idTarima", idTarima);
+                    MySqlDataReader lector = comando.ExecuteReader();
+                    if (lector.Read())
+                    {
+                        estaDetenida = lector["estado"].ToString() == "detenido";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al verificar el estado de la tarima: " + ex.Message);
+                }
+            }
+            return estaDetenida;
         }
 
         /*
