@@ -38,6 +38,9 @@ namespace GestionInventario
             cbDestinoGi.Items.AddRange(destino); 
             cbDestinoDv.Items.AddRange(destino);
             btnCancelarGi.Enabled = false;
+            btnMarcarDetenido.Enabled = false;
+            dtpFechaGi.Value = DateTime.Now;
+            dtpFechaDevolucion.Value = DateTime.Now;
             txtBusquedaDevoGi.ForeColor = Color.LightGray;
             txtBusquedaDevoGi.Text = "DXXXXXX";
             txtBusquedaDevoGi.GotFocus += new EventHandler(txtBusquedaDevoGi_GotFocus);
@@ -96,14 +99,18 @@ namespace GestionInventario
         {
             // llena datagrid de pestaña traspasos
             DataTable dt = BusquedaBD.ObtenerInventario();
-            dgvInventario.DataSource = dt;
-            //dgvInventario.DataSource = BusquedaBD.ObtenerInventario(); //otra opcion
+            dgvInventario.DataSource = dt;            
 
             foreach (DataGridViewColumn columna in dgvInventario.Columns)
             {
                 //columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
+
+            //otra opcion
+            //dgvInventario.DataSource = BusquedaBD.ObtenerInventario(); 
+            //dgvInventario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         private void frmGestionInventario_FormClosed(object sender, FormClosedEventArgs e)
@@ -202,6 +209,8 @@ namespace GestionInventario
                    
                     MessageBox.Show("Traspaso registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarDatosInventario(); // Recargar datos del inventario después del traspaso
+                    btnCancelarGi.Enabled = false;
+                    btnMarcarDetenido.Enabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -229,6 +238,7 @@ namespace GestionInventario
             cbDestinoGi.SelectedIndex = -1;
             dtpFechaGi.Value = DateTime.Now;
             btnCancelarGi.Enabled = false;
+            btnMarcarDetenido.Enabled = false;
 
         }
 
@@ -250,6 +260,7 @@ namespace GestionInventario
                 txtLoteGi.Text = lote;
                 txtCantidadGi.Text = cantidad_disponible.ToString();
                 btnCancelarGi.Enabled = true;
+                btnMarcarDetenido.Enabled = true;
             }
         }
 
@@ -589,6 +600,7 @@ namespace GestionInventario
         }
 
         // detenidos
+
         private void btnMarcarDetenido_Click(object sender, EventArgs e)
         {
             if (dgvInventario.SelectedRows.Count > 0)
@@ -596,15 +608,22 @@ namespace GestionInventario
                 string idTarima = dgvInventario.SelectedRows[0].Cells["id"].Value.ToString();
                 MarcarTarimaComoDetenida(idTarima);
                 MessageBox.Show("La tarima ha sido marcada como detenida.");
+                lbIdTarima.Text = "ID Tarima";
+                dtpFechaGi.Value = DateTime.Now;
+                txtProductoGi.Text = "";
+                txtLoteGi.Text = "";
+                txtCantidadGi.Text = "";
+                cbDestinoGi.SelectedIndex = -1;
                 CargarDatosInventario(); // Recargar datos del inventario
-                CargarDatosTraspasos();
                 CargarDatosDetenidos();
+                //CargarDatosTraspasos();
+                //CargarDatosDetenidos();
             }
             else
             {
                 MessageBox.Show("Seleccione una tarima para marcarla como detenida.");
             }
-        }
+        }        
 
         private void MarcarTarimaComoDetenida(string idTarima)
         {
@@ -626,8 +645,8 @@ namespace GestionInventario
                 FROM recepcion_carne WHERE id = @idTarima";
                     MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
                     comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
-                    comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreGi.Text); // Asume que tienes el nombre del usuario en lbNombreGi
-                    comandoMovimiento.Parameters.AddWithValue("@departamento", lbDepartamentoGi.Text); // Asume que tienes el departamento en lbDepartamentoGi
+                    comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreGi.Text); // el nombre del usuario de lbNombreGi
+                    comandoMovimiento.Parameters.AddWithValue("@departamento", lbDepartamentoGi.Text); // el departamento de lbDepartamentoGi
                     comandoMovimiento.ExecuteNonQuery();
                 }
                 catch (Exception ex)
@@ -639,12 +658,17 @@ namespace GestionInventario
 
         private void btnDesmarcarDetenido_Click(object sender, EventArgs e)
         {
-            if (dgvInventario.SelectedRows.Count > 0)
+            if (dgvDetenidos.SelectedRows.Count > 0)
             {
-                string idTarima = dgvInventario.SelectedRows[0].Cells["id"].Value.ToString();
+                // Se obtiene el ID de la tarima seleccionada
+                string idTarima = dgvDetenidos.SelectedRows[0].Cells["id"].Value.ToString();
+                // Desmarca la tarima detenida
                 DesmarcarTarimaComoDetenida(idTarima);
+                //Muestra el mensaje de confirmacion
                 MessageBox.Show("La tarima ha sido desmarcada como detenida.");
-                CargarDatosInventario(); // Recargar datos del inventario
+                // Recarga los datos del inventario y de tarimas detenidas
+                CargarDatosInventario(); 
+                CargarDatosDetenidos();
             }
             else
             {
@@ -708,6 +732,10 @@ namespace GestionInventario
             }
             return estaDetenida;
         }
+
+        
+
+
 
         /*
         private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)

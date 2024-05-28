@@ -28,59 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoLyfc = new System.Windows.Forms.Label();
             this.lbPerfilLyfc = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbNombreLyfc = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlLyfc = new System.Windows.Forms.TabControl();
             this.tabInventarioTotal = new System.Windows.Forms.TabPage();
             this.dgvInventarioTotalLyfc = new System.Windows.Forms.DataGridView();
             this.tabTraspaso = new System.Windows.Forms.TabPage();
-            this.btnCancelarGi = new System.Windows.Forms.Button();
-            this.btnRegistrarTraspasoGi = new System.Windows.Forms.Button();
+            this.btnMarcarDetenidoLyfc = new System.Windows.Forms.Button();
+            this.btnCancelarLyfcTraspaso = new System.Windows.Forms.Button();
+            this.btnRegistrarTraspasoLyfc = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbMov = new System.Windows.Forms.Label();
-            this.cbDestinoGi = new System.Windows.Forms.ComboBox();
-            this.lbIdTarima = new System.Windows.Forms.Label();
-            this.dtpFechaGi = new System.Windows.Forms.DateTimePicker();
+            this.cbDestinoLyfcTraspaso = new System.Windows.Forms.ComboBox();
+            this.lbIdTarimaLyfcTraspaso = new System.Windows.Forms.Label();
+            this.dtpFechaLyfcTraspaso = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dtFechaGi = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtCodigoBarrasGi = new System.Windows.Forms.TextBox();
+            this.txtCodigoBarrasLyfcTraspaso = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtProductoGi = new System.Windows.Forms.TextBox();
+            this.txtProductoLyfcTraspaso = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtLoteGi = new System.Windows.Forms.TextBox();
-            this.txtCantidadGi = new System.Windows.Forms.TextBox();
+            this.txtLoteLyfcTraspaso = new System.Windows.Forms.TextBox();
+            this.txtCantidadLyfcTraspaso = new System.Windows.Forms.TextBox();
             this.dgvInventarioLyfc = new System.Windows.Forms.DataGridView();
             this.tabDevoluciones = new System.Windows.Forms.TabPage();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnCancelarLyfcDv = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbIdTraspasoDv = new System.Windows.Forms.Label();
-            this.cbDestinoDv = new System.Windows.Forms.ComboBox();
-            this.lbIdTarimaDv = new System.Windows.Forms.Label();
-            this.dtpFechaDevolucion = new System.Windows.Forms.DateTimePicker();
+            this.lbIdTraspasoLyfcDv = new System.Windows.Forms.Label();
+            this.cbDestinoLyfcDv = new System.Windows.Forms.ComboBox();
+            this.lbIdTarimaLyfcDv = new System.Windows.Forms.Label();
+            this.dtpFechaLyfcDv = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtBusquedaDevoGi = new System.Windows.Forms.TextBox();
+            this.txtBusquedaLyfcDv = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtProductoDv = new System.Windows.Forms.TextBox();
+            this.txtProductoLyfcDv = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtLoteDv = new System.Windows.Forms.TextBox();
-            this.txtCantidadDv = new System.Windows.Forms.TextBox();
-            this.btnRegistrarDevolucion = new System.Windows.Forms.Button();
+            this.txtLoteLyfcDv = new System.Windows.Forms.TextBox();
+            this.txtCantidadLyfcDv = new System.Windows.Forms.TextBox();
+            this.btnRegistrarLyfcDv = new System.Windows.Forms.Button();
             this.dgvTraspasosLyfc = new System.Windows.Forms.DataGridView();
+            this.tabDetenidos = new System.Windows.Forms.TabPage();
+            this.dgvDetenidosLyfc = new System.Windows.Forms.DataGridView();
+            this.btnDesmarcarDetenidoLyfc = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tabControlLyfc.SuspendLayout();
             this.tabInventarioTotal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).BeginInit();
             this.tabTraspaso.SuspendLayout();
@@ -91,6 +95,8 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosLyfc)).BeginInit();
+            this.tabDetenidos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosLyfc)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -122,6 +128,16 @@
             this.lbPerfilLyfc.TabIndex = 1;
             this.lbPerfilLyfc.Text = "perfil";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // lbNombreLyfc
             // 
             this.lbNombreLyfc.AutoSize = true;
@@ -141,27 +157,18 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Traslado de Carne";
             // 
-            // pictureBox1
+            // tabControlLyfc
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabInventarioTotal);
-            this.tabControl1.Controls.Add(this.tabTraspaso);
-            this.tabControl1.Controls.Add(this.tabDevoluciones);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(6, 120);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(820, 494);
-            this.tabControl1.TabIndex = 16;
+            this.tabControlLyfc.Controls.Add(this.tabInventarioTotal);
+            this.tabControlLyfc.Controls.Add(this.tabTraspaso);
+            this.tabControlLyfc.Controls.Add(this.tabDevoluciones);
+            this.tabControlLyfc.Controls.Add(this.tabDetenidos);
+            this.tabControlLyfc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlLyfc.Location = new System.Drawing.Point(6, 120);
+            this.tabControlLyfc.Name = "tabControlLyfc";
+            this.tabControlLyfc.SelectedIndex = 0;
+            this.tabControlLyfc.Size = new System.Drawing.Size(820, 494);
+            this.tabControlLyfc.TabIndex = 16;
             // 
             // tabInventarioTotal
             // 
@@ -178,41 +185,42 @@
             // dgvInventarioTotalLyfc
             // 
             this.dgvInventarioTotalLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalLyfc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalLyfc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInventarioTotalLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventarioTotalLyfc.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventarioTotalLyfc.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvInventarioTotalLyfc.Location = new System.Drawing.Point(20, 44);
             this.dgvInventarioTotalLyfc.Name = "dgvInventarioTotalLyfc";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalLyfc.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalLyfc.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInventarioTotalLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventarioTotalLyfc.Size = new System.Drawing.Size(773, 404);
             this.dgvInventarioTotalLyfc.TabIndex = 75;
             // 
             // tabTraspaso
             // 
-            this.tabTraspaso.Controls.Add(this.btnCancelarGi);
-            this.tabTraspaso.Controls.Add(this.btnRegistrarTraspasoGi);
+            this.tabTraspaso.Controls.Add(this.btnMarcarDetenidoLyfc);
+            this.tabTraspaso.Controls.Add(this.btnCancelarLyfcTraspaso);
+            this.tabTraspaso.Controls.Add(this.btnRegistrarTraspasoLyfc);
             this.tabTraspaso.Controls.Add(this.groupBox1);
             this.tabTraspaso.Controls.Add(this.dgvInventarioLyfc);
             this.tabTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -224,42 +232,52 @@
             this.tabTraspaso.Text = "Traspasos";
             this.tabTraspaso.UseVisualStyleBackColor = true;
             // 
-            // btnCancelarGi
+            // btnMarcarDetenidoLyfc
             // 
-            this.btnCancelarGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarGi.Location = new System.Drawing.Point(649, 135);
-            this.btnCancelarGi.Name = "btnCancelarGi";
-            this.btnCancelarGi.Size = new System.Drawing.Size(127, 35);
-            this.btnCancelarGi.TabIndex = 78;
-            this.btnCancelarGi.Text = "Cancelar";
-            this.btnCancelarGi.UseVisualStyleBackColor = true;
+            this.btnMarcarDetenidoLyfc.Location = new System.Drawing.Point(649, 212);
+            this.btnMarcarDetenidoLyfc.Name = "btnMarcarDetenidoLyfc";
+            this.btnMarcarDetenidoLyfc.Size = new System.Drawing.Size(127, 36);
+            this.btnMarcarDetenidoLyfc.TabIndex = 82;
+            this.btnMarcarDetenidoLyfc.Text = "Marcar detenido";
+            this.btnMarcarDetenidoLyfc.UseVisualStyleBackColor = true;
             // 
-            // btnRegistrarTraspasoGi
+            // btnCancelarLyfcTraspaso
             // 
-            this.btnRegistrarTraspasoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarTraspasoGi.Location = new System.Drawing.Point(649, 67);
-            this.btnRegistrarTraspasoGi.Name = "btnRegistrarTraspasoGi";
-            this.btnRegistrarTraspasoGi.Size = new System.Drawing.Size(127, 35);
-            this.btnRegistrarTraspasoGi.TabIndex = 16;
-            this.btnRegistrarTraspasoGi.Text = "Realizar traspaso";
-            this.btnRegistrarTraspasoGi.UseVisualStyleBackColor = true;
+            this.btnCancelarLyfcTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarLyfcTraspaso.Location = new System.Drawing.Point(649, 135);
+            this.btnCancelarLyfcTraspaso.Name = "btnCancelarLyfcTraspaso";
+            this.btnCancelarLyfcTraspaso.Size = new System.Drawing.Size(127, 35);
+            this.btnCancelarLyfcTraspaso.TabIndex = 78;
+            this.btnCancelarLyfcTraspaso.Text = "Cancelar";
+            this.btnCancelarLyfcTraspaso.UseVisualStyleBackColor = true;
+            this.btnCancelarLyfcTraspaso.Click += new System.EventHandler(this.btnCancelarLyfcTraspaso_Click);
+            // 
+            // btnRegistrarTraspasoLyfc
+            // 
+            this.btnRegistrarTraspasoLyfc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarTraspasoLyfc.Location = new System.Drawing.Point(649, 67);
+            this.btnRegistrarTraspasoLyfc.Name = "btnRegistrarTraspasoLyfc";
+            this.btnRegistrarTraspasoLyfc.Size = new System.Drawing.Size(127, 35);
+            this.btnRegistrarTraspasoLyfc.TabIndex = 16;
+            this.btnRegistrarTraspasoLyfc.Text = "Realizar traspaso";
+            this.btnRegistrarTraspasoLyfc.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lbMov);
-            this.groupBox1.Controls.Add(this.cbDestinoGi);
-            this.groupBox1.Controls.Add(this.lbIdTarima);
-            this.groupBox1.Controls.Add(this.dtpFechaGi);
+            this.groupBox1.Controls.Add(this.cbDestinoLyfcTraspaso);
+            this.groupBox1.Controls.Add(this.lbIdTarimaLyfcTraspaso);
+            this.groupBox1.Controls.Add(this.dtpFechaLyfcTraspaso);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dtFechaGi);
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtCodigoBarrasGi);
+            this.groupBox1.Controls.Add(this.txtCodigoBarrasLyfcTraspaso);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.txtProductoGi);
+            this.groupBox1.Controls.Add(this.txtProductoLyfcTraspaso);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtLoteGi);
-            this.groupBox1.Controls.Add(this.txtCantidadGi);
+            this.groupBox1.Controls.Add(this.txtLoteLyfcTraspaso);
+            this.groupBox1.Controls.Add(this.txtCantidadLyfcTraspaso);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(20, 32);
             this.groupBox1.Name = "groupBox1";
@@ -278,33 +296,33 @@
             this.lbMov.Text = "traspaso";
             this.lbMov.Visible = false;
             // 
-            // cbDestinoGi
+            // cbDestinoLyfcTraspaso
             // 
-            this.cbDestinoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDestinoGi.FormattingEnabled = true;
-            this.cbDestinoGi.Location = new System.Drawing.Point(415, 169);
-            this.cbDestinoGi.Name = "cbDestinoGi";
-            this.cbDestinoGi.Size = new System.Drawing.Size(121, 24);
-            this.cbDestinoGi.TabIndex = 69;
+            this.cbDestinoLyfcTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDestinoLyfcTraspaso.FormattingEnabled = true;
+            this.cbDestinoLyfcTraspaso.Location = new System.Drawing.Point(415, 169);
+            this.cbDestinoLyfcTraspaso.Name = "cbDestinoLyfcTraspaso";
+            this.cbDestinoLyfcTraspaso.Size = new System.Drawing.Size(121, 24);
+            this.cbDestinoLyfcTraspaso.TabIndex = 69;
             // 
-            // lbIdTarima
+            // lbIdTarimaLyfcTraspaso
             // 
-            this.lbIdTarima.AutoSize = true;
-            this.lbIdTarima.Location = new System.Drawing.Point(6, 54);
-            this.lbIdTarima.Name = "lbIdTarima";
-            this.lbIdTarima.Size = new System.Drawing.Size(78, 17);
-            this.lbIdTarima.TabIndex = 62;
-            this.lbIdTarima.Text = "ID Tarima";
+            this.lbIdTarimaLyfcTraspaso.AutoSize = true;
+            this.lbIdTarimaLyfcTraspaso.Location = new System.Drawing.Point(6, 54);
+            this.lbIdTarimaLyfcTraspaso.Name = "lbIdTarimaLyfcTraspaso";
+            this.lbIdTarimaLyfcTraspaso.Size = new System.Drawing.Size(78, 17);
+            this.lbIdTarimaLyfcTraspaso.TabIndex = 62;
+            this.lbIdTarimaLyfcTraspaso.Text = "ID Tarima";
             // 
-            // dtpFechaGi
+            // dtpFechaLyfcTraspaso
             // 
-            this.dtpFechaGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaGi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaGi.Location = new System.Drawing.Point(415, 54);
-            this.dtpFechaGi.Name = "dtpFechaGi";
-            this.dtpFechaGi.Size = new System.Drawing.Size(121, 23);
-            this.dtpFechaGi.TabIndex = 68;
-            this.dtpFechaGi.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
+            this.dtpFechaLyfcTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaLyfcTraspaso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaLyfcTraspaso.Location = new System.Drawing.Point(415, 54);
+            this.dtpFechaLyfcTraspaso.Name = "dtpFechaLyfcTraspaso";
+            this.dtpFechaLyfcTraspaso.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaLyfcTraspaso.TabIndex = 68;
+            this.dtpFechaLyfcTraspaso.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
             // label6
             // 
@@ -347,13 +365,14 @@
             this.label12.TabIndex = 65;
             this.label12.Text = "Cantidad:";
             // 
-            // txtCodigoBarrasGi
+            // txtCodigoBarrasLyfcTraspaso
             // 
-            this.txtCodigoBarrasGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoBarrasGi.Location = new System.Drawing.Point(157, 54);
-            this.txtCodigoBarrasGi.Name = "txtCodigoBarrasGi";
-            this.txtCodigoBarrasGi.Size = new System.Drawing.Size(125, 23);
-            this.txtCodigoBarrasGi.TabIndex = 44;
+            this.txtCodigoBarrasLyfcTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoBarrasLyfcTraspaso.Location = new System.Drawing.Point(157, 54);
+            this.txtCodigoBarrasLyfcTraspaso.Name = "txtCodigoBarrasLyfcTraspaso";
+            this.txtCodigoBarrasLyfcTraspaso.Size = new System.Drawing.Size(125, 23);
+            this.txtCodigoBarrasLyfcTraspaso.TabIndex = 44;
+            this.txtCodigoBarrasLyfcTraspaso.Click += new System.EventHandler(this.txtCodigoBarrasLyfcTraspaso_Click);
             // 
             // label11
             // 
@@ -365,12 +384,12 @@
             this.label11.TabIndex = 64;
             this.label11.Text = "Lote:";
             // 
-            // txtProductoGi
+            // txtProductoLyfcTraspaso
             // 
-            this.txtProductoGi.Location = new System.Drawing.Point(98, 109);
-            this.txtProductoGi.Name = "txtProductoGi";
-            this.txtProductoGi.Size = new System.Drawing.Size(184, 23);
-            this.txtProductoGi.TabIndex = 57;
+            this.txtProductoLyfcTraspaso.Location = new System.Drawing.Point(98, 109);
+            this.txtProductoLyfcTraspaso.Name = "txtProductoLyfcTraspaso";
+            this.txtProductoLyfcTraspaso.Size = new System.Drawing.Size(184, 23);
+            this.txtProductoLyfcTraspaso.TabIndex = 57;
             // 
             // label10
             // 
@@ -382,36 +401,38 @@
             this.label10.TabIndex = 63;
             this.label10.Text = "Producto:";
             // 
-            // txtLoteGi
+            // txtLoteLyfcTraspaso
             // 
-            this.txtLoteGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoteGi.Location = new System.Drawing.Point(415, 109);
-            this.txtLoteGi.Name = "txtLoteGi";
-            this.txtLoteGi.Size = new System.Drawing.Size(121, 23);
-            this.txtLoteGi.TabIndex = 58;
+            this.txtLoteLyfcTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoteLyfcTraspaso.Location = new System.Drawing.Point(415, 109);
+            this.txtLoteLyfcTraspaso.Name = "txtLoteLyfcTraspaso";
+            this.txtLoteLyfcTraspaso.Size = new System.Drawing.Size(121, 23);
+            this.txtLoteLyfcTraspaso.TabIndex = 58;
             // 
-            // txtCantidadGi
+            // txtCantidadLyfcTraspaso
             // 
-            this.txtCantidadGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadGi.Location = new System.Drawing.Point(120, 169);
-            this.txtCantidadGi.Name = "txtCantidadGi";
-            this.txtCantidadGi.Size = new System.Drawing.Size(162, 23);
-            this.txtCantidadGi.TabIndex = 59;
+            this.txtCantidadLyfcTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadLyfcTraspaso.Location = new System.Drawing.Point(120, 169);
+            this.txtCantidadLyfcTraspaso.Name = "txtCantidadLyfcTraspaso";
+            this.txtCantidadLyfcTraspaso.Size = new System.Drawing.Size(162, 23);
+            this.txtCantidadLyfcTraspaso.TabIndex = 59;
             // 
             // dgvInventarioLyfc
             // 
+            this.dgvInventarioLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInventarioLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInventarioLyfc.Location = new System.Drawing.Point(19, 267);
             this.dgvInventarioLyfc.Name = "dgvInventarioLyfc";
             this.dgvInventarioLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventarioLyfc.Size = new System.Drawing.Size(773, 195);
             this.dgvInventarioLyfc.TabIndex = 74;
+            this.dgvInventarioLyfc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventarioLyfc_CellClick);
             // 
             // tabDevoluciones
             // 
-            this.tabDevoluciones.Controls.Add(this.btnCancelar);
+            this.tabDevoluciones.Controls.Add(this.btnCancelarLyfcDv);
             this.tabDevoluciones.Controls.Add(this.groupBox2);
-            this.tabDevoluciones.Controls.Add(this.btnRegistrarDevolucion);
+            this.tabDevoluciones.Controls.Add(this.btnRegistrarLyfcDv);
             this.tabDevoluciones.Controls.Add(this.dgvTraspasosLyfc);
             this.tabDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabDevoluciones.Location = new System.Drawing.Point(4, 25);
@@ -422,31 +443,31 @@
             this.tabDevoluciones.Text = "Devoluciones";
             this.tabDevoluciones.UseVisualStyleBackColor = true;
             // 
-            // btnCancelar
+            // btnCancelarLyfcDv
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(663, 150);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(126, 43);
-            this.btnCancelar.TabIndex = 77;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelarLyfcDv.Location = new System.Drawing.Point(663, 150);
+            this.btnCancelarLyfcDv.Name = "btnCancelarLyfcDv";
+            this.btnCancelarLyfcDv.Size = new System.Drawing.Size(126, 43);
+            this.btnCancelarLyfcDv.TabIndex = 77;
+            this.btnCancelarLyfcDv.Text = "Cancelar";
+            this.btnCancelarLyfcDv.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lbIdTraspasoDv);
-            this.groupBox2.Controls.Add(this.cbDestinoDv);
-            this.groupBox2.Controls.Add(this.lbIdTarimaDv);
-            this.groupBox2.Controls.Add(this.dtpFechaDevolucion);
+            this.groupBox2.Controls.Add(this.lbIdTraspasoLyfcDv);
+            this.groupBox2.Controls.Add(this.cbDestinoLyfcDv);
+            this.groupBox2.Controls.Add(this.lbIdTarimaLyfcDv);
+            this.groupBox2.Controls.Add(this.dtpFechaLyfcDv);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.pictureBox3);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtBusquedaDevoGi);
+            this.groupBox2.Controls.Add(this.txtBusquedaLyfcDv);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtProductoDv);
+            this.groupBox2.Controls.Add(this.txtProductoLyfcDv);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtLoteDv);
-            this.groupBox2.Controls.Add(this.txtCantidadDv);
+            this.groupBox2.Controls.Add(this.txtLoteLyfcDv);
+            this.groupBox2.Controls.Add(this.txtCantidadLyfcDv);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(21, 15);
             this.groupBox2.Name = "groupBox2";
@@ -455,42 +476,42 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Devoluciones";
             // 
-            // lbIdTraspasoDv
+            // lbIdTraspasoLyfcDv
             // 
-            this.lbIdTraspasoDv.AutoSize = true;
-            this.lbIdTraspasoDv.Location = new System.Drawing.Point(5, 20);
-            this.lbIdTraspasoDv.Name = "lbIdTraspasoDv";
-            this.lbIdTraspasoDv.Size = new System.Drawing.Size(96, 17);
-            this.lbIdTraspasoDv.TabIndex = 71;
-            this.lbIdTraspasoDv.Text = "ID Traspaso";
+            this.lbIdTraspasoLyfcDv.AutoSize = true;
+            this.lbIdTraspasoLyfcDv.Location = new System.Drawing.Point(5, 20);
+            this.lbIdTraspasoLyfcDv.Name = "lbIdTraspasoLyfcDv";
+            this.lbIdTraspasoLyfcDv.Size = new System.Drawing.Size(96, 17);
+            this.lbIdTraspasoLyfcDv.TabIndex = 71;
+            this.lbIdTraspasoLyfcDv.Text = "ID Traspaso";
             // 
-            // cbDestinoDv
+            // cbDestinoLyfcDv
             // 
-            this.cbDestinoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDestinoDv.FormattingEnabled = true;
-            this.cbDestinoDv.Location = new System.Drawing.Point(415, 169);
-            this.cbDestinoDv.Name = "cbDestinoDv";
-            this.cbDestinoDv.Size = new System.Drawing.Size(121, 24);
-            this.cbDestinoDv.TabIndex = 69;
+            this.cbDestinoLyfcDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDestinoLyfcDv.FormattingEnabled = true;
+            this.cbDestinoLyfcDv.Location = new System.Drawing.Point(415, 169);
+            this.cbDestinoLyfcDv.Name = "cbDestinoLyfcDv";
+            this.cbDestinoLyfcDv.Size = new System.Drawing.Size(121, 24);
+            this.cbDestinoLyfcDv.TabIndex = 69;
             // 
-            // lbIdTarimaDv
+            // lbIdTarimaLyfcDv
             // 
-            this.lbIdTarimaDv.AutoSize = true;
-            this.lbIdTarimaDv.Location = new System.Drawing.Point(6, 54);
-            this.lbIdTarimaDv.Name = "lbIdTarimaDv";
-            this.lbIdTarimaDv.Size = new System.Drawing.Size(78, 17);
-            this.lbIdTarimaDv.TabIndex = 62;
-            this.lbIdTarimaDv.Text = "ID Tarima";
+            this.lbIdTarimaLyfcDv.AutoSize = true;
+            this.lbIdTarimaLyfcDv.Location = new System.Drawing.Point(6, 54);
+            this.lbIdTarimaLyfcDv.Name = "lbIdTarimaLyfcDv";
+            this.lbIdTarimaLyfcDv.Size = new System.Drawing.Size(78, 17);
+            this.lbIdTarimaLyfcDv.TabIndex = 62;
+            this.lbIdTarimaLyfcDv.Text = "ID Tarima";
             // 
-            // dtpFechaDevolucion
+            // dtpFechaLyfcDv
             // 
-            this.dtpFechaDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaDevolucion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaDevolucion.Location = new System.Drawing.Point(415, 54);
-            this.dtpFechaDevolucion.Name = "dtpFechaDevolucion";
-            this.dtpFechaDevolucion.Size = new System.Drawing.Size(121, 23);
-            this.dtpFechaDevolucion.TabIndex = 68;
-            this.dtpFechaDevolucion.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
+            this.dtpFechaLyfcDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaLyfcDv.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaLyfcDv.Location = new System.Drawing.Point(415, 54);
+            this.dtpFechaLyfcDv.Name = "dtpFechaLyfcDv";
+            this.dtpFechaLyfcDv.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaLyfcDv.TabIndex = 68;
+            this.dtpFechaLyfcDv.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
             // label4
             // 
@@ -533,13 +554,13 @@
             this.label7.TabIndex = 65;
             this.label7.Text = "Cantidad:";
             // 
-            // txtBusquedaDevoGi
+            // txtBusquedaLyfcDv
             // 
-            this.txtBusquedaDevoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusquedaDevoGi.Location = new System.Drawing.Point(157, 54);
-            this.txtBusquedaDevoGi.Name = "txtBusquedaDevoGi";
-            this.txtBusquedaDevoGi.Size = new System.Drawing.Size(125, 23);
-            this.txtBusquedaDevoGi.TabIndex = 44;
+            this.txtBusquedaLyfcDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusquedaLyfcDv.Location = new System.Drawing.Point(157, 54);
+            this.txtBusquedaLyfcDv.Name = "txtBusquedaLyfcDv";
+            this.txtBusquedaLyfcDv.Size = new System.Drawing.Size(125, 23);
+            this.txtBusquedaLyfcDv.TabIndex = 44;
             // 
             // label8
             // 
@@ -551,12 +572,12 @@
             this.label8.TabIndex = 64;
             this.label8.Text = "Lote:";
             // 
-            // txtProductoDv
+            // txtProductoLyfcDv
             // 
-            this.txtProductoDv.Location = new System.Drawing.Point(98, 109);
-            this.txtProductoDv.Name = "txtProductoDv";
-            this.txtProductoDv.Size = new System.Drawing.Size(184, 23);
-            this.txtProductoDv.TabIndex = 57;
+            this.txtProductoLyfcDv.Location = new System.Drawing.Point(98, 109);
+            this.txtProductoLyfcDv.Name = "txtProductoLyfcDv";
+            this.txtProductoLyfcDv.Size = new System.Drawing.Size(184, 23);
+            this.txtProductoLyfcDv.TabIndex = 57;
             // 
             // label9
             // 
@@ -568,30 +589,30 @@
             this.label9.TabIndex = 63;
             this.label9.Text = "Producto:";
             // 
-            // txtLoteDv
+            // txtLoteLyfcDv
             // 
-            this.txtLoteDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoteDv.Location = new System.Drawing.Point(415, 109);
-            this.txtLoteDv.Name = "txtLoteDv";
-            this.txtLoteDv.Size = new System.Drawing.Size(121, 23);
-            this.txtLoteDv.TabIndex = 58;
+            this.txtLoteLyfcDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoteLyfcDv.Location = new System.Drawing.Point(415, 109);
+            this.txtLoteLyfcDv.Name = "txtLoteLyfcDv";
+            this.txtLoteLyfcDv.Size = new System.Drawing.Size(121, 23);
+            this.txtLoteLyfcDv.TabIndex = 58;
             // 
-            // txtCantidadDv
+            // txtCantidadLyfcDv
             // 
-            this.txtCantidadDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadDv.Location = new System.Drawing.Point(120, 169);
-            this.txtCantidadDv.Name = "txtCantidadDv";
-            this.txtCantidadDv.Size = new System.Drawing.Size(162, 23);
-            this.txtCantidadDv.TabIndex = 59;
+            this.txtCantidadLyfcDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadLyfcDv.Location = new System.Drawing.Point(120, 169);
+            this.txtCantidadLyfcDv.Name = "txtCantidadLyfcDv";
+            this.txtCantidadLyfcDv.Size = new System.Drawing.Size(162, 23);
+            this.txtCantidadLyfcDv.TabIndex = 59;
             // 
-            // btnRegistrarDevolucion
+            // btnRegistrarLyfcDv
             // 
-            this.btnRegistrarDevolucion.Location = new System.Drawing.Point(663, 51);
-            this.btnRegistrarDevolucion.Name = "btnRegistrarDevolucion";
-            this.btnRegistrarDevolucion.Size = new System.Drawing.Size(126, 43);
-            this.btnRegistrarDevolucion.TabIndex = 1;
-            this.btnRegistrarDevolucion.Text = "Aceptar";
-            this.btnRegistrarDevolucion.UseVisualStyleBackColor = true;
+            this.btnRegistrarLyfcDv.Location = new System.Drawing.Point(663, 51);
+            this.btnRegistrarLyfcDv.Name = "btnRegistrarLyfcDv";
+            this.btnRegistrarLyfcDv.Size = new System.Drawing.Size(126, 43);
+            this.btnRegistrarLyfcDv.TabIndex = 1;
+            this.btnRegistrarLyfcDv.Text = "Aceptar";
+            this.btnRegistrarLyfcDv.UseVisualStyleBackColor = true;
             // 
             // dgvTraspasosLyfc
             // 
@@ -602,12 +623,42 @@
             this.dgvTraspasosLyfc.Size = new System.Drawing.Size(800, 192);
             this.dgvTraspasosLyfc.TabIndex = 0;
             // 
+            // tabDetenidos
+            // 
+            this.tabDetenidos.Controls.Add(this.dgvDetenidosLyfc);
+            this.tabDetenidos.Controls.Add(this.btnDesmarcarDetenidoLyfc);
+            this.tabDetenidos.Location = new System.Drawing.Point(4, 25);
+            this.tabDetenidos.Name = "tabDetenidos";
+            this.tabDetenidos.Size = new System.Drawing.Size(812, 465);
+            this.tabDetenidos.TabIndex = 3;
+            this.tabDetenidos.Text = "Detenidos";
+            this.tabDetenidos.UseVisualStyleBackColor = true;
+            // 
+            // dgvDetenidosLyfc
+            // 
+            this.dgvDetenidosLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDetenidosLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetenidosLyfc.Location = new System.Drawing.Point(10, 33);
+            this.dgvDetenidosLyfc.Name = "dgvDetenidosLyfc";
+            this.dgvDetenidosLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetenidosLyfc.Size = new System.Drawing.Size(792, 316);
+            this.dgvDetenidosLyfc.TabIndex = 3;
+            // 
+            // btnDesmarcarDetenidoLyfc
+            // 
+            this.btnDesmarcarDetenidoLyfc.Location = new System.Drawing.Point(309, 396);
+            this.btnDesmarcarDetenidoLyfc.Name = "btnDesmarcarDetenidoLyfc";
+            this.btnDesmarcarDetenidoLyfc.Size = new System.Drawing.Size(192, 36);
+            this.btnDesmarcarDetenidoLyfc.TabIndex = 4;
+            this.btnDesmarcarDetenidoLyfc.Text = "Desmarcar detenido";
+            this.btnDesmarcarDetenidoLyfc.UseVisualStyleBackColor = true;
+            // 
             // frmLyfc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 626);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlLyfc);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Name = "frmLyfc";
@@ -618,7 +669,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlLyfc.ResumeLayout(false);
             this.tabInventarioTotal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).EndInit();
             this.tabTraspaso.ResumeLayout(false);
@@ -631,6 +682,8 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosLyfc)).EndInit();
+            this.tabDetenidos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosLyfc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -644,46 +697,50 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbNombreLyfc;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlLyfc;
         private System.Windows.Forms.TabPage tabInventarioTotal;
         private System.Windows.Forms.DataGridView dgvInventarioTotalLyfc;
         private System.Windows.Forms.TabPage tabTraspaso;
-        private System.Windows.Forms.Button btnCancelarGi;
-        private System.Windows.Forms.Button btnRegistrarTraspasoGi;
+        private System.Windows.Forms.Button btnCancelarLyfcTraspaso;
+        private System.Windows.Forms.Button btnRegistrarTraspasoLyfc;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbMov;
-        private System.Windows.Forms.ComboBox cbDestinoGi;
-        private System.Windows.Forms.Label lbIdTarima;
-        private System.Windows.Forms.DateTimePicker dtpFechaGi;
+        private System.Windows.Forms.ComboBox cbDestinoLyfcTraspaso;
+        private System.Windows.Forms.Label lbIdTarimaLyfcTraspaso;
+        private System.Windows.Forms.DateTimePicker dtpFechaLyfcTraspaso;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label dtFechaGi;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtCodigoBarrasGi;
+        private System.Windows.Forms.TextBox txtCodigoBarrasLyfcTraspaso;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtProductoGi;
+        private System.Windows.Forms.TextBox txtProductoLyfcTraspaso;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtLoteGi;
-        private System.Windows.Forms.TextBox txtCantidadGi;
+        private System.Windows.Forms.TextBox txtLoteLyfcTraspaso;
+        private System.Windows.Forms.TextBox txtCantidadLyfcTraspaso;
         private System.Windows.Forms.DataGridView dgvInventarioLyfc;
         private System.Windows.Forms.TabPage tabDevoluciones;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnCancelarLyfcDv;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lbIdTraspasoDv;
-        private System.Windows.Forms.ComboBox cbDestinoDv;
-        private System.Windows.Forms.Label lbIdTarimaDv;
-        private System.Windows.Forms.DateTimePicker dtpFechaDevolucion;
+        private System.Windows.Forms.Label lbIdTraspasoLyfcDv;
+        private System.Windows.Forms.ComboBox cbDestinoLyfcDv;
+        private System.Windows.Forms.Label lbIdTarimaLyfcDv;
+        private System.Windows.Forms.DateTimePicker dtpFechaLyfcDv;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBusquedaDevoGi;
+        private System.Windows.Forms.TextBox txtBusquedaLyfcDv;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtProductoDv;
+        private System.Windows.Forms.TextBox txtProductoLyfcDv;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtLoteDv;
-        private System.Windows.Forms.TextBox txtCantidadDv;
-        private System.Windows.Forms.Button btnRegistrarDevolucion;
+        private System.Windows.Forms.TextBox txtLoteLyfcDv;
+        private System.Windows.Forms.TextBox txtCantidadLyfcDv;
+        private System.Windows.Forms.Button btnRegistrarLyfcDv;
         private System.Windows.Forms.DataGridView dgvTraspasosLyfc;
+        private System.Windows.Forms.TabPage tabDetenidos;
+        private System.Windows.Forms.DataGridView dgvDetenidosLyfc;
+        private System.Windows.Forms.Button btnDesmarcarDetenidoLyfc;
+        private System.Windows.Forms.Button btnMarcarDetenidoLyfc;
     }
 }

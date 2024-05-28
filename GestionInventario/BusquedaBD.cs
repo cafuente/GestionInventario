@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GestionInventario
 {
@@ -113,7 +114,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerInventario()
         {
-            string consulta = "SELECT id, producto, lote, cantidad_disponible FROM recepcion_carne WHERE cantidad_disponible > 0";
+            string consulta = "SELECT id, producto, lote, cantidad_disponible, estado FROM recepcion_carne WHERE cantidad_disponible > 0";
             return EjecutarConsulta(consulta);
         }
 
@@ -138,6 +139,45 @@ namespace GestionInventario
             string consulta = "SELECT id, producto, lote, cantidad_disponible FROM recepcion_carne WHERE estado = 'detenido'";
             return EjecutarConsulta(consulta);
         }
-    }
+
+
+        // FrmLyfc
+        public static DataTable ObtenerInventarioLyfc()
+        {
+            string consulta = "SELECT idTarima, producto, lote, cantidad FROM inventario_lyfc WHERE cantidad > 0";
+            return EjecutarConsulta(consulta);
+        }
+
+        
+        public static DataTable ObtenerInventarioAgrupadoLyfc()
+        {
+            string consulta = @"
+                SELECT producto, lote, SUM(cantidad) AS cantidad
+                FROM inventario_lyfc
+                WHERE cantidad > 0
+                GROUP BY producto, lote";
+            return EjecutarConsulta(consulta);
+        }
+
+        public static DataTable ObtenerTraspasosLyfc()
+        {
+            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso' AND destino = 'LyFC'";
+            return EjecutarConsulta(consulta);
+        }
+
+        public static DataTable ObtenerDevolucionesLyfc()
+        {
+            string consulta = "SELECT idDevolucion, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Devolucion' AND destino = 'LyFC'";
+            return EjecutarConsulta(consulta);
+        }
+
+        public static DataTable ObtenerDetenidosLyfc()
+        {
+            string consulta = "SELECT id, producto, lote, cantidad_disponible FROM inventario_lyfc WHERE estado = 'Detenido'";
+            return EjecutarConsulta(consulta);
+        }
+
+
+    }// aqui arriba va todo
 
 }
