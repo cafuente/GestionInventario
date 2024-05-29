@@ -48,6 +48,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelVertical.SuspendLayout();
@@ -120,6 +121,7 @@
             // 
             // panelVertical
             // 
+            this.panelVertical.Controls.Add(this.button1);
             this.panelVertical.Controls.Add(this.btnLogistica);
             this.panelVertical.Controls.Add(this.pictureBox2);
             this.panelVertical.Controls.Add(this.lbDepartamentoMu);
@@ -142,7 +144,7 @@
             this.btnLogistica.FlatAppearance.BorderSize = 0;
             this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogistica.Location = new System.Drawing.Point(0, 437);
+            this.btnLogistica.Location = new System.Drawing.Point(0, 434);
             this.btnLogistica.Name = "btnLogistica";
             this.btnLogistica.Size = new System.Drawing.Size(245, 57);
             this.btnLogistica.TabIndex = 16;
@@ -169,7 +171,7 @@
             this.txtAdministrador.Name = "txtAdministrador";
             this.txtAdministrador.Size = new System.Drawing.Size(245, 57);
             this.txtAdministrador.TabIndex = 1;
-            this.txtAdministrador.Text = "Administrador";
+            this.txtAdministrador.Text = "Gestion  de usuarios";
             this.txtAdministrador.UseVisualStyleBackColor = true;
             this.txtAdministrador.Click += new System.EventHandler(this.txtAdministrador_Click);
             // 
@@ -178,7 +180,7 @@
             this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 543);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 555);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(245, 45);
             this.btnCerrarSesion.TabIndex = 0;
@@ -221,7 +223,7 @@
             this.btnTraslado.Name = "btnTraslado";
             this.btnTraslado.Size = new System.Drawing.Size(245, 57);
             this.btnTraslado.TabIndex = 3;
-            this.btnTraslado.Text = "LyF (traslado)";
+            this.btnTraslado.Text = "LyFC (traslado)";
             this.btnTraslado.UseVisualStyleBackColor = true;
             this.btnTraslado.Click += new System.EventHandler(this.btnTraslado_Click);
             // 
@@ -285,6 +287,18 @@
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnRecepcion_Click);
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(0, 492);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(245, 57);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Trazabilidad";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -332,5 +346,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnLogistica;
+        private System.Windows.Forms.Button button1;
     }
 }

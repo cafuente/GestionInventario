@@ -104,8 +104,7 @@ namespace GestionInventario
                     txtPassword.Text = fila.Cells["Password"].Value.ToString();
                     txtNombre.Text = fila.Cells["Nombre"].Value.ToString();
                     cbDepartamento.Text = fila.Cells["Departamento"].Value.ToString();
-                    cbPerfil.Text = fila.Cells["Perfil"].Value.ToString();
-                    
+                    cbPerfil.Text = fila.Cells["Perfil"].Value.ToString();                    
                 }
                 btnAgregar.Enabled = false;
                 btnActualizar.Enabled = true;

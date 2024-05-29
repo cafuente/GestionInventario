@@ -244,24 +244,40 @@ namespace GestionInventario
 
         private void dgvInventario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow fila = dgvInventario.Rows[e.RowIndex];
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow fila = dgvInventario.Rows[e.RowIndex];
 
-                // Obtener los valores de la fila seleccionada
-                string id = fila.Cells["Id"].Value.ToString();
-                string producto = fila.Cells["Producto"].Value.ToString();
-                string lote = fila.Cells["Lote"].Value.ToString();
-                float cantidad_disponible = Convert.ToSingle(fila.Cells["Cantidad_disponible"].Value);
+                    // Obtener los valores de la fila seleccionada
+                    string id = fila.Cells["Id"].Value.ToString();
+                    string producto = fila.Cells["Producto"].Value.ToString();
+                    string lote = fila.Cells["Lote"].Value.ToString();
+                    float cantidad_disponible = Convert.ToSingle(fila.Cells["Cantidad_disponible"].Value);
 
-                // Asignar los valores a los controles correspondientes
-                lbIdTarima.Text = id;
-                txtProductoGi.Text = producto;
-                txtLoteGi.Text = lote;
-                txtCantidadGi.Text = cantidad_disponible.ToString();
-                btnCancelarGi.Enabled = true;
-                btnMarcarDetenido.Enabled = true;
+                    // Asignar los valores a los controles correspondientes
+                    lbIdTarima.Text = id;
+                    txtProductoGi.Text = producto;
+                    txtLoteGi.Text = lote;
+                    txtCantidadGi.Text = cantidad_disponible.ToString();
+                    btnCancelarGi.Enabled = true;
+                    btnMarcarDetenido.Enabled = true;
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                lbIdTarima.Text = "ID Tarima";
+                txtProductoGi.Text = null;
+                txtLoteGi.Text = null;
+                txtCantidadGi.Text = null;
+                cbDestinoGi.SelectedIndex = -1;
+                dtpFechaGi.Value = DateTime.Now;
+                btnCancelarGi.Enabled = false;
+                btnMarcarDetenido.Enabled = false;
+            }
+            
         }
 
         //DATAGRID DE PESTAÑA DEVOLUCIONES
@@ -398,25 +414,39 @@ namespace GestionInventario
 
         private void txtBusquedaDevoGi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Regex regex = new Regex(@"^D\d{6}$");
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                txtBusquedaDevoGi.Text = txtBusquedaDevoGi.Text.ToUpper();
-                Match match = regex.Match(txtBusquedaDevoGi.Text);
-                if (!match.Success)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtBusquedaDevoGi = null;
+                    Regex regex = new Regex(@"^D\d{6}$");
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    txtBusquedaDevoGi.Text = txtBusquedaDevoGi.Text.ToUpper();
+                    Match match = regex.Match(txtBusquedaDevoGi.Text);
+                    if (!match.Success)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBusquedaDevoGi = null;
+                    }
+                    else
+                    {
+                        BuscarYMostrarInformacionDev();
+                        txtBusquedaDevoGi.Clear();
+                    }
                 }
-                else
-                {
-                    BuscarYMostrarInformacionDev();
-                    txtBusquedaDevoGi.Clear();
-                }
-
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                lbIdTraspasoDv.Text = "ID Traspaso";
+                lbIdTarimaDv.Text = "ID Tarima";
+                txtProductoDv.Text = null;
+                txtLoteDv.Text = null;
+                txtCantidadDv.Text = null;
+                cbDestinoDv.SelectedIndex = -1;
+                dtpFechaDevolucion.Value = DateTime.Now;
+            }
+            
         }
 
         private void BuscarYMostrarInformacionDev()

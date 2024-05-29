@@ -680,54 +680,92 @@ namespace GestionInventario
 
         private void dgRecepcionCarne_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verificar si se hizo clic en una fila válida
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow fila = dgRecepcionCarne.Rows[e.RowIndex];
+                // Verificar si se hizo clic en una fila válida
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow fila = dgRecepcionCarne.Rows[e.RowIndex];
 
-                // Obtener los valores de la fila seleccionada
-                string id = fila.Cells["Id"].Value.ToString();
-                string linea = fila.Cells["Linea"].Value.ToString();
-                string procedencia = fila.Cells["Procedencia"].Value.ToString();
-                DateTime fechaSacrificio = Convert.ToDateTime(fila.Cells["Fecha_Sacrificio"].Value);
-                DateTime fechaEmpaque = Convert.ToDateTime(fila.Cells["Fecha_Empaque"].Value);
-                string fleje = fila.Cells["Fleje"].Value.ToString();
-                string turno = fila.Cells["Turno"].Value.ToString();
-                float cantidad = Convert.ToSingle(fila.Cells["Cantidad"].Value);
-                int cajas = Convert.ToInt32(fila.Cells["Cajas"].Value);
-                string factura = fila.Cells["Factura"].Value.ToString();
-                string ordenCompra = fila.Cells["Orden_Compra"].Value.ToString();
-                string marca = fila.Cells["Marca"].Value.ToString();
-                string lote = fila.Cells["Lote"].Value.ToString();
-                string producto = fila.Cells["Producto"].Value.ToString();
-                DateTime fecha = Convert.ToDateTime(fila.Cells["Fecha"].Value);
-                int tara = Convert.ToInt32(fila.Cells["Tara"].Value);
-                float peso = Convert.ToSingle(fila.Cells["Peso"].Value);
+                    // Obtener los valores de la fila seleccionada
+                    string id = fila.Cells["Id"].Value.ToString();
+                    string linea = fila.Cells["Linea"].Value.ToString();
+                    string procedencia = fila.Cells["Procedencia"].Value.ToString();
+                    DateTime fechaSacrificio = Convert.ToDateTime(fila.Cells["Fecha_Sacrificio"].Value);
+                    DateTime fechaEmpaque = Convert.ToDateTime(fila.Cells["Fecha_Empaque"].Value);
+                    string fleje = fila.Cells["Fleje"].Value.ToString();
+                    string turno = fila.Cells["Turno"].Value.ToString();
+                    float cantidad = Convert.ToSingle(fila.Cells["Cantidad"].Value);
+                    int cajas = Convert.ToInt32(fila.Cells["Cajas"].Value);
+                    string factura = fila.Cells["Factura"].Value.ToString();
+                    string ordenCompra = fila.Cells["Orden_Compra"].Value.ToString();
+                    string marca = fila.Cells["Marca"].Value.ToString();
+                    string lote = fila.Cells["Lote"].Value.ToString();
+                    string producto = fila.Cells["Producto"].Value.ToString();
+                    DateTime fecha = Convert.ToDateTime(fila.Cells["Fecha"].Value);
+                    int tara = Convert.ToInt32(fila.Cells["Tara"].Value);
+                    float peso = Convert.ToSingle(fila.Cells["Peso"].Value);
 
-                // Asignar los valores a los controles correspondientes
-                idLabel.Text = id;
-                txtLinea.Text = linea;
-                txtProcedencia.Text = procedencia;
-                dpSacrificio.Value = fechaSacrificio;
-                dpEmpaque.Value = fechaEmpaque;
-                txtFleje.Text = fleje;
-                cbTurno.Text = turno;
-                txtCantidad.Text = cantidad.ToString();
-                txtCajas.Text = cajas.ToString();
-                txtFactura.Text = factura;
-                txtOrdenCompra.Text = ordenCompra;
-                txtMarca.Text = marca;
-                txtLote.Text = lote;
-                txtProducto.Text = producto;
-                dpFecha.Value = fecha;
-                txtTara.Text = tara.ToString();
-                txtPeso.Text = peso.ToString();
+                    // Asignar los valores a los controles correspondientes
+                    idLabel.Text = id;
+                    txtLinea.Text = linea;
+                    txtProcedencia.Text = procedencia;
+                    dpSacrificio.Value = fechaSacrificio;
+                    dpEmpaque.Value = fechaEmpaque;
+                    txtFleje.Text = fleje;
+                    cbTurno.Text = turno;
+                    txtCantidad.Text = cantidad.ToString();
+                    txtCajas.Text = cajas.ToString();
+                    txtFactura.Text = factura;
+                    txtOrdenCompra.Text = ordenCompra;
+                    txtMarca.Text = marca;
+                    txtLote.Text = lote;
+                    txtProducto.Text = producto;
+                    dpFecha.Value = fecha;
+                    txtTara.Text = tara.ToString();
+                    txtPeso.Text = peso.ToString();
+                }
+                //btnAgregarCarne.Enabled = false;
+                btnActualizarCodigoBarras.Enabled = true;
+                btnGenerarCodigoBarras.Enabled = false;
+                btnEliminar.Enabled = true;
+                btnCancelar.Enabled = true;
             }
-            //btnAgregarCarne.Enabled = false;
-            btnActualizarCodigoBarras.Enabled = true;
-            btnGenerarCodigoBarras.Enabled = false;            
-            btnEliminar.Enabled = true;
-            btnCancelar.Enabled = true;
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
+                string nuevoId = insercionDatosDAO.ObtenerUltimoId();
+                idLabel.Text = nuevoId;
+                HabilitarCampos(true);
+
+                // Desabilitar el botón para agregar carne
+                btnAgregarCarne.Visible = true;
+                btnAgregarCarne.Enabled = false;
+                btnActualizarCodigoBarras.Visible = true;
+                btnActualizarCodigoBarras.Enabled = false;
+                // codigo de barras
+                btnGenerarCodigoBarras.Visible = true;
+                btnGenerarCodigoBarras.Enabled = true;
+                chbFijarDatos.Enabled = true;
+                chbFijarDatos.Checked = false;
+                pbImpresionCb.Enabled = false;
+                pbGuardarCb.Enabled = false;
+                pbCodigoBarras.Image = null;
+                dgRecepcionCarne.Enabled = true;
+                // Cargar la imagen predeterminada desde los recursos
+                Image imagenPredeterminada = Properties.Resources.barcode_scan;
+                // Asignar la imagen predeterminada al PictureBox
+                pbCodigoBarras.Image = imagenPredeterminada;
+                pbCodigoBarras.Enabled = false;
+
+                LimpiarCampos();
+                btnEliminar.Enabled = false;
+                btnCancelar.Enabled = false;
+                btnActualizar.Enabled = false;
+            }
+            
+           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
