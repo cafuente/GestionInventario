@@ -453,6 +453,7 @@
             this.btnCancelarLyfcDv.TabIndex = 77;
             this.btnCancelarLyfcDv.Text = "Cancelar";
             this.btnCancelarLyfcDv.UseVisualStyleBackColor = true;
+            this.btnCancelarLyfcDv.Click += new System.EventHandler(this.btnCancelarLyfcDv_Click);
             // 
             // groupBox2
             // 
@@ -563,6 +564,8 @@
             this.txtBusquedaLyfcDv.Name = "txtBusquedaLyfcDv";
             this.txtBusquedaLyfcDv.Size = new System.Drawing.Size(125, 23);
             this.txtBusquedaLyfcDv.TabIndex = 44;
+            this.txtBusquedaLyfcDv.Click += new System.EventHandler(this.txtBusquedaLyfcDv_Click);
+            this.txtBusquedaLyfcDv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusquedaLyfcDv_KeyPress);
             // 
             // label8
             // 
@@ -613,8 +616,9 @@
             this.btnRegistrarLyfcDv.Name = "btnRegistrarLyfcDv";
             this.btnRegistrarLyfcDv.Size = new System.Drawing.Size(126, 43);
             this.btnRegistrarLyfcDv.TabIndex = 1;
-            this.btnRegistrarLyfcDv.Text = "Aceptar";
+            this.btnRegistrarLyfcDv.Text = "Realizar devolución";
             this.btnRegistrarLyfcDv.UseVisualStyleBackColor = true;
+            this.btnRegistrarLyfcDv.Click += new System.EventHandler(this.btnRegistrarLyfcDv_Click);
             // 
             // dgvTraspasosLyfc
             // 
@@ -622,8 +626,10 @@
             this.dgvTraspasosLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTraspasosLyfc.Location = new System.Drawing.Point(6, 255);
             this.dgvTraspasosLyfc.Name = "dgvTraspasosLyfc";
+            this.dgvTraspasosLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTraspasosLyfc.Size = new System.Drawing.Size(800, 192);
             this.dgvTraspasosLyfc.TabIndex = 0;
+            this.dgvTraspasosLyfc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraspasosLyfc_CellClick);
             // 
             // tabDetenidos
             // 

@@ -130,7 +130,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerTraspasos()
         {
-            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso'AND estado = 'activo'";
+            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso' AND destino = 'LyFC(traslado)' AND estado = 'activo'";
             return EjecutarConsulta(consulta);
         }
 
@@ -141,14 +141,14 @@ namespace GestionInventario
         }
 
 
-        // FrmLyfc
+        // FrmLyfc datagrid traspasos
         public static DataTable ObtenerInventarioLyfc()
         {
             string consulta = "SELECT idTarima, producto, lote, cantidad FROM inventario_lyfc WHERE cantidad > 0";
             return EjecutarConsulta(consulta);
         }
 
-        
+        //FrmLyfc datagrid inventario total
         public static DataTable ObtenerInventarioAgrupadoLyfc()
         {
             string consulta = @"
@@ -159,9 +159,10 @@ namespace GestionInventario
             return EjecutarConsulta(consulta);
         }
 
+        //FrmLyfc datagrid devoluciones
         public static DataTable ObtenerTraspasosLyfc()
         {
-            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso' AND destino = 'LyFC'";
+            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso' AND destino = 'Recibo(Mocha)' AND estado = 'activo'";
             return EjecutarConsulta(consulta);
         }
 

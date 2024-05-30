@@ -36,6 +36,7 @@ namespace GestionInventario
             cbDestinoLyfcDv.Items.AddRange(destino);
             btnCancelarLyfcTraspaso.Enabled = false;
             btnMarcarDetenidoLyfc.Enabled = false;
+            btnCancelarLyfcDv.Enabled = false;
             dtpFechaLyfcTraspaso.Value = DateTime.Now;
             dtpFechaLyfcDv.Value = DateTime.Now;
             //marca de agua busqueda traspasos
@@ -43,8 +44,11 @@ namespace GestionInventario
             txtCodigoBarrasLyfcTraspaso.Text = "DXXXXXX";
             txtCodigoBarrasLyfcTraspaso.GotFocus += new EventHandler(txtCodigoBarrasLyfcTraspaso_GotFocus);
             txtCodigoBarrasLyfcTraspaso.LostFocus += new EventHandler(txtCodigoBarrasLyfcTraspaso_LostFocus);
-
-
+            // marca de agua busqueda devolucion
+            txtBusquedaLyfcDv.ForeColor = Color.LightGray;
+            txtBusquedaLyfcDv.Text = "DXXXXXX";
+            txtBusquedaLyfcDv.GotFocus += new EventHandler(txtBusquedaLyfcDv_GotFocus);
+            txtBusquedaLyfcDv.LostFocus += new EventHandler(txtBusquedaLyfcDv_LostFocus);
         }
 
         private void MostrarInformacionUsuario()
@@ -81,6 +85,7 @@ namespace GestionInventario
             dgvInventarioTotalLyfc.DataSource = BusquedaBD.ObtenerInventarioAgrupadoLyfc();                       
         }
 
+        //datadrig de la pestaña traspasos
         private void CargarDatosTraspasosLyfc()
         {
             //DataTable dtTraspasos = BusquedaBD.ObtenerTraspasosLyfc();
@@ -89,9 +94,10 @@ namespace GestionInventario
             dgvInventarioLyfc.DataSource = BusquedaBD.ObtenerInventarioLyfc();
         }
 
+        //datagrid de la pestaña devoluciones
         private void CargarDatosDevolucionesLyfc()
         {
-            dgvTraspasosLyfc.DataSource = BusquedaBD.ObtenerDevolucionesLyfc();
+            dgvTraspasosLyfc.DataSource = BusquedaBD.ObtenerTraspasosLyfc();
         }
 
         private void CargarDatosDetenidosLyfc()
@@ -219,15 +225,22 @@ namespace GestionInventario
             // Iterar sobre todas las filas del DataGridView
             for (int i = 0; i < dgvInventarioLyfc.Rows.Count; i++)
             {
-                // Obtener el valor de la celda correspondiente a la columna de código de barras
-                string valorCelda = dgvInventarioLyfc.Rows[i].Cells["idTarima"].Value.ToString();
-
-                // Comparar el valor de la celda con el código de barras buscado
-                if (valorCelda == codigoBarras)
+                try
                 {
-                    // Si se encuentra el código de barras, devolver el índice de la fila
-                    return i;
+                    // Obtener el valor de la celda correspondiente a la columna de código de barras
+                    string valorCelda = dgvInventarioLyfc.Rows[i].Cells["idTarima"].Value.ToString();
+
+                    // Comparar el valor de la celda con el código de barras buscado
+                    if (valorCelda == codigoBarras)
+                    {
+                        // Si se encuentra el código de barras, devolver el índice de la fila
+                        return i;
+                    }
                 }
+                catch (Exception)
+                {
+                    return -1;
+                }                
             }
 
             // Si no se encuentra el código de barras, devolver -1 para indicar que no se encontró
@@ -252,7 +265,7 @@ namespace GestionInventario
             else
             {
                 // Mensaje en caso de no encontrar ninguna fila con el código de barras
-                MessageBox.Show("No se encontró ningún artículo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se encontró ningún combo o tarima con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -364,6 +377,7 @@ namespace GestionInventario
 
                 CargarDatosInventarioTotalLyfc();
                 CargarDatosTraspasosLyfc();
+                CargarDatosDevolucionesLyfc();
             }
         }
 
@@ -393,6 +407,246 @@ namespace GestionInventario
             return estaDetenida;
         }
         //-------------termina traspasos-------------------------
+        
+        //--------------------------------------------------------------------------------------------------------
+        
+        //--------datagrid devoluciones
+        private void dgvTraspasosLyfc_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = dgvTraspasosLyfc.Rows[e.RowIndex];
+                    lbIdTraspasoLyfcDv.Text = row.Cells["idTraspaso"].Value.ToString();
+                    lbIdTarimaLyfcDv.Text = row.Cells["idTarima"].Value.ToString();
+                    txtProductoLyfcDv.Text = row.Cells["producto"].Value.ToString();
+                    txtLoteLyfcDv.Text = row.Cells["lote"].Value.ToString();
+                    txtCantidadLyfcDv.Text = row.Cells["cantidad"].Value.ToString();
+                    cbDestinoLyfcDv.Text = "Recibo(Mocha)";
+                    btnCancelarLyfcDv.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                btnCancelarLyfcDv.Enabled = false;
+
+            }
+        }
+
+        private void btnCancelarLyfcDv_Click(object sender, EventArgs e)
+        {
+            lbIdTraspasoLyfcDv.Text = "ID Traspaso";
+            lbIdTarimaLyfcDv.Text = "ID Tarima";
+            txtProductoLyfcDv.Text = null;
+            txtLoteLyfcDv.Text = null;
+            txtCantidadLyfcDv.Text = null;
+            cbDestinoLyfcDv.SelectedIndex = -1;
+            dtpFechaLyfcDv.Value = DateTime.Now;
+            cbDestinoLyfcDv.Text = "";
+            btnCancelarLyfcDv.Enabled = false;
+        }
+
+
+        private void btnRegistrarLyfcDv_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtProductoLyfcDv.Text) ||
+                string.IsNullOrEmpty(txtLoteLyfcDv.Text) ||
+                string.IsNullOrEmpty(txtCantidadLyfcDv.Text) ||
+                cbDestinoLyfcDv.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string idTarima = lbIdTarimaLyfcDv.Text;
+            if (VerificarEstadoTarimaLyfc(idTarima))
+            {
+                MessageBox.Show("No se puede devolver una tarima que está detenida.");
+                return;
+            }
+
+            int idTraspaso = Convert.ToInt32(lbIdTraspasoLyfcDv.Text);
+            //String idTarima = lbIdTarimaDv.Text;
+            string producto = txtProductoLyfcDv.Text;
+            string lote = txtLoteLyfcDv.Text;
+            float cantidad = Convert.ToInt32(txtCantidadLyfcDv.Text);
+            string destino = "Recibo(Mocha)";
+            string tipoOperacion = "Devolucion";
+            DateTime fechaOperacion = DateTime.Now;
+            //string fechaOperacion = dtpFechaDevolucion.Value.ToString("dd-MM-yyyy");
+            string usuario = lbNombreLyfc.Text;
+            string departamento = lbDepartamentoLyfc.Text;
+
+            // Inserta la devolución en la tabla
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    string consultaInsertar = "INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento, estado) VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento, 'activo')";
+                    MySqlCommand comandoInsertar = new MySqlCommand(consultaInsertar, conexion);
+                    comandoInsertar.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoInsertar.Parameters.AddWithValue("@producto", producto);
+                    comandoInsertar.Parameters.AddWithValue("@lote", lote);
+                    comandoInsertar.Parameters.AddWithValue("@cantidad", cantidad);
+                    comandoInsertar.Parameters.AddWithValue("@tipoOperacion", tipoOperacion);
+                    comandoInsertar.Parameters.AddWithValue("@fechaOperacion", fechaOperacion);
+                    comandoInsertar.Parameters.AddWithValue("@destino", destino);
+                    comandoInsertar.Parameters.AddWithValue("@usuario", usuario);
+                    comandoInsertar.Parameters.AddWithValue("@departamento", departamento);
+                    comandoInsertar.ExecuteNonQuery();
+
+                    // Marca el traspaso original como anulado
+                    string consultaAnular = "UPDATE salidas_devoluciones SET estado = 'anulado' WHERE idTraspaso = @idTraspaso";
+                    MySqlCommand comandoAnular = new MySqlCommand(consultaAnular, conexion);
+                    comandoAnular.Parameters.AddWithValue("@idTraspaso", idTraspaso);
+                    comandoAnular.ExecuteNonQuery();
+
+                    // Actualiza la cantidad disponible en la tabla inventario_lyfc
+                    string consultaActualizarInventario = "UPDATE inventario_lyfc SET cantidad = cantidad + @cantidad WHERE idTarima = @idTarima";
+                    MySqlCommand comandoActualizarInventario = new MySqlCommand(consultaActualizarInventario, conexion);
+                    comandoActualizarInventario.Parameters.AddWithValue("@cantidad", cantidad);
+                    comandoActualizarInventario.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoActualizarInventario.ExecuteNonQuery();
+
+                    // Elimina la entrada de inventario_lyfc
+                    string consultaEliminarLyfc = "DELETE FROM inventario_mocha WHERE idTarima = @idTarima";
+                    MySqlCommand comandoEliminarLyfc = new MySqlCommand(consultaEliminarLyfc, conexion);
+                    comandoEliminarLyfc.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoEliminarLyfc.ExecuteNonQuery();
+
+                    MessageBox.Show("Devolución registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar la devolución: " + ex.Message);
+                }
+            }
+            // LIMPIAR CAMPOS
+            lbIdTraspasoLyfcDv.Text = null;
+            lbIdTarimaLyfcDv.Text = "";
+            txtProductoLyfcDv.Text = null;
+            txtLoteLyfcDv.Text = null;
+            txtCantidadLyfcDv.Text = null;
+            cbDestinoLyfcDv.SelectedIndex = -1;
+            dtpFechaLyfcDv.Value = DateTime.Now;
+            CargarDatosDevolucionesLyfc(); // Recargar datos de traspasos después de la devolución
+            CargarDatosTraspasosLyfc(); // Recargar datos del inventario después de la devolución
+            CargarDatosInventarioTotalLyfc();
+        }
+
+        //------ busqueda devo---
+        private void txtBusquedaLyfcDv_Click(object sender, EventArgs e)
+        {
+            txtBusquedaLyfcDv.Text = "";
+            txtBusquedaLyfcDv.ForeColor = Color.Black;
+        }
+        private void txtBusquedaLyfcDv_GotFocus(object sender, EventArgs e)
+        {
+            if (txtBusquedaLyfcDv.Text.Trim().Length == 0)
+            {
+                txtBusquedaLyfcDv.Text = "";
+                //txtBusquedaDevoGi.ForeColor = Color.Black;
+            }
+        }
+        private void txtBusquedaLyfcDv_LostFocus(object sender, EventArgs e)
+        {
+            if (txtBusquedaLyfcDv.Text.Trim().Length == 0)
+            {
+                txtBusquedaLyfcDv.Text = "DXXXXXX";
+                txtBusquedaLyfcDv.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void BuscarYMostrarInformacionTraspDv()
+        {
+            // Obtener el código de barras ingresado por el usuario
+            string codigoBarras = txtBusquedaLyfcDv.Text.Trim();
+
+            // Realizar la búsqueda en el DataGridView y obtener el índice de la fila correspondiente
+            int indiceFila = BuscarFilaPorCodigoBarrasTraspDv(codigoBarras);
+
+            // Mostrar la información en los campos del formulario
+            MostrarInformacionEnCamposTraspDv(indiceFila);
+        }
+
+        private int BuscarFilaPorCodigoBarrasTraspDv(string codigoBarras)
+        {
+            // Iterar sobre todas las filas del DataGridView
+            for (int i = 0; i < dgvTraspasosLyfc.Rows.Count; i++)
+            {
+                try
+                {
+                    // Obtener el valor de la celda correspondiente a la columna de código de barras
+                    string valorCelda = dgvTraspasosLyfc.Rows[i].Cells["idTarima"].Value.ToString();
+
+                    // Comparar el valor de la celda con el código de barras buscado
+                    if (valorCelda == codigoBarras)
+                    {
+                        // Si se encuentra el código de barras, devolver el índice de la fila
+                        return i;
+                    }
+                }
+                catch (Exception)
+                {                    
+                    return -1;
+                }
+                
+            }
+            // Si no se encuentra el código de barras, devolver -1 para indicar que no se encontró
+            return -1;
+            //MessageBox.Show("No se encontró codigo de barras");
+        }
+
+        private void MostrarInformacionEnCamposTraspDv(int indiceFila)
+        {
+            if (indiceFila >= 0)
+            {
+                // Obtener la fila correspondiente al índice
+                DataGridViewRow fila = dgvInventarioLyfc.Rows[indiceFila];
+
+                // Mostrar la información en los campos del formulario                
+                lbIdTarimaLyfcDv.Text = fila.Cells["idTarima"].Value.ToString();
+                DateTime dtpFechaLyfcDv = DateTime.Now;
+                txtProductoLyfcDv.Text = fila.Cells["producto"].Value.ToString();
+                txtLoteLyfcDv.Text = fila.Cells["lote"].Value.ToString();
+                txtCantidadLyfcDv.Text = fila.Cells["cantidad"].Value.ToString();
+                //cbDestinoDv.Text = "Almacen";
+            }
+            else
+            {
+                // Mensaje en caso de no encontrar ninguna fila con el código de barras
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtBusquedaLyfcDv_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Regex regex = new Regex(@"^D\d{6}$");
+                // Realizar la búsqueda y mostrar la información en los campos del formulario
+                txtBusquedaLyfcDv.Text = txtBusquedaLyfcDv.Text.ToUpper();
+                Match match = regex.Match(txtBusquedaLyfcDv.Text);
+                if (!match.Success)
+                {
+                    // Mostrar mensaje de error
+                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtBusquedaLyfcDv.Text = "";
+                }
+                else
+                {
+                    BuscarYMostrarInformacionTraspDv();
+                    txtBusquedaLyfcDv.Clear();
+                }
+            }
+        }
+
+        //---------
+
 
     }
 }
