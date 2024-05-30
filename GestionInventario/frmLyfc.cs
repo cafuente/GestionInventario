@@ -110,6 +110,8 @@ namespace GestionInventario
             frmPrincipal frmPr = new frmPrincipal();
             frmPr.Show();
         }
+        
+        //-------------Codigo pestaña traspasos------------------------------------------------------------------------------------
 
         // datagrid de la pestaña traspaso
         private void dgvInventarioLyfc_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -269,7 +271,7 @@ namespace GestionInventario
             }
         }
 
-        //--------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------
 
         // ---traspasos-------------
         private void btnRegistrarTraspasoLyfc_Click(object sender, EventArgs e)
@@ -407,9 +409,9 @@ namespace GestionInventario
             return estaDetenida;
         }
         //-------------termina traspasos-------------------------
-        
-        //--------------------------------------------------------------------------------------------------------
-        
+
+        //--------------Movimientos pestaña devoluciones------------------------------------------------------------------------------------
+
         //--------datagrid devoluciones
         private void dgvTraspasosLyfc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -423,7 +425,7 @@ namespace GestionInventario
                     txtProductoLyfcDv.Text = row.Cells["producto"].Value.ToString();
                     txtLoteLyfcDv.Text = row.Cells["lote"].Value.ToString();
                     txtCantidadLyfcDv.Text = row.Cells["cantidad"].Value.ToString();
-                    cbDestinoLyfcDv.Text = "Recibo(Mocha)";
+                    cbDestinoLyfcDv.Text = "LyFC(traslado)";
                     btnCancelarLyfcDv.Enabled = true;
                 }
             }
@@ -472,7 +474,7 @@ namespace GestionInventario
             string producto = txtProductoLyfcDv.Text;
             string lote = txtLoteLyfcDv.Text;
             float cantidad = Convert.ToInt32(txtCantidadLyfcDv.Text);
-            string destino = "Recibo(Mocha)";
+            string destino = "LyFC(traslado)";
             string tipoOperacion = "Devolucion";
             DateTime fechaOperacion = DateTime.Now;
             //string fechaOperacion = dtpFechaDevolucion.Value.ToString("dd-MM-yyyy");
@@ -538,7 +540,7 @@ namespace GestionInventario
             CargarDatosInventarioTotalLyfc();
         }
 
-        //------ busqueda devo---
+        //------ busqueda devoluciones------------------
         private void txtBusquedaLyfcDv_Click(object sender, EventArgs e)
         {
             txtBusquedaLyfcDv.Text = "";
@@ -645,8 +647,143 @@ namespace GestionInventario
             }
         }
 
-        //---------
+        //-----------------------------------------------
 
+        //--------------Movimientos pestaña detenidos------------------------------------------------------------------------------------
+        
+        private void btnMarcarDetenidoLyfc_Click(object sender, EventArgs e)
+        {
+            if (dgvInventarioLyfc.SelectedRows.Count > 0)
+            {
+                string idTarima = dgvInventarioLyfc.SelectedRows[0].Cells["idTarima"].Value.ToString();
 
+                if (EsTarimaDetenida(idTarima))
+                {
+                    MessageBox.Show("La tarima ya está marcada como detenida.");
+                    return;
+                }
+
+                MarcarTarimaComoDetenidaLyfc(idTarima);
+                MessageBox.Show("La tarima ha sido marcada como detenida.");
+                lbIdTarimaLyfcTraspaso.Text = "ID Tarima";
+                dtpFechaLyfcTraspaso.Value = DateTime.Now;
+                txtProductoLyfcTraspaso.Text = "";
+                txtLoteLyfcTraspaso.Text = "";
+                txtCantidadLyfcTraspaso.Text = "";
+                cbDestinoLyfcTraspaso.SelectedIndex = -1;
+                CargarDatosTraspasosLyfc(); // Recargar datos del inventario
+                CargarDatosDetenidosLyfc();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una tarima para marcarla como detenida.");
+            }
+        }
+
+        private void MarcarTarimaComoDetenidaLyfc(string idTarima)
+        {
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    string consulta = "UPDATE inventario_lyfc SET estado = 'detenido' WHERE idTarima = @idTarima";
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    comando.Parameters.AddWithValue("@idTarima", idTarima);
+                    comando.ExecuteNonQuery();
+
+                    // Registrar el movimiento en salidas_devoluciones
+                    string registrarMovimiento = @"
+                    INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
+                    SELECT id, producto, lote, cantidad_disponible, 'Detenido', NOW(), 'Recibo(Mocha)', @usuario, @departamento
+                    FROM recepcion_carne WHERE id = @idTarima";
+                    MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
+                    comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreLyfc.Text); // el nombre del usuario con inicio de sesion
+                    comandoMovimiento.Parameters.AddWithValue("@departamento", lbDepartamentoLyfc.Text); // el departamento de inicio de sesion
+                    comandoMovimiento.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al marcar tarima como detenida: " + ex.Message);
+                }
+            }
+        }
+
+        private bool EsTarimaDetenida(string idTarima)
+        {
+            bool esDetenida = false;
+            ConexionBD conexionBD = new ConexionBD();
+            MySqlConnection conexion = conexionBD.ObtenerConexion();
+            try
+            {
+                conexion.Open();
+                string consulta = "SELECT COUNT(*) FROM inventario_lyfc WHERE idTarima = @idTarima AND estado = 'Detenido'";
+                MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@idTarima", idTarima);
+                esDetenida = Convert.ToInt32(comando.ExecuteScalar()) > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al verificar si la tarima está detenida: " + ex.Message);
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+            return esDetenida;
+        }
+
+        private void btnDesmarcarDetenidoLyfc_Click(object sender, EventArgs e)
+        {
+            if (dgvDetenidosLyfc.SelectedRows.Count > 0)
+            {
+                // Se obtiene el ID de la tarima seleccionada
+                string idTarima = dgvDetenidosLyfc.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                // Desmarca la tarima detenida
+                DesmarcarTarimaComoDetenidaLyfc(idTarima);
+                //Muestra el mensaje de confirmacion
+                MessageBox.Show("La tarima ha sido desmarcada como detenida.");
+                // Recarga los datos del inventario y de tarimas detenidas
+                CargarDatosTraspasosLyfc();
+                CargarDatosDetenidosLyfc();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+            }
+        }
+
+        private void DesmarcarTarimaComoDetenidaLyfc(string idTarima)
+        {
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    string consulta = "UPDATE inventario_lyfc SET estado = 'activo' WHERE idTarima = @idTarima";
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    comando.Parameters.AddWithValue("@idTarima", idTarima);
+                    comando.ExecuteNonQuery();
+
+                    // Registrar el movimiento de desbloqueo en salidas_devoluciones
+                    string registrarMovimiento = @"
+                INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
+                SELECT id, producto, lote, cantidad_disponible, 'Desbloqueado', NOW(), 'Recibo(Mocha)', @usuario, @departamento
+                FROM recepcion_carne WHERE id = @idTarima";
+                    MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
+                    comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
+                    comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreLyfc.Text); // Asume que tienes el nombre del usuario en lbNombreGi
+                    comandoMovimiento.Parameters.AddWithValue("@departamento", lbDepartamentoLyfc.Text); // Asume que tienes el departamento en lbDepartamentoGi
+                    comandoMovimiento.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al desmarcar tarima como detenida: " + ex.Message);
+                }
+            }
+        }
     }
 }

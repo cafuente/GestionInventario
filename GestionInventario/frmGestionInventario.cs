@@ -30,9 +30,8 @@ namespace GestionInventario
         private void frmGestionInventario_Load(object sender, EventArgs e)
         {
             // Mostrar la información del usuario de sesion en el panel superior
-            MostrarInformacionUsuario();
-            //dtpFechaGi.Value = DateTime.Now;
-            // Define los departamentos para realizar los traspasos
+            MostrarInformacionUsuario();            
+            // Se define los departamentos para realizar los traspasos
             string[] destino = { "LyFC(traslado)", "Almacen"};
             // Agrega los departamentos al ComboBox
             cbDestinoGi.Items.AddRange(destino); 
@@ -636,6 +635,13 @@ namespace GestionInventario
             if (dgvInventario.SelectedRows.Count > 0)
             {
                 string idTarima = dgvInventario.SelectedRows[0].Cells["id"].Value.ToString();
+
+                if (EsTarimaDetenida(idTarima))
+                {
+                    MessageBox.Show("La tarima ya está marcada como detenida.");
+                    return;
+                }
+
                 MarcarTarimaComoDetenida(idTarima);
                 MessageBox.Show("La tarima ha sido marcada como detenida.");
                 lbIdTarima.Text = "ID Tarima";
@@ -684,6 +690,30 @@ namespace GestionInventario
                     MessageBox.Show("Error al marcar tarima como detenida: " + ex.Message);
                 }
             }
+        }
+
+        private bool EsTarimaDetenida(string idTarima)
+        {
+            bool esDetenida = false;
+            ConexionBD conexionBD = new ConexionBD();
+            MySqlConnection conexion = conexionBD.ObtenerConexion();
+            try
+            {
+                conexion.Open();
+                string consulta = "SELECT COUNT(*) FROM recepcion_carne WHERE id = @idTarima AND estado = 'Detenido'";
+                MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@idTarima", idTarima);
+                esDetenida = Convert.ToInt32(comando.ExecuteScalar()) > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al verificar si la tarima está detenida: " + ex.Message);
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+            return esDetenida;
         }
 
         private void btnDesmarcarDetenido_Click(object sender, EventArgs e)

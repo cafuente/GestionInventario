@@ -144,7 +144,7 @@ namespace GestionInventario
         // FrmLyfc datagrid traspasos
         public static DataTable ObtenerInventarioLyfc()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad FROM inventario_lyfc WHERE cantidad > 0";
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado FROM inventario_lyfc WHERE cantidad > 0";
             return EjecutarConsulta(consulta);
         }
 
@@ -174,7 +174,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerDetenidosLyfc()
         {
-            string consulta = "SELECT id, producto, lote, cantidad_disponible FROM inventario_lyfc WHERE estado = 'Detenido'";
+            string consulta = "SELECT idTarima, producto, lote, cantidad FROM inventario_lyfc WHERE estado = 'Detenido'";
             return EjecutarConsulta(consulta);
         }
 
