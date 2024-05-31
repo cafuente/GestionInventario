@@ -28,90 +28,99 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbDepartamentoLyfc = new System.Windows.Forms.Label();
+            this.lbDepartamentoMocha = new System.Windows.Forms.Label();
             this.lbPerfilLyfc = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbNombreLyfc = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.lbNombreMocha = new System.Windows.Forms.Label();
+            this.tabControlMocha = new System.Windows.Forms.TabControl();
             this.tabInventarioTotal = new System.Windows.Forms.TabPage();
-            this.dgvInventarioTotalLyfc = new System.Windows.Forms.DataGridView();
+            this.dgvInventarioTotalMocha = new System.Windows.Forms.DataGridView();
             this.tabTraspaso = new System.Windows.Forms.TabPage();
-            this.btnCancelarGi = new System.Windows.Forms.Button();
-            this.btnRegistrarTraspasoGi = new System.Windows.Forms.Button();
+            this.btnMarcarDetenidoMocha = new System.Windows.Forms.Button();
+            this.btnCancelarMochaTraspaso = new System.Windows.Forms.Button();
+            this.btnRegistrarTraspasoMocha = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbMov = new System.Windows.Forms.Label();
-            this.cbDestinoGi = new System.Windows.Forms.ComboBox();
-            this.lbIdTarima = new System.Windows.Forms.Label();
-            this.dtpFechaGi = new System.Windows.Forms.DateTimePicker();
+            this.cbDestinoMochaTraspaso = new System.Windows.Forms.ComboBox();
+            this.lbIdTarimaMochaTraspaso = new System.Windows.Forms.Label();
+            this.dtpFechaMochaTraspaso = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dtFechaGi = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtCodigoBarrasGi = new System.Windows.Forms.TextBox();
+            this.txtCodigoBarrasMochaTraspaso = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtProductoGi = new System.Windows.Forms.TextBox();
+            this.txtProductoMochaTraspaso = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtLoteGi = new System.Windows.Forms.TextBox();
-            this.txtCantidadGi = new System.Windows.Forms.TextBox();
-            this.dgvInventarioLyfc = new System.Windows.Forms.DataGridView();
+            this.txtLoteMochaTraspaso = new System.Windows.Forms.TextBox();
+            this.txtCantidadMochaTraspaso = new System.Windows.Forms.TextBox();
+            this.dgvInventarioMocha = new System.Windows.Forms.DataGridView();
             this.tabDevoluciones = new System.Windows.Forms.TabPage();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnCancelarMochaDv = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbIdTraspasoDv = new System.Windows.Forms.Label();
-            this.cbDestinoDv = new System.Windows.Forms.ComboBox();
-            this.lbIdTarimaDv = new System.Windows.Forms.Label();
-            this.dtpFechaDevolucion = new System.Windows.Forms.DateTimePicker();
+            this.lbIdTraspasoMochaDv = new System.Windows.Forms.Label();
+            this.cbDestinoMochaDv = new System.Windows.Forms.ComboBox();
+            this.lbIdTarimaMochaDv = new System.Windows.Forms.Label();
+            this.dtpFechaMochaDv = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtBusquedaDevoGi = new System.Windows.Forms.TextBox();
+            this.txtBusquedaMochaDv = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtProductoDv = new System.Windows.Forms.TextBox();
+            this.txtProductoMochaDv = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtLoteDv = new System.Windows.Forms.TextBox();
-            this.txtCantidadDv = new System.Windows.Forms.TextBox();
-            this.btnRegistrarDevolucion = new System.Windows.Forms.Button();
-            this.dgvTraspasosLyfc = new System.Windows.Forms.DataGridView();
+            this.txtLoteMochaDv = new System.Windows.Forms.TextBox();
+            this.txtCantidadMochaDv = new System.Windows.Forms.TextBox();
+            this.btnRegistrarMochaDv = new System.Windows.Forms.Button();
+            this.dgvTraspasosMocha = new System.Windows.Forms.DataGridView();
+            this.tabDetanidos = new System.Windows.Forms.TabPage();
+            this.dgvDetenidosMocha = new System.Windows.Forms.DataGridView();
+            this.btnDesmarcarDetenidoLyfc = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tabControlMocha.SuspendLayout();
             this.tabInventarioTotal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalMocha)).BeginInit();
             this.tabTraspaso.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioLyfc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioMocha)).BeginInit();
             this.tabDevoluciones.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosLyfc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosMocha)).BeginInit();
+            this.tabDetanidos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMocha)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lbDepartamentoLyfc);
+            this.panel2.Controls.Add(this.lbDepartamentoMocha);
             this.panel2.Controls.Add(this.lbPerfilLyfc);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.lbNombreLyfc);
+            this.panel2.Controls.Add(this.lbNombreMocha);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(239, 85);
             this.panel2.TabIndex = 3;
             // 
-            // lbDepartamentoLyfc
+            // lbDepartamentoMocha
             // 
-            this.lbDepartamentoLyfc.AutoSize = true;
-            this.lbDepartamentoLyfc.Location = new System.Drawing.Point(90, 34);
-            this.lbDepartamentoLyfc.Name = "lbDepartamentoLyfc";
-            this.lbDepartamentoLyfc.Size = new System.Drawing.Size(39, 13);
-            this.lbDepartamentoLyfc.TabIndex = 14;
-            this.lbDepartamentoLyfc.Text = "Deptto";
+            this.lbDepartamentoMocha.AutoSize = true;
+            this.lbDepartamentoMocha.Location = new System.Drawing.Point(90, 34);
+            this.lbDepartamentoMocha.Name = "lbDepartamentoMocha";
+            this.lbDepartamentoMocha.Size = new System.Drawing.Size(39, 13);
+            this.lbDepartamentoMocha.TabIndex = 14;
+            this.lbDepartamentoMocha.Text = "Deptto";
             // 
             // lbPerfilLyfc
             // 
@@ -132,30 +141,31 @@
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
-            // lbNombreLyfc
+            // lbNombreMocha
             // 
-            this.lbNombreLyfc.AutoSize = true;
-            this.lbNombreLyfc.Location = new System.Drawing.Point(90, 12);
-            this.lbNombreLyfc.Name = "lbNombreLyfc";
-            this.lbNombreLyfc.Size = new System.Drawing.Size(44, 13);
-            this.lbNombreLyfc.TabIndex = 0;
-            this.lbNombreLyfc.Text = "Nombre";
+            this.lbNombreMocha.AutoSize = true;
+            this.lbNombreMocha.Location = new System.Drawing.Point(90, 12);
+            this.lbNombreMocha.Name = "lbNombreMocha";
+            this.lbNombreMocha.Size = new System.Drawing.Size(44, 13);
+            this.lbNombreMocha.TabIndex = 0;
+            this.lbNombreMocha.Text = "Nombre";
             // 
-            // tabControl1
+            // tabControlMocha
             // 
-            this.tabControl1.Controls.Add(this.tabInventarioTotal);
-            this.tabControl1.Controls.Add(this.tabTraspaso);
-            this.tabControl1.Controls.Add(this.tabDevoluciones);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(6, 135);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(820, 494);
-            this.tabControl1.TabIndex = 17;
+            this.tabControlMocha.Controls.Add(this.tabInventarioTotal);
+            this.tabControlMocha.Controls.Add(this.tabTraspaso);
+            this.tabControlMocha.Controls.Add(this.tabDevoluciones);
+            this.tabControlMocha.Controls.Add(this.tabDetanidos);
+            this.tabControlMocha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlMocha.Location = new System.Drawing.Point(6, 135);
+            this.tabControlMocha.Name = "tabControlMocha";
+            this.tabControlMocha.SelectedIndex = 0;
+            this.tabControlMocha.Size = new System.Drawing.Size(820, 494);
+            this.tabControlMocha.TabIndex = 17;
             // 
             // tabInventarioTotal
             // 
-            this.tabInventarioTotal.Controls.Add(this.dgvInventarioTotalLyfc);
+            this.tabInventarioTotal.Controls.Add(this.dgvInventarioTotalMocha);
             this.tabInventarioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabInventarioTotal.Location = new System.Drawing.Point(4, 25);
             this.tabInventarioTotal.Name = "tabInventarioTotal";
@@ -165,47 +175,48 @@
             this.tabInventarioTotal.Text = "Inventario Total";
             this.tabInventarioTotal.UseVisualStyleBackColor = true;
             // 
-            // dgvInventarioTotalLyfc
+            // dgvInventarioTotalMocha
             // 
-            this.dgvInventarioTotalLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalLyfc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvInventarioTotalLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventarioTotalLyfc.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dgvInventarioTotalLyfc.Location = new System.Drawing.Point(20, 44);
-            this.dgvInventarioTotalLyfc.Name = "dgvInventarioTotalLyfc";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalLyfc.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.dgvInventarioTotalLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventarioTotalLyfc.Size = new System.Drawing.Size(773, 404);
-            this.dgvInventarioTotalLyfc.TabIndex = 75;
+            this.dgvInventarioTotalMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalMocha.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dgvInventarioTotalMocha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventarioTotalMocha.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dgvInventarioTotalMocha.Location = new System.Drawing.Point(20, 44);
+            this.dgvInventarioTotalMocha.Name = "dgvInventarioTotalMocha";
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalMocha.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgvInventarioTotalMocha.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInventarioTotalMocha.Size = new System.Drawing.Size(773, 404);
+            this.dgvInventarioTotalMocha.TabIndex = 75;
             // 
             // tabTraspaso
             // 
-            this.tabTraspaso.Controls.Add(this.btnCancelarGi);
-            this.tabTraspaso.Controls.Add(this.btnRegistrarTraspasoGi);
+            this.tabTraspaso.Controls.Add(this.btnMarcarDetenidoMocha);
+            this.tabTraspaso.Controls.Add(this.btnCancelarMochaTraspaso);
+            this.tabTraspaso.Controls.Add(this.btnRegistrarTraspasoMocha);
             this.tabTraspaso.Controls.Add(this.groupBox1);
-            this.tabTraspaso.Controls.Add(this.dgvInventarioLyfc);
-            this.tabTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabTraspaso.Controls.Add(this.dgvInventarioMocha);
+            this.tabTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabTraspaso.Location = new System.Drawing.Point(4, 25);
             this.tabTraspaso.Name = "tabTraspaso";
             this.tabTraspaso.Padding = new System.Windows.Forms.Padding(3);
@@ -214,42 +225,53 @@
             this.tabTraspaso.Text = "Traspasos";
             this.tabTraspaso.UseVisualStyleBackColor = true;
             // 
-            // btnCancelarGi
+            // btnMarcarDetenidoMocha
             // 
-            this.btnCancelarGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarGi.Location = new System.Drawing.Point(649, 135);
-            this.btnCancelarGi.Name = "btnCancelarGi";
-            this.btnCancelarGi.Size = new System.Drawing.Size(127, 35);
-            this.btnCancelarGi.TabIndex = 78;
-            this.btnCancelarGi.Text = "Cancelar";
-            this.btnCancelarGi.UseVisualStyleBackColor = true;
+            this.btnMarcarDetenidoMocha.Location = new System.Drawing.Point(649, 214);
+            this.btnMarcarDetenidoMocha.Name = "btnMarcarDetenidoMocha";
+            this.btnMarcarDetenidoMocha.Size = new System.Drawing.Size(127, 36);
+            this.btnMarcarDetenidoMocha.TabIndex = 83;
+            this.btnMarcarDetenidoMocha.Text = "Marcar detenido";
+            this.btnMarcarDetenidoMocha.UseVisualStyleBackColor = true;
             // 
-            // btnRegistrarTraspasoGi
+            // btnCancelarMochaTraspaso
             // 
-            this.btnRegistrarTraspasoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarTraspasoGi.Location = new System.Drawing.Point(649, 67);
-            this.btnRegistrarTraspasoGi.Name = "btnRegistrarTraspasoGi";
-            this.btnRegistrarTraspasoGi.Size = new System.Drawing.Size(127, 35);
-            this.btnRegistrarTraspasoGi.TabIndex = 16;
-            this.btnRegistrarTraspasoGi.Text = "Realizar traspaso";
-            this.btnRegistrarTraspasoGi.UseVisualStyleBackColor = true;
+            this.btnCancelarMochaTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarMochaTraspaso.Location = new System.Drawing.Point(649, 135);
+            this.btnCancelarMochaTraspaso.Name = "btnCancelarMochaTraspaso";
+            this.btnCancelarMochaTraspaso.Size = new System.Drawing.Size(127, 35);
+            this.btnCancelarMochaTraspaso.TabIndex = 78;
+            this.btnCancelarMochaTraspaso.Text = "Cancelar";
+            this.btnCancelarMochaTraspaso.UseVisualStyleBackColor = true;
+            this.btnCancelarMochaTraspaso.Click += new System.EventHandler(this.btnCancelarMochaTraspaso_Click);
+            // 
+            // btnRegistrarTraspasoMocha
+            // 
+            this.btnRegistrarTraspasoMocha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarTraspasoMocha.Location = new System.Drawing.Point(649, 67);
+            this.btnRegistrarTraspasoMocha.Name = "btnRegistrarTraspasoMocha";
+            this.btnRegistrarTraspasoMocha.Size = new System.Drawing.Size(127, 35);
+            this.btnRegistrarTraspasoMocha.TabIndex = 16;
+            this.btnRegistrarTraspasoMocha.Text = "Realizar traspaso";
+            this.btnRegistrarTraspasoMocha.UseVisualStyleBackColor = true;
+            this.btnRegistrarTraspasoMocha.Click += new System.EventHandler(this.btnRegistrarTraspasoMocha_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lbMov);
-            this.groupBox1.Controls.Add(this.cbDestinoGi);
-            this.groupBox1.Controls.Add(this.lbIdTarima);
-            this.groupBox1.Controls.Add(this.dtpFechaGi);
+            this.groupBox1.Controls.Add(this.cbDestinoMochaTraspaso);
+            this.groupBox1.Controls.Add(this.lbIdTarimaMochaTraspaso);
+            this.groupBox1.Controls.Add(this.dtpFechaMochaTraspaso);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dtFechaGi);
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtCodigoBarrasGi);
+            this.groupBox1.Controls.Add(this.txtCodigoBarrasMochaTraspaso);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.txtProductoGi);
+            this.groupBox1.Controls.Add(this.txtProductoMochaTraspaso);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtLoteGi);
-            this.groupBox1.Controls.Add(this.txtCantidadGi);
+            this.groupBox1.Controls.Add(this.txtLoteMochaTraspaso);
+            this.groupBox1.Controls.Add(this.txtCantidadMochaTraspaso);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(20, 32);
             this.groupBox1.Name = "groupBox1";
@@ -268,33 +290,33 @@
             this.lbMov.Text = "traspaso";
             this.lbMov.Visible = false;
             // 
-            // cbDestinoGi
+            // cbDestinoMochaTraspaso
             // 
-            this.cbDestinoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDestinoGi.FormattingEnabled = true;
-            this.cbDestinoGi.Location = new System.Drawing.Point(415, 169);
-            this.cbDestinoGi.Name = "cbDestinoGi";
-            this.cbDestinoGi.Size = new System.Drawing.Size(121, 24);
-            this.cbDestinoGi.TabIndex = 69;
+            this.cbDestinoMochaTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDestinoMochaTraspaso.FormattingEnabled = true;
+            this.cbDestinoMochaTraspaso.Location = new System.Drawing.Point(415, 169);
+            this.cbDestinoMochaTraspaso.Name = "cbDestinoMochaTraspaso";
+            this.cbDestinoMochaTraspaso.Size = new System.Drawing.Size(121, 24);
+            this.cbDestinoMochaTraspaso.TabIndex = 69;
             // 
-            // lbIdTarima
+            // lbIdTarimaMochaTraspaso
             // 
-            this.lbIdTarima.AutoSize = true;
-            this.lbIdTarima.Location = new System.Drawing.Point(6, 54);
-            this.lbIdTarima.Name = "lbIdTarima";
-            this.lbIdTarima.Size = new System.Drawing.Size(78, 17);
-            this.lbIdTarima.TabIndex = 62;
-            this.lbIdTarima.Text = "ID Tarima";
+            this.lbIdTarimaMochaTraspaso.AutoSize = true;
+            this.lbIdTarimaMochaTraspaso.Location = new System.Drawing.Point(6, 54);
+            this.lbIdTarimaMochaTraspaso.Name = "lbIdTarimaMochaTraspaso";
+            this.lbIdTarimaMochaTraspaso.Size = new System.Drawing.Size(78, 17);
+            this.lbIdTarimaMochaTraspaso.TabIndex = 62;
+            this.lbIdTarimaMochaTraspaso.Text = "ID Tarima";
             // 
-            // dtpFechaGi
+            // dtpFechaMochaTraspaso
             // 
-            this.dtpFechaGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaGi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaGi.Location = new System.Drawing.Point(415, 54);
-            this.dtpFechaGi.Name = "dtpFechaGi";
-            this.dtpFechaGi.Size = new System.Drawing.Size(121, 23);
-            this.dtpFechaGi.TabIndex = 68;
-            this.dtpFechaGi.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
+            this.dtpFechaMochaTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaMochaTraspaso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaMochaTraspaso.Location = new System.Drawing.Point(415, 54);
+            this.dtpFechaMochaTraspaso.Name = "dtpFechaMochaTraspaso";
+            this.dtpFechaMochaTraspaso.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaMochaTraspaso.TabIndex = 68;
+            this.dtpFechaMochaTraspaso.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
             // label6
             // 
@@ -337,13 +359,15 @@
             this.label12.TabIndex = 65;
             this.label12.Text = "Cantidad:";
             // 
-            // txtCodigoBarrasGi
+            // txtCodigoBarrasMochaTraspaso
             // 
-            this.txtCodigoBarrasGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoBarrasGi.Location = new System.Drawing.Point(157, 54);
-            this.txtCodigoBarrasGi.Name = "txtCodigoBarrasGi";
-            this.txtCodigoBarrasGi.Size = new System.Drawing.Size(125, 23);
-            this.txtCodigoBarrasGi.TabIndex = 44;
+            this.txtCodigoBarrasMochaTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoBarrasMochaTraspaso.Location = new System.Drawing.Point(157, 54);
+            this.txtCodigoBarrasMochaTraspaso.Name = "txtCodigoBarrasMochaTraspaso";
+            this.txtCodigoBarrasMochaTraspaso.Size = new System.Drawing.Size(125, 23);
+            this.txtCodigoBarrasMochaTraspaso.TabIndex = 44;
+            this.txtCodigoBarrasMochaTraspaso.Click += new System.EventHandler(this.txtCodigoBarrasMochaTraspaso_Click);
+            this.txtCodigoBarrasMochaTraspaso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarrasMochaTraspaso_KeyPress);
             // 
             // label11
             // 
@@ -355,12 +379,12 @@
             this.label11.TabIndex = 64;
             this.label11.Text = "Lote:";
             // 
-            // txtProductoGi
+            // txtProductoMochaTraspaso
             // 
-            this.txtProductoGi.Location = new System.Drawing.Point(98, 109);
-            this.txtProductoGi.Name = "txtProductoGi";
-            this.txtProductoGi.Size = new System.Drawing.Size(184, 23);
-            this.txtProductoGi.TabIndex = 57;
+            this.txtProductoMochaTraspaso.Location = new System.Drawing.Point(98, 109);
+            this.txtProductoMochaTraspaso.Name = "txtProductoMochaTraspaso";
+            this.txtProductoMochaTraspaso.Size = new System.Drawing.Size(184, 23);
+            this.txtProductoMochaTraspaso.TabIndex = 57;
             // 
             // label10
             // 
@@ -372,38 +396,40 @@
             this.label10.TabIndex = 63;
             this.label10.Text = "Producto:";
             // 
-            // txtLoteGi
+            // txtLoteMochaTraspaso
             // 
-            this.txtLoteGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoteGi.Location = new System.Drawing.Point(415, 109);
-            this.txtLoteGi.Name = "txtLoteGi";
-            this.txtLoteGi.Size = new System.Drawing.Size(121, 23);
-            this.txtLoteGi.TabIndex = 58;
+            this.txtLoteMochaTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoteMochaTraspaso.Location = new System.Drawing.Point(415, 109);
+            this.txtLoteMochaTraspaso.Name = "txtLoteMochaTraspaso";
+            this.txtLoteMochaTraspaso.Size = new System.Drawing.Size(121, 23);
+            this.txtLoteMochaTraspaso.TabIndex = 58;
             // 
-            // txtCantidadGi
+            // txtCantidadMochaTraspaso
             // 
-            this.txtCantidadGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadGi.Location = new System.Drawing.Point(120, 169);
-            this.txtCantidadGi.Name = "txtCantidadGi";
-            this.txtCantidadGi.Size = new System.Drawing.Size(162, 23);
-            this.txtCantidadGi.TabIndex = 59;
+            this.txtCantidadMochaTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadMochaTraspaso.Location = new System.Drawing.Point(120, 169);
+            this.txtCantidadMochaTraspaso.Name = "txtCantidadMochaTraspaso";
+            this.txtCantidadMochaTraspaso.Size = new System.Drawing.Size(162, 23);
+            this.txtCantidadMochaTraspaso.TabIndex = 59;
             // 
-            // dgvInventarioLyfc
+            // dgvInventarioMocha
             // 
-            this.dgvInventarioLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventarioLyfc.Location = new System.Drawing.Point(19, 267);
-            this.dgvInventarioLyfc.Name = "dgvInventarioLyfc";
-            this.dgvInventarioLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventarioLyfc.Size = new System.Drawing.Size(773, 195);
-            this.dgvInventarioLyfc.TabIndex = 74;
+            this.dgvInventarioMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInventarioMocha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInventarioMocha.Location = new System.Drawing.Point(19, 267);
+            this.dgvInventarioMocha.Name = "dgvInventarioMocha";
+            this.dgvInventarioMocha.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInventarioMocha.Size = new System.Drawing.Size(773, 195);
+            this.dgvInventarioMocha.TabIndex = 74;
+            this.dgvInventarioMocha.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventarioMocha_CellClick);
             // 
             // tabDevoluciones
             // 
-            this.tabDevoluciones.Controls.Add(this.btnCancelar);
+            this.tabDevoluciones.Controls.Add(this.btnCancelarMochaDv);
             this.tabDevoluciones.Controls.Add(this.groupBox2);
-            this.tabDevoluciones.Controls.Add(this.btnRegistrarDevolucion);
-            this.tabDevoluciones.Controls.Add(this.dgvTraspasosLyfc);
-            this.tabDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabDevoluciones.Controls.Add(this.btnRegistrarMochaDv);
+            this.tabDevoluciones.Controls.Add(this.dgvTraspasosMocha);
+            this.tabDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabDevoluciones.Location = new System.Drawing.Point(4, 25);
             this.tabDevoluciones.Name = "tabDevoluciones";
             this.tabDevoluciones.Padding = new System.Windows.Forms.Padding(3);
@@ -412,31 +438,32 @@
             this.tabDevoluciones.Text = "Devoluciones";
             this.tabDevoluciones.UseVisualStyleBackColor = true;
             // 
-            // btnCancelar
+            // btnCancelarMochaDv
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(663, 150);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(126, 43);
-            this.btnCancelar.TabIndex = 77;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelarMochaDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarMochaDv.Location = new System.Drawing.Point(663, 150);
+            this.btnCancelarMochaDv.Name = "btnCancelarMochaDv";
+            this.btnCancelarMochaDv.Size = new System.Drawing.Size(126, 43);
+            this.btnCancelarMochaDv.TabIndex = 77;
+            this.btnCancelarMochaDv.Text = "Cancelar";
+            this.btnCancelarMochaDv.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lbIdTraspasoDv);
-            this.groupBox2.Controls.Add(this.cbDestinoDv);
-            this.groupBox2.Controls.Add(this.lbIdTarimaDv);
-            this.groupBox2.Controls.Add(this.dtpFechaDevolucion);
+            this.groupBox2.Controls.Add(this.lbIdTraspasoMochaDv);
+            this.groupBox2.Controls.Add(this.cbDestinoMochaDv);
+            this.groupBox2.Controls.Add(this.lbIdTarimaMochaDv);
+            this.groupBox2.Controls.Add(this.dtpFechaMochaDv);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.pictureBox3);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtBusquedaDevoGi);
+            this.groupBox2.Controls.Add(this.txtBusquedaMochaDv);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtProductoDv);
+            this.groupBox2.Controls.Add(this.txtProductoMochaDv);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtLoteDv);
-            this.groupBox2.Controls.Add(this.txtCantidadDv);
+            this.groupBox2.Controls.Add(this.txtLoteMochaDv);
+            this.groupBox2.Controls.Add(this.txtCantidadMochaDv);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(21, 15);
             this.groupBox2.Name = "groupBox2";
@@ -445,42 +472,42 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Devoluciones";
             // 
-            // lbIdTraspasoDv
+            // lbIdTraspasoMochaDv
             // 
-            this.lbIdTraspasoDv.AutoSize = true;
-            this.lbIdTraspasoDv.Location = new System.Drawing.Point(5, 20);
-            this.lbIdTraspasoDv.Name = "lbIdTraspasoDv";
-            this.lbIdTraspasoDv.Size = new System.Drawing.Size(96, 17);
-            this.lbIdTraspasoDv.TabIndex = 71;
-            this.lbIdTraspasoDv.Text = "ID Traspaso";
+            this.lbIdTraspasoMochaDv.AutoSize = true;
+            this.lbIdTraspasoMochaDv.Location = new System.Drawing.Point(5, 20);
+            this.lbIdTraspasoMochaDv.Name = "lbIdTraspasoMochaDv";
+            this.lbIdTraspasoMochaDv.Size = new System.Drawing.Size(96, 17);
+            this.lbIdTraspasoMochaDv.TabIndex = 71;
+            this.lbIdTraspasoMochaDv.Text = "ID Traspaso";
             // 
-            // cbDestinoDv
+            // cbDestinoMochaDv
             // 
-            this.cbDestinoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDestinoDv.FormattingEnabled = true;
-            this.cbDestinoDv.Location = new System.Drawing.Point(415, 169);
-            this.cbDestinoDv.Name = "cbDestinoDv";
-            this.cbDestinoDv.Size = new System.Drawing.Size(121, 24);
-            this.cbDestinoDv.TabIndex = 69;
+            this.cbDestinoMochaDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDestinoMochaDv.FormattingEnabled = true;
+            this.cbDestinoMochaDv.Location = new System.Drawing.Point(415, 169);
+            this.cbDestinoMochaDv.Name = "cbDestinoMochaDv";
+            this.cbDestinoMochaDv.Size = new System.Drawing.Size(121, 24);
+            this.cbDestinoMochaDv.TabIndex = 69;
             // 
-            // lbIdTarimaDv
+            // lbIdTarimaMochaDv
             // 
-            this.lbIdTarimaDv.AutoSize = true;
-            this.lbIdTarimaDv.Location = new System.Drawing.Point(6, 54);
-            this.lbIdTarimaDv.Name = "lbIdTarimaDv";
-            this.lbIdTarimaDv.Size = new System.Drawing.Size(78, 17);
-            this.lbIdTarimaDv.TabIndex = 62;
-            this.lbIdTarimaDv.Text = "ID Tarima";
+            this.lbIdTarimaMochaDv.AutoSize = true;
+            this.lbIdTarimaMochaDv.Location = new System.Drawing.Point(6, 54);
+            this.lbIdTarimaMochaDv.Name = "lbIdTarimaMochaDv";
+            this.lbIdTarimaMochaDv.Size = new System.Drawing.Size(78, 17);
+            this.lbIdTarimaMochaDv.TabIndex = 62;
+            this.lbIdTarimaMochaDv.Text = "ID Tarima";
             // 
-            // dtpFechaDevolucion
+            // dtpFechaMochaDv
             // 
-            this.dtpFechaDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaDevolucion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaDevolucion.Location = new System.Drawing.Point(415, 54);
-            this.dtpFechaDevolucion.Name = "dtpFechaDevolucion";
-            this.dtpFechaDevolucion.Size = new System.Drawing.Size(121, 23);
-            this.dtpFechaDevolucion.TabIndex = 68;
-            this.dtpFechaDevolucion.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
+            this.dtpFechaMochaDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaMochaDv.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaMochaDv.Location = new System.Drawing.Point(415, 54);
+            this.dtpFechaMochaDv.Name = "dtpFechaMochaDv";
+            this.dtpFechaMochaDv.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaMochaDv.TabIndex = 68;
+            this.dtpFechaMochaDv.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
             // label4
             // 
@@ -523,13 +550,13 @@
             this.label7.TabIndex = 65;
             this.label7.Text = "Cantidad:";
             // 
-            // txtBusquedaDevoGi
+            // txtBusquedaMochaDv
             // 
-            this.txtBusquedaDevoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusquedaDevoGi.Location = new System.Drawing.Point(157, 54);
-            this.txtBusquedaDevoGi.Name = "txtBusquedaDevoGi";
-            this.txtBusquedaDevoGi.Size = new System.Drawing.Size(125, 23);
-            this.txtBusquedaDevoGi.TabIndex = 44;
+            this.txtBusquedaMochaDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusquedaMochaDv.Location = new System.Drawing.Point(157, 54);
+            this.txtBusquedaMochaDv.Name = "txtBusquedaMochaDv";
+            this.txtBusquedaMochaDv.Size = new System.Drawing.Size(125, 23);
+            this.txtBusquedaMochaDv.TabIndex = 44;
             // 
             // label8
             // 
@@ -541,12 +568,12 @@
             this.label8.TabIndex = 64;
             this.label8.Text = "Lote:";
             // 
-            // txtProductoDv
+            // txtProductoMochaDv
             // 
-            this.txtProductoDv.Location = new System.Drawing.Point(98, 109);
-            this.txtProductoDv.Name = "txtProductoDv";
-            this.txtProductoDv.Size = new System.Drawing.Size(184, 23);
-            this.txtProductoDv.TabIndex = 57;
+            this.txtProductoMochaDv.Location = new System.Drawing.Point(98, 109);
+            this.txtProductoMochaDv.Name = "txtProductoMochaDv";
+            this.txtProductoMochaDv.Size = new System.Drawing.Size(184, 23);
+            this.txtProductoMochaDv.TabIndex = 57;
             // 
             // label9
             // 
@@ -558,39 +585,96 @@
             this.label9.TabIndex = 63;
             this.label9.Text = "Producto:";
             // 
-            // txtLoteDv
+            // txtLoteMochaDv
             // 
-            this.txtLoteDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoteDv.Location = new System.Drawing.Point(415, 109);
-            this.txtLoteDv.Name = "txtLoteDv";
-            this.txtLoteDv.Size = new System.Drawing.Size(121, 23);
-            this.txtLoteDv.TabIndex = 58;
+            this.txtLoteMochaDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoteMochaDv.Location = new System.Drawing.Point(415, 109);
+            this.txtLoteMochaDv.Name = "txtLoteMochaDv";
+            this.txtLoteMochaDv.Size = new System.Drawing.Size(121, 23);
+            this.txtLoteMochaDv.TabIndex = 58;
             // 
-            // txtCantidadDv
+            // txtCantidadMochaDv
             // 
-            this.txtCantidadDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadDv.Location = new System.Drawing.Point(120, 169);
-            this.txtCantidadDv.Name = "txtCantidadDv";
-            this.txtCantidadDv.Size = new System.Drawing.Size(162, 23);
-            this.txtCantidadDv.TabIndex = 59;
+            this.txtCantidadMochaDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadMochaDv.Location = new System.Drawing.Point(120, 169);
+            this.txtCantidadMochaDv.Name = "txtCantidadMochaDv";
+            this.txtCantidadMochaDv.Size = new System.Drawing.Size(162, 23);
+            this.txtCantidadMochaDv.TabIndex = 59;
             // 
-            // btnRegistrarDevolucion
+            // btnRegistrarMochaDv
             // 
-            this.btnRegistrarDevolucion.Location = new System.Drawing.Point(663, 51);
-            this.btnRegistrarDevolucion.Name = "btnRegistrarDevolucion";
-            this.btnRegistrarDevolucion.Size = new System.Drawing.Size(126, 43);
-            this.btnRegistrarDevolucion.TabIndex = 1;
-            this.btnRegistrarDevolucion.Text = "Aceptar";
-            this.btnRegistrarDevolucion.UseVisualStyleBackColor = true;
+            this.btnRegistrarMochaDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarMochaDv.Location = new System.Drawing.Point(663, 51);
+            this.btnRegistrarMochaDv.Name = "btnRegistrarMochaDv";
+            this.btnRegistrarMochaDv.Size = new System.Drawing.Size(126, 43);
+            this.btnRegistrarMochaDv.TabIndex = 1;
+            this.btnRegistrarMochaDv.Text = "Realizar devolución";
+            this.btnRegistrarMochaDv.UseVisualStyleBackColor = true;
             // 
-            // dgvTraspasosLyfc
+            // dgvTraspasosMocha
             // 
-            this.dgvTraspasosLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTraspasosLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTraspasosLyfc.Location = new System.Drawing.Point(6, 255);
-            this.dgvTraspasosLyfc.Name = "dgvTraspasosLyfc";
-            this.dgvTraspasosLyfc.Size = new System.Drawing.Size(800, 192);
-            this.dgvTraspasosLyfc.TabIndex = 0;
+            this.dgvTraspasosMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTraspasosMocha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTraspasosMocha.Location = new System.Drawing.Point(6, 255);
+            this.dgvTraspasosMocha.Name = "dgvTraspasosMocha";
+            this.dgvTraspasosMocha.Size = new System.Drawing.Size(800, 192);
+            this.dgvTraspasosMocha.TabIndex = 0;
+            // 
+            // tabDetanidos
+            // 
+            this.tabDetanidos.Controls.Add(this.dgvDetenidosMocha);
+            this.tabDetanidos.Controls.Add(this.btnDesmarcarDetenidoLyfc);
+            this.tabDetanidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabDetanidos.Location = new System.Drawing.Point(4, 25);
+            this.tabDetanidos.Name = "tabDetanidos";
+            this.tabDetanidos.Size = new System.Drawing.Size(812, 465);
+            this.tabDetanidos.TabIndex = 3;
+            this.tabDetanidos.Text = "Detenidos";
+            this.tabDetanidos.UseVisualStyleBackColor = true;
+            // 
+            // dgvDetenidosMocha
+            // 
+            this.dgvDetenidosMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetenidosMocha.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            this.dgvDetenidosMocha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetenidosMocha.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvDetenidosMocha.Location = new System.Drawing.Point(10, 33);
+            this.dgvDetenidosMocha.Name = "dgvDetenidosMocha";
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetenidosMocha.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgvDetenidosMocha.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetenidosMocha.Size = new System.Drawing.Size(792, 316);
+            this.dgvDetenidosMocha.TabIndex = 5;
+            // 
+            // btnDesmarcarDetenidoLyfc
+            // 
+            this.btnDesmarcarDetenidoLyfc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesmarcarDetenidoLyfc.Location = new System.Drawing.Point(309, 396);
+            this.btnDesmarcarDetenidoLyfc.Name = "btnDesmarcarDetenidoLyfc";
+            this.btnDesmarcarDetenidoLyfc.Size = new System.Drawing.Size(192, 36);
+            this.btnDesmarcarDetenidoLyfc.TabIndex = 6;
+            this.btnDesmarcarDetenidoLyfc.Text = "Desmarcar detenido";
+            this.btnDesmarcarDetenidoLyfc.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -598,9 +682,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(391, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 25);
+            this.label1.Size = new System.Drawing.Size(210, 25);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Recibo de Carne";
+            this.label1.Text = "Recibo de traslado";
             // 
             // frmMocha
             // 
@@ -608,29 +692,31 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 626);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlMocha);
             this.Controls.Add(this.panel2);
             this.Name = "frmMocha";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMocha";
+            this.Text = "Movimientos carnicos Mocha";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMocha_FormClosed);
             this.Load += new System.EventHandler(this.frmMocha_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlMocha.ResumeLayout(false);
             this.tabInventarioTotal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalMocha)).EndInit();
             this.tabTraspaso.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioLyfc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioMocha)).EndInit();
             this.tabDevoluciones.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosLyfc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosMocha)).EndInit();
+            this.tabDetanidos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMocha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,51 +725,55 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lbDepartamentoLyfc;
+        private System.Windows.Forms.Label lbDepartamentoMocha;
         private System.Windows.Forms.Label lbPerfilLyfc;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lbNombreLyfc;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Label lbNombreMocha;
+        private System.Windows.Forms.TabControl tabControlMocha;
         private System.Windows.Forms.TabPage tabInventarioTotal;
-        private System.Windows.Forms.DataGridView dgvInventarioTotalLyfc;
+        private System.Windows.Forms.DataGridView dgvInventarioTotalMocha;
         private System.Windows.Forms.TabPage tabTraspaso;
-        private System.Windows.Forms.Button btnCancelarGi;
-        private System.Windows.Forms.Button btnRegistrarTraspasoGi;
+        private System.Windows.Forms.Button btnCancelarMochaTraspaso;
+        private System.Windows.Forms.Button btnRegistrarTraspasoMocha;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbMov;
-        private System.Windows.Forms.ComboBox cbDestinoGi;
-        private System.Windows.Forms.Label lbIdTarima;
-        private System.Windows.Forms.DateTimePicker dtpFechaGi;
+        private System.Windows.Forms.ComboBox cbDestinoMochaTraspaso;
+        private System.Windows.Forms.Label lbIdTarimaMochaTraspaso;
+        private System.Windows.Forms.DateTimePicker dtpFechaMochaTraspaso;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label dtFechaGi;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtCodigoBarrasGi;
+        private System.Windows.Forms.TextBox txtCodigoBarrasMochaTraspaso;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtProductoGi;
+        private System.Windows.Forms.TextBox txtProductoMochaTraspaso;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtLoteGi;
-        private System.Windows.Forms.TextBox txtCantidadGi;
-        private System.Windows.Forms.DataGridView dgvInventarioLyfc;
+        private System.Windows.Forms.TextBox txtLoteMochaTraspaso;
+        private System.Windows.Forms.TextBox txtCantidadMochaTraspaso;
+        private System.Windows.Forms.DataGridView dgvInventarioMocha;
         private System.Windows.Forms.TabPage tabDevoluciones;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnCancelarMochaDv;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lbIdTraspasoDv;
-        private System.Windows.Forms.ComboBox cbDestinoDv;
-        private System.Windows.Forms.Label lbIdTarimaDv;
-        private System.Windows.Forms.DateTimePicker dtpFechaDevolucion;
+        private System.Windows.Forms.Label lbIdTraspasoMochaDv;
+        private System.Windows.Forms.ComboBox cbDestinoMochaDv;
+        private System.Windows.Forms.Label lbIdTarimaMochaDv;
+        private System.Windows.Forms.DateTimePicker dtpFechaMochaDv;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBusquedaDevoGi;
+        private System.Windows.Forms.TextBox txtBusquedaMochaDv;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtProductoDv;
+        private System.Windows.Forms.TextBox txtProductoMochaDv;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtLoteDv;
-        private System.Windows.Forms.TextBox txtCantidadDv;
-        private System.Windows.Forms.Button btnRegistrarDevolucion;
-        private System.Windows.Forms.DataGridView dgvTraspasosLyfc;
+        private System.Windows.Forms.TextBox txtLoteMochaDv;
+        private System.Windows.Forms.TextBox txtCantidadMochaDv;
+        private System.Windows.Forms.Button btnRegistrarMochaDv;
+        private System.Windows.Forms.DataGridView dgvTraspasosMocha;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabDetanidos;
+        private System.Windows.Forms.DataGridView dgvDetenidosMocha;
+        private System.Windows.Forms.Button btnDesmarcarDetenidoLyfc;
+        private System.Windows.Forms.Button btnMarcarDetenidoMocha;
     }
 }

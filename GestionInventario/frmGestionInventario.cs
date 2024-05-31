@@ -794,9 +794,6 @@ namespace GestionInventario
         }
 
         
-
-
-
         /*
         private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
         {

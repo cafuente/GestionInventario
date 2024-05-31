@@ -141,7 +141,7 @@ namespace GestionInventario
         }
 
 
-        // FrmLyfc datagrid traspasos
+        // FrmLyfc datagrid traspasos-----------------------------------------------------------------
         public static DataTable ObtenerInventarioLyfc()
         {
             string consulta = "SELECT idTarima, producto, lote, cantidad, estado FROM inventario_lyfc WHERE cantidad > 0";
@@ -175,6 +175,44 @@ namespace GestionInventario
         public static DataTable ObtenerDetenidosLyfc()
         {
             string consulta = "SELECT idTarima, producto, lote, cantidad FROM inventario_lyfc WHERE estado = 'Detenido'";
+            return EjecutarConsulta(consulta);
+        }
+        //----------------------------------------------------------------------------------
+
+        public static DataTable ObtenerInventarioMocha()
+        {
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado FROM inventario_Mocha WHERE cantidad > 0";
+            return EjecutarConsulta(consulta);
+        }
+
+        //FrmMocha pestaña datagrid inventario total
+        public static DataTable ObtenerInventarioAgrupadoMocha()
+        {
+            string consulta = @"
+                SELECT producto, lote, SUM(cantidad) AS cantidad
+                FROM inventario_Mocha
+                WHERE cantidad > 0
+                GROUP BY producto, lote";
+            return EjecutarConsulta(consulta);
+        }
+
+        //FrmMocha pestaña datagrid devoluciones
+        public static DataTable ObtenerTraspasosMocha()
+        {
+            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso' AND destino = 'Mezclado' AND estado = 'activo'";
+            return EjecutarConsulta(consulta);
+        }
+
+        public static DataTable ObtenerDevolucionesMocha()
+        {
+            string consulta = "SELECT idDevolucion, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Devolucion' AND destino = 'LyFC(traslado)'";
+            return EjecutarConsulta(consulta);
+        }
+
+        //frmMocha pestaña data grid detenidos
+        public static DataTable ObtenerDetenidosMocha()
+        {
+            string consulta = "SELECT idTarima, producto, lote, cantidad FROM inventario_mocha WHERE estado = 'Detenido'";
             return EjecutarConsulta(consulta);
         }
 

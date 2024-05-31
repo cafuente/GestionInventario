@@ -80,6 +80,13 @@ namespace GestionInventario
             }
         }
 
+        private void frmLyfc_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmPrincipal frmPr = new frmPrincipal();
+            frmPr.Show();
+        }
+
+       //---- cargar datos de los datagrid inventario total
         private void CargarDatosInventarioTotalLyfc()
         {            
             dgvInventarioTotalLyfc.DataSource = BusquedaBD.ObtenerInventarioAgrupadoLyfc();                       
@@ -87,7 +94,7 @@ namespace GestionInventario
 
         //datadrig de la pestaña traspasos
         private void CargarDatosTraspasosLyfc()
-        {
+        {            
             dgvInventarioLyfc.DataSource = BusquedaBD.ObtenerInventarioLyfc();
         }
 
@@ -97,11 +104,12 @@ namespace GestionInventario
             dgvTraspasosLyfc.DataSource = BusquedaBD.ObtenerTraspasosLyfc();
         }
 
+        //datagrid de la pestaña deteidos
         private void CargarDatosDetenidosLyfc()
         {
             dgvDetenidosLyfc.DataSource = BusquedaBD.ObtenerDetenidosLyfc();
-        }
-
+        }                
+        
         //-------------Codigo pestaña traspasos------------------------------------------------------------------------------------
 
         // datagrid de la pestaña traspaso
@@ -410,6 +418,42 @@ namespace GestionInventario
             {
                 if (e.RowIndex >= 0)
                 {
+                    DataGridViewRow fila = dgvTraspasosLyfc.Rows[e.RowIndex];
+
+                    // Obtener los valores de la fila seleccionada
+                    int idTrasp = Convert.ToInt16(fila.Cells["idTraspaso"].Value);
+                    string id = fila.Cells["idTarima"].Value.ToString();
+                    string producto = fila.Cells["Producto"].Value.ToString();
+                    string lote = fila.Cells["Lote"].Value.ToString();
+                    float cantidad = Convert.ToSingle(fila.Cells["Cantidad"].Value);
+
+                    // Asignar los valores a los controles correspondientes
+                    lbIdTraspasoLyfcDv.Text = idTrasp.ToString();
+                    lbIdTarimaLyfcDv.Text = id;
+                    txtProductoLyfcDv.Text = producto;
+                    txtLoteLyfcDv.Text = lote;
+                    txtCantidadLyfcDv.Text = cantidad.ToString();
+                    btnCancelarLyfcDv.Enabled = true;                    
+                    cbDestinoLyfcDv.Text = "LyFC(traslado)";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                lbIdTraspasoLyfcDv.Text = "ID Traspaso";
+                lbIdTarimaLyfcDv.Text = "ID Tarima";
+                txtProductoLyfcDv.Text = null;
+                txtLoteLyfcDv.Text = null;
+                txtCantidadLyfcDv.Text = null;
+                cbDestinoLyfcDv.SelectedIndex = -1;
+                dtpFechaLyfcDv.Value = DateTime.Now;
+                btnCancelarLyfcDv.Enabled = false;                
+            }
+
+            /*try
+            {
+                if (e.RowIndex >= 0)
+                {
                     DataGridViewRow row = dgvTraspasosLyfc.Rows[e.RowIndex];
                     lbIdTraspasoLyfcDv.Text = row.Cells["idTraspaso"].Value.ToString();
                     lbIdTarimaLyfcDv.Text = row.Cells["idTarima"].Value.ToString();
@@ -423,9 +467,8 @@ namespace GestionInventario
             catch (Exception ex)
             {
                 Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
-                btnCancelarLyfcDv.Enabled = false;
-
-            }
+                btnCancelarLyfcDv.Enabled = false;                
+            }*/
         }
 
         private void btnCancelarLyfcDv_Click(object sender, EventArgs e)
