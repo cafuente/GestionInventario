@@ -88,9 +88,6 @@ namespace GestionInventario
         //datadrig de la pestaña traspasos
         private void CargarDatosTraspasosLyfc()
         {
-            //DataTable dtTraspasos = BusquedaBD.ObtenerTraspasosLyfc();
-            //dgvTraspasosLyfc.DataSource = dtTraspasos;
-            //otra opcion
             dgvInventarioLyfc.DataSource = BusquedaBD.ObtenerInventarioLyfc();
         }
 
@@ -105,12 +102,6 @@ namespace GestionInventario
             dgvDetenidosLyfc.DataSource = BusquedaBD.ObtenerDetenidosLyfc();
         }
 
-        private void frmLyfc_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            frmPrincipal frmPr = new frmPrincipal();
-            frmPr.Show();
-        }
-        
         //-------------Codigo pestaña traspasos------------------------------------------------------------------------------------
 
         // datagrid de la pestaña traspaso
