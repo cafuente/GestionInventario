@@ -41,12 +41,12 @@ namespace GestionInventario
             dtpFechaLyfcDv.Value = DateTime.Now;
             //marca de agua busqueda traspasos
             txtCodigoBarrasLyfcTraspaso.ForeColor = Color.LightGray;
-            txtCodigoBarrasLyfcTraspaso.Text = "DXXXXXX";
+            txtCodigoBarrasLyfcTraspaso.Text = "DXXXXXXX";
             txtCodigoBarrasLyfcTraspaso.GotFocus += new EventHandler(txtCodigoBarrasLyfcTraspaso_GotFocus);
             txtCodigoBarrasLyfcTraspaso.LostFocus += new EventHandler(txtCodigoBarrasLyfcTraspaso_LostFocus);
             // marca de agua busqueda devolucion
             txtBusquedaLyfcDv.ForeColor = Color.LightGray;
-            txtBusquedaLyfcDv.Text = "DXXXXXX";
+            txtBusquedaLyfcDv.Text = "DXXXXXXX";
             txtBusquedaLyfcDv.GotFocus += new EventHandler(txtBusquedaLyfcDv_GotFocus);
             txtBusquedaLyfcDv.LostFocus += new EventHandler(txtBusquedaLyfcDv_LostFocus);
         }
@@ -191,7 +191,7 @@ namespace GestionInventario
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                Regex regex = new Regex(@"^D\d{6}$");
+                Regex regex = new Regex(@"^D\d{7}$");
                 // Realizar la búsqueda y mostrar la información en los campos del formulario
                 txtCodigoBarrasLyfcTraspaso.Text = txtCodigoBarrasLyfcTraspaso.Text.ToUpper();
                 Match match = regex.Match(txtCodigoBarrasLyfcTraspaso.Text);
@@ -592,7 +592,7 @@ namespace GestionInventario
         {
             if (txtBusquedaLyfcDv.Text.Trim().Length == 0)
             {
-                txtBusquedaLyfcDv.Text = "DXXXXXX";
+                txtBusquedaLyfcDv.Text = "DXXXXXXX";
                 txtBusquedaLyfcDv.ForeColor = Color.LightGray;
             }
         }
@@ -663,14 +663,14 @@ namespace GestionInventario
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                Regex regex = new Regex(@"^D\d{6}$");
+                Regex regex = new Regex(@"^D\d{7}$");
                 // Realizar la búsqueda y mostrar la información en los campos del formulario
                 txtBusquedaLyfcDv.Text = txtBusquedaLyfcDv.Text.ToUpper();
                 Match match = regex.Match(txtBusquedaLyfcDv.Text);
                 if (!match.Success)
                 {
                     // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtBusquedaLyfcDv.Text = "";
                 }
                 else

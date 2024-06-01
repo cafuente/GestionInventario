@@ -41,13 +41,13 @@ namespace GestionInventario
                         int ultimoIdInt = Convert.ToInt32(resultado);
                         int nuevoIdInt = ultimoIdInt + 1;
                          
-                        // Formatear el nuevo ID con el formato "D000001"
-                        ultimoId = $"D{nuevoIdInt:D6}";
+                        // Formatear el nuevo ID con el formato "D0000001"
+                        ultimoId = $"D{nuevoIdInt:D7}";
                     }
                     else
                     {
                         // Si no hay registros en la tabla, establecer el ID inicial como "D000001"
-                        ultimoId = "D000001";
+                        ultimoId = "D0000001";
                     }
                 }
             }
