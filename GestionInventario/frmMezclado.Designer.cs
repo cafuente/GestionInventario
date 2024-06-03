@@ -28,86 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tabMezclado = new System.Windows.Forms.TabControl();
             this.tabInventarioTotal = new System.Windows.Forms.TabPage();
-            this.dgvInventarioTotalLyfc = new System.Windows.Forms.DataGridView();
+            this.dgvInventarioTotalMezclado = new System.Windows.Forms.DataGridView();
             this.tabTraspaso = new System.Windows.Forms.TabPage();
-            this.btnCancelarGi = new System.Windows.Forms.Button();
-            this.btnRegistrarTraspasoGi = new System.Windows.Forms.Button();
+            this.btnCancelarMezcladoTraspaso = new System.Windows.Forms.Button();
+            this.btnRegistrarTraspasoMezclado = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbMov = new System.Windows.Forms.Label();
-            this.cbDestinoGi = new System.Windows.Forms.ComboBox();
-            this.lbIdTarima = new System.Windows.Forms.Label();
-            this.dtpFechaGi = new System.Windows.Forms.DateTimePicker();
+            this.cbDestinoMezcladoTraspaso = new System.Windows.Forms.ComboBox();
+            this.lbIdTarimaMezcladoTraspaso = new System.Windows.Forms.Label();
+            this.dtpFechaMezcladoTraspaso = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.dtFechaGi = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtCodigoBarrasGi = new System.Windows.Forms.TextBox();
+            this.txtCodigoBarrasMezcladoTraspaso = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtProductoGi = new System.Windows.Forms.TextBox();
+            this.txtProductoMezcladoTraspaso = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtLoteGi = new System.Windows.Forms.TextBox();
-            this.txtCantidadGi = new System.Windows.Forms.TextBox();
-            this.dgvInventarioLyfc = new System.Windows.Forms.DataGridView();
+            this.txtLoteMezcladoTraspaso = new System.Windows.Forms.TextBox();
+            this.txtCantidadMezcladoTraspaso = new System.Windows.Forms.TextBox();
+            this.dgvInventarioMezclado = new System.Windows.Forms.DataGridView();
             this.tabDevoluciones = new System.Windows.Forms.TabPage();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnCancelarMezcladoDv = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lbIdTraspasoDv = new System.Windows.Forms.Label();
-            this.cbDestinoDv = new System.Windows.Forms.ComboBox();
-            this.lbIdTarimaDv = new System.Windows.Forms.Label();
-            this.dtpFechaDevolucion = new System.Windows.Forms.DateTimePicker();
+            this.lbIdTraspasoMezcladoDv = new System.Windows.Forms.Label();
+            this.cbDestinoMezcladoDv = new System.Windows.Forms.ComboBox();
+            this.lbIdTarimaMezcladoDv = new System.Windows.Forms.Label();
+            this.dtpFechaMezcladoDv = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtBusquedaDevoGi = new System.Windows.Forms.TextBox();
+            this.txtBusquedaMezcladoDv = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtProductoDv = new System.Windows.Forms.TextBox();
+            this.txtProductoMezcladoDv = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtLoteDv = new System.Windows.Forms.TextBox();
-            this.txtCantidadDv = new System.Windows.Forms.TextBox();
-            this.btnRegistrarDevolucion = new System.Windows.Forms.Button();
-            this.dgvTraspasosLyfc = new System.Windows.Forms.DataGridView();
+            this.txtLoteMezcladoDv = new System.Windows.Forms.TextBox();
+            this.txtCantidadMezcladoDv = new System.Windows.Forms.TextBox();
+            this.btnRegistrarMezcladoDv = new System.Windows.Forms.Button();
+            this.dgvTraspasosMezclado = new System.Windows.Forms.DataGridView();
+            this.tabDetenido = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbDepartamentoLyfc = new System.Windows.Forms.Label();
-            this.lbPerfilLyfc = new System.Windows.Forms.Label();
+            this.lbDepartamentoMezclado = new System.Windows.Forms.Label();
+            this.lbPerfilMezclado = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbNombreLyfc = new System.Windows.Forms.Label();
+            this.lbNombreMezclado = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.btnMarcarDetenidoMezclado = new System.Windows.Forms.Button();
+            this.dgvDetenidosMezclado = new System.Windows.Forms.DataGridView();
+            this.btnDesmarcarDetenidoMezclado = new System.Windows.Forms.Button();
+            this.tabMezclado.SuspendLayout();
             this.tabInventarioTotal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalMezclado)).BeginInit();
             this.tabTraspaso.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioLyfc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioMezclado)).BeginInit();
             this.tabDevoluciones.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosLyfc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosMezclado)).BeginInit();
+            this.tabDetenido.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabMezclado
             // 
-            this.tabControl1.Controls.Add(this.tabInventarioTotal);
-            this.tabControl1.Controls.Add(this.tabTraspaso);
-            this.tabControl1.Controls.Add(this.tabDevoluciones);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(6, 136);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(820, 494);
-            this.tabControl1.TabIndex = 18;
+            this.tabMezclado.Controls.Add(this.tabInventarioTotal);
+            this.tabMezclado.Controls.Add(this.tabTraspaso);
+            this.tabMezclado.Controls.Add(this.tabDevoluciones);
+            this.tabMezclado.Controls.Add(this.tabDetenido);
+            this.tabMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabMezclado.Location = new System.Drawing.Point(6, 136);
+            this.tabMezclado.Name = "tabMezclado";
+            this.tabMezclado.SelectedIndex = 0;
+            this.tabMezclado.Size = new System.Drawing.Size(820, 494);
+            this.tabMezclado.TabIndex = 18;
             // 
             // tabInventarioTotal
             // 
-            this.tabInventarioTotal.Controls.Add(this.dgvInventarioTotalLyfc);
+            this.tabInventarioTotal.Controls.Add(this.dgvInventarioTotalMezclado);
             this.tabInventarioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabInventarioTotal.Location = new System.Drawing.Point(4, 25);
             this.tabInventarioTotal.Name = "tabInventarioTotal";
@@ -117,46 +124,47 @@
             this.tabInventarioTotal.Text = "Inventario Total";
             this.tabInventarioTotal.UseVisualStyleBackColor = true;
             // 
-            // dgvInventarioTotalLyfc
+            // dgvInventarioTotalMezclado
             // 
-            this.dgvInventarioTotalLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalLyfc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            this.dgvInventarioTotalLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventarioTotalLyfc.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dgvInventarioTotalLyfc.Location = new System.Drawing.Point(20, 44);
-            this.dgvInventarioTotalLyfc.Name = "dgvInventarioTotalLyfc";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalLyfc.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
-            this.dgvInventarioTotalLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventarioTotalLyfc.Size = new System.Drawing.Size(773, 404);
-            this.dgvInventarioTotalLyfc.TabIndex = 75;
+            this.dgvInventarioTotalMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalMezclado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            this.dgvInventarioTotalMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventarioTotalMezclado.DefaultCellStyle = dataGridViewCellStyle29;
+            this.dgvInventarioTotalMezclado.Location = new System.Drawing.Point(20, 44);
+            this.dgvInventarioTotalMezclado.Name = "dgvInventarioTotalMezclado";
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalMezclado.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            this.dgvInventarioTotalMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInventarioTotalMezclado.Size = new System.Drawing.Size(773, 404);
+            this.dgvInventarioTotalMezclado.TabIndex = 75;
             // 
             // tabTraspaso
             // 
-            this.tabTraspaso.Controls.Add(this.btnCancelarGi);
-            this.tabTraspaso.Controls.Add(this.btnRegistrarTraspasoGi);
+            this.tabTraspaso.Controls.Add(this.btnMarcarDetenidoMezclado);
+            this.tabTraspaso.Controls.Add(this.btnCancelarMezcladoTraspaso);
+            this.tabTraspaso.Controls.Add(this.btnRegistrarTraspasoMezclado);
             this.tabTraspaso.Controls.Add(this.groupBox1);
-            this.tabTraspaso.Controls.Add(this.dgvInventarioLyfc);
+            this.tabTraspaso.Controls.Add(this.dgvInventarioMezclado);
             this.tabTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabTraspaso.Location = new System.Drawing.Point(4, 25);
             this.tabTraspaso.Name = "tabTraspaso";
@@ -166,42 +174,44 @@
             this.tabTraspaso.Text = "Traspasos";
             this.tabTraspaso.UseVisualStyleBackColor = true;
             // 
-            // btnCancelarGi
+            // btnCancelarMezcladoTraspaso
             // 
-            this.btnCancelarGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarGi.Location = new System.Drawing.Point(649, 135);
-            this.btnCancelarGi.Name = "btnCancelarGi";
-            this.btnCancelarGi.Size = new System.Drawing.Size(127, 35);
-            this.btnCancelarGi.TabIndex = 78;
-            this.btnCancelarGi.Text = "Cancelar";
-            this.btnCancelarGi.UseVisualStyleBackColor = true;
+            this.btnCancelarMezcladoTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarMezcladoTraspaso.Location = new System.Drawing.Point(649, 135);
+            this.btnCancelarMezcladoTraspaso.Name = "btnCancelarMezcladoTraspaso";
+            this.btnCancelarMezcladoTraspaso.Size = new System.Drawing.Size(127, 35);
+            this.btnCancelarMezcladoTraspaso.TabIndex = 78;
+            this.btnCancelarMezcladoTraspaso.Text = "Cancelar";
+            this.btnCancelarMezcladoTraspaso.UseVisualStyleBackColor = true;
+            this.btnCancelarMezcladoTraspaso.Click += new System.EventHandler(this.btnCancelarMezcladoTraspaso_Click);
             // 
-            // btnRegistrarTraspasoGi
+            // btnRegistrarTraspasoMezclado
             // 
-            this.btnRegistrarTraspasoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarTraspasoGi.Location = new System.Drawing.Point(649, 67);
-            this.btnRegistrarTraspasoGi.Name = "btnRegistrarTraspasoGi";
-            this.btnRegistrarTraspasoGi.Size = new System.Drawing.Size(127, 35);
-            this.btnRegistrarTraspasoGi.TabIndex = 16;
-            this.btnRegistrarTraspasoGi.Text = "Realizar traspaso";
-            this.btnRegistrarTraspasoGi.UseVisualStyleBackColor = true;
+            this.btnRegistrarTraspasoMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarTraspasoMezclado.Location = new System.Drawing.Point(649, 67);
+            this.btnRegistrarTraspasoMezclado.Name = "btnRegistrarTraspasoMezclado";
+            this.btnRegistrarTraspasoMezclado.Size = new System.Drawing.Size(127, 35);
+            this.btnRegistrarTraspasoMezclado.TabIndex = 16;
+            this.btnRegistrarTraspasoMezclado.Text = "Realizar traspaso";
+            this.btnRegistrarTraspasoMezclado.UseVisualStyleBackColor = true;
+            this.btnRegistrarTraspasoMezclado.Click += new System.EventHandler(this.btnRegistrarTraspasoMezclado_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lbMov);
-            this.groupBox1.Controls.Add(this.cbDestinoGi);
-            this.groupBox1.Controls.Add(this.lbIdTarima);
-            this.groupBox1.Controls.Add(this.dtpFechaGi);
+            this.groupBox1.Controls.Add(this.cbDestinoMezcladoTraspaso);
+            this.groupBox1.Controls.Add(this.lbIdTarimaMezcladoTraspaso);
+            this.groupBox1.Controls.Add(this.dtpFechaMezcladoTraspaso);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.dtFechaGi);
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtCodigoBarrasGi);
+            this.groupBox1.Controls.Add(this.txtCodigoBarrasMezcladoTraspaso);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.txtProductoGi);
+            this.groupBox1.Controls.Add(this.txtProductoMezcladoTraspaso);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtLoteGi);
-            this.groupBox1.Controls.Add(this.txtCantidadGi);
+            this.groupBox1.Controls.Add(this.txtLoteMezcladoTraspaso);
+            this.groupBox1.Controls.Add(this.txtCantidadMezcladoTraspaso);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(20, 32);
             this.groupBox1.Name = "groupBox1";
@@ -220,33 +230,33 @@
             this.lbMov.Text = "traspaso";
             this.lbMov.Visible = false;
             // 
-            // cbDestinoGi
+            // cbDestinoMezcladoTraspaso
             // 
-            this.cbDestinoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDestinoGi.FormattingEnabled = true;
-            this.cbDestinoGi.Location = new System.Drawing.Point(415, 169);
-            this.cbDestinoGi.Name = "cbDestinoGi";
-            this.cbDestinoGi.Size = new System.Drawing.Size(121, 24);
-            this.cbDestinoGi.TabIndex = 69;
+            this.cbDestinoMezcladoTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDestinoMezcladoTraspaso.FormattingEnabled = true;
+            this.cbDestinoMezcladoTraspaso.Location = new System.Drawing.Point(415, 169);
+            this.cbDestinoMezcladoTraspaso.Name = "cbDestinoMezcladoTraspaso";
+            this.cbDestinoMezcladoTraspaso.Size = new System.Drawing.Size(121, 24);
+            this.cbDestinoMezcladoTraspaso.TabIndex = 69;
             // 
-            // lbIdTarima
+            // lbIdTarimaMezcladoTraspaso
             // 
-            this.lbIdTarima.AutoSize = true;
-            this.lbIdTarima.Location = new System.Drawing.Point(6, 54);
-            this.lbIdTarima.Name = "lbIdTarima";
-            this.lbIdTarima.Size = new System.Drawing.Size(78, 17);
-            this.lbIdTarima.TabIndex = 62;
-            this.lbIdTarima.Text = "ID Tarima";
+            this.lbIdTarimaMezcladoTraspaso.AutoSize = true;
+            this.lbIdTarimaMezcladoTraspaso.Location = new System.Drawing.Point(6, 54);
+            this.lbIdTarimaMezcladoTraspaso.Name = "lbIdTarimaMezcladoTraspaso";
+            this.lbIdTarimaMezcladoTraspaso.Size = new System.Drawing.Size(78, 17);
+            this.lbIdTarimaMezcladoTraspaso.TabIndex = 62;
+            this.lbIdTarimaMezcladoTraspaso.Text = "ID Tarima";
             // 
-            // dtpFechaGi
+            // dtpFechaMezcladoTraspaso
             // 
-            this.dtpFechaGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaGi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaGi.Location = new System.Drawing.Point(415, 54);
-            this.dtpFechaGi.Name = "dtpFechaGi";
-            this.dtpFechaGi.Size = new System.Drawing.Size(121, 23);
-            this.dtpFechaGi.TabIndex = 68;
-            this.dtpFechaGi.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
+            this.dtpFechaMezcladoTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaMezcladoTraspaso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaMezcladoTraspaso.Location = new System.Drawing.Point(415, 54);
+            this.dtpFechaMezcladoTraspaso.Name = "dtpFechaMezcladoTraspaso";
+            this.dtpFechaMezcladoTraspaso.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaMezcladoTraspaso.TabIndex = 68;
+            this.dtpFechaMezcladoTraspaso.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
             // label6
             // 
@@ -289,13 +299,15 @@
             this.label12.TabIndex = 65;
             this.label12.Text = "Cantidad:";
             // 
-            // txtCodigoBarrasGi
+            // txtCodigoBarrasMezcladoTraspaso
             // 
-            this.txtCodigoBarrasGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoBarrasGi.Location = new System.Drawing.Point(157, 54);
-            this.txtCodigoBarrasGi.Name = "txtCodigoBarrasGi";
-            this.txtCodigoBarrasGi.Size = new System.Drawing.Size(125, 23);
-            this.txtCodigoBarrasGi.TabIndex = 44;
+            this.txtCodigoBarrasMezcladoTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoBarrasMezcladoTraspaso.Location = new System.Drawing.Point(157, 54);
+            this.txtCodigoBarrasMezcladoTraspaso.Name = "txtCodigoBarrasMezcladoTraspaso";
+            this.txtCodigoBarrasMezcladoTraspaso.Size = new System.Drawing.Size(125, 23);
+            this.txtCodigoBarrasMezcladoTraspaso.TabIndex = 44;
+            this.txtCodigoBarrasMezcladoTraspaso.Click += new System.EventHandler(this.txtCodigoBarrasMezcladoTraspaso_Click);
+            this.txtCodigoBarrasMezcladoTraspaso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarrasMezcladoTraspaso_KeyPress);
             // 
             // label11
             // 
@@ -307,12 +319,12 @@
             this.label11.TabIndex = 64;
             this.label11.Text = "Lote:";
             // 
-            // txtProductoGi
+            // txtProductoMezcladoTraspaso
             // 
-            this.txtProductoGi.Location = new System.Drawing.Point(98, 109);
-            this.txtProductoGi.Name = "txtProductoGi";
-            this.txtProductoGi.Size = new System.Drawing.Size(184, 23);
-            this.txtProductoGi.TabIndex = 57;
+            this.txtProductoMezcladoTraspaso.Location = new System.Drawing.Point(98, 109);
+            this.txtProductoMezcladoTraspaso.Name = "txtProductoMezcladoTraspaso";
+            this.txtProductoMezcladoTraspaso.Size = new System.Drawing.Size(184, 23);
+            this.txtProductoMezcladoTraspaso.TabIndex = 57;
             // 
             // label10
             // 
@@ -324,37 +336,39 @@
             this.label10.TabIndex = 63;
             this.label10.Text = "Producto:";
             // 
-            // txtLoteGi
+            // txtLoteMezcladoTraspaso
             // 
-            this.txtLoteGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoteGi.Location = new System.Drawing.Point(415, 109);
-            this.txtLoteGi.Name = "txtLoteGi";
-            this.txtLoteGi.Size = new System.Drawing.Size(121, 23);
-            this.txtLoteGi.TabIndex = 58;
+            this.txtLoteMezcladoTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoteMezcladoTraspaso.Location = new System.Drawing.Point(415, 109);
+            this.txtLoteMezcladoTraspaso.Name = "txtLoteMezcladoTraspaso";
+            this.txtLoteMezcladoTraspaso.Size = new System.Drawing.Size(121, 23);
+            this.txtLoteMezcladoTraspaso.TabIndex = 58;
             // 
-            // txtCantidadGi
+            // txtCantidadMezcladoTraspaso
             // 
-            this.txtCantidadGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadGi.Location = new System.Drawing.Point(120, 169);
-            this.txtCantidadGi.Name = "txtCantidadGi";
-            this.txtCantidadGi.Size = new System.Drawing.Size(162, 23);
-            this.txtCantidadGi.TabIndex = 59;
+            this.txtCantidadMezcladoTraspaso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadMezcladoTraspaso.Location = new System.Drawing.Point(120, 169);
+            this.txtCantidadMezcladoTraspaso.Name = "txtCantidadMezcladoTraspaso";
+            this.txtCantidadMezcladoTraspaso.Size = new System.Drawing.Size(162, 23);
+            this.txtCantidadMezcladoTraspaso.TabIndex = 59;
             // 
-            // dgvInventarioLyfc
+            // dgvInventarioMezclado
             // 
-            this.dgvInventarioLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventarioLyfc.Location = new System.Drawing.Point(19, 267);
-            this.dgvInventarioLyfc.Name = "dgvInventarioLyfc";
-            this.dgvInventarioLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventarioLyfc.Size = new System.Drawing.Size(773, 195);
-            this.dgvInventarioLyfc.TabIndex = 74;
+            this.dgvInventarioMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInventarioMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInventarioMezclado.Location = new System.Drawing.Point(19, 267);
+            this.dgvInventarioMezclado.Name = "dgvInventarioMezclado";
+            this.dgvInventarioMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInventarioMezclado.Size = new System.Drawing.Size(773, 195);
+            this.dgvInventarioMezclado.TabIndex = 74;
+            this.dgvInventarioMezclado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventarioMezclado_CellClick);
             // 
             // tabDevoluciones
             // 
-            this.tabDevoluciones.Controls.Add(this.btnCancelar);
+            this.tabDevoluciones.Controls.Add(this.btnCancelarMezcladoDv);
             this.tabDevoluciones.Controls.Add(this.groupBox2);
-            this.tabDevoluciones.Controls.Add(this.btnRegistrarDevolucion);
-            this.tabDevoluciones.Controls.Add(this.dgvTraspasosLyfc);
+            this.tabDevoluciones.Controls.Add(this.btnRegistrarMezcladoDv);
+            this.tabDevoluciones.Controls.Add(this.dgvTraspasosMezclado);
             this.tabDevoluciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabDevoluciones.Location = new System.Drawing.Point(4, 25);
             this.tabDevoluciones.Name = "tabDevoluciones";
@@ -364,31 +378,32 @@
             this.tabDevoluciones.Text = "Devoluciones";
             this.tabDevoluciones.UseVisualStyleBackColor = true;
             // 
-            // btnCancelar
+            // btnCancelarMezcladoDv
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(663, 150);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(126, 43);
-            this.btnCancelar.TabIndex = 77;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelarMezcladoDv.Location = new System.Drawing.Point(663, 150);
+            this.btnCancelarMezcladoDv.Name = "btnCancelarMezcladoDv";
+            this.btnCancelarMezcladoDv.Size = new System.Drawing.Size(126, 43);
+            this.btnCancelarMezcladoDv.TabIndex = 77;
+            this.btnCancelarMezcladoDv.Text = "Cancelar";
+            this.btnCancelarMezcladoDv.UseVisualStyleBackColor = true;
+            this.btnCancelarMezcladoDv.Click += new System.EventHandler(this.btnCancelarMezcladoDv_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lbIdTraspasoDv);
-            this.groupBox2.Controls.Add(this.cbDestinoDv);
-            this.groupBox2.Controls.Add(this.lbIdTarimaDv);
-            this.groupBox2.Controls.Add(this.dtpFechaDevolucion);
+            this.groupBox2.Controls.Add(this.lbIdTraspasoMezcladoDv);
+            this.groupBox2.Controls.Add(this.cbDestinoMezcladoDv);
+            this.groupBox2.Controls.Add(this.lbIdTarimaMezcladoDv);
+            this.groupBox2.Controls.Add(this.dtpFechaMezcladoDv);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.pictureBox3);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtBusquedaDevoGi);
+            this.groupBox2.Controls.Add(this.txtBusquedaMezcladoDv);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtProductoDv);
+            this.groupBox2.Controls.Add(this.txtProductoMezcladoDv);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtLoteDv);
-            this.groupBox2.Controls.Add(this.txtCantidadDv);
+            this.groupBox2.Controls.Add(this.txtLoteMezcladoDv);
+            this.groupBox2.Controls.Add(this.txtCantidadMezcladoDv);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(21, 15);
             this.groupBox2.Name = "groupBox2";
@@ -397,42 +412,42 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Devoluciones";
             // 
-            // lbIdTraspasoDv
+            // lbIdTraspasoMezcladoDv
             // 
-            this.lbIdTraspasoDv.AutoSize = true;
-            this.lbIdTraspasoDv.Location = new System.Drawing.Point(5, 20);
-            this.lbIdTraspasoDv.Name = "lbIdTraspasoDv";
-            this.lbIdTraspasoDv.Size = new System.Drawing.Size(96, 17);
-            this.lbIdTraspasoDv.TabIndex = 71;
-            this.lbIdTraspasoDv.Text = "ID Traspaso";
+            this.lbIdTraspasoMezcladoDv.AutoSize = true;
+            this.lbIdTraspasoMezcladoDv.Location = new System.Drawing.Point(5, 20);
+            this.lbIdTraspasoMezcladoDv.Name = "lbIdTraspasoMezcladoDv";
+            this.lbIdTraspasoMezcladoDv.Size = new System.Drawing.Size(96, 17);
+            this.lbIdTraspasoMezcladoDv.TabIndex = 71;
+            this.lbIdTraspasoMezcladoDv.Text = "ID Traspaso";
             // 
-            // cbDestinoDv
+            // cbDestinoMezcladoDv
             // 
-            this.cbDestinoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDestinoDv.FormattingEnabled = true;
-            this.cbDestinoDv.Location = new System.Drawing.Point(415, 169);
-            this.cbDestinoDv.Name = "cbDestinoDv";
-            this.cbDestinoDv.Size = new System.Drawing.Size(121, 24);
-            this.cbDestinoDv.TabIndex = 69;
+            this.cbDestinoMezcladoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDestinoMezcladoDv.FormattingEnabled = true;
+            this.cbDestinoMezcladoDv.Location = new System.Drawing.Point(415, 169);
+            this.cbDestinoMezcladoDv.Name = "cbDestinoMezcladoDv";
+            this.cbDestinoMezcladoDv.Size = new System.Drawing.Size(121, 24);
+            this.cbDestinoMezcladoDv.TabIndex = 69;
             // 
-            // lbIdTarimaDv
+            // lbIdTarimaMezcladoDv
             // 
-            this.lbIdTarimaDv.AutoSize = true;
-            this.lbIdTarimaDv.Location = new System.Drawing.Point(6, 54);
-            this.lbIdTarimaDv.Name = "lbIdTarimaDv";
-            this.lbIdTarimaDv.Size = new System.Drawing.Size(78, 17);
-            this.lbIdTarimaDv.TabIndex = 62;
-            this.lbIdTarimaDv.Text = "ID Tarima";
+            this.lbIdTarimaMezcladoDv.AutoSize = true;
+            this.lbIdTarimaMezcladoDv.Location = new System.Drawing.Point(6, 54);
+            this.lbIdTarimaMezcladoDv.Name = "lbIdTarimaMezcladoDv";
+            this.lbIdTarimaMezcladoDv.Size = new System.Drawing.Size(78, 17);
+            this.lbIdTarimaMezcladoDv.TabIndex = 62;
+            this.lbIdTarimaMezcladoDv.Text = "ID Tarima";
             // 
-            // dtpFechaDevolucion
+            // dtpFechaMezcladoDv
             // 
-            this.dtpFechaDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaDevolucion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaDevolucion.Location = new System.Drawing.Point(415, 54);
-            this.dtpFechaDevolucion.Name = "dtpFechaDevolucion";
-            this.dtpFechaDevolucion.Size = new System.Drawing.Size(121, 23);
-            this.dtpFechaDevolucion.TabIndex = 68;
-            this.dtpFechaDevolucion.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
+            this.dtpFechaMezcladoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaMezcladoDv.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaMezcladoDv.Location = new System.Drawing.Point(415, 54);
+            this.dtpFechaMezcladoDv.Name = "dtpFechaMezcladoDv";
+            this.dtpFechaMezcladoDv.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaMezcladoDv.TabIndex = 68;
+            this.dtpFechaMezcladoDv.Value = new System.DateTime(2024, 5, 20, 0, 0, 0, 0);
             // 
             // label4
             // 
@@ -475,13 +490,15 @@
             this.label7.TabIndex = 65;
             this.label7.Text = "Cantidad:";
             // 
-            // txtBusquedaDevoGi
+            // txtBusquedaMezcladoDv
             // 
-            this.txtBusquedaDevoGi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusquedaDevoGi.Location = new System.Drawing.Point(157, 54);
-            this.txtBusquedaDevoGi.Name = "txtBusquedaDevoGi";
-            this.txtBusquedaDevoGi.Size = new System.Drawing.Size(125, 23);
-            this.txtBusquedaDevoGi.TabIndex = 44;
+            this.txtBusquedaMezcladoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusquedaMezcladoDv.Location = new System.Drawing.Point(157, 54);
+            this.txtBusquedaMezcladoDv.Name = "txtBusquedaMezcladoDv";
+            this.txtBusquedaMezcladoDv.Size = new System.Drawing.Size(125, 23);
+            this.txtBusquedaMezcladoDv.TabIndex = 44;
+            this.txtBusquedaMezcladoDv.Click += new System.EventHandler(this.txtBusquedaMezcladoDv_Click);
+            this.txtBusquedaMezcladoDv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusquedaMezcladoDv_KeyPress);
             // 
             // label8
             // 
@@ -493,12 +510,12 @@
             this.label8.TabIndex = 64;
             this.label8.Text = "Lote:";
             // 
-            // txtProductoDv
+            // txtProductoMezcladoDv
             // 
-            this.txtProductoDv.Location = new System.Drawing.Point(98, 109);
-            this.txtProductoDv.Name = "txtProductoDv";
-            this.txtProductoDv.Size = new System.Drawing.Size(184, 23);
-            this.txtProductoDv.TabIndex = 57;
+            this.txtProductoMezcladoDv.Location = new System.Drawing.Point(98, 109);
+            this.txtProductoMezcladoDv.Name = "txtProductoMezcladoDv";
+            this.txtProductoMezcladoDv.Size = new System.Drawing.Size(184, 23);
+            this.txtProductoMezcladoDv.TabIndex = 57;
             // 
             // label9
             // 
@@ -510,68 +527,81 @@
             this.label9.TabIndex = 63;
             this.label9.Text = "Producto:";
             // 
-            // txtLoteDv
+            // txtLoteMezcladoDv
             // 
-            this.txtLoteDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLoteDv.Location = new System.Drawing.Point(415, 109);
-            this.txtLoteDv.Name = "txtLoteDv";
-            this.txtLoteDv.Size = new System.Drawing.Size(121, 23);
-            this.txtLoteDv.TabIndex = 58;
+            this.txtLoteMezcladoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoteMezcladoDv.Location = new System.Drawing.Point(415, 109);
+            this.txtLoteMezcladoDv.Name = "txtLoteMezcladoDv";
+            this.txtLoteMezcladoDv.Size = new System.Drawing.Size(121, 23);
+            this.txtLoteMezcladoDv.TabIndex = 58;
             // 
-            // txtCantidadDv
+            // txtCantidadMezcladoDv
             // 
-            this.txtCantidadDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidadDv.Location = new System.Drawing.Point(120, 169);
-            this.txtCantidadDv.Name = "txtCantidadDv";
-            this.txtCantidadDv.Size = new System.Drawing.Size(162, 23);
-            this.txtCantidadDv.TabIndex = 59;
+            this.txtCantidadMezcladoDv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadMezcladoDv.Location = new System.Drawing.Point(120, 169);
+            this.txtCantidadMezcladoDv.Name = "txtCantidadMezcladoDv";
+            this.txtCantidadMezcladoDv.Size = new System.Drawing.Size(162, 23);
+            this.txtCantidadMezcladoDv.TabIndex = 59;
             // 
-            // btnRegistrarDevolucion
+            // btnRegistrarMezcladoDv
             // 
-            this.btnRegistrarDevolucion.Location = new System.Drawing.Point(663, 51);
-            this.btnRegistrarDevolucion.Name = "btnRegistrarDevolucion";
-            this.btnRegistrarDevolucion.Size = new System.Drawing.Size(126, 43);
-            this.btnRegistrarDevolucion.TabIndex = 1;
-            this.btnRegistrarDevolucion.Text = "Aceptar";
-            this.btnRegistrarDevolucion.UseVisualStyleBackColor = true;
+            this.btnRegistrarMezcladoDv.Location = new System.Drawing.Point(663, 51);
+            this.btnRegistrarMezcladoDv.Name = "btnRegistrarMezcladoDv";
+            this.btnRegistrarMezcladoDv.Size = new System.Drawing.Size(126, 43);
+            this.btnRegistrarMezcladoDv.TabIndex = 1;
+            this.btnRegistrarMezcladoDv.Text = "Realizar devolución";
+            this.btnRegistrarMezcladoDv.UseVisualStyleBackColor = true;
+            this.btnRegistrarMezcladoDv.Click += new System.EventHandler(this.btnRegistrarMezcladoDv_Click);
             // 
-            // dgvTraspasosLyfc
+            // dgvTraspasosMezclado
             // 
-            this.dgvTraspasosLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTraspasosLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTraspasosLyfc.Location = new System.Drawing.Point(6, 255);
-            this.dgvTraspasosLyfc.Name = "dgvTraspasosLyfc";
-            this.dgvTraspasosLyfc.Size = new System.Drawing.Size(800, 192);
-            this.dgvTraspasosLyfc.TabIndex = 0;
+            this.dgvTraspasosMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTraspasosMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTraspasosMezclado.Location = new System.Drawing.Point(6, 255);
+            this.dgvTraspasosMezclado.Name = "dgvTraspasosMezclado";
+            this.dgvTraspasosMezclado.Size = new System.Drawing.Size(800, 192);
+            this.dgvTraspasosMezclado.TabIndex = 0;
+            this.dgvTraspasosMezclado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraspasosMezclado_CellClick);
+            // 
+            // tabDetenido
+            // 
+            this.tabDetenido.Controls.Add(this.dgvDetenidosMezclado);
+            this.tabDetenido.Controls.Add(this.btnDesmarcarDetenidoMezclado);
+            this.tabDetenido.Location = new System.Drawing.Point(4, 25);
+            this.tabDetenido.Name = "tabDetenido";
+            this.tabDetenido.Size = new System.Drawing.Size(812, 465);
+            this.tabDetenido.TabIndex = 3;
+            this.tabDetenido.Text = "Detenido";
+            this.tabDetenido.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lbDepartamentoLyfc);
-            this.panel2.Controls.Add(this.lbPerfilLyfc);
+            this.panel2.Controls.Add(this.lbDepartamentoMezclado);
+            this.panel2.Controls.Add(this.lbPerfilMezclado);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.lbNombreLyfc);
+            this.panel2.Controls.Add(this.lbNombreMezclado);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(239, 85);
             this.panel2.TabIndex = 19;
             // 
-            // lbDepartamentoLyfc
+            // lbDepartamentoMezclado
             // 
-            this.lbDepartamentoLyfc.AutoSize = true;
-            this.lbDepartamentoLyfc.Location = new System.Drawing.Point(90, 34);
-            this.lbDepartamentoLyfc.Name = "lbDepartamentoLyfc";
-            this.lbDepartamentoLyfc.Size = new System.Drawing.Size(39, 13);
-            this.lbDepartamentoLyfc.TabIndex = 14;
-            this.lbDepartamentoLyfc.Text = "Deptto";
+            this.lbDepartamentoMezclado.AutoSize = true;
+            this.lbDepartamentoMezclado.Location = new System.Drawing.Point(90, 34);
+            this.lbDepartamentoMezclado.Name = "lbDepartamentoMezclado";
+            this.lbDepartamentoMezclado.Size = new System.Drawing.Size(39, 13);
+            this.lbDepartamentoMezclado.TabIndex = 14;
+            this.lbDepartamentoMezclado.Text = "Deptto";
             // 
-            // lbPerfilLyfc
+            // lbPerfilMezclado
             // 
-            this.lbPerfilLyfc.AutoSize = true;
-            this.lbPerfilLyfc.Location = new System.Drawing.Point(90, 56);
-            this.lbPerfilLyfc.Name = "lbPerfilLyfc";
-            this.lbPerfilLyfc.Size = new System.Drawing.Size(29, 13);
-            this.lbPerfilLyfc.TabIndex = 1;
-            this.lbPerfilLyfc.Text = "perfil";
+            this.lbPerfilMezclado.AutoSize = true;
+            this.lbPerfilMezclado.Location = new System.Drawing.Point(90, 56);
+            this.lbPerfilMezclado.Name = "lbPerfilMezclado";
+            this.lbPerfilMezclado.Size = new System.Drawing.Size(29, 13);
+            this.lbPerfilMezclado.TabIndex = 1;
+            this.lbPerfilMezclado.Text = "perfil";
             // 
             // pictureBox1
             // 
@@ -583,24 +613,55 @@
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
-            // lbNombreLyfc
+            // lbNombreMezclado
             // 
-            this.lbNombreLyfc.AutoSize = true;
-            this.lbNombreLyfc.Location = new System.Drawing.Point(90, 12);
-            this.lbNombreLyfc.Name = "lbNombreLyfc";
-            this.lbNombreLyfc.Size = new System.Drawing.Size(44, 13);
-            this.lbNombreLyfc.TabIndex = 0;
-            this.lbNombreLyfc.Text = "Nombre";
+            this.lbNombreMezclado.AutoSize = true;
+            this.lbNombreMezclado.Location = new System.Drawing.Point(90, 12);
+            this.lbNombreMezclado.Name = "lbNombreMezclado";
+            this.lbNombreMezclado.Size = new System.Drawing.Size(44, 13);
+            this.lbNombreMezclado.TabIndex = 0;
+            this.lbNombreMezclado.Text = "Nombre";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(435, 50);
+            this.label1.Location = new System.Drawing.Point(388, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 25);
+            this.label1.Size = new System.Drawing.Size(212, 25);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Consumo de carne";
+            this.label1.Text = "Mezclado de carne";
+            // 
+            // btnMarcarDetenidoMezclado
+            // 
+            this.btnMarcarDetenidoMezclado.Location = new System.Drawing.Point(649, 214);
+            this.btnMarcarDetenidoMezclado.Name = "btnMarcarDetenidoMezclado";
+            this.btnMarcarDetenidoMezclado.Size = new System.Drawing.Size(127, 36);
+            this.btnMarcarDetenidoMezclado.TabIndex = 84;
+            this.btnMarcarDetenidoMezclado.Text = "Marcar detenido";
+            this.btnMarcarDetenidoMezclado.UseVisualStyleBackColor = true;
+            this.btnMarcarDetenidoMezclado.Click += new System.EventHandler(this.btnMarcarDetenidoMezclado_Click);
+            // 
+            // dgvDetenidosMezclado
+            // 
+            this.dgvDetenidosMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDetenidosMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetenidosMezclado.Location = new System.Drawing.Point(10, 33);
+            this.dgvDetenidosMezclado.Name = "dgvDetenidosMezclado";
+            this.dgvDetenidosMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetenidosMezclado.Size = new System.Drawing.Size(792, 316);
+            this.dgvDetenidosMezclado.TabIndex = 7;
+            // 
+            // btnDesmarcarDetenidoMezclado
+            // 
+            this.btnDesmarcarDetenidoMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesmarcarDetenidoMezclado.Location = new System.Drawing.Point(309, 396);
+            this.btnDesmarcarDetenidoMezclado.Name = "btnDesmarcarDetenidoMezclado";
+            this.btnDesmarcarDetenidoMezclado.Size = new System.Drawing.Size(192, 36);
+            this.btnDesmarcarDetenidoMezclado.TabIndex = 8;
+            this.btnDesmarcarDetenidoMezclado.Text = "Desmarcar detenido";
+            this.btnDesmarcarDetenidoMezclado.UseVisualStyleBackColor = true;
+            this.btnDesmarcarDetenidoMezclado.Click += new System.EventHandler(this.btnDesmarcarDetenidoMezclado_Click);
             // 
             // frmMezclado
             // 
@@ -609,28 +670,30 @@
             this.ClientSize = new System.Drawing.Size(832, 626);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabMezclado);
             this.Name = "frmMezclado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMezclado";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMezclado_FormClosed);
             this.Load += new System.EventHandler(this.frmMezclado_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabMezclado.ResumeLayout(false);
             this.tabInventarioTotal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalMezclado)).EndInit();
             this.tabTraspaso.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioLyfc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioMezclado)).EndInit();
             this.tabDevoluciones.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosLyfc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosMezclado)).EndInit();
+            this.tabDetenido.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -638,52 +701,56 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabMezclado;
         private System.Windows.Forms.TabPage tabInventarioTotal;
-        private System.Windows.Forms.DataGridView dgvInventarioTotalLyfc;
+        private System.Windows.Forms.DataGridView dgvInventarioTotalMezclado;
         private System.Windows.Forms.TabPage tabTraspaso;
-        private System.Windows.Forms.Button btnCancelarGi;
-        private System.Windows.Forms.Button btnRegistrarTraspasoGi;
+        private System.Windows.Forms.Button btnCancelarMezcladoTraspaso;
+        private System.Windows.Forms.Button btnRegistrarTraspasoMezclado;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lbMov;
-        private System.Windows.Forms.ComboBox cbDestinoGi;
-        private System.Windows.Forms.Label lbIdTarima;
-        private System.Windows.Forms.DateTimePicker dtpFechaGi;
+        private System.Windows.Forms.ComboBox cbDestinoMezcladoTraspaso;
+        private System.Windows.Forms.Label lbIdTarimaMezcladoTraspaso;
+        private System.Windows.Forms.DateTimePicker dtpFechaMezcladoTraspaso;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label dtFechaGi;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtCodigoBarrasGi;
+        private System.Windows.Forms.TextBox txtCodigoBarrasMezcladoTraspaso;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtProductoGi;
+        private System.Windows.Forms.TextBox txtProductoMezcladoTraspaso;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtLoteGi;
-        private System.Windows.Forms.TextBox txtCantidadGi;
-        private System.Windows.Forms.DataGridView dgvInventarioLyfc;
+        private System.Windows.Forms.TextBox txtLoteMezcladoTraspaso;
+        private System.Windows.Forms.TextBox txtCantidadMezcladoTraspaso;
+        private System.Windows.Forms.DataGridView dgvInventarioMezclado;
         private System.Windows.Forms.TabPage tabDevoluciones;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnCancelarMezcladoDv;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lbIdTraspasoDv;
-        private System.Windows.Forms.ComboBox cbDestinoDv;
-        private System.Windows.Forms.Label lbIdTarimaDv;
-        private System.Windows.Forms.DateTimePicker dtpFechaDevolucion;
+        private System.Windows.Forms.Label lbIdTraspasoMezcladoDv;
+        private System.Windows.Forms.ComboBox cbDestinoMezcladoDv;
+        private System.Windows.Forms.Label lbIdTarimaMezcladoDv;
+        private System.Windows.Forms.DateTimePicker dtpFechaMezcladoDv;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtBusquedaDevoGi;
+        private System.Windows.Forms.TextBox txtBusquedaMezcladoDv;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtProductoDv;
+        private System.Windows.Forms.TextBox txtProductoMezcladoDv;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtLoteDv;
-        private System.Windows.Forms.TextBox txtCantidadDv;
-        private System.Windows.Forms.Button btnRegistrarDevolucion;
-        private System.Windows.Forms.DataGridView dgvTraspasosLyfc;
+        private System.Windows.Forms.TextBox txtLoteMezcladoDv;
+        private System.Windows.Forms.TextBox txtCantidadMezcladoDv;
+        private System.Windows.Forms.Button btnRegistrarMezcladoDv;
+        private System.Windows.Forms.DataGridView dgvTraspasosMezclado;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lbDepartamentoLyfc;
-        private System.Windows.Forms.Label lbPerfilLyfc;
+        private System.Windows.Forms.Label lbDepartamentoMezclado;
+        private System.Windows.Forms.Label lbPerfilMezclado;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lbNombreLyfc;
+        private System.Windows.Forms.Label lbNombreMezclado;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabDetenido;
+        private System.Windows.Forms.Button btnMarcarDetenidoMezclado;
+        private System.Windows.Forms.DataGridView dgvDetenidosMezclado;
+        private System.Windows.Forms.Button btnDesmarcarDetenidoMezclado;
     }
 }

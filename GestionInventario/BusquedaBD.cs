@@ -215,7 +215,44 @@ namespace GestionInventario
             string consulta = "SELECT idTarima, producto, lote, cantidad FROM inventario_mocha WHERE estado = 'Detenido'";
             return EjecutarConsulta(consulta);
         }
+        //----------------------------------------------------------------------------------
 
+        public static DataTable ObtenerInventarioMezclado()
+        {
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado FROM inventario_mezclado WHERE cantidad > 0";
+            return EjecutarConsulta(consulta);
+        }
+
+        //FrmMocha pestaña datagrid inventario total
+        public static DataTable ObtenerInventarioAgrupadoMezclado()
+        {
+            string consulta = @"
+                SELECT producto, lote, SUM(cantidad) AS cantidad
+                FROM inventario_Mezclado
+                WHERE cantidad > 0
+                GROUP BY producto, lote";
+            return EjecutarConsulta(consulta);
+        }
+
+        //FrmMocha pestaña datagrid devoluciones
+        public static DataTable ObtenerTraspasosMezclado()
+        {
+            string consulta = "SELECT idTraspaso, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Traspaso' AND destino = 'Logística' AND estado = 'activo'";
+            return EjecutarConsulta(consulta);
+        }
+
+        public static DataTable ObtenerDevolucionesMezclado()
+        {
+            string consulta = "SELECT idDevolucion, idTarima, producto, lote, cantidad, destino, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Devolucion' AND destino = 'LyFC(traslado)'";
+            return EjecutarConsulta(consulta);
+        }
+
+        //frmMocha pestaña data grid detenidos
+        public static DataTable ObtenerDetenidosMezclado()
+        {
+            string consulta = "SELECT idTarima, producto, lote, cantidad FROM inventario_mezclado WHERE estado = 'Detenido'";
+            return EjecutarConsulta(consulta);
+        }
 
     }// aqui arriba va todo
 

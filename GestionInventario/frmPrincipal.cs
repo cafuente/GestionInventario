@@ -153,5 +153,14 @@ namespace GestionInventario
             frmLogistica.Show();
             this.Hide() ;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            btnRecepcion.Visible = false;
+            btnGestion.Visible=false;
+            frmTrazalibildad frmTrazalibildad = new frmTrazalibildad();
+            frmTrazalibildad.Show();
+            this.Hide() ;
+        }
     }
 }

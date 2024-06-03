@@ -75,6 +75,8 @@ namespace GestionInventario
                     return "Administrador";
                 case 2:
                     return "Usuario";
+                case 3:
+                    return "Supervisor";
                 default:
                     return "Desconocido";
             }
@@ -653,7 +655,7 @@ namespace GestionInventario
             }
         }
 
-        //----------------------------------------------------------------------------------
+        //-----------------------detenidos-----------------------------------------------------------
         private void btnMarcarDetenidoMocha_Click(object sender, EventArgs e)
         {
             if (dgvInventarioMocha.SelectedRows.Count > 0)
@@ -766,7 +768,7 @@ namespace GestionInventario
                 try
                 {
                     conexion.Open();
-                    string consulta = "UPDATE inventario_Mocha SET estado = 'activo' WHERE idTarima = @idTarima";
+                    string consulta = "UPDATE inventario_mocha SET estado = 'activo' WHERE idTarima = @idTarima";
                     MySqlCommand comando = new MySqlCommand(consulta, conexion);
                     comando.Parameters.AddWithValue("@idTarima", idTarima);
                     comando.ExecuteNonQuery();

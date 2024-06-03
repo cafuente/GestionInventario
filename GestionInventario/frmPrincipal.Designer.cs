@@ -36,6 +36,7 @@
             this.lbPerfilPr = new System.Windows.Forms.Label();
             this.lbNombrePr = new System.Windows.Forms.Label();
             this.panelVertical = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnLogistica = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtAdministrador = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelVertical.SuspendLayout();
@@ -139,12 +139,25 @@
             this.panelVertical.Size = new System.Drawing.Size(245, 616);
             this.panelVertical.TabIndex = 2;
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(0, 472);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(245, 57);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Trazabilidad";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnLogistica
             // 
             this.btnLogistica.FlatAppearance.BorderSize = 0;
             this.btnLogistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogistica.Location = new System.Drawing.Point(0, 434);
+            this.btnLogistica.Location = new System.Drawing.Point(0, 414);
             this.btnLogistica.Name = "btnLogistica";
             this.btnLogistica.Size = new System.Drawing.Size(245, 57);
             this.btnLogistica.TabIndex = 16;
@@ -167,7 +180,7 @@
             this.txtAdministrador.FlatAppearance.BorderSize = 0;
             this.txtAdministrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdministrador.Location = new System.Drawing.Point(0, 144);
+            this.txtAdministrador.Location = new System.Drawing.Point(0, 124);
             this.txtAdministrador.Name = "txtAdministrador";
             this.txtAdministrador.Size = new System.Drawing.Size(245, 57);
             this.txtAdministrador.TabIndex = 1;
@@ -193,7 +206,7 @@
             this.btnMezclado.FlatAppearance.BorderSize = 0;
             this.btnMezclado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMezclado.Location = new System.Drawing.Point(0, 376);
+            this.btnMezclado.Location = new System.Drawing.Point(0, 356);
             this.btnMezclado.Name = "btnMezclado";
             this.btnMezclado.Size = new System.Drawing.Size(245, 57);
             this.btnMezclado.TabIndex = 4;
@@ -206,7 +219,7 @@
             this.btnRecibo.FlatAppearance.BorderSize = 0;
             this.btnRecibo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecibo.Location = new System.Drawing.Point(0, 318);
+            this.btnRecibo.Location = new System.Drawing.Point(0, 298);
             this.btnRecibo.Name = "btnRecibo";
             this.btnRecibo.Size = new System.Drawing.Size(245, 57);
             this.btnRecibo.TabIndex = 4;
@@ -219,7 +232,7 @@
             this.btnTraslado.FlatAppearance.BorderSize = 0;
             this.btnTraslado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTraslado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraslado.Location = new System.Drawing.Point(0, 260);
+            this.btnTraslado.Location = new System.Drawing.Point(0, 240);
             this.btnTraslado.Name = "btnTraslado";
             this.btnTraslado.Size = new System.Drawing.Size(245, 57);
             this.btnTraslado.TabIndex = 3;
@@ -232,7 +245,7 @@
             this.btnAlmacen.FlatAppearance.BorderSize = 0;
             this.btnAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlmacen.Location = new System.Drawing.Point(0, 202);
+            this.btnAlmacen.Location = new System.Drawing.Point(0, 182);
             this.btnAlmacen.Name = "btnAlmacen";
             this.btnAlmacen.Size = new System.Drawing.Size(245, 57);
             this.btnAlmacen.TabIndex = 2;
@@ -286,18 +299,6 @@
             this.btnRecepcion.Text = "Recepcion de carne";
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnRecepcion_Click);
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 492);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(245, 57);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Trazabilidad";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmPrincipal
             // 

@@ -45,9 +45,17 @@ namespace GestionInventario
                     return "Administrador";
                 case 2:
                     return "Usuario";
+                case 3:
+                    return "Supervisor";
                 default:
                     return "Desconocido";
             }
+        }
+
+        private void frmTrazalibildad_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmPrincipal frmPr = new frmPrincipal();
+            frmPr.Show();
         }
     }
 }
