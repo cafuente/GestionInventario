@@ -116,16 +116,16 @@ namespace GestionInventario
         // datagrid de la pestaña conciliacion
         private void CargarDatosPendientesConfirmacion()
         {            
-            dgvPendientesConfirmacion.DataSource = BusquedaBD.ObtenerPendientesConfirmacionLyfc();
+            dgvPendientesConfirmacionLyfc.DataSource = BusquedaBD.ObtenerPendientesConfirmacionLyfc();
         }
 
         // ------- confirmar recepcion de tarima o combo
         private void btnConfirmarRecepcion_Click(object sender, EventArgs e)
         {
-            if (dgvPendientesConfirmacion.SelectedRows.Count > 0)
+            if (dgvPendientesConfirmacionLyfc.SelectedRows.Count > 0)
             {
-                string idTarima = dgvPendientesConfirmacion.SelectedRows[0].Cells["idTarima"].Value.ToString();
-                ConfirmarRecepcionTarima(idTarima);
+                string idTarima = dgvPendientesConfirmacionLyfc.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                ConfirmarRecepcionTarimaLyfc(idTarima);
                 MessageBox.Show("La recepción de la tarima ha sido confirmada de recibido.");
                 CargarDatosPendientesConfirmacion();
                 //CargarDatosInventarioLyfc(); // Actualizar la lista de tarimas confirmadas
@@ -140,7 +140,7 @@ namespace GestionInventario
             }
         }
 
-        private void ConfirmarRecepcionTarima(string idTarima)
+        private void ConfirmarRecepcionTarimaLyfc(string idTarima)
         {
             ConexionBD conexionBD = new ConexionBD();
             MySqlConnection conexion = conexionBD.ObtenerConexion();
@@ -149,7 +149,7 @@ namespace GestionInventario
             try
             {
                 conexion.Open();
-                string consulta = "UPDATE inventario_lyfc SET estado_confirmacion = 'Confirmado' WHERE idTarima = @idTarima";
+                string consulta = "UPDATE inventario_lyfc SET estado_confirmacion = 'Recibido' WHERE idTarima = @idTarima";
                 MySqlCommand comando = new MySqlCommand(consulta, conexion);
                 comando.Parameters.AddWithValue("@idTarima", idTarima);
                 comando.ExecuteNonQuery();

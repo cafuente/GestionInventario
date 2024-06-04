@@ -23,6 +23,7 @@ namespace GestionInventario
             CargarDatosTraspasosMocha();
             CargarDatosDevolucionesMocha();
             CargarDatosDetenidosMocha();
+            CargarDatosPendientesConfirmacionMocha();
         }
 
         private void frmMocha_Load(object sender, EventArgs e)
@@ -112,6 +113,83 @@ namespace GestionInventario
             dgvDetenidosMocha.DataSource = BusquedaBD.ObtenerDetenidosMocha();
         }
 
+        // datagrid de la pestaña conciliacion
+        private void CargarDatosPendientesConfirmacionMocha()
+        {
+            dgvPendientesConfirmacionMocha.DataSource = BusquedaBD.ObtenerPendientesConfirmacionMocha();
+        }
+
+        // ------- confirmar recepcion de tarima o combo
+        private void btnConfirmarRecepcionMocha_Click(object sender, EventArgs e)
+        {
+            if (dgvPendientesConfirmacionMocha.SelectedRows.Count > 0)
+            {
+                string idTarima = dgvPendientesConfirmacionMocha.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                ConfirmarRecepcionTarimaMocha(idTarima);
+                MessageBox.Show("La recepción de la tarima ha sido confirmada de recibido.");
+                CargarDatosPendientesConfirmacionMocha();
+                //CargarDatosInventarioLyfc(); // Actualizar la lista de tarimas confirmadas
+                CargarDatosInventarioTotalMocha();
+                CargarDatosTraspasosMocha();
+                CargarDatosDevolucionesMocha();
+                CargarDatosDetenidosMocha();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una tarima para confirmar su recepción.");
+            }
+        }
+
+        private void ConfirmarRecepcionTarimaMocha(string idTarima)
+        {
+            ConexionBD conexionBD = new ConexionBD();
+            MySqlConnection conexion = conexionBD.ObtenerConexion();
+            string usuario = lbNombreMocha.Text;
+            string departamento = lbDepartamentoMocha.Text;
+            try
+            {
+                conexion.Open();
+                string consulta = "UPDATE inventario_mocha SET estado_confirmacion = 'Recibido' WHERE idTarima = @idTarima";
+                MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@idTarima", idTarima);
+                comando.ExecuteNonQuery();
+
+                // Obtener detalles de la tarima
+                consulta = "SELECT producto, lote, cantidad FROM inventario_mocha WHERE idTarima = @idTarima";
+                comando = new MySqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@idTarima", idTarima);
+                MySqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    string producto = reader["producto"].ToString();
+                    string lote = reader["lote"].ToString();
+                    int cantidad = Convert.ToInt32(reader["cantidad"]);
+                    reader.Close();
+
+                    // Registrar el movimiento en salidas_devoluciones
+                    consulta = "INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento) " +
+                               "VALUES (@idTarima, @producto, @lote, @cantidad, 'Confirmacion Recepcion', @fechaOperacion, @destino, @usuario, @departamento)";
+                    comando = new MySqlCommand(consulta, conexion);
+                    comando.Parameters.AddWithValue("@idTarima", idTarima);
+                    comando.Parameters.AddWithValue("@producto", producto);
+                    comando.Parameters.AddWithValue("@lote", lote);
+                    comando.Parameters.AddWithValue("@cantidad", cantidad);
+                    comando.Parameters.AddWithValue("@fechaOperacion", DateTime.Now);
+                    comando.Parameters.AddWithValue("@destino", "Recibo(Mocha)");  
+                    comando.Parameters.AddWithValue("@usuario", usuario); // Reemplazar con el nombre del usuario actual
+                    comando.Parameters.AddWithValue("@departamento", departamento); // Reemplazar con el departamento actual
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al confirmar la recepción de la tarima: " + ex.Message);
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
         //-------------Codigo pestaña traspasos------------------------------------------------------------------------------------
         private void dgvInventarioMocha_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -790,5 +868,6 @@ namespace GestionInventario
                 }
             }
         }
+
     }
 }

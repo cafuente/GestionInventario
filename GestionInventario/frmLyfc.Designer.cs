@@ -38,6 +38,9 @@
             this.lbNombreLyfc = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControlLyfc = new System.Windows.Forms.TabControl();
+            this.tabConciliacion = new System.Windows.Forms.TabPage();
+            this.dgvPendientesConfirmacionLyfc = new System.Windows.Forms.DataGridView();
+            this.btnConfirmarRecepcionLyfc = new System.Windows.Forms.Button();
             this.tabInventarioTotal = new System.Windows.Forms.TabPage();
             this.dgvInventarioTotalLyfc = new System.Windows.Forms.DataGridView();
             this.tabTraspaso = new System.Windows.Forms.TabPage();
@@ -82,12 +85,11 @@
             this.tabDetenidos = new System.Windows.Forms.TabPage();
             this.dgvDetenidosLyfc = new System.Windows.Forms.DataGridView();
             this.btnDesmarcarDetenidoLyfc = new System.Windows.Forms.Button();
-            this.tabConciliacion = new System.Windows.Forms.TabPage();
-            this.dgvPendientesConfirmacion = new System.Windows.Forms.DataGridView();
-            this.btnConfirmarRecepcion = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlLyfc.SuspendLayout();
+            this.tabConciliacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionLyfc)).BeginInit();
             this.tabInventarioTotal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).BeginInit();
             this.tabTraspaso.SuspendLayout();
@@ -100,8 +102,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosLyfc)).BeginInit();
             this.tabDetenidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosLyfc)).BeginInit();
-            this.tabConciliacion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacion)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -175,6 +175,38 @@
             this.tabControlLyfc.SelectedIndex = 0;
             this.tabControlLyfc.Size = new System.Drawing.Size(820, 494);
             this.tabControlLyfc.TabIndex = 16;
+            // 
+            // tabConciliacion
+            // 
+            this.tabConciliacion.Controls.Add(this.dgvPendientesConfirmacionLyfc);
+            this.tabConciliacion.Controls.Add(this.btnConfirmarRecepcionLyfc);
+            this.tabConciliacion.Location = new System.Drawing.Point(4, 25);
+            this.tabConciliacion.Name = "tabConciliacion";
+            this.tabConciliacion.Size = new System.Drawing.Size(812, 465);
+            this.tabConciliacion.TabIndex = 4;
+            this.tabConciliacion.Text = "Conciliación";
+            this.tabConciliacion.UseVisualStyleBackColor = true;
+            // 
+            // dgvPendientesConfirmacionLyfc
+            // 
+            this.dgvPendientesConfirmacionLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPendientesConfirmacionLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPendientesConfirmacionLyfc.Location = new System.Drawing.Point(10, 33);
+            this.dgvPendientesConfirmacionLyfc.Name = "dgvPendientesConfirmacionLyfc";
+            this.dgvPendientesConfirmacionLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPendientesConfirmacionLyfc.Size = new System.Drawing.Size(792, 316);
+            this.dgvPendientesConfirmacionLyfc.TabIndex = 5;
+            // 
+            // btnConfirmarRecepcionLyfc
+            // 
+            this.btnConfirmarRecepcionLyfc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmarRecepcionLyfc.Location = new System.Drawing.Point(309, 396);
+            this.btnConfirmarRecepcionLyfc.Name = "btnConfirmarRecepcionLyfc";
+            this.btnConfirmarRecepcionLyfc.Size = new System.Drawing.Size(192, 36);
+            this.btnConfirmarRecepcionLyfc.TabIndex = 6;
+            this.btnConfirmarRecepcionLyfc.Text = "Confirmar recepción";
+            this.btnConfirmarRecepcionLyfc.UseVisualStyleBackColor = true;
+            this.btnConfirmarRecepcionLyfc.Click += new System.EventHandler(this.btnConfirmarRecepcion_Click);
             // 
             // tabInventarioTotal
             // 
@@ -670,38 +702,6 @@
             this.btnDesmarcarDetenidoLyfc.UseVisualStyleBackColor = true;
             this.btnDesmarcarDetenidoLyfc.Click += new System.EventHandler(this.btnDesmarcarDetenidoLyfc_Click);
             // 
-            // tabConciliacion
-            // 
-            this.tabConciliacion.Controls.Add(this.dgvPendientesConfirmacion);
-            this.tabConciliacion.Controls.Add(this.btnConfirmarRecepcion);
-            this.tabConciliacion.Location = new System.Drawing.Point(4, 25);
-            this.tabConciliacion.Name = "tabConciliacion";
-            this.tabConciliacion.Size = new System.Drawing.Size(812, 465);
-            this.tabConciliacion.TabIndex = 4;
-            this.tabConciliacion.Text = "Conciliación";
-            this.tabConciliacion.UseVisualStyleBackColor = true;
-            // 
-            // dgvPendientesConfirmacion
-            // 
-            this.dgvPendientesConfirmacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPendientesConfirmacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPendientesConfirmacion.Location = new System.Drawing.Point(10, 33);
-            this.dgvPendientesConfirmacion.Name = "dgvPendientesConfirmacion";
-            this.dgvPendientesConfirmacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPendientesConfirmacion.Size = new System.Drawing.Size(792, 316);
-            this.dgvPendientesConfirmacion.TabIndex = 5;
-            // 
-            // btnConfirmarRecepcion
-            // 
-            this.btnConfirmarRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarRecepcion.Location = new System.Drawing.Point(309, 396);
-            this.btnConfirmarRecepcion.Name = "btnConfirmarRecepcion";
-            this.btnConfirmarRecepcion.Size = new System.Drawing.Size(192, 36);
-            this.btnConfirmarRecepcion.TabIndex = 6;
-            this.btnConfirmarRecepcion.Text = "Confirmar recepción";
-            this.btnConfirmarRecepcion.UseVisualStyleBackColor = true;
-            this.btnConfirmarRecepcion.Click += new System.EventHandler(this.btnConfirmarRecepcion_Click);
-            // 
             // frmLyfc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -719,6 +719,8 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControlLyfc.ResumeLayout(false);
+            this.tabConciliacion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionLyfc)).EndInit();
             this.tabInventarioTotal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).EndInit();
             this.tabTraspaso.ResumeLayout(false);
@@ -733,8 +735,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosLyfc)).EndInit();
             this.tabDetenidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosLyfc)).EndInit();
-            this.tabConciliacion.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -794,7 +794,7 @@
         private System.Windows.Forms.Button btnDesmarcarDetenidoLyfc;
         private System.Windows.Forms.Button btnMarcarDetenidoLyfc;
         private System.Windows.Forms.TabPage tabConciliacion;
-        private System.Windows.Forms.DataGridView dgvPendientesConfirmacion;
-        private System.Windows.Forms.Button btnConfirmarRecepcion;
+        private System.Windows.Forms.DataGridView dgvPendientesConfirmacionLyfc;
+        private System.Windows.Forms.Button btnConfirmarRecepcionLyfc;
     }
 }

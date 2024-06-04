@@ -140,16 +140,30 @@ namespace GestionInventario
             return EjecutarConsulta(consulta);
         }
 
+        //pendientes por confirmar recepcion
         // frmLyfc datagrid obtener pendientes de pestaña conciliacion
         public static DataTable ObtenerPendientesConfirmacionLyfc()
         {
             string consulta = "SELECT idTarima, producto, lote, cantidad, estado_confirmacion FROM inventario_lyfc WHERE estado_confirmacion = 'Pendiente'";
             return EjecutarConsulta(consulta);
         }
+
+        public static DataTable ObtenerPendientesConfirmacionMocha()
+        {
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado_confirmacion FROM inventario_mocha WHERE estado_confirmacion = 'Pendiente'";
+            return EjecutarConsulta(consulta);
+        }
+
+        public static DataTable ObtenerPendientesConfirmacionMezclado()
+        {
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado_confirmacion FROM inventario_mezclado WHERE estado_confirmacion = 'Pendiente'";
+            return EjecutarConsulta(consulta);
+        }
+
         // FrmLyfc datagrid traspasos-----------------------------------------------------------------
         public static DataTable ObtenerInventarioLyfc()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_lyfc WHERE cantidad > 0 AND estado_confirmacion = 'Confirmado'";
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_lyfc WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
             return EjecutarConsulta(consulta);
         }
 
@@ -159,7 +173,7 @@ namespace GestionInventario
             string consulta = @"
                 SELECT producto, lote, SUM(cantidad) AS cantidad
                 FROM inventario_lyfc
-                WHERE cantidad > 0 AND estado_confirmacion = 'Confirmado'
+                WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'
                 GROUP BY producto, lote";
 
             return EjecutarConsulta(consulta);
@@ -187,7 +201,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerInventarioMocha()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, estado FROM inventario_Mocha WHERE cantidad > 0";
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_Mocha WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
             return EjecutarConsulta(consulta);
         }
 
@@ -197,7 +211,7 @@ namespace GestionInventario
             string consulta = @"
                 SELECT producto, lote, SUM(cantidad) AS cantidad
                 FROM inventario_Mocha
-                WHERE cantidad > 0
+                WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'
                 GROUP BY producto, lote";
             return EjecutarConsulta(consulta);
         }
