@@ -254,6 +254,17 @@ namespace GestionInventario
             return EjecutarConsulta(consulta);
         }
 
+        //----------------------------------------------------------------------------------
+        public static DataTable ObtenerInventarioAgrupadoLogistica()
+        {
+            string consulta = @"
+                SELECT producto, lote, SUM(cantidad) AS cantidad
+                FROM inventario_logistica
+                WHERE cantidad > 0
+                GROUP BY producto, lote";
+            return EjecutarConsulta(consulta);
+        }
+
     }// aqui arriba va todo
 
 }

@@ -12,9 +12,12 @@ namespace GestionInventario
 {
     public partial class frmTrazalibildad : Form
     {
+        private ConexionBD conexion; //obtener conexion
         public frmTrazalibildad()
         {
             InitializeComponent();
+            conexion = new ConexionBD(); //obtener conexion
+            
         }
 
         private void frmTrazalibildad_Load(object sender, EventArgs e)
@@ -57,5 +60,7 @@ namespace GestionInventario
             frmPrincipal frmPr = new frmPrincipal();
             frmPr.Show();
         }
+
+        
     }
 }

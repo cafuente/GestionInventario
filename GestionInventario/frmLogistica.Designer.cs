@@ -38,7 +38,7 @@
             this.lbNombreLyfc = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabInventarioTotal = new System.Windows.Forms.TabPage();
-            this.dgvInventarioTotalLyfc = new System.Windows.Forms.DataGridView();
+            this.dgvInventarioTotalLogistica = new System.Windows.Forms.DataGridView();
             this.tabTraspaso = new System.Windows.Forms.TabPage();
             this.btnCancelarGi = new System.Windows.Forms.Button();
             this.btnRegistrarTraspasoGi = new System.Windows.Forms.Button();
@@ -82,7 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabInventarioTotal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLogistica)).BeginInit();
             this.tabTraspaso.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -155,7 +155,7 @@
             // 
             // tabInventarioTotal
             // 
-            this.tabInventarioTotal.Controls.Add(this.dgvInventarioTotalLyfc);
+            this.tabInventarioTotal.Controls.Add(this.dgvInventarioTotalLogistica);
             this.tabInventarioTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabInventarioTotal.Location = new System.Drawing.Point(4, 25);
             this.tabInventarioTotal.Name = "tabInventarioTotal";
@@ -165,9 +165,9 @@
             this.tabInventarioTotal.Text = "Inventario Total";
             this.tabInventarioTotal.UseVisualStyleBackColor = true;
             // 
-            // dgvInventarioTotalLyfc
+            // dgvInventarioTotalLogistica
             // 
-            this.dgvInventarioTotalLyfc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInventarioTotalLogistica.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -175,8 +175,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalLyfc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvInventarioTotalLyfc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInventarioTotalLogistica.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvInventarioTotalLogistica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,9 +184,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventarioTotalLyfc.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvInventarioTotalLyfc.Location = new System.Drawing.Point(20, 44);
-            this.dgvInventarioTotalLyfc.Name = "dgvInventarioTotalLyfc";
+            this.dgvInventarioTotalLogistica.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvInventarioTotalLogistica.Location = new System.Drawing.Point(20, 44);
+            this.dgvInventarioTotalLogistica.Name = "dgvInventarioTotalLogistica";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -194,10 +194,10 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalLyfc.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvInventarioTotalLyfc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventarioTotalLyfc.Size = new System.Drawing.Size(773, 404);
-            this.dgvInventarioTotalLyfc.TabIndex = 75;
+            this.dgvInventarioTotalLogistica.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvInventarioTotalLogistica.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInventarioTotalLogistica.Size = new System.Drawing.Size(773, 404);
+            this.dgvInventarioTotalLogistica.TabIndex = 75;
             // 
             // tabTraspaso
             // 
@@ -620,7 +620,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabInventarioTotal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLyfc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLogistica)).EndInit();
             this.tabTraspaso.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -645,7 +645,7 @@
         private System.Windows.Forms.Label lbNombreLyfc;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabInventarioTotal;
-        private System.Windows.Forms.DataGridView dgvInventarioTotalLyfc;
+        private System.Windows.Forms.DataGridView dgvInventarioTotalLogistica;
         private System.Windows.Forms.TabPage tabTraspaso;
         private System.Windows.Forms.Button btnCancelarGi;
         private System.Windows.Forms.Button btnRegistrarTraspasoGi;

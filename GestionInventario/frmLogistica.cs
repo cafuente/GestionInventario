@@ -12,9 +12,12 @@ namespace GestionInventario
 {
     public partial class frmLogistica : Form
     {
+        private ConexionBD conexion; //obtener conexion
         public frmLogistica()
         {
             InitializeComponent();
+            conexion = new ConexionBD(); //obtener conexion
+            CargarDatosInventarioTotalLogistica();
         }
 
         private void frmLogistica_Load(object sender, EventArgs e)
@@ -47,6 +50,8 @@ namespace GestionInventario
                     return "Administrador";
                 case 2:
                     return "Usuario";
+                case 3:
+                    return "Supervisor";
                 default:
                     return "Desconocido";
             }
@@ -58,7 +63,11 @@ namespace GestionInventario
             frmPr.Show();
         }
 
+        //---- cargar datos de los datagrid inventario total
+        private void CargarDatosInventarioTotalLogistica()
+        {
+            dgvInventarioTotalLogistica.DataSource = BusquedaBD.ObtenerInventarioAgrupadoLogistica();
+        }
 
-        
     }
 }
