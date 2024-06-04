@@ -23,6 +23,7 @@ namespace GestionInventario
             CargarDatosTraspasosLyfc();
             CargarDatosDevolucionesLyfc();
             CargarDatosDetenidosLyfc();
+            CargarDatosPendientesConfirmacion();
         }
 
         private void frmLyfc_Load(object sender, EventArgs e)
@@ -110,8 +111,85 @@ namespace GestionInventario
         private void CargarDatosDetenidosLyfc()
         {
             dgvDetenidosLyfc.DataSource = BusquedaBD.ObtenerDetenidosLyfc();
-        }                
-        
+        }
+
+        // datagrid de la pestaña conciliacion
+        private void CargarDatosPendientesConfirmacion()
+        {            
+            dgvPendientesConfirmacion.DataSource = BusquedaBD.ObtenerPendientesConfirmacionLyfc();
+        }
+
+        // ------- confirmar recepcion de tarima o combo
+        private void btnConfirmarRecepcion_Click(object sender, EventArgs e)
+        {
+            if (dgvPendientesConfirmacion.SelectedRows.Count > 0)
+            {
+                string idTarima = dgvPendientesConfirmacion.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                ConfirmarRecepcionTarima(idTarima);
+                MessageBox.Show("La recepción de la tarima ha sido confirmada de recibido.");
+                CargarDatosPendientesConfirmacion();
+                //CargarDatosInventarioLyfc(); // Actualizar la lista de tarimas confirmadas
+                CargarDatosInventarioTotalLyfc();
+                CargarDatosTraspasosLyfc();
+                CargarDatosDevolucionesLyfc();
+                CargarDatosDetenidosLyfc();                
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una tarima para confirmar su recepción.");
+            }
+        }
+
+        private void ConfirmarRecepcionTarima(string idTarima)
+        {
+            ConexionBD conexionBD = new ConexionBD();
+            MySqlConnection conexion = conexionBD.ObtenerConexion();
+            string usuario = lbNombreLyfc.Text;
+            string departamento = lbDepartamentoLyfc.Text;
+            try
+            {
+                conexion.Open();
+                string consulta = "UPDATE inventario_lyfc SET estado_confirmacion = 'Confirmado' WHERE idTarima = @idTarima";
+                MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@idTarima", idTarima);
+                comando.ExecuteNonQuery();
+
+                // Obtener detalles de la tarima
+                consulta = "SELECT producto, lote, cantidad FROM inventario_lyfc WHERE idTarima = @idTarima";
+                comando = new MySqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@idTarima", idTarima);
+                MySqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    string producto = reader["producto"].ToString();
+                    string lote = reader["lote"].ToString();
+                    int cantidad = Convert.ToInt32(reader["cantidad"]);
+                    reader.Close();
+
+                    // Registrar el movimiento en salidas_devoluciones
+                    consulta = "INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento) " +
+                               "VALUES (@idTarima, @producto, @lote, @cantidad, 'Confirmacion Recepcion', @fechaOperacion, @destino, @usuario, @departamento)";
+                    comando = new MySqlCommand(consulta, conexion);
+                    comando.Parameters.AddWithValue("@idTarima", idTarima);
+                    comando.Parameters.AddWithValue("@producto", producto);
+                    comando.Parameters.AddWithValue("@lote", lote);
+                    comando.Parameters.AddWithValue("@cantidad", cantidad);
+                    comando.Parameters.AddWithValue("@fechaOperacion", DateTime.Now);
+                    comando.Parameters.AddWithValue("@destino", "LyFC(traslado)");  // Asume que el destino es LyFC
+                    comando.Parameters.AddWithValue("@usuario", usuario); // Reemplazar con el nombre del usuario actual
+                    comando.Parameters.AddWithValue("@departamento", departamento); // Reemplazar con el departamento actual
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al confirmar la recepción de la tarima: " + ex.Message);
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
         //-------------Codigo pestaña traspasos------------------------------------------------------------------------------------
 
         // datagrid de la pestaña traspaso
@@ -821,5 +899,7 @@ namespace GestionInventario
                 }
             }
         }
+
+        
     }
 }
