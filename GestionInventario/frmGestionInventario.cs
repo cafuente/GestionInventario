@@ -41,11 +41,11 @@ namespace GestionInventario
             dtpFechaGi.Value = DateTime.Now;
             dtpFechaDevolucion.Value = DateTime.Now;
             txtBusquedaDevoGi.ForeColor = Color.LightGray;
-            txtBusquedaDevoGi.Text = "DXXXXXX";
+            txtBusquedaDevoGi.Text = "DXXXXXXX";
             txtBusquedaDevoGi.GotFocus += new EventHandler(txtBusquedaDevoGi_GotFocus);
             txtBusquedaDevoGi.LostFocus += new EventHandler(txtBusquedaDevoGi_LostFocus);
             txtCodigoBarrasGi.ForeColor = Color.LightGray;
-            txtCodigoBarrasGi.Text = "DXXXXXX";
+            txtCodigoBarrasGi.Text = "DXXXXXXX";
             txtCodigoBarrasGi.GotFocus += new EventHandler(txtCodigoBarrasGi_GotFocus);
             txtCodigoBarrasGi.LostFocus += new EventHandler(txtCodigoBarrasGi_LostFocus);
         }
@@ -417,15 +417,15 @@ namespace GestionInventario
             {
                 if (e.KeyChar == (char)Keys.Enter)
                 {
-                    Regex regex = new Regex(@"^D\d{6}$");
+                    Regex regex = new Regex(@"^D\d{7}$");
                     // Realizar la búsqueda y mostrar la información en los campos del formulario
                     txtBusquedaDevoGi.Text = txtBusquedaDevoGi.Text.ToUpper();
                     Match match = regex.Match(txtBusquedaDevoGi.Text);
                     if (!match.Success)
                     {
                         // Mostrar mensaje de error
-                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtBusquedaDevoGi = null;
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBusquedaDevoGi.Clear();
                     }
                     else
                     {
@@ -436,6 +436,7 @@ namespace GestionInventario
             }
             catch (Exception ex)
             {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
                 lbIdTraspasoDv.Text = "ID Traspaso";
                 lbIdTarimaDv.Text = "ID Tarima";
@@ -444,6 +445,7 @@ namespace GestionInventario
                 txtCantidadDv.Text = null;
                 cbDestinoDv.SelectedIndex = -1;
                 dtpFechaDevolucion.Value = DateTime.Now;
+                txtBusquedaDevoGi.Clear();
             }
             
         }
@@ -522,7 +524,7 @@ namespace GestionInventario
         {
             if (txtBusquedaDevoGi.Text.Trim().Length == 0)
             {
-                txtBusquedaDevoGi.Text = "DXXXXXX";
+                txtBusquedaDevoGi.Text = "DXXXXXXX";
                 txtBusquedaDevoGi.ForeColor = Color.LightGray;
                 
             }
@@ -531,24 +533,40 @@ namespace GestionInventario
         // busqueda en pestaña traspasos
         private void txtCodigoBarrasGi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Regex regex = new Regex(@"^D\d{6}$");
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                txtCodigoBarrasGi.Text = txtCodigoBarrasGi.Text.ToUpper();
-                Match match = regex.Match(txtCodigoBarrasGi.Text);
-                if (!match.Success)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtCodigoBarrasGi.Text = "";
-                }
-                else
-                {
-                    BuscarYMostrarInformacionTrasp();
-                    txtCodigoBarrasGi.Clear();
+                    Regex regex = new Regex(@"^D\d{7}$");
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    txtCodigoBarrasGi.Text = txtCodigoBarrasGi.Text.ToUpper();
+                    Match match = regex.Match(txtCodigoBarrasGi.Text);
+                    if (!match.Success)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtCodigoBarrasGi.Text = "";
+                    }
+                    else
+                    {
+                        BuscarYMostrarInformacionTrasp();
+                        txtCodigoBarrasGi.Clear();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                lbIdTarima.Text = "ID Tarima";
+                txtProductoGi.Text = null;
+                txtLoteGi.Text = null;
+                txtCantidadGi.Text = null;
+                cbDestinoGi.SelectedIndex = -1;
+                dtpFechaGi.Value = DateTime.Now;
+                txtCodigoBarrasGi.Clear();
+            }
+            
         }
 
         private void BuscarYMostrarInformacionTrasp()
@@ -565,6 +583,7 @@ namespace GestionInventario
 
         private int BuscarFilaPorCodigoBarrasTrasp(string codigoBarras)
         {
+
             // Iterar sobre todas las filas del DataGridView
             for (int i = 0; i < dgvInventario.Rows.Count; i++)
             {
@@ -623,7 +642,7 @@ namespace GestionInventario
         {
             if (txtCodigoBarrasGi.Text.Trim().Length == 0)
             {
-                txtCodigoBarrasGi.Text = "DXXXXXX";
+                txtCodigoBarrasGi.Text = "DXXXXXXX";
                 txtCodigoBarrasGi.ForeColor = Color.LightGray;
             }
         }

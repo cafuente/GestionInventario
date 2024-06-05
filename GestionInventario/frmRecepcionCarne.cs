@@ -1445,7 +1445,7 @@ namespace GestionInventario
             else
             {
                 // Mensaje en caso de no encontrar ninguna fila con el código de barras
-                MessageBox.Show("No se encontró ningún artículo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
