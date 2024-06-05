@@ -201,7 +201,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerInventarioMocha()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_Mocha WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_mocha WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
             return EjecutarConsulta(consulta);
         }
 
@@ -239,7 +239,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerInventarioMezclado()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, estado FROM inventario_mezclado WHERE cantidad > 0";
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_mezclado WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
             return EjecutarConsulta(consulta);
         }
 
@@ -249,7 +249,7 @@ namespace GestionInventario
             string consulta = @"
                 SELECT producto, lote, SUM(cantidad) AS cantidad
                 FROM inventario_Mezclado
-                WHERE cantidad > 0
+                WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'
                 GROUP BY producto, lote";
             return EjecutarConsulta(consulta);
         }
@@ -274,7 +274,7 @@ namespace GestionInventario
             return EjecutarConsulta(consulta);
         }
 
-        //----------------------------------------------------------------------------------
+        //--------------------Logistica--------------------------------------------------------------
         public static DataTable ObtenerInventarioAgrupadoLogistica()
         {
             string consulta = @"
@@ -282,6 +282,17 @@ namespace GestionInventario
                 FROM inventario_logistica
                 WHERE cantidad > 0
                 GROUP BY producto, lote";
+            return EjecutarConsulta(consulta);
+        }
+
+        //--------------------Trazabilidad--------------------------------------------------------------
+        public static DataTable ObtenerTrazabilidad(string idTarima)
+        {
+            string consulta = @"
+                SELECT idSalidas, idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento
+                FROM salidas_devoluciones
+                WHERE idTarima = @idTarima
+                ORDER BY fechaOperacion ASC";
             return EjecutarConsulta(consulta);
         }
 

@@ -119,7 +119,7 @@ namespace GestionInventario
             dgvPendientesConfirmacionMocha.DataSource = BusquedaBD.ObtenerPendientesConfirmacionMocha();
         }
 
-        // ------- confirmar recepcion de tarima o combo
+        // ------- confirmar recepcion de tarima o combo-------------------------------------
         private void btnConfirmarRecepcionMocha_Click(object sender, EventArgs e)
         {
             if (dgvPendientesConfirmacionMocha.SelectedRows.Count > 0)

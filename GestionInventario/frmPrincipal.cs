@@ -29,7 +29,7 @@ namespace GestionInventario
             btnGestion.Visible = false;
             
 
-            // Mostrar la información del usuario de sesion en el panel superior
+         // Mostrar la información del usuario de sesion en el panel superior
             MostrarInformacionUsuario();
         }
 
@@ -56,6 +56,8 @@ namespace GestionInventario
                     return "Administrador";
                 case 2:
                     return "Usuario";
+                case 3:
+                    return "Supervisor";
                 default:
                     return "Desconocido";
             }

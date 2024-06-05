@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabMezclado = new System.Windows.Forms.TabControl();
+            this.tabConciliacion = new System.Windows.Forms.TabPage();
             this.tabInventarioTotal = new System.Windows.Forms.TabPage();
             this.dgvInventarioTotalMezclado = new System.Windows.Forms.DataGridView();
             this.tabTraspaso = new System.Windows.Forms.TabPage();
+            this.btnMarcarDetenidoMezclado = new System.Windows.Forms.Button();
             this.btnCancelarMezcladoTraspaso = new System.Windows.Forms.Button();
             this.btnRegistrarTraspasoMezclado = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -73,16 +75,18 @@
             this.btnRegistrarMezcladoDv = new System.Windows.Forms.Button();
             this.dgvTraspasosMezclado = new System.Windows.Forms.DataGridView();
             this.tabDetenido = new System.Windows.Forms.TabPage();
+            this.dgvDetenidosMezclado = new System.Windows.Forms.DataGridView();
+            this.btnDesmarcarDetenidoMezclado = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoMezclado = new System.Windows.Forms.Label();
             this.lbPerfilMezclado = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbNombreMezclado = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnMarcarDetenidoMezclado = new System.Windows.Forms.Button();
-            this.dgvDetenidosMezclado = new System.Windows.Forms.DataGridView();
-            this.btnDesmarcarDetenidoMezclado = new System.Windows.Forms.Button();
+            this.dgvPendientesConfirmacionMezclado = new System.Windows.Forms.DataGridView();
+            this.btnConfirmarRecepcionMezclado = new System.Windows.Forms.Button();
             this.tabMezclado.SuspendLayout();
+            this.tabConciliacion.SuspendLayout();
             this.tabInventarioTotal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalMezclado)).BeginInit();
             this.tabTraspaso.SuspendLayout();
@@ -94,13 +98,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosMezclado)).BeginInit();
             this.tabDetenido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMezclado)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMezclado
             // 
+            this.tabMezclado.Controls.Add(this.tabConciliacion);
             this.tabMezclado.Controls.Add(this.tabInventarioTotal);
             this.tabMezclado.Controls.Add(this.tabTraspaso);
             this.tabMezclado.Controls.Add(this.tabDevoluciones);
@@ -111,6 +117,18 @@
             this.tabMezclado.SelectedIndex = 0;
             this.tabMezclado.Size = new System.Drawing.Size(820, 494);
             this.tabMezclado.TabIndex = 18;
+            // 
+            // tabConciliacion
+            // 
+            this.tabConciliacion.Controls.Add(this.dgvPendientesConfirmacionMezclado);
+            this.tabConciliacion.Controls.Add(this.btnConfirmarRecepcionMezclado);
+            this.tabConciliacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabConciliacion.Location = new System.Drawing.Point(4, 25);
+            this.tabConciliacion.Name = "tabConciliacion";
+            this.tabConciliacion.Size = new System.Drawing.Size(812, 465);
+            this.tabConciliacion.TabIndex = 4;
+            this.tabConciliacion.Text = "Conciliación";
+            this.tabConciliacion.UseVisualStyleBackColor = true;
             // 
             // tabInventarioTotal
             // 
@@ -127,33 +145,33 @@
             // dgvInventarioTotalMezclado
             // 
             this.dgvInventarioTotalMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalMezclado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalMezclado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInventarioTotalMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventarioTotalMezclado.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventarioTotalMezclado.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvInventarioTotalMezclado.Location = new System.Drawing.Point(20, 44);
             this.dgvInventarioTotalMezclado.Name = "dgvInventarioTotalMezclado";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalMezclado.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalMezclado.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvInventarioTotalMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventarioTotalMezclado.Size = new System.Drawing.Size(773, 404);
             this.dgvInventarioTotalMezclado.TabIndex = 75;
@@ -173,6 +191,16 @@
             this.tabTraspaso.TabIndex = 1;
             this.tabTraspaso.Text = "Traspasos";
             this.tabTraspaso.UseVisualStyleBackColor = true;
+            // 
+            // btnMarcarDetenidoMezclado
+            // 
+            this.btnMarcarDetenidoMezclado.Location = new System.Drawing.Point(649, 214);
+            this.btnMarcarDetenidoMezclado.Name = "btnMarcarDetenidoMezclado";
+            this.btnMarcarDetenidoMezclado.Size = new System.Drawing.Size(127, 36);
+            this.btnMarcarDetenidoMezclado.TabIndex = 84;
+            this.btnMarcarDetenidoMezclado.Text = "Marcar detenido";
+            this.btnMarcarDetenidoMezclado.UseVisualStyleBackColor = true;
+            this.btnMarcarDetenidoMezclado.Click += new System.EventHandler(this.btnMarcarDetenidoMezclado_Click);
             // 
             // btnCancelarMezcladoTraspaso
             // 
@@ -574,6 +602,27 @@
             this.tabDetenido.Text = "Detenido";
             this.tabDetenido.UseVisualStyleBackColor = true;
             // 
+            // dgvDetenidosMezclado
+            // 
+            this.dgvDetenidosMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDetenidosMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetenidosMezclado.Location = new System.Drawing.Point(10, 33);
+            this.dgvDetenidosMezclado.Name = "dgvDetenidosMezclado";
+            this.dgvDetenidosMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetenidosMezclado.Size = new System.Drawing.Size(792, 316);
+            this.dgvDetenidosMezclado.TabIndex = 7;
+            // 
+            // btnDesmarcarDetenidoMezclado
+            // 
+            this.btnDesmarcarDetenidoMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesmarcarDetenidoMezclado.Location = new System.Drawing.Point(309, 396);
+            this.btnDesmarcarDetenidoMezclado.Name = "btnDesmarcarDetenidoMezclado";
+            this.btnDesmarcarDetenidoMezclado.Size = new System.Drawing.Size(192, 36);
+            this.btnDesmarcarDetenidoMezclado.TabIndex = 8;
+            this.btnDesmarcarDetenidoMezclado.Text = "Desmarcar detenido";
+            this.btnDesmarcarDetenidoMezclado.UseVisualStyleBackColor = true;
+            this.btnDesmarcarDetenidoMezclado.Click += new System.EventHandler(this.btnDesmarcarDetenidoMezclado_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lbDepartamentoMezclado);
@@ -632,36 +681,26 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Mezclado de carne";
             // 
-            // btnMarcarDetenidoMezclado
+            // dgvPendientesConfirmacionMezclado
             // 
-            this.btnMarcarDetenidoMezclado.Location = new System.Drawing.Point(649, 214);
-            this.btnMarcarDetenidoMezclado.Name = "btnMarcarDetenidoMezclado";
-            this.btnMarcarDetenidoMezclado.Size = new System.Drawing.Size(127, 36);
-            this.btnMarcarDetenidoMezclado.TabIndex = 84;
-            this.btnMarcarDetenidoMezclado.Text = "Marcar detenido";
-            this.btnMarcarDetenidoMezclado.UseVisualStyleBackColor = true;
-            this.btnMarcarDetenidoMezclado.Click += new System.EventHandler(this.btnMarcarDetenidoMezclado_Click);
+            this.dgvPendientesConfirmacionMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPendientesConfirmacionMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPendientesConfirmacionMezclado.Location = new System.Drawing.Point(10, 33);
+            this.dgvPendientesConfirmacionMezclado.Name = "dgvPendientesConfirmacionMezclado";
+            this.dgvPendientesConfirmacionMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPendientesConfirmacionMezclado.Size = new System.Drawing.Size(792, 316);
+            this.dgvPendientesConfirmacionMezclado.TabIndex = 9;
             // 
-            // dgvDetenidosMezclado
+            // btnConfirmarRecepcionMezclado
             // 
-            this.dgvDetenidosMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDetenidosMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetenidosMezclado.Location = new System.Drawing.Point(10, 33);
-            this.dgvDetenidosMezclado.Name = "dgvDetenidosMezclado";
-            this.dgvDetenidosMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetenidosMezclado.Size = new System.Drawing.Size(792, 316);
-            this.dgvDetenidosMezclado.TabIndex = 7;
-            // 
-            // btnDesmarcarDetenidoMezclado
-            // 
-            this.btnDesmarcarDetenidoMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDesmarcarDetenidoMezclado.Location = new System.Drawing.Point(309, 396);
-            this.btnDesmarcarDetenidoMezclado.Name = "btnDesmarcarDetenidoMezclado";
-            this.btnDesmarcarDetenidoMezclado.Size = new System.Drawing.Size(192, 36);
-            this.btnDesmarcarDetenidoMezclado.TabIndex = 8;
-            this.btnDesmarcarDetenidoMezclado.Text = "Desmarcar detenido";
-            this.btnDesmarcarDetenidoMezclado.UseVisualStyleBackColor = true;
-            this.btnDesmarcarDetenidoMezclado.Click += new System.EventHandler(this.btnDesmarcarDetenidoMezclado_Click);
+            this.btnConfirmarRecepcionMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmarRecepcionMezclado.Location = new System.Drawing.Point(309, 396);
+            this.btnConfirmarRecepcionMezclado.Name = "btnConfirmarRecepcionMezclado";
+            this.btnConfirmarRecepcionMezclado.Size = new System.Drawing.Size(192, 36);
+            this.btnConfirmarRecepcionMezclado.TabIndex = 10;
+            this.btnConfirmarRecepcionMezclado.Text = "Confirmar recepción";
+            this.btnConfirmarRecepcionMezclado.UseVisualStyleBackColor = true;
+            this.btnConfirmarRecepcionMezclado.Click += new System.EventHandler(this.btnConfirmarRecepcionMezclado_Click);
             // 
             // frmMezclado
             // 
@@ -677,6 +716,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMezclado_FormClosed);
             this.Load += new System.EventHandler(this.frmMezclado_Load);
             this.tabMezclado.ResumeLayout(false);
+            this.tabConciliacion.ResumeLayout(false);
             this.tabInventarioTotal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalMezclado)).EndInit();
             this.tabTraspaso.ResumeLayout(false);
@@ -690,10 +730,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosMezclado)).EndInit();
             this.tabDetenido.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMezclado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,5 +793,8 @@
         private System.Windows.Forms.Button btnMarcarDetenidoMezclado;
         private System.Windows.Forms.DataGridView dgvDetenidosMezclado;
         private System.Windows.Forms.Button btnDesmarcarDetenidoMezclado;
+        private System.Windows.Forms.TabPage tabConciliacion;
+        private System.Windows.Forms.DataGridView dgvPendientesConfirmacionMezclado;
+        private System.Windows.Forms.Button btnConfirmarRecepcionMezclado;
     }
 }
