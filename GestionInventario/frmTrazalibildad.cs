@@ -106,7 +106,6 @@ namespace GestionInventario
                     }
                     // Prevent the 'ding' sound
                     e.Handled = true;
-                    //BuscarYMostrarInformacionTrazabilidad();
                 }                
             }            
         }
