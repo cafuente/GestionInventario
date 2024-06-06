@@ -13,15 +13,6 @@ namespace GestionInventario
 {
     public partial class frmTrazalibildad : Form
     {
-        private ConexionBD conexion; //obtener conexion
-        public frmTrazalibildad()
-        {
-            InitializeComponent();
-            conexion = new ConexionBD(); //obtener conexion
-            //CargarDatosTrazabilidad();
-
-        }
-
         private void frmTrazalibildad_Load(object sender, EventArgs e)
         {
             // Mostrar la información del usuario de sesion en el panel superior
@@ -62,11 +53,6 @@ namespace GestionInventario
             }
         }
 
-        /*private void CargarDatosTrazabilidad()
-        {
-            dgvTrazabilidad.DataSource = BusquedaBD.TrazabilidadCompleta();
-        }*/
-
         private void frmTrazalibildad_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmPrincipal frmPr = new frmPrincipal();
@@ -78,7 +64,6 @@ namespace GestionInventario
             txtIdTarimaBusqueda.Text = "";
             txtIdTarimaBusqueda.ForeColor = Color.Black;
         }
-
         private void txtIdTarimaBusqueda_GotFocus(object sender, EventArgs e)
         {
             if (txtIdTarimaBusqueda.Text.Trim().Length == 0)
@@ -94,7 +79,6 @@ namespace GestionInventario
                 txtIdTarimaBusqueda.ForeColor = Color.LightGray;
             }
         }
-
         private void txtIdTarimaBusqueda_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)

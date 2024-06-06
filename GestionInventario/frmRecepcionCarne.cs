@@ -268,8 +268,6 @@ namespace GestionInventario
             btnCancelar.Enabled = true;
         }
 
-       
-
         private void GenerarCodigoBarras()
         {
 

@@ -298,5 +298,4 @@ namespace GestionInventario
         }
         
     }// aqui arriba va todo
-
 }

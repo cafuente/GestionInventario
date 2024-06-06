@@ -564,7 +564,6 @@ namespace GestionInventario
             btnCancelarLyfcDv.Enabled = false;
         }
 
-
         private void btnRegistrarLyfcDv_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtProductoLyfcDv.Text) ||
@@ -899,7 +898,5 @@ namespace GestionInventario
                 }
             }
         }
-
-        
     }
 }

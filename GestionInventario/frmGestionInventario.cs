@@ -24,7 +24,6 @@ namespace GestionInventario
             CargarDatosInventarioTotal();
             CargarDatosTraspasos();
             CargarDatosDetenidos();
-
         }
 
         private void frmGestionInventario_Load(object sender, EventArgs e)
@@ -117,8 +116,6 @@ namespace GestionInventario
             frmPrincipal frmPr = new frmPrincipal();
             frmPr.Show();
         }
-
-                
 
         private void btnRegistrarTraspasoGi_Click(object sender, EventArgs e)
         {            
@@ -505,7 +502,6 @@ namespace GestionInventario
             }
         }
         
-
         private void txtBusquedaDevoGi_Click(object sender, EventArgs e)
         {
             txtBusquedaDevoGi.Text = "";
@@ -648,7 +644,6 @@ namespace GestionInventario
         }
 
         // detenidos
-
         private void btnMarcarDetenido_Click(object sender, EventArgs e)
         {
             if (dgvInventario.SelectedRows.Count > 0)
@@ -811,8 +806,6 @@ namespace GestionInventario
             }
             return estaDetenida;
         }
-
-        
         /*
         private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
         {

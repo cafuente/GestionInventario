@@ -868,6 +868,5 @@ namespace GestionInventario
                 }
             }
         }
-
     }
 }

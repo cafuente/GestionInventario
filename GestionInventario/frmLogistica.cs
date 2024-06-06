@@ -38,7 +38,6 @@ namespace GestionInventario
                 lbNombreLyfc.Text = $"{frmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoLyfc.Text = $"{frmLogin.UsuarioActual.Departamento}";
                 lbPerfilLyfc.Text = $"{nombrePerfil}";
-
             }
         }
 
