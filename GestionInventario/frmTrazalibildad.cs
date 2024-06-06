@@ -18,7 +18,8 @@ namespace GestionInventario
         {
             InitializeComponent();
             conexion = new ConexionBD(); //obtener conexion
-            
+            //CargarDatosTrazabilidad();
+
         }
 
         private void frmTrazalibildad_Load(object sender, EventArgs e)
@@ -60,6 +61,11 @@ namespace GestionInventario
                     return "Desconocido";
             }
         }
+
+        /*private void CargarDatosTrazabilidad()
+        {
+            dgvTrazabilidad.DataSource = BusquedaBD.TrazabilidadCompleta();
+        }*/
 
         private void frmTrazalibildad_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -107,18 +113,18 @@ namespace GestionInventario
                 {
                     string idTarima = txtIdTarimaBusqueda.Text.Trim();
                     if (!string.IsNullOrEmpty(idTarima))
-                    {                        
-                        dgvTrazabilidad.DataSource = BusquedaBD.ObtenerTrazabilidad();
+                    {
+                        dgvTrazabilidad.DataSource = BusquedaBD.ObtenerTrazabilidad(idTarima);
                     }
                     else
                     {
                         MessageBox.Show("Por favor, ingrese un ID de Tarima.");
-                        txtIdTarimaBusqueda.Clear();
                     }
-                }
-            }
-            txtIdTarimaBusqueda.Clear() ;
+                    // Prevent the 'ding' sound
+                    e.Handled = true;
+                    //BuscarYMostrarInformacionTrazabilidad();
+                }                
+            }            
         }
-        
     }
 }

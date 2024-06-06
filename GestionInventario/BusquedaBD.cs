@@ -94,22 +94,22 @@ namespace GestionInventario
         private static DataTable EjecutarConsulta(string consulta)
         {
             DataTable dt = new DataTable();
-            using (ConexionBD conexionBD = new ConexionBD())
-            {
-                MySqlConnection conexion = conexionBD.ObtenerConexion();
-                try
-                {
-                    conexion.Open();
-                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
-                    MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                    adaptador.Fill(dt);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
-                }
-            }
-            return dt;
+             using (ConexionBD conexionBD = new ConexionBD())
+             {
+                 MySqlConnection conexion = conexionBD.ObtenerConexion();
+                 try
+                 {
+                     conexion.Open();
+                     MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                     MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                     adaptador.Fill(dt);
+                 }
+                 catch (Exception ex)
+                 {
+                     Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                 }
+             }
+             return dt;            
         }
 
         public static DataTable ObtenerInventario()
@@ -286,17 +286,17 @@ namespace GestionInventario
         }
 
         //--------------------Trazabilidad--------------------------------------------------------------
-        public static DataTable ObtenerTrazabilidad()
+        public static DataTable ObtenerTrazabilidad(string idTarima)
         {
-            string consulta = @"
-                SELECT idTraspaso, idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento
-                FROM salidas_devoluciones
-                WHERE D0000017 
-                ORDER BY fechaOperacion ASC";
-            //idTarima = idTarima
+            string consulta = $@"
+            SELECT idTraspaso, idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento
+            FROM salidas_devoluciones
+            WHERE idTarima = '{idTarima}'
+            ORDER BY fechaOperacion ASC";
+
             return EjecutarConsulta(consulta);
         }
-
+        
     }// aqui arriba va todo
 
 }
