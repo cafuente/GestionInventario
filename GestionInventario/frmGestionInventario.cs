@@ -115,7 +115,7 @@ namespace GestionInventario
         {
             frmPrincipal frmPr = new frmPrincipal();
             frmPr.Show();
-        }
+        }                
 
         private void btnRegistrarTraspasoGi_Click(object sender, EventArgs e)
         {            
@@ -500,8 +500,8 @@ namespace GestionInventario
                 // Mensaje en caso de no encontrar ninguna fila con el código de barras
                 MessageBox.Show("No se encontró ningún artículo con el código de barras proporcionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        
+        }        
+
         private void txtBusquedaDevoGi_Click(object sender, EventArgs e)
         {
             txtBusquedaDevoGi.Text = "";
@@ -805,7 +805,7 @@ namespace GestionInventario
                 }
             }
             return estaDetenida;
-        }
+        }        
         /*
         private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
         {

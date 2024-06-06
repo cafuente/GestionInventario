@@ -266,7 +266,7 @@ namespace GestionInventario
             pbImpresionCb.Enabled = true;
             pbGuardarCb.Enabled = true;
             btnCancelar.Enabled = true;
-        }
+        }       
 
         private void GenerarCodigoBarras()
         {

@@ -897,6 +897,6 @@ namespace GestionInventario
                     MessageBox.Show("Error al desmarcar tarima como detenida: " + ex.Message);
                 }
             }
-        }
+        }        
     }
 }
