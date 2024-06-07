@@ -10,14 +10,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Printing;
+using System.Security.Principal;
 
 namespace GestionInventario
 {
     public partial class frmTrazalibildad : Form
     {
         private PrintDocument printDocument;
+        private PrintPreviewDialog printPreviewDialog;
         private DataTable printTable;
         private int rowIndex;
+        //private string titulo = "Reporte de Trazabilidad";
         public frmTrazalibildad()
         {
             InitializeComponent();
@@ -31,12 +34,17 @@ namespace GestionInventario
             txtIdTarimaBusqueda.Text = "DXXXXXXX";
             txtIdTarimaBusqueda.GotFocus += new EventHandler(txtIdTarimaBusqueda_GotFocus);
             txtIdTarimaBusqueda.LostFocus += new EventHandler(txtIdTarimaBusqueda_LostFocus);
+            lbFiltro.Enabled = false;
+            txtBuscar.Enabled = false;
+            pbGuardar.Visible = false;
+            pbImpresion.Visible = false;
+            pbVistaPrevia.Visible = false;
+            //impresion
             printDocument = new PrintDocument();
             printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
             printDocument.DefaultPageSettings.Landscape = true; // Default modo landscape
-            lbFiltro.Enabled = false;
-            txtBuscar.Enabled = false;
-            pbGuardar.Enabled = false;
+            printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.Document = printDocument;
         }
         private void MostrarInformacionUsuario()
         {
@@ -116,7 +124,9 @@ namespace GestionInventario
                         dgvTrazabilidad.DataSource = BusquedaBD.ObtenerTrazabilidad(idTarima);
                         lbFiltro.Enabled = true;
                         txtBuscar.Enabled = true;
-                        pbGuardar.Enabled = true;
+                        pbGuardar.Visible = true;
+                        pbImpresion.Visible = true;
+                        pbVistaPrevia.Visible = true;
                         ConfigurarColumnasTrazabilidad();
                         ResaltarFilas();
                     }
@@ -131,7 +141,7 @@ namespace GestionInventario
         }
         private void ConfigurarColumnasTrazabilidad()
         {
-            dgvTrazabilidad.Columns["idTraspaso"].HeaderText = "ID Traspaso";
+            //dgvTrazabilidad.Columns["idTraspaso"].HeaderText = "ID Traspaso";
             dgvTrazabilidad.Columns["idTarima"].HeaderText = "ID Tarima";
             dgvTrazabilidad.Columns["producto"].HeaderText = "Producto";
             dgvTrazabilidad.Columns["lote"].HeaderText = "Lote";
@@ -236,40 +246,7 @@ namespace GestionInventario
 
         }
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            /*int startX = 10;
-            int startY = 10;
-            int offsetY = 40;
-            int rowHeight = 20;
-
-            Font font = new Font("Arial", 8);
-            Brush brush = Brushes.Black;
-
-            int pageWidth = e.MarginBounds.Width;
-            int columnWidth = pageWidth / printTable.Columns.Count;
-
-            // Print column headers
-            for (int i = 0; i < printTable.Columns.Count; i++)
-            {
-                e.Graphics.DrawString(printTable.Columns[i].ColumnName, font, brush, startX + (i * columnWidth), startY);
-            }
-
-            // Print rows
-            while (rowIndex < printTable.Rows.Count)
-            {
-                if (offsetY + rowHeight > e.MarginBounds.Height)
-                {
-                    e.HasMorePages = true;
-                    return;
-                }
-                for (int i = 0; i < printTable.Columns.Count; i++)
-                {
-                    e.Graphics.DrawString(printTable.Rows[rowIndex][i].ToString(), font, brush, startX + (i * columnWidth), startY + offsetY);
-                }
-                offsetY += rowHeight;
-                rowIndex++;
-            }
-            e.HasMorePages = false;*/
+        {            
             int startX = 10;
             int startY = 10;
             int offsetY = 27;
@@ -286,7 +263,7 @@ namespace GestionInventario
 
             int pageWidth = e.MarginBounds.Width;
             int columnCount = printTable.Columns.Count;
-
+            
             // Adjust startY and offsetY to account for the title
             startY += 40;
                         

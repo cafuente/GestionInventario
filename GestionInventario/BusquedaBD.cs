@@ -289,13 +289,21 @@ namespace GestionInventario
         public static DataTable ObtenerTrazabilidad(string idTarima)
         {
             string consulta = $@"
-            SELECT idTraspaso, idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento
+            SELECT idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento
             FROM salidas_devoluciones
             WHERE idTarima = '{idTarima}'
             ORDER BY fechaOperacion ASC";
 
             return EjecutarConsulta(consulta);
         }
-        
+
+        public static DataTable ObtenerTrazabilidadCompleta()
+        {
+            string consulta = @"
+            SELECT idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento
+            FROM salidas_devoluciones
+            ORDER BY fechaOperacion DESC";
+            return EjecutarConsulta(consulta);
+        }
     }// aqui arriba va todo
 }

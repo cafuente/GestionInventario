@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoTr = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbFotoPerfil = new System.Windows.Forms.PictureBox();
             this.lbPerfilTr = new System.Windows.Forms.Label();
             this.lbNombreTr = new System.Windows.Forms.Label();
             this.dgvTrazabilidad = new System.Windows.Forms.DataGridView();
@@ -43,18 +43,22 @@
             this.lbFiltro = new System.Windows.Forms.Label();
             this.pbGuardar = new System.Windows.Forms.PictureBox();
             this.pbImpresion = new System.Windows.Forms.PictureBox();
+            this.pbVistaPrevia = new System.Windows.Forms.PictureBox();
+            this.btnVerTodas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFotoPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrazabilidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImpresion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVistaPrevia)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lbDepartamentoTr);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pbFotoPerfil);
             this.panel2.Controls.Add(this.lbPerfilTr);
             this.panel2.Controls.Add(this.lbNombreTr);
             this.panel2.Location = new System.Drawing.Point(3, 6);
@@ -71,15 +75,15 @@
             this.lbDepartamentoTr.TabIndex = 15;
             this.lbDepartamentoTr.Text = "Deptto";
             // 
-            // pictureBox1
+            // pbFotoPerfil
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
+            this.pbFotoPerfil.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbFotoPerfil.Location = new System.Drawing.Point(3, 3);
+            this.pbFotoPerfil.Name = "pbFotoPerfil";
+            this.pbFotoPerfil.Size = new System.Drawing.Size(75, 85);
+            this.pbFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFotoPerfil.TabIndex = 14;
+            this.pbFotoPerfil.TabStop = false;
             // 
             // lbPerfilTr
             // 
@@ -105,35 +109,35 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTrazabilidad.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTrazabilidad.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTrazabilidad.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvTrazabilidad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTrazabilidad.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvTrazabilidad.Location = new System.Drawing.Point(12, 252);
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTrazabilidad.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvTrazabilidad.Location = new System.Drawing.Point(12, 274);
             this.dgvTrazabilidad.Name = "dgvTrazabilidad";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTrazabilidad.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTrazabilidad.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvTrazabilidad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrazabilidad.Size = new System.Drawing.Size(1060, 362);
+            this.dgvTrazabilidad.Size = new System.Drawing.Size(1047, 340);
             this.dgvTrazabilidad.TabIndex = 76;
             this.dgvTrazabilidad.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTrazabilidad_CellFormatting);
             // 
@@ -153,7 +157,7 @@
             this.txtIdTarimaBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdTarimaBusqueda.Location = new System.Drawing.Point(152, 155);
             this.txtIdTarimaBusqueda.Name = "txtIdTarimaBusqueda";
-            this.txtIdTarimaBusqueda.Size = new System.Drawing.Size(369, 30);
+            this.txtIdTarimaBusqueda.Size = new System.Drawing.Size(467, 30);
             this.txtIdTarimaBusqueda.TabIndex = 78;
             this.txtIdTarimaBusqueda.Click += new System.EventHandler(this.txtIdTarimaBusqueda_Click);
             this.txtIdTarimaBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdTarimaBusqueda_KeyPress);
@@ -161,7 +165,7 @@
             // txtBuscar
             // 
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Location = new System.Drawing.Point(625, 155);
+            this.txtBuscar.Location = new System.Drawing.Point(152, 215);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(272, 30);
             this.txtBuscar.TabIndex = 79;
@@ -171,7 +175,7 @@
             // 
             this.lbFiltro.AutoSize = true;
             this.lbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFiltro.Location = new System.Drawing.Point(563, 162);
+            this.lbFiltro.Location = new System.Drawing.Point(90, 222);
             this.lbFiltro.Name = "lbFiltro";
             this.lbFiltro.Size = new System.Drawing.Size(48, 20);
             this.lbFiltro.TabIndex = 80;
@@ -181,9 +185,9 @@
             // 
             this.pbGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbGuardar.Image = global::GestionInventario.Properties.Resources.save;
-            this.pbGuardar.Location = new System.Drawing.Point(928, 142);
+            this.pbGuardar.Location = new System.Drawing.Point(442, 208);
             this.pbGuardar.Name = "pbGuardar";
-            this.pbGuardar.Size = new System.Drawing.Size(57, 50);
+            this.pbGuardar.Size = new System.Drawing.Size(52, 46);
             this.pbGuardar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbGuardar.TabIndex = 81;
             this.pbGuardar.TabStop = false;
@@ -191,20 +195,59 @@
             // 
             // pbImpresion
             // 
+            this.pbImpresion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbImpresion.Image = global::GestionInventario.Properties.Resources.printer;
-            this.pbImpresion.Location = new System.Drawing.Point(991, 142);
+            this.pbImpresion.Location = new System.Drawing.Point(500, 208);
             this.pbImpresion.Name = "pbImpresion";
-            this.pbImpresion.Size = new System.Drawing.Size(54, 50);
+            this.pbImpresion.Size = new System.Drawing.Size(54, 46);
             this.pbImpresion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbImpresion.TabIndex = 82;
             this.pbImpresion.TabStop = false;
             this.pbImpresion.Click += new System.EventHandler(this.pbImpresion_Click);
             // 
+            // pbVistaPrevia
+            // 
+            this.pbVistaPrevia.BackColor = System.Drawing.SystemColors.Control;
+            this.pbVistaPrevia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbVistaPrevia.Image = global::GestionInventario.Properties.Resources.vista_de_impresion;
+            this.pbVistaPrevia.Location = new System.Drawing.Point(560, 208);
+            this.pbVistaPrevia.Name = "pbVistaPrevia";
+            this.pbVistaPrevia.Size = new System.Drawing.Size(59, 46);
+            this.pbVistaPrevia.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbVistaPrevia.TabIndex = 83;
+            this.pbVistaPrevia.TabStop = false;
+            this.pbVistaPrevia.Click += new System.EventHandler(this.pbVistaPrevia_Click);
+            // 
+            // btnVerTodas
+            // 
+            this.btnVerTodas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerTodas.Location = new System.Drawing.Point(726, 150);
+            this.btnVerTodas.Name = "btnVerTodas";
+            this.btnVerTodas.Size = new System.Drawing.Size(283, 38);
+            this.btnVerTodas.TabIndex = 84;
+            this.btnVerTodas.Text = "Mostrar Trazabilidad completa";
+            this.btnVerTodas.UseVisualStyleBackColor = true;
+            this.btnVerTodas.Click += new System.EventHandler(this.btnVerTodas_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(437, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(370, 25);
+            this.label1.TabIndex = 85;
+            this.label1.Text = "Trazabilidad de Combos y tarimas";
+            // 
             // frmTrazalibildad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 626);
+            this.ClientSize = new System.Drawing.Size(1071, 626);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnVerTodas);
+            this.Controls.Add(this.pbVistaPrevia);
             this.Controls.Add(this.pbImpresion);
             this.Controls.Add(this.pbGuardar);
             this.Controls.Add(this.lbFiltro);
@@ -220,11 +263,12 @@
             this.Load += new System.EventHandler(this.frmTrazalibildad_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFotoPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrazabilidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImpresion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVistaPrevia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +277,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbFotoPerfil;
         private System.Windows.Forms.Label lbPerfilTr;
         private System.Windows.Forms.Label lbNombreTr;
         private System.Windows.Forms.Label lbDepartamentoTr;
@@ -244,5 +288,8 @@
         private System.Windows.Forms.Label lbFiltro;
         private System.Windows.Forms.PictureBox pbGuardar;
         private System.Windows.Forms.PictureBox pbImpresion;
+        private System.Windows.Forms.PictureBox pbVistaPrevia;
+        private System.Windows.Forms.Button btnVerTodas;
+        private System.Windows.Forms.Label label1;
     }
 }
