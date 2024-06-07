@@ -272,28 +272,37 @@ namespace GestionInventario
             e.HasMorePages = false;*/
             int startX = 10;
             int startY = 10;
-            int offsetY = 40;
+            int offsetY = 27;
             int rowHeight = 20;
 
             Font font = new Font("Arial", 7);
             Brush brush = Brushes.Black;
+            // titulo
+            Font titleFont = new Font("Arial", 14, FontStyle.Bold);
+
+            string idTarima = txtIdTarimaBusqueda.Text;
+            string title = $"Trazabilidad de Tarimas {idTarima}";
+            e.Graphics.DrawString(title, titleFont, brush, startX, startY);
 
             int pageWidth = e.MarginBounds.Width;
             int columnCount = printTable.Columns.Count;
 
-            // Custom column widths (e.g., 15% for 'producto', 20% for 'lote', etc.)
+            // Adjust startY and offsetY to account for the title
+            startY += 40;
+                        
+            // aqui se configura el ancho de las columnas (e.g., 15% for 'producto', 20% for 'lote', etc.)
             var columnWidths = new Dictionary<string, float>
             {
-                { "idTraspaso", 0.15f },
-                { "idTarima", 0.15f },
+                { "idTraspaso", 0.07f },
+                { "idTarima", 0.09f },
                 { "producto", 0.15f },
-                { "lote", 0.10f },
-                { "cantidad", 0.10f },
-                { "tipoOperacion", 0.17f },
-                { "fechaOperacion", 0.17f },
-                { "destino", 0.12f },
-                { "usuario", 0.15f },
-                { "departamento", 0.15f }
+                { "lote", 0.09f },
+                { "cantidad", 0.08f },
+                { "tipoOperacion", 0.15f },
+                { "fechaOperacion", 0.15f },
+                { "destino", 0.10f },
+                { "usuario", 0.13f },
+                { "departamento", 0.13f }
             };
 
             // Calculate remaining width for unspecified columns
@@ -301,7 +310,7 @@ namespace GestionInventario
             int unspecifiedColumns = columnCount - columnWidths.Count;
             float unspecifiedColumnWidth = unspecifiedColumns > 0 ? (1 - specifiedWidth) / unspecifiedColumns : 0;
 
-            // Adjust column width dictionary to include unspecified columns
+            // Adjustar el anche de las columnas
             foreach (DataColumn column in printTable.Columns)
             {
                 if (!columnWidths.ContainsKey(column.ColumnName))
@@ -310,10 +319,10 @@ namespace GestionInventario
                 }
             }
 
-            // Convert widths to actual pixel values
+            // Convertir el ancho de las columnas actuales en pixeles
             var pixelWidths = columnWidths.ToDictionary(kv => kv.Key, kv => (int)(kv.Value * pageWidth));
 
-            // Print column headers
+            // imprimir los encabezados de las columnas
             int currentX = startX;
             foreach (DataColumn column in printTable.Columns)
             {
@@ -321,7 +330,8 @@ namespace GestionInventario
                 currentX += pixelWidths[column.ColumnName];
             }
 
-            // Print rows
+            // imprimir filas
+            //offsetY += rowHeight; // Adjust offset to start printing rows after column headers
             while (rowIndex < printTable.Rows.Count)
             {
                 if (offsetY + rowHeight > e.MarginBounds.Height)
@@ -340,6 +350,33 @@ namespace GestionInventario
                 rowIndex++;
             }
             e.HasMorePages = false;
+        }
+
+        private void pbVistaPrevia_Click(object sender, EventArgs e)
+        {
+            printTable = (DataTable)dgvTrazabilidad.DataSource;
+            rowIndex = 0;
+            printPreviewDialog.ShowDialog();
+        }
+
+        private void btnVerTodas_Click(object sender, EventArgs e)
+        {
+            DataTable dt = BusquedaBD.ObtenerTrazabilidadCompleta();
+            if (dt.Rows.Count > 0)
+            {
+                dgvTrazabilidad.DataSource = dt;
+                lbFiltro.Enabled = true;
+                txtBuscar.Enabled = true;
+                pbGuardar.Visible = true;
+                pbImpresion.Visible = true;
+                pbVistaPrevia.Visible = true;
+                ConfigurarColumnasTrazabilidad();
+                ResaltarFilas();
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron registros de trazabilidad.");
+            }
         }
     }
 }
