@@ -113,7 +113,7 @@ namespace GestionInventario
 
         private void frmGestionInventario_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmPr = new frmPrincipal();
+            frmPrincipal frmPr = new frmPrincipal(frmLogin.UsuarioActual);
             frmPr.Show();
         }                
 
@@ -805,7 +805,14 @@ namespace GestionInventario
                 }
             }
             return estaDetenida;
-        }        
+        }
+        public void DesactivarDevolucionesYDetenidos()
+        {
+            // Deshabilitar los botones o pestañas correspondientes
+            tabDevoluciones.Enabled = false;
+            btnMarcarDetenido.Enabled = false;
+            btnDesmarcarDetenido.Enabled = false;
+        }
         /*
         private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
         {

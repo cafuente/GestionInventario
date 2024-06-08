@@ -672,7 +672,7 @@ namespace GestionInventario
 
         private void frmRecepcionCarne_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmP = new frmPrincipal();
+            frmPrincipal frmP = new frmPrincipal(frmLogin.UsuarioActual);
             frmP.Show();
         }
 

@@ -36,10 +36,10 @@
             this.lbPerfilPr = new System.Windows.Forms.Label();
             this.lbNombrePr = new System.Windows.Forms.Label();
             this.panelVertical = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTrazabilidad = new System.Windows.Forms.Button();
             this.btnLogistica = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txtAdministrador = new System.Windows.Forms.Button();
+            this.btnAdministrador = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnMezclado = new System.Windows.Forms.Button();
             this.btnRecibo = new System.Windows.Forms.Button();
@@ -121,11 +121,11 @@
             // 
             // panelVertical
             // 
-            this.panelVertical.Controls.Add(this.button1);
+            this.panelVertical.Controls.Add(this.btnTrazabilidad);
             this.panelVertical.Controls.Add(this.btnLogistica);
             this.panelVertical.Controls.Add(this.pictureBox2);
             this.panelVertical.Controls.Add(this.lbDepartamentoMu);
-            this.panelVertical.Controls.Add(this.txtAdministrador);
+            this.panelVertical.Controls.Add(this.btnAdministrador);
             this.panelVertical.Controls.Add(this.btnCerrarSesion);
             this.panelVertical.Controls.Add(this.btnMezclado);
             this.panelVertical.Controls.Add(this.lbNombrePr);
@@ -139,18 +139,18 @@
             this.panelVertical.Size = new System.Drawing.Size(245, 616);
             this.panelVertical.TabIndex = 2;
             // 
-            // button1
+            // btnTrazabilidad
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 472);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(245, 57);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Trazabilidad";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnTrazabilidad.FlatAppearance.BorderSize = 0;
+            this.btnTrazabilidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrazabilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrazabilidad.Location = new System.Drawing.Point(0, 472);
+            this.btnTrazabilidad.Name = "btnTrazabilidad";
+            this.btnTrazabilidad.Size = new System.Drawing.Size(245, 57);
+            this.btnTrazabilidad.TabIndex = 17;
+            this.btnTrazabilidad.Text = "Trazabilidad";
+            this.btnTrazabilidad.UseVisualStyleBackColor = true;
+            this.btnTrazabilidad.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnLogistica
             // 
@@ -175,18 +175,18 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // txtAdministrador
+            // btnAdministrador
             // 
-            this.txtAdministrador.FlatAppearance.BorderSize = 0;
-            this.txtAdministrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txtAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdministrador.Location = new System.Drawing.Point(0, 124);
-            this.txtAdministrador.Name = "txtAdministrador";
-            this.txtAdministrador.Size = new System.Drawing.Size(245, 57);
-            this.txtAdministrador.TabIndex = 1;
-            this.txtAdministrador.Text = "Gestion  de usuarios";
-            this.txtAdministrador.UseVisualStyleBackColor = true;
-            this.txtAdministrador.Click += new System.EventHandler(this.txtAdministrador_Click);
+            this.btnAdministrador.FlatAppearance.BorderSize = 0;
+            this.btnAdministrador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdministrador.Location = new System.Drawing.Point(0, 124);
+            this.btnAdministrador.Name = "btnAdministrador";
+            this.btnAdministrador.Size = new System.Drawing.Size(245, 57);
+            this.btnAdministrador.TabIndex = 1;
+            this.btnAdministrador.Text = "Gestion  de usuarios";
+            this.btnAdministrador.UseVisualStyleBackColor = true;
+            this.btnAdministrador.Click += new System.EventHandler(this.txtAdministrador_Click);
             // 
             // btnCerrarSesion
             // 
@@ -337,7 +337,7 @@
         private System.Windows.Forms.Button btnRecibo;
         private System.Windows.Forms.Button btnTraslado;
         private System.Windows.Forms.Button btnAlmacen;
-        private System.Windows.Forms.Button txtAdministrador;
+        private System.Windows.Forms.Button btnAdministrador;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnGestion;
         private System.Windows.Forms.Button btnRecepcion;
@@ -347,6 +347,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnLogistica;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTrazabilidad;
     }
 }

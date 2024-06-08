@@ -92,6 +92,7 @@ namespace GestionInventario
                 return;
             }
 
+            /*
             UsuariosDAO usuariosDAO = new UsuariosDAO();
             bool loginSuccessful = usuariosDAO.VerificarCredenciales(username, password);
 
@@ -104,6 +105,36 @@ namespace GestionInventario
 
                 // Abrir la siguiente ventana de tu aplicación
                 frmPrincipal frm = new frmPrincipal();
+                frm.Show();
+                Hide();
+            }
+            else
+            {
+                lblError.Text = "Usuario o contraseña incorrectos";
+                lblError.Visible = true;
+
+                // Crear un temporizador para ocultar la etiqueta de error después de 3 segundos
+                Timer timer = new Timer();
+                timer.Interval = 3000; // 3000 milisegundos = 3 segundos
+                timer.Tick += (senderTimer, eTimer) =>
+                {
+                    lblError.Visible = false;
+                    timer.Stop(); // Detener el temporizador después de ocultar la etiqueta de error
+                };
+                timer.Start(); // Iniciar el temporizador
+                txtUsuario.Text = "";
+                txtPassword.Text = "";
+            }*/
+            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            if (usuariosDAO.VerificarCredenciales(username, password, out Usuario usuarioAutenticado))
+            {
+                MessageBox.Show($"Inicio de sesión exitoso. \n\n¡Bienvenido {usuarioAutenticado.Nombre}!");
+
+                // Almacenar la información del usuario en la variable estática UsuarioActual
+                UsuarioActual = usuarioAutenticado;
+
+                // Abrir la siguiente ventana de tu aplicación
+                frmPrincipal frm = new frmPrincipal(UsuarioActual);
                 frm.Show();
                 Hide();
             }

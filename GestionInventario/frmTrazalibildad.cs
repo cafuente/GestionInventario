@@ -78,7 +78,7 @@ namespace GestionInventario
 
         private void frmTrazalibildad_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmPr = new frmPrincipal();
+            frmPrincipal frmPr = new frmPrincipal(frmLogin.UsuarioActual);
             frmPr.Show();
         }
 

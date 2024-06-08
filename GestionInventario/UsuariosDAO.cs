@@ -17,29 +17,7 @@ namespace GestionInventario
         {
             conexion = new ConexionBD();
         }
-        /*
-        public bool VerificarCredenciales(string username, string password)
-        {
-            bool loginSuccessful = false;
-
-            using (MySqlConnection con = conexion.ObtenerConexion())
-            {
-                con.Open();
-                string query = "SELECT COUNT(*) FROM usuarios WHERE usuario = @usuario AND password = @password";
-                using (MySqlCommand cmd = new MySqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@usuario", username);
-                    cmd.Parameters.AddWithValue("@password", password);
-
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    loginSuccessful = count > 0;
-                }
-            }
-
-            return loginSuccessful;
-        }
-        */
-        public bool VerificarCredenciales(string username, string password)
+        /*ok-public bool VerificarCredenciales(string username, string password)
         {
             bool loginSuccessful = false;
 
@@ -66,6 +44,51 @@ namespace GestionInventario
             }
 
             return loginSuccessful;
+        }*/
+        public bool VerificarCredenciales(string username, string password, out Usuario usuario)
+        {
+            usuario = null;
+            string query = @"
+                SELECT u.*, p.nombre AS perfil
+                FROM usuarios u
+                JOIN perfil p ON u.id_perfil = p.id_perfil
+                WHERE u.usuario = @usuario AND u.password = @password";
+
+            try
+            {
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    con.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@usuario", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                usuario = new Usuario
+                                {
+                                    IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                                    usuario = reader["usuario"].ToString(),
+                                    Password = reader["password"].ToString(),
+                                    Nombre = reader["nombre"].ToString(),
+                                    Departamento = reader["departamento"].ToString(),
+                                    IdPerfil = Convert.ToInt32(reader["id_perfil"]),
+                                    PerfilNombre = reader["perfil"].ToString()
+                                };
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar credenciales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return false;
         }
 
         private int ObtenerIdPerfil(string perfil)
@@ -81,6 +104,20 @@ namespace GestionInventario
                     return 3;
                 default:
                     return -1; // Perfil no válido
+            }
+        }
+        private string ObtenerNombrePerfil(int idPerfil)
+        {
+            switch (idPerfil)
+            {
+                case 1:
+                    return "Administrador";
+                case 2:
+                    return "Usuario";
+                case 3:
+                    return "Supervisor";
+                default:
+                    return "Desconocido";
             }
         }
 
@@ -216,6 +253,7 @@ namespace GestionInventario
 
         public Usuario ObtenerInformacionUsuario(string nombreUsuario)
         {
+            /*
             Usuario usuario = null;
             string query = "SELECT * FROM usuarios WHERE usuario = @usuario";
 
@@ -261,6 +299,46 @@ namespace GestionInventario
                 conexion.CerrarConexion();
             }
 
+            return usuario;*/
+            Usuario usuario = null;
+            string query = @"SELECT u.id_usuario, u.usuario, u.password, u.nombre, u.departamento, u.id_perfil, p.nombre AS perfil_nombre 
+                     FROM usuarios u
+                     JOIN perfil p ON u.id_perfil = p.id_perfil
+                     WHERE u.usuario = @usuario";
+
+            try
+            {
+                conexion.AbrirConexion();
+                using (MySqlCommand comando = new MySqlCommand(query, conexion.ObtenerConexion()))
+                {
+                    comando.Parameters.AddWithValue("@usuario", nombreUsuario);
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            usuario = new Usuario
+                            {
+                                IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                                usuario = reader["usuario"].ToString(),
+                                Password = reader["password"].ToString(),
+                                Nombre = reader["nombre"].ToString(),
+                                Departamento = reader["departamento"].ToString(),
+                                IdPerfil = Convert.ToInt32(reader["id_perfil"]),
+                                PerfilNombre = reader["nombre"].ToString()  // Actualización aquí
+                            };
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener la información del usuario: " + ex.Message);
+            }
+            finally
+            {
+                conexion.CerrarConexion();
+            }
+
             return usuario;
         }
 
@@ -302,20 +380,7 @@ namespace GestionInventario
                 conexion.CerrarConexion(); // Cerramos la conexión al finalizar la operación
             }
         }
-        private string ObtenerNombrePerfil(int idPerfil)
-        {
-            switch (idPerfil)
-            {
-                case 1:
-                    return "Administrador";
-                case 2:
-                    return "Usuario";
-                case 3:
-                    return "Supervisor";
-                default:
-                    return "Desconocido";
-            }
-        }
+        
     }
 }
 

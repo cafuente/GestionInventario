@@ -12,32 +12,38 @@ namespace GestionInventario
 {
     public partial class frmPrincipal : Form
     {
-        public frmPrincipal()
+        private Usuario usuarioAutenticado;
+        public frmPrincipal(Usuario usuario)
         {
-            InitializeComponent();            
-        }
-
-        private void btnAlmacen_Click(object sender, EventArgs e)
-        {
-            btnRecepcion.Visible = true;
-            btnGestion.Visible = true;
+            InitializeComponent();
+            usuarioAutenticado = usuario;
+            //ConfigurarPermisos();
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible = false;
-            
+            btnAdministrador.Visible = false;
+            btnAlmacen.Visible = false;
+            btnTraslado.Visible = false;
+            btnRecibo.Visible = false;
+            btnMezclado.Visible = false;
+            btnLogistica.Visible = false;
 
-         // Mostrar la información del usuario de sesion en el panel superior
+            // Mostrar la información del usuario de sesion en el panel superior
             MostrarInformacionUsuario();
+            // Configurar la visibilidad de los botones según el perfil y el departamento del usuario
+            ConfigurarVisibilidadBotones();
         }
-
+        
         private void MostrarInformacionUsuario()
         {
+            /*
             // Verificar si hay información del usuario actual disponible
             if (frmLogin.UsuarioActual != null)
             {
+
                 // Obtener el nombre y perfil del usuario actual
                 string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
 
@@ -45,7 +51,64 @@ namespace GestionInventario
                 lbNombrePr.Text = $"{frmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoMu.Text = $"{frmLogin.UsuarioActual.Departamento}";
                 lbPerfilPr.Text = $"{nombrePerfil}";
+            }*/
+            // Verificar si hay información del usuario actual disponible
+            if (usuarioAutenticado != null)
+            {
+                // Obtener el nombre y perfil del usuario actual
+                string nombrePerfil = ObtenerNombrePerfil(usuarioAutenticado.IdPerfil);
 
+                // Mostrar el nombre y el perfil del usuario en el panel superior
+                lbNombrePr.Text = $"{usuarioAutenticado.Nombre}";
+                lbDepartamentoMu.Text = $"{usuarioAutenticado.Departamento}";
+                lbPerfilPr.Text = $"{usuarioAutenticado.PerfilNombre}";
+            }
+        }
+        private void ConfigurarVisibilidadBotones()
+        {
+            if (usuarioAutenticado.PerfilNombre == "Administrador")
+            {
+                // El administrador puede ver todos los botones
+                btnAdministrador.Visible = true;
+                btnAlmacen.Visible=true;
+                btnTraslado.Visible=true;                
+                btnRecibo.Visible = true;
+                btnMezclado.Visible = true;
+                btnLogistica.Visible = true;
+                btnTrazabilidad.Visible = true; // Para frmTrazabilidad
+            }
+            else if (usuarioAutenticado.Departamento == "Almacen carnicos")
+            {
+                btnAlmacen.Visible = true;
+                btnRecepcion.Visible = true;
+                btnGestion.Visible = true;
+            }
+            else if (usuarioAutenticado.Departamento == "Limpieza y formulacion")
+            {
+                if (usuarioAutenticado.usuario == "Mocha")
+                {
+                    btnRecibo.Visible = true;
+                }
+                else
+                {
+                    btnTraslado.Visible = true;
+                }
+            }
+            else if (usuarioAutenticado.Departamento == "Mezclado")
+            {
+                btnMezclado.Visible = true;
+                btnLogistica.Visible = true;
+            }
+            else if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            {
+                // Ajustar la visibilidad de los botones para el supervisor
+                btnRecepcion.Visible = true;
+                btnGestion.Visible = true;
+                btnTraslado.Visible = true;
+                btnRecibo.Visible = true;
+                btnMezclado.Visible = true;
+                btnLogistica.Visible = true;
+                btnTrazabilidad.Visible = true; // Para frmTrazabilidad
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -62,7 +125,58 @@ namespace GestionInventario
                     return "Desconocido";
             }
         }
+        private void ConfigurarPermisos()
+        {
+            // Configurar permisos basados en el perfil y departamento del usuario autenticado
+            switch (usuarioAutenticado.PerfilNombre)
+            {
+                case "Administrador":
+                    // Administrador tiene acceso a todo
+                    //btnAdministrador.Visible = true;
+                    //btnAlmacen.Visible = true;
+                    //btnTraslado.Visible = true;
+                    //btnRecibo.Visible = true;
+                    //btnMezclado.Visible = true;
+                    //btnLogistica.Visible = true;
+                    break;
+                case "Almacen carnicos":
+                    btnRecepcion.Visible = true;
+                    btnGestion.Visible = true;
+                    break;
+                case "Limpieza y formulacion":
+                    if (usuarioAutenticado.Departamento == "LyFC")
+                    {
+                        btnTraslado.Visible = true;
+                    }
+                    else if (usuarioAutenticado.Departamento == "Mocha")
+                    {
+                        btnRecibo.Visible = true;
+                    }
+                    break;
+                case "Mezclado":
+                    btnMezclado.Visible = true;
+                    btnLogistica.Visible = true;
+                    break;
+            }
 
+            if (usuarioAutenticado.PerfilNombre != "Supervisor")
+            {
+                // Deshabilitar las funcionalidades de devoluciones y detenidos para no supervisores
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form is frmGestionInventario inventarioForm)
+                    {
+                        inventarioForm.DesactivarDevolucionesYDetenidos();
+                    }
+                    // Repetir para otros formularios si es necesario
+                }
+            }
+        }
+        private void btnAlmacen_Click(object sender, EventArgs e)
+        {
+            btnRecepcion.Visible = true;
+            btnGestion.Visible = true;
+        }
         private void btnRecepcion_Click(object sender, EventArgs e)
         {
             frmRecepcionCarne frmRC = new frmRecepcionCarne();

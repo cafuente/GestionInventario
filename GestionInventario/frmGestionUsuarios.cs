@@ -17,6 +17,7 @@ namespace GestionInventario
         public frmGestionUsuarios()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -399,7 +400,7 @@ namespace GestionInventario
 
         private void frmGestionUsuarios_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmPr = new frmPrincipal();
+            frmPrincipal frmPr = new frmPrincipal(frmLogin.UsuarioActual);
             frmPr.Show();
         }
 
