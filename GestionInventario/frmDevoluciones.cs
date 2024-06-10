@@ -29,14 +29,14 @@ namespace GestionInventario
         private void MostrarInformacionUsuario()
         {
             // Verificar si hay información del usuario actual disponible
-            if (frmLogin.UsuarioActual != null)
+            if (FrmLogin.UsuarioActual != null)
             {
                 // Obtener el nombre y perfil del usuario actual
-                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
+                string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombreDev.Text = $"{frmLogin.UsuarioActual.Nombre}";
-                lbDepartamentoDev.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbNombreDev.Text = $"{FrmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoDev.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilDev.Text = $"{nombrePerfil}";
 
             }
@@ -59,7 +59,7 @@ namespace GestionInventario
 
         private void frmDevoluciones_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmGestionInventario frmGi = new frmGestionInventario();
+            FrmGestionInventario frmGi = new FrmGestionInventario(FrmLogin.UsuarioActual);
             frmGi.Show();
         }
 

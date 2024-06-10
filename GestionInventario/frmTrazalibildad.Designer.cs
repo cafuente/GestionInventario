@@ -1,6 +1,6 @@
 ﻿namespace GestionInventario
 {
-    partial class frmTrazalibildad
+    partial class FrmTrazalibildad
     {
         /// <summary>
         /// Required designer variable.

@@ -14,14 +14,14 @@ using System.Security.Principal;
 
 namespace GestionInventario
 {
-    public partial class frmTrazalibildad : Form
+    public partial class FrmTrazalibildad : Form
     {
         private PrintDocument printDocument;
         private PrintPreviewDialog printPreviewDialog;
         private DataTable printTable;
         private int rowIndex;
         //private string titulo = "Reporte de Trazabilidad";
-        public frmTrazalibildad()
+        public FrmTrazalibildad()
         {
             InitializeComponent();
         }
@@ -49,14 +49,14 @@ namespace GestionInventario
         private void MostrarInformacionUsuario()
         {
             // Verificar si hay información del usuario actual disponible
-            if (frmLogin.UsuarioActual != null)
+            if (FrmLogin.UsuarioActual != null)
             {
                 // Obtener el nombre y perfil del usuario actual
-                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
+                string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombreTr.Text = $"{frmLogin.UsuarioActual.Nombre}";
-                lbDepartamentoTr.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbNombreTr.Text = $"{FrmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoTr.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilTr.Text = $"{nombrePerfil}";
 
             }
@@ -78,7 +78,7 @@ namespace GestionInventario
 
         private void frmTrazalibildad_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmPr = new frmPrincipal(frmLogin.UsuarioActual);
+            FrmPrincipal frmPr = new FrmPrincipal(FrmLogin.UsuarioActual);
             frmPr.Show();
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace GestionInventario
 {
-    partial class frmLogistica
+    partial class FrmLogistica
     {
         /// <summary>
         /// Required designer variable.

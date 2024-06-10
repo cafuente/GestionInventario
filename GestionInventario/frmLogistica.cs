@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace GestionInventario
 {
-    public partial class frmLogistica : Form
+    public partial class FrmLogistica : Form
     {
         private ConexionBD conexion; //obtener conexion
-        public frmLogistica()
+        public FrmLogistica()
         {
             InitializeComponent();
             conexion = new ConexionBD(); //obtener conexion
@@ -29,14 +29,14 @@ namespace GestionInventario
         private void MostrarInformacionUsuario()
         {
             // Verificar si hay información del usuario actual disponible
-            if (frmLogin.UsuarioActual != null)
+            if (FrmLogin.UsuarioActual != null)
             {
                 // Obtener el nombre y perfil del usuario actual
-                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
+                string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombreLyfc.Text = $"{frmLogin.UsuarioActual.Nombre}";
-                lbDepartamentoLyfc.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbNombreLyfc.Text = $"{FrmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoLyfc.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilLyfc.Text = $"{nombrePerfil}";
             }
         }
@@ -58,7 +58,7 @@ namespace GestionInventario
 
         private void frmLogistica_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmPr = new frmPrincipal(frmLogin.UsuarioActual);
+            FrmPrincipal frmPr = new FrmPrincipal(FrmLogin.UsuarioActual);
             frmPr.Show();
         }
 

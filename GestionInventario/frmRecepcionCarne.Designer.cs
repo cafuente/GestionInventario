@@ -1,6 +1,6 @@
 ﻿namespace GestionInventario
 {
-    partial class frmRecepcionCarne
+    partial class FrmRecepcionCarne
     {
         /// <summary>
         /// Required designer variable.

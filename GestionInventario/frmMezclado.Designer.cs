@@ -1,6 +1,6 @@
 ﻿namespace GestionInventario
 {
-    partial class frmMezclado
+    partial class FrmMezclado
     {
         /// <summary>
         /// Required designer variable.

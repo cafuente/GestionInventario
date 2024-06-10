@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace GestionInventario
 {
-    public partial class frmLogin : Form
+    public partial class FrmLogin : Form
     {
         /*
         public frmLogin()
@@ -63,7 +63,7 @@ namespace GestionInventario
         // Variable estática para almacenar la información del usuario que ha iniciado sesión
         public static Usuario UsuarioActual { get; private set; }
 
-        public frmLogin()
+        public FrmLogin()
         {
             InitializeComponent();
         }
@@ -134,7 +134,7 @@ namespace GestionInventario
                 UsuarioActual = usuarioAutenticado;
 
                 // Abrir la siguiente ventana de tu aplicación
-                frmPrincipal frm = new frmPrincipal(UsuarioActual);
+                FrmPrincipal frm = new FrmPrincipal(UsuarioActual);
                 frm.Show();
                 Hide();
             }

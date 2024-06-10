@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace GestionInventario
 {
-    public partial class frmGestionUsuarios : Form
+    public partial class FrmGestionUsuarios : Form
     {
-        public frmGestionUsuarios()
+        public FrmGestionUsuarios()
         {
             InitializeComponent();
 
@@ -65,14 +65,14 @@ namespace GestionInventario
         private void MostrarInformacionUsuario()
         {
             // Verificar si hay información del usuario actual disponible
-            if (frmLogin.UsuarioActual != null)
+            if (FrmLogin.UsuarioActual != null)
             {
                 // Obtener el nombre y perfil del usuario actual
-                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
+                string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombreGu.Text = $"{frmLogin.UsuarioActual.Nombre}";
-                lbDepartamentoCa.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbNombreGu.Text = $"{FrmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoCa.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilGu.Text = $"{nombrePerfil}";
 
             }
@@ -400,7 +400,7 @@ namespace GestionInventario
 
         private void frmGestionUsuarios_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmPr = new frmPrincipal(frmLogin.UsuarioActual);
+            FrmPrincipal frmPr = new FrmPrincipal(FrmLogin.UsuarioActual);
             frmPr.Show();
         }
 

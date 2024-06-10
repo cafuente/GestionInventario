@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace GestionInventario
 {
-    public partial class frmPrincipal : Form
+    public partial class FrmPrincipal : Form
     {
         private Usuario usuarioAutenticado;
-        public frmPrincipal(Usuario usuario)
+        public FrmPrincipal(Usuario usuario)
         {
             InitializeComponent();
             usuarioAutenticado = usuario;
@@ -83,16 +83,13 @@ namespace GestionInventario
                 btnRecepcion.Visible = true;
                 btnGestion.Visible = true;
             }
-            else if (usuarioAutenticado.Departamento == "Limpieza y formulacion")
+            else if (usuarioAutenticado.Departamento == "Limpieza y Formulacion")
+            {                
+                btnTraslado.Visible = true;
+            }
+            else if (usuarioAutenticado.Departamento == "Recepcion(mocha)")
             {
-                if (usuarioAutenticado.usuario == "Mocha")
-                {
-                    btnRecibo.Visible = true;
-                }
-                else
-                {
-                    btnTraslado.Visible = true;
-                }
+                btnRecibo.Visible = true;
             }
             else if (usuarioAutenticado.Departamento == "Mezclado")
             {
@@ -101,14 +98,11 @@ namespace GestionInventario
             }
             else if (usuarioAutenticado.PerfilNombre == "Supervisor")
             {
-                // Ajustar la visibilidad de los botones para el supervisor
-                btnRecepcion.Visible = true;
-                btnGestion.Visible = true;
-                btnTraslado.Visible = true;
-                btnRecibo.Visible = true;
-                btnMezclado.Visible = true;
-                btnLogistica.Visible = true;
-                btnTrazabilidad.Visible = true; // Para frmTrazabilidad
+                if (usuarioAutenticado.Departamento == "Limpieza y Formulacion")
+                {
+                    btnTraslado.Visible = true;
+                    btnRecibo.Visible = true;
+                }
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -125,53 +119,6 @@ namespace GestionInventario
                     return "Desconocido";
             }
         }
-        private void ConfigurarPermisos()
-        {
-            // Configurar permisos basados en el perfil y departamento del usuario autenticado
-            switch (usuarioAutenticado.PerfilNombre)
-            {
-                case "Administrador":
-                    // Administrador tiene acceso a todo
-                    //btnAdministrador.Visible = true;
-                    //btnAlmacen.Visible = true;
-                    //btnTraslado.Visible = true;
-                    //btnRecibo.Visible = true;
-                    //btnMezclado.Visible = true;
-                    //btnLogistica.Visible = true;
-                    break;
-                case "Almacen carnicos":
-                    btnRecepcion.Visible = true;
-                    btnGestion.Visible = true;
-                    break;
-                case "Limpieza y formulacion":
-                    if (usuarioAutenticado.Departamento == "LyFC")
-                    {
-                        btnTraslado.Visible = true;
-                    }
-                    else if (usuarioAutenticado.Departamento == "Mocha")
-                    {
-                        btnRecibo.Visible = true;
-                    }
-                    break;
-                case "Mezclado":
-                    btnMezclado.Visible = true;
-                    btnLogistica.Visible = true;
-                    break;
-            }
-
-            if (usuarioAutenticado.PerfilNombre != "Supervisor")
-            {
-                // Deshabilitar las funcionalidades de devoluciones y detenidos para no supervisores
-                foreach (Form form in Application.OpenForms)
-                {
-                    if (form is frmGestionInventario inventarioForm)
-                    {
-                        inventarioForm.DesactivarDevolucionesYDetenidos();
-                    }
-                    // Repetir para otros formularios si es necesario
-                }
-            }
-        }
         private void btnAlmacen_Click(object sender, EventArgs e)
         {
             btnRecepcion.Visible = true;
@@ -179,21 +126,21 @@ namespace GestionInventario
         }
         private void btnRecepcion_Click(object sender, EventArgs e)
         {
-            frmRecepcionCarne frmRC = new frmRecepcionCarne();
+            FrmRecepcionCarne frmRC = new FrmRecepcionCarne();
             frmRC.Show();
             Hide();
         }
 
         private void btnGestion_Click(object sender, EventArgs e)
         {
-            frmGestionInventario frmGI = new frmGestionInventario();
+            FrmGestionInventario frmGI = new FrmGestionInventario(FrmLogin.UsuarioActual);
             frmGI.Show();
             Hide();
         }
 
         private void txtAdministrador_Click(object sender, EventArgs e)
         {
-            frmGestionUsuarios frmGu = new frmGestionUsuarios();
+            FrmGestionUsuarios frmGu = new FrmGestionUsuarios();
             frmGu.Show();
             Hide() ;
         }
@@ -212,7 +159,7 @@ namespace GestionInventario
             if (resultado == DialogResult.Yes)
             {
                 // Mostrar el formulario de inicio de sesión y cerrar el formulario actual
-                frmLogin login = new frmLogin();
+                FrmLogin login = new FrmLogin();
                 login.Show();
                 this.Hide();
             }
@@ -238,7 +185,7 @@ namespace GestionInventario
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible = false;
-            frmLyfc frmLyfc = new frmLyfc();
+            FrmLyfc frmLyfc = new FrmLyfc(FrmLogin.UsuarioActual);
             frmLyfc.Show();
             this.Hide() ;
         }
@@ -247,7 +194,7 @@ namespace GestionInventario
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible = false;
-            frmMocha frmMocha = new frmMocha();
+            FrmMocha frmMocha = new FrmMocha(FrmLogin.UsuarioActual);
             frmMocha.Show();
             this.Hide() ;
         }
@@ -256,7 +203,7 @@ namespace GestionInventario
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible = false;
-            frmMezclado frmMezclado = new frmMezclado();
+            FrmMezclado frmMezclado = new FrmMezclado(FrmLogin.UsuarioActual);
             frmMezclado.Show();
             this.Hide() ;
         }
@@ -265,7 +212,7 @@ namespace GestionInventario
         {
             btnRecepcion.Visible=false;
             btnGestion.Visible=false;
-            frmLogistica frmLogistica = new frmLogistica();
+            FrmLogistica frmLogistica = new FrmLogistica();
             frmLogistica.Show();
             this.Hide() ;
         }
@@ -274,7 +221,7 @@ namespace GestionInventario
         {
             btnRecepcion.Visible = false;
             btnGestion.Visible=false;
-            frmTrazalibildad frmTrazalibildad = new frmTrazalibildad();
+            FrmTrazalibildad frmTrazalibildad = new FrmTrazalibildad();
             frmTrazalibildad.Show();
             this.Hide() ;
         }

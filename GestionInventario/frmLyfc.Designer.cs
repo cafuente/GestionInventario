@@ -1,6 +1,6 @@
 ﻿namespace GestionInventario
 {
-    partial class frmLyfc
+    partial class FrmLyfc
     {
         /// <summary>
         /// Required designer variable.

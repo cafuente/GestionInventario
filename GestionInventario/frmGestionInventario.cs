@@ -13,13 +13,15 @@ using System.Windows.Forms;
 
 namespace GestionInventario
 {
-    public partial class frmGestionInventario : Form
+    public partial class FrmGestionInventario : Form
     {
+        private Usuario usuarioAutenticado;
         private ConexionBD conexion;
-        public frmGestionInventario()
+        public FrmGestionInventario(Usuario usuario)
         {
             InitializeComponent();
             conexion = new ConexionBD();
+            usuarioAutenticado = usuario;
             CargarDatosInventario();
             CargarDatosInventarioTotal();
             CargarDatosTraspasos();
@@ -51,16 +53,15 @@ namespace GestionInventario
         private void MostrarInformacionUsuario()
         {
             // Verificar si hay información del usuario actual disponible
-            if (frmLogin.UsuarioActual != null)
+            if (FrmLogin.UsuarioActual != null)
             {
                 // Obtener el nombre y perfil del usuario actual
-                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
+                string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombreGi.Text = $"{frmLogin.UsuarioActual.Nombre}";
-                lbDepartamentoGi.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbNombreGi.Text = $"{FrmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoGi.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilGi.Text = $"{nombrePerfil}";
-
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -113,7 +114,7 @@ namespace GestionInventario
 
         private void frmGestionInventario_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmPr = new frmPrincipal(frmLogin.UsuarioActual);
+            FrmPrincipal frmPr = new FrmPrincipal(FrmLogin.UsuarioActual);
             frmPr.Show();
         }                
 
@@ -293,22 +294,6 @@ namespace GestionInventario
 
         private void btnRegistrarDevolucion_Click(object sender, EventArgs e)
         {
-            /*
-                        
-            int idTraspaso = int.Parse(lbIdTraspasoDv.Text);
-            String idTarima = lbIdTarimaDv.Text;
-            string producto = txtProductoDv.Text;
-            string lote = txtLoteDv.Text;
-            float cantidad = float.Parse(txtCantidadDv.Text);
-            string tipoOperacion = "Devolución";
-            DateTime fechaOperacion = DateTime.Now;
-            string destino = cbDestinoDv.SelectedItem.ToString();
-            //string destino = cbDestinoDv.Text.ToString();
-            string usuario = lbNombreGi.Text;
-            string departamento = lbDepartamentoGi.Text;
-
-            RegistrarDevolucion(idTraspaso, idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento);
-            */
             if (string.IsNullOrEmpty(txtProductoDv.Text) ||
                 string.IsNullOrEmpty(txtLoteDv.Text) ||
                 string.IsNullOrEmpty(txtCantidadDv.Text) ||
@@ -317,84 +302,91 @@ namespace GestionInventario
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            string idTarima = lbIdTarimaDv.Text;
-            if (VerificarEstadoTarima(idTarima))
+            if (usuarioAutenticado.PerfilNombre == "Supervisor")
             {
-                MessageBox.Show("No se puede devolver una tarima que está detenida.");
-                return;
+                string idTarima = lbIdTarimaDv.Text;
+                if (VerificarEstadoTarima(idTarima))
+                {
+                    MessageBox.Show("No se puede devolver una tarima que está detenida.");
+                    return;
+                }
+
+                int idTraspaso = Convert.ToInt32(lbIdTraspasoDv.Text);
+                //String idTarima = lbIdTarimaDv.Text;
+                string producto = txtProductoDv.Text;
+                string lote = txtLoteDv.Text;
+                float cantidad = Convert.ToInt32(txtCantidadDv.Text);
+                string destino = "Almacen";
+                string tipoOperacion = "Devolucion";
+                DateTime fechaOperacion = DateTime.Now;
+                //string fechaOperacion = dtpFechaDevolucion.Value.ToString("dd-MM-yyyy");
+                string usuario = lbNombreGi.Text;
+                string departamento = lbDepartamentoGi.Text;
+
+                // Inserta la devolución en la tabla
+                using (ConexionBD conexionBD = new ConexionBD())
+                {
+                    MySqlConnection conexion = conexionBD.ObtenerConexion();
+                    try
+                    {
+                        conexion.Open();
+                        string consultaInsertar = "INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento, estado) VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento, 'activo')";
+                        MySqlCommand comandoInsertar = new MySqlCommand(consultaInsertar, conexion);
+                        comandoInsertar.Parameters.AddWithValue("@idTarima", idTarima);
+                        comandoInsertar.Parameters.AddWithValue("@producto", producto);
+                        comandoInsertar.Parameters.AddWithValue("@lote", lote);
+                        comandoInsertar.Parameters.AddWithValue("@cantidad", cantidad);
+                        comandoInsertar.Parameters.AddWithValue("@tipoOperacion", tipoOperacion);
+                        comandoInsertar.Parameters.AddWithValue("@fechaOperacion", fechaOperacion);
+                        comandoInsertar.Parameters.AddWithValue("@destino", destino);
+                        comandoInsertar.Parameters.AddWithValue("@usuario", usuario);
+                        comandoInsertar.Parameters.AddWithValue("@departamento", departamento);
+                        comandoInsertar.ExecuteNonQuery();
+
+                        // Marca el traspaso original como anulado
+                        string consultaAnular = "UPDATE salidas_devoluciones SET estado = 'anulado' WHERE idTraspaso = @idTraspaso";
+                        MySqlCommand comandoAnular = new MySqlCommand(consultaAnular, conexion);
+                        comandoAnular.Parameters.AddWithValue("@idTraspaso", idTraspaso);
+                        comandoAnular.ExecuteNonQuery();
+
+                        // Actualiza la cantidad disponible en la tabla recepcion_carne
+                        string consultaActualizarInventario = "UPDATE recepcion_carne SET cantidad_disponible = cantidad_disponible + @cantidad WHERE id = @idTarima";
+                        MySqlCommand comandoActualizarInventario = new MySqlCommand(consultaActualizarInventario, conexion);
+                        comandoActualizarInventario.Parameters.AddWithValue("@cantidad", cantidad);
+                        comandoActualizarInventario.Parameters.AddWithValue("@idTarima", idTarima);
+                        comandoActualizarInventario.ExecuteNonQuery();
+
+                        // Elimina la entrada de inventario_lyfc
+                        string consultaEliminarLyfc = "DELETE FROM inventario_lyfc WHERE idTarima = @idTarima";
+                        MySqlCommand comandoEliminarLyfc = new MySqlCommand(consultaEliminarLyfc, conexion);
+                        comandoEliminarLyfc.Parameters.AddWithValue("@idTarima", idTarima);
+                        comandoEliminarLyfc.ExecuteNonQuery();
+
+                        MessageBox.Show("Devolución registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al registrar la devolución: " + ex.Message);
+                    }
+                }
+                // LIMPIAR CAMPOS
+                lbIdTraspasoDv.Text = null;
+                lbIdTarimaDv.Text = "";
+                txtProductoDv.Text = null;
+                txtLoteDv.Text = null;
+                txtCantidadDv.Text = null;
+                cbDestinoDv.SelectedIndex = -1;
+                dtpFechaDevolucion.Value = DateTime.Now;
+                CargarDatosTraspasos(); // Recargar datos de traspasos después de la devolución
+                CargarDatosInventario(); // Recargar datos del inventario después de la devolución
+                CargarDatosInventarioTotal(); // Recargar datos del inventario despues de la devolución
             }
-
-            int idTraspaso = Convert.ToInt32(lbIdTraspasoDv.Text);
-            //String idTarima = lbIdTarimaDv.Text;
-            string producto = txtProductoDv.Text;
-            string lote = txtLoteDv.Text;
-            float cantidad = Convert.ToInt32(txtCantidadDv.Text);
-            string destino = "Almacen";
-            string tipoOperacion = "Devolucion";
-            DateTime fechaOperacion = DateTime.Now;
-            //string fechaOperacion = dtpFechaDevolucion.Value.ToString("dd-MM-yyyy");
-            string usuario = lbNombreGi.Text;
-            string departamento = lbDepartamentoGi.Text;
-
-            // Inserta la devolución en la tabla
-            using (ConexionBD conexionBD = new ConexionBD())
+            else
             {
-                MySqlConnection conexion = conexionBD.ObtenerConexion();
-                try
-                {
-                    conexion.Open();
-                    string consultaInsertar = "INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento, estado) VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento, 'activo')";
-                    MySqlCommand comandoInsertar = new MySqlCommand(consultaInsertar, conexion);
-                    comandoInsertar.Parameters.AddWithValue("@idTarima", idTarima);
-                    comandoInsertar.Parameters.AddWithValue("@producto", producto);
-                    comandoInsertar.Parameters.AddWithValue("@lote", lote);
-                    comandoInsertar.Parameters.AddWithValue("@cantidad", cantidad);
-                    comandoInsertar.Parameters.AddWithValue("@tipoOperacion", tipoOperacion);
-                    comandoInsertar.Parameters.AddWithValue("@fechaOperacion", fechaOperacion);
-                    comandoInsertar.Parameters.AddWithValue("@destino", destino);
-                    comandoInsertar.Parameters.AddWithValue("@usuario", usuario);
-                    comandoInsertar.Parameters.AddWithValue("@departamento", departamento);
-                    comandoInsertar.ExecuteNonQuery();
-
-                    // Marca el traspaso original como anulado
-                    string consultaAnular = "UPDATE salidas_devoluciones SET estado = 'anulado' WHERE idTraspaso = @idTraspaso";
-                    MySqlCommand comandoAnular = new MySqlCommand(consultaAnular, conexion);
-                    comandoAnular.Parameters.AddWithValue("@idTraspaso", idTraspaso);
-                    comandoAnular.ExecuteNonQuery();
-
-                    // Actualiza la cantidad disponible en la tabla recepcion_carne
-                    string consultaActualizarInventario = "UPDATE recepcion_carne SET cantidad_disponible = cantidad_disponible + @cantidad WHERE id = @idTarima";
-                    MySqlCommand comandoActualizarInventario = new MySqlCommand(consultaActualizarInventario, conexion);
-                    comandoActualizarInventario.Parameters.AddWithValue("@cantidad", cantidad);
-                    comandoActualizarInventario.Parameters.AddWithValue("@idTarima", idTarima);
-                    comandoActualizarInventario.ExecuteNonQuery();
-
-                    // Elimina la entrada de inventario_lyfc
-                    string consultaEliminarLyfc = "DELETE FROM inventario_lyfc WHERE idTarima = @idTarima";
-                    MySqlCommand comandoEliminarLyfc = new MySqlCommand(consultaEliminarLyfc, conexion);
-                    comandoEliminarLyfc.Parameters.AddWithValue("@idTarima", idTarima);
-                    comandoEliminarLyfc.ExecuteNonQuery();
-
-                    MessageBox.Show("Devolución registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al registrar la devolución: " + ex.Message);
-                }
+                MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            // LIMPIAR CAMPOS
-            lbIdTraspasoDv.Text=null;
-            lbIdTarimaDv.Text="";
-            txtProductoDv.Text=null;
-            txtLoteDv.Text=null;
-            txtCantidadDv.Text=null;
-            cbDestinoDv.SelectedIndex = -1;
-            dtpFechaDevolucion.Value = DateTime.Now;
-            CargarDatosTraspasos(); // Recargar datos de traspasos después de la devolución
-            CargarDatosInventario(); // Recargar datos del inventario después de la devolución
-            CargarDatosInventarioTotal(); // Recargar datos del inventario despues de la devolución
         }
+            
 
         //limpiar campos devoluciones
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -646,33 +638,40 @@ namespace GestionInventario
         // detenidos
         private void btnMarcarDetenido_Click(object sender, EventArgs e)
         {
-            if (dgvInventario.SelectedRows.Count > 0)
+            if (usuarioAutenticado.PerfilNombre == "Supervisor")
             {
-                string idTarima = dgvInventario.SelectedRows[0].Cells["id"].Value.ToString();
-
-                if (EsTarimaDetenida(idTarima))
+                if (dgvInventario.SelectedRows.Count > 0)
                 {
-                    MessageBox.Show("La tarima ya está marcada como detenida.");
-                    return;
-                }
+                    string idTarima = dgvInventario.SelectedRows[0].Cells["id"].Value.ToString();
 
-                MarcarTarimaComoDetenida(idTarima);
-                MessageBox.Show("La tarima ha sido marcada como detenida.");
-                lbIdTarima.Text = "ID Tarima";
-                dtpFechaGi.Value = DateTime.Now;
-                txtProductoGi.Text = "";
-                txtLoteGi.Text = "";
-                txtCantidadGi.Text = "";
-                cbDestinoGi.SelectedIndex = -1;
-                CargarDatosInventario(); // Recargar datos del inventario
-                CargarDatosDetenidos();
-                //CargarDatosTraspasos();
-                //CargarDatosDetenidos();
+                    if (EsTarimaDetenida(idTarima))
+                    {
+                        MessageBox.Show("La tarima ya está marcada como detenida.");
+                        return;
+                    }
+
+                    MarcarTarimaComoDetenida(idTarima);
+                    MessageBox.Show("La tarima ha sido marcada como detenida.");
+                    lbIdTarima.Text = "ID Tarima";
+                    dtpFechaGi.Value = DateTime.Now;
+                    txtProductoGi.Text = "";
+                    txtLoteGi.Text = "";
+                    txtCantidadGi.Text = "";
+                    cbDestinoGi.SelectedIndex = -1;
+                    CargarDatosInventario(); // Recargar datos del inventario
+                    CargarDatosDetenidos();
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione una tarima para marcarla como detenida.");
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione una tarima para marcarla como detenida.");
+                MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
         }        
 
         private void MarcarTarimaComoDetenida(string idTarima)
@@ -732,21 +731,28 @@ namespace GestionInventario
 
         private void btnDesmarcarDetenido_Click(object sender, EventArgs e)
         {
-            if (dgvDetenidos.SelectedRows.Count > 0)
+            if (usuarioAutenticado.PerfilNombre == "Supervisor")
             {
-                // Se obtiene el ID de la tarima seleccionada
-                string idTarima = dgvDetenidos.SelectedRows[0].Cells["id"].Value.ToString();
-                // Desmarca la tarima detenida
-                DesmarcarTarimaComoDetenida(idTarima);
-                //Muestra el mensaje de confirmacion
-                MessageBox.Show("La tarima ha sido desmarcada como detenida.");
-                // Recarga los datos del inventario y de tarimas detenidas
-                CargarDatosInventario(); 
-                CargarDatosDetenidos();
+                if (dgvDetenidos.SelectedRows.Count > 0)
+                {
+                    // Se obtiene el ID de la tarima seleccionada
+                    string idTarima = dgvDetenidos.SelectedRows[0].Cells["id"].Value.ToString();
+                    // Desmarca la tarima detenida
+                    DesmarcarTarimaComoDetenida(idTarima);
+                    //Muestra el mensaje de confirmacion
+                    MessageBox.Show("La tarima ha sido desmarcada como detenida.");
+                    // Recarga los datos del inventario y de tarimas detenidas
+                    CargarDatosInventario();
+                    CargarDatosDetenidos();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+                MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -806,6 +812,7 @@ namespace GestionInventario
             }
             return estaDetenida;
         }
+        /*
         public void DesactivarDevolucionesYDetenidos()
         {
             // Deshabilitar los botones o pestañas correspondientes
@@ -813,7 +820,7 @@ namespace GestionInventario
             btnMarcarDetenido.Enabled = false;
             btnDesmarcarDetenido.Enabled = false;
         }
-        /*
+        
         private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
         {
             using (MySqlConnection con = conexion.ObtenerConexion()) //using (MySqlConnection conexion = new MySqlConnection("connection_string"))

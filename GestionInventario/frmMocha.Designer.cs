@@ -1,6 +1,6 @@
 ﻿namespace GestionInventario
 {
-    partial class frmMocha
+    partial class FrmMocha
     {
         /// <summary>
         /// Required designer variable.

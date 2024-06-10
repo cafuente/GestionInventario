@@ -67,65 +67,65 @@
     <Compile Include="frmDevoluciones.Designer.cs">
       <DependentUpon>frmDevoluciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionInventario.cs">
+    <Compile Include="FrmGestionInventario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionInventario.Designer.cs">
-      <DependentUpon>frmGestionInventario.cs</DependentUpon>
+    <Compile Include="FrmGestionInventario.Designer.cs">
+      <DependentUpon>FrmGestionInventario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestionUsuarios.cs">
+    <Compile Include="FrmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestionUsuarios.Designer.cs">
-      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+    <Compile Include="FrmGestionUsuarios.Designer.cs">
+      <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogistica.cs">
+    <Compile Include="FrmLogistica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogistica.Designer.cs">
-      <DependentUpon>frmLogistica.cs</DependentUpon>
+    <Compile Include="FrmLogistica.Designer.cs">
+      <DependentUpon>FrmLogistica.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLyfc.cs">
+    <Compile Include="FrmLyfc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLyfc.Designer.cs">
-      <DependentUpon>frmLyfc.cs</DependentUpon>
+    <Compile Include="FrmLyfc.Designer.cs">
+      <DependentUpon>FrmLyfc.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMezclado.cs">
+    <Compile Include="FrmMezclado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMezclado.Designer.cs">
-      <DependentUpon>frmMezclado.cs</DependentUpon>
+    <Compile Include="FrmMezclado.Designer.cs">
+      <DependentUpon>FrmMezclado.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMocha.cs">
+    <Compile Include="FrmMocha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMocha.Designer.cs">
-      <DependentUpon>frmMocha.cs</DependentUpon>
+    <Compile Include="FrmMocha.Designer.cs">
+      <DependentUpon>FrmMocha.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipal.cs">
+    <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrincipal.Designer.cs">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRecepcionCarne.cs">
+    <Compile Include="FrmRecepcionCarne.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRecepcionCarne.Designer.cs">
-      <DependentUpon>frmRecepcionCarne.cs</DependentUpon>
+    <Compile Include="FrmRecepcionCarne.Designer.cs">
+      <DependentUpon>FrmRecepcionCarne.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTrazalibildad.cs">
+    <Compile Include="FrmTrazalibildad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTrazalibildad.Designer.cs">
-      <DependentUpon>frmTrazalibildad.cs</DependentUpon>
+    <Compile Include="FrmTrazalibildad.Designer.cs">
+      <DependentUpon>FrmTrazalibildad.cs</DependentUpon>
     </Compile>
     <Compile Include="InsercionDatosDAO.cs" />
     <Compile Include="Program.cs" />
@@ -141,35 +141,35 @@
     <EmbeddedResource Include="frmDevoluciones.resx">
       <DependentUpon>frmDevoluciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionInventario.resx">
-      <DependentUpon>frmGestionInventario.cs</DependentUpon>
+    <EmbeddedResource Include="FrmGestionInventario.resx">
+      <DependentUpon>FrmGestionInventario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestionUsuarios.resx">
-      <DependentUpon>frmGestionUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="FrmGestionUsuarios.resx">
+      <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogistica.resx">
-      <DependentUpon>frmLogistica.cs</DependentUpon>
+    <EmbeddedResource Include="FrmLogistica.resx">
+      <DependentUpon>FrmLogistica.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLyfc.resx">
-      <DependentUpon>frmLyfc.cs</DependentUpon>
+    <EmbeddedResource Include="FrmLyfc.resx">
+      <DependentUpon>FrmLyfc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMezclado.resx">
-      <DependentUpon>frmMezclado.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMezclado.resx">
+      <DependentUpon>FrmMezclado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMocha.resx">
-      <DependentUpon>frmMocha.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMocha.resx">
+      <DependentUpon>FrmMocha.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrincipal.resx">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRecepcionCarne.resx">
-      <DependentUpon>frmRecepcionCarne.cs</DependentUpon>
+    <EmbeddedResource Include="FrmRecepcionCarne.resx">
+      <DependentUpon>FrmRecepcionCarne.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTrazalibildad.resx">
-      <DependentUpon>frmTrazalibildad.cs</DependentUpon>
+    <EmbeddedResource Include="FrmTrazalibildad.resx">
+      <DependentUpon>FrmTrazalibildad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

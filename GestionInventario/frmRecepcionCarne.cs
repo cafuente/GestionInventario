@@ -15,10 +15,10 @@ using System.Windows.Forms;
 
 namespace GestionInventario
 {
-    public partial class frmRecepcionCarne : Form
+    public partial class FrmRecepcionCarne : Form
     {
         private ConexionBD conexion;
-        public frmRecepcionCarne()
+        public FrmRecepcionCarne()
         {
             InitializeComponent();
             conexion = new ConexionBD();
@@ -74,18 +74,18 @@ namespace GestionInventario
         private void MostrarInformacionUsuario()
         {
             // Verificar si hay información del usuario actual disponible
-            if (frmLogin.UsuarioActual != null)
+            if (FrmLogin.UsuarioActual != null)
             {
                 // Obtener el nombre y perfil del usuario actual
-                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
+                string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
                 //lbNombreRc.Text = $"Usuario: {frmLogin.UsuarioActual.Nombre}";
                 //lbDepartamentoRc.Text = $"Deptto: { frmLogin.UsuarioActual.Departamento}";
                 //lbPerfilRc.Text = $"Perfil: {nombrePerfil}";
 
-                lbNombreRc.Text = $"{frmLogin.UsuarioActual.Nombre}";
-                lbDepartamentoRc.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbNombreRc.Text = $"{FrmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoRc.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilRc.Text = $"{nombrePerfil}";
 
             }
@@ -672,7 +672,7 @@ namespace GestionInventario
 
         private void frmRecepcionCarne_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmP = new frmPrincipal(frmLogin.UsuarioActual);
+            FrmPrincipal frmP = new FrmPrincipal(FrmLogin.UsuarioActual);
             frmP.Show();
         }
 

@@ -12,13 +12,15 @@ using System.Windows.Forms;
 
 namespace GestionInventario
 {
-    public partial class frmMezclado : Form
+    public partial class FrmMezclado : Form
     {
+        private Usuario usuarioAutenticado;
         private ConexionBD conexion; //obtener conexion
-        public frmMezclado()
+        public FrmMezclado(Usuario usuario)
         {
             InitializeComponent();
             conexion = new ConexionBD(); //obtener conexion
+            usuarioAutenticado = usuario;
             CargarDatosInventarioTotalMezclado();
             CargarDatosTraspasosMezclado();
             CargarDatosDevolucionesMezclado();
@@ -55,14 +57,14 @@ namespace GestionInventario
         private void MostrarInformacionUsuario()
         {
             // Verificar si hay información del usuario actual disponible
-            if (frmLogin.UsuarioActual != null)
+            if (FrmLogin.UsuarioActual != null)
             {
                 // Obtener el nombre y perfil del usuario actual
-                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
+                string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
 
                 // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombreMezclado.Text = $"{frmLogin.UsuarioActual.Nombre}";
-                lbDepartamentoMezclado.Text = $"{frmLogin.UsuarioActual.Departamento}";
+                lbNombreMezclado.Text = $"{FrmLogin.UsuarioActual.Nombre}";
+                lbDepartamentoMezclado.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilMezclado.Text = $"{nombrePerfil}";
 
             }
@@ -85,7 +87,7 @@ namespace GestionInventario
 
         private void frmMezclado_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmPrincipal frmPr = new frmPrincipal(frmLogin.UsuarioActual);
+            FrmPrincipal frmPr = new FrmPrincipal(FrmLogin.UsuarioActual);
             frmPr.Show();
         }
 
@@ -538,91 +540,98 @@ namespace GestionInventario
 
         private void btnRegistrarMezcladoDv_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtProductoMezcladoDv.Text) ||
-                string.IsNullOrEmpty(txtLoteMezcladoDv.Text) ||
-                string.IsNullOrEmpty(txtCantidadMezcladoDv.Text) ||
-                cbDestinoMezcladoDv.SelectedItem == null)
+            if (usuarioAutenticado.PerfilNombre == "Supervisor")
             {
-                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string idTarima = lbIdTarimaMezcladoDv.Text;
-            if (VerificarEstadoTarimaMezclado(idTarima))
-            {
-                MessageBox.Show("No se puede devolver una tarima que está detenida.");
-                return;
-            }
-
-            int idTraspaso = Convert.ToInt32(lbIdTraspasoMezcladoDv.Text);
-            //String idTarima = lbIdTarimaDv.Text;
-            string producto = txtProductoMezcladoDv.Text;
-            string lote = txtLoteMezcladoDv.Text;
-            float cantidad = Convert.ToInt32(txtCantidadMezcladoDv.Text);
-            string destino = "Mezclado";
-            string tipoOperacion = "Devolucion";
-            DateTime fechaOperacion = DateTime.Now;
-            //string fechaOperacion = dtpFechaDevolucion.Value.ToString("dd-MM-yyyy");
-            string usuario = lbNombreMezclado.Text;
-            string departamento = lbDepartamentoMezclado.Text;
-
-            // Inserta la devolución en la tabla
-            using (ConexionBD conexionBD = new ConexionBD())
-            {
-                MySqlConnection conexion = conexionBD.ObtenerConexion();
-                try
+                if (string.IsNullOrEmpty(txtProductoMezcladoDv.Text) ||
+                    string.IsNullOrEmpty(txtLoteMezcladoDv.Text) ||
+                    string.IsNullOrEmpty(txtCantidadMezcladoDv.Text) ||
+                    cbDestinoMezcladoDv.SelectedItem == null)
                 {
-                    conexion.Open();
-                    string consultaInsertar = "INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento, estado) VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento, 'activo')";
-                    MySqlCommand comandoInsertar = new MySqlCommand(consultaInsertar, conexion);
-                    comandoInsertar.Parameters.AddWithValue("@idTarima", idTarima);
-                    comandoInsertar.Parameters.AddWithValue("@producto", producto);
-                    comandoInsertar.Parameters.AddWithValue("@lote", lote);
-                    comandoInsertar.Parameters.AddWithValue("@cantidad", cantidad);
-                    comandoInsertar.Parameters.AddWithValue("@tipoOperacion", tipoOperacion);
-                    comandoInsertar.Parameters.AddWithValue("@fechaOperacion", fechaOperacion);
-                    comandoInsertar.Parameters.AddWithValue("@destino", destino);
-                    comandoInsertar.Parameters.AddWithValue("@usuario", usuario);
-                    comandoInsertar.Parameters.AddWithValue("@departamento", departamento);
-                    comandoInsertar.ExecuteNonQuery();
-
-                    // Marca el traspaso original como anulado
-                    string consultaAnular = "UPDATE salidas_devoluciones SET estado = 'anulado' WHERE idTraspaso = @idTraspaso";
-                    MySqlCommand comandoAnular = new MySqlCommand(consultaAnular, conexion);
-                    comandoAnular.Parameters.AddWithValue("@idTraspaso", idTraspaso);
-                    comandoAnular.ExecuteNonQuery();
-
-                    // Actualiza la cantidad disponible en la tabla inventario_mocha
-                    string consultaActualizarInventario = "UPDATE inventario_mezclado SET cantidad = cantidad + @cantidad WHERE idTarima = @idTarima";
-                    MySqlCommand comandoActualizarInventario = new MySqlCommand(consultaActualizarInventario, conexion);
-                    comandoActualizarInventario.Parameters.AddWithValue("@cantidad", cantidad);
-                    comandoActualizarInventario.Parameters.AddWithValue("@idTarima", idTarima);
-                    comandoActualizarInventario.ExecuteNonQuery();
-
-                    // Elimina la entrada de inventario_mezclado
-                    string consultaEliminarLyfc = "DELETE FROM inventario_logistica WHERE idTarima = @idTarima";
-                    MySqlCommand comandoEliminarLyfc = new MySqlCommand(consultaEliminarLyfc, conexion);
-                    comandoEliminarLyfc.Parameters.AddWithValue("@idTarima", idTarima);
-                    comandoEliminarLyfc.ExecuteNonQuery();
-
-                    MessageBox.Show("Devolución registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-                catch (Exception ex)
+
+                string idTarima = lbIdTarimaMezcladoDv.Text;
+                if (VerificarEstadoTarimaMezclado(idTarima))
                 {
-                    MessageBox.Show("Error al registrar la devolución: " + ex.Message);
+                    MessageBox.Show("No se puede devolver una tarima que está detenida.");
+                    return;
                 }
+
+                int idTraspaso = Convert.ToInt32(lbIdTraspasoMezcladoDv.Text);
+                //String idTarima = lbIdTarimaDv.Text;
+                string producto = txtProductoMezcladoDv.Text;
+                string lote = txtLoteMezcladoDv.Text;
+                float cantidad = Convert.ToInt32(txtCantidadMezcladoDv.Text);
+                string destino = "Mezclado";
+                string tipoOperacion = "Devolucion";
+                DateTime fechaOperacion = DateTime.Now;
+                //string fechaOperacion = dtpFechaDevolucion.Value.ToString("dd-MM-yyyy");
+                string usuario = lbNombreMezclado.Text;
+                string departamento = lbDepartamentoMezclado.Text;
+
+                // Inserta la devolución en la tabla
+                using (ConexionBD conexionBD = new ConexionBD())
+                {
+                    MySqlConnection conexion = conexionBD.ObtenerConexion();
+                    try
+                    {
+                        conexion.Open();
+                        string consultaInsertar = "INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento, estado) VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento, 'activo')";
+                        MySqlCommand comandoInsertar = new MySqlCommand(consultaInsertar, conexion);
+                        comandoInsertar.Parameters.AddWithValue("@idTarima", idTarima);
+                        comandoInsertar.Parameters.AddWithValue("@producto", producto);
+                        comandoInsertar.Parameters.AddWithValue("@lote", lote);
+                        comandoInsertar.Parameters.AddWithValue("@cantidad", cantidad);
+                        comandoInsertar.Parameters.AddWithValue("@tipoOperacion", tipoOperacion);
+                        comandoInsertar.Parameters.AddWithValue("@fechaOperacion", fechaOperacion);
+                        comandoInsertar.Parameters.AddWithValue("@destino", destino);
+                        comandoInsertar.Parameters.AddWithValue("@usuario", usuario);
+                        comandoInsertar.Parameters.AddWithValue("@departamento", departamento);
+                        comandoInsertar.ExecuteNonQuery();
+
+                        // Marca el traspaso original como anulado
+                        string consultaAnular = "UPDATE salidas_devoluciones SET estado = 'anulado' WHERE idTraspaso = @idTraspaso";
+                        MySqlCommand comandoAnular = new MySqlCommand(consultaAnular, conexion);
+                        comandoAnular.Parameters.AddWithValue("@idTraspaso", idTraspaso);
+                        comandoAnular.ExecuteNonQuery();
+
+                        // Actualiza la cantidad disponible en la tabla inventario_mocha
+                        string consultaActualizarInventario = "UPDATE inventario_mezclado SET cantidad = cantidad + @cantidad WHERE idTarima = @idTarima";
+                        MySqlCommand comandoActualizarInventario = new MySqlCommand(consultaActualizarInventario, conexion);
+                        comandoActualizarInventario.Parameters.AddWithValue("@cantidad", cantidad);
+                        comandoActualizarInventario.Parameters.AddWithValue("@idTarima", idTarima);
+                        comandoActualizarInventario.ExecuteNonQuery();
+
+                        // Elimina la entrada de inventario_mezclado
+                        string consultaEliminarLyfc = "DELETE FROM inventario_logistica WHERE idTarima = @idTarima";
+                        MySqlCommand comandoEliminarLyfc = new MySqlCommand(consultaEliminarLyfc, conexion);
+                        comandoEliminarLyfc.Parameters.AddWithValue("@idTarima", idTarima);
+                        comandoEliminarLyfc.ExecuteNonQuery();
+
+                        MessageBox.Show("Devolución registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al registrar la devolución: " + ex.Message);
+                    }
+                }
+                // LIMPIAR CAMPOS
+                lbIdTraspasoMezcladoDv.Text = null;
+                lbIdTarimaMezcladoDv.Text = "";
+                txtProductoMezcladoDv.Text = null;
+                txtLoteMezcladoDv.Text = null;
+                txtCantidadMezcladoDv.Text = null;
+                cbDestinoMezcladoDv.SelectedIndex = -1;
+                dtpFechaMezcladoDv.Value = DateTime.Now;
+                CargarDatosDevolucionesMezclado(); // Recargar datos de traspasos después de la devolución
+                CargarDatosTraspasosMezclado(); // Recargar datos del inventario después de la devolución
+                CargarDatosInventarioTotalMezclado();
             }
-            // LIMPIAR CAMPOS
-            lbIdTraspasoMezcladoDv.Text = null;
-            lbIdTarimaMezcladoDv.Text = "";
-            txtProductoMezcladoDv.Text = null;
-            txtLoteMezcladoDv.Text = null;
-            txtCantidadMezcladoDv.Text = null;
-            cbDestinoMezcladoDv.SelectedIndex = -1;
-            dtpFechaMezcladoDv.Value = DateTime.Now;
-            CargarDatosDevolucionesMezclado(); // Recargar datos de traspasos después de la devolución
-            CargarDatosTraspasosMezclado(); // Recargar datos del inventario después de la devolución
-            CargarDatosInventarioTotalMezclado();
+            else
+            {
+                MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         //------ busqueda devoluciones------------------
@@ -736,30 +745,38 @@ namespace GestionInventario
         //--------------------------Detenidos--------------------------------------------------------
         private void btnMarcarDetenidoMezclado_Click(object sender, EventArgs e)
         {
-            if (dgvInventarioMezclado.SelectedRows.Count > 0)
+            if (usuarioAutenticado.PerfilNombre == "Supervisor")
             {
-                string idTarima = dgvInventarioMezclado.SelectedRows[0].Cells["idTarima"].Value.ToString();
-
-                if (EsTarimaDetenida(idTarima))
+                if (dgvInventarioMezclado.SelectedRows.Count > 0)
                 {
-                    MessageBox.Show("La tarima ya está marcada como detenida.");
-                    return;
-                }
+                    string idTarima = dgvInventarioMezclado.SelectedRows[0].Cells["idTarima"].Value.ToString();
 
-                MarcarTarimaComoDetenidaMezclado(idTarima);
-                MessageBox.Show("La tarima ha sido marcada como detenida.");
-                lbIdTarimaMezcladoTraspaso.Text = "ID Tarima";
-                dtpFechaMezcladoTraspaso.Value = DateTime.Now;
-                txtProductoMezcladoTraspaso.Text = "";
-                txtLoteMezcladoTraspaso.Text = "";
-                txtCantidadMezcladoTraspaso.Text = "";
-                cbDestinoMezcladoTraspaso.SelectedIndex = -1;
-                CargarDatosTraspasosMezclado(); // Recargar datos del inventario
-                CargarDatosDetenidosMezclado();
+                    if (EsTarimaDetenida(idTarima))
+                    {
+                        MessageBox.Show("La tarima ya está marcada como detenida.");
+                        return;
+                    }
+
+                    MarcarTarimaComoDetenidaMezclado(idTarima);
+                    MessageBox.Show("La tarima ha sido marcada como detenida.");
+                    lbIdTarimaMezcladoTraspaso.Text = "ID Tarima";
+                    dtpFechaMezcladoTraspaso.Value = DateTime.Now;
+                    txtProductoMezcladoTraspaso.Text = "";
+                    txtLoteMezcladoTraspaso.Text = "";
+                    txtCantidadMezcladoTraspaso.Text = "";
+                    cbDestinoMezcladoTraspaso.SelectedIndex = -1;
+                    CargarDatosTraspasosMezclado(); // Recargar datos del inventario
+                    CargarDatosDetenidosMezclado();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione una tarima para marcarla como detenida.");
+                }
             }
+
             else
             {
-                MessageBox.Show("Seleccione una tarima para marcarla como detenida.");
+                MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -820,21 +837,29 @@ namespace GestionInventario
 
         private void btnDesmarcarDetenidoMezclado_Click(object sender, EventArgs e)
         {
-            if (dgvDetenidosMezclado.SelectedRows.Count > 0)
+            if (usuarioAutenticado.PerfilNombre == "Supervisor")
             {
-                // Se obtiene el ID de la tarima seleccionada
-                string idTarima = dgvDetenidosMezclado.SelectedRows[0].Cells["idTarima"].Value.ToString();
-                // Desmarca la tarima detenida
-                DesmarcarTarimaComoDetenidaMezclado(idTarima);
-                //Muestra el mensaje de confirmacion
-                MessageBox.Show("La tarima ha sido desmarcada como detenida.");
-                // Recarga los datos del inventario y de tarimas detenidas
-                CargarDatosTraspasosMezclado();
-                CargarDatosDetenidosMezclado();
+
+                if (dgvDetenidosMezclado.SelectedRows.Count > 0)
+                {
+                    // Se obtiene el ID de la tarima seleccionada
+                    string idTarima = dgvDetenidosMezclado.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                    // Desmarca la tarima detenida
+                    DesmarcarTarimaComoDetenidaMezclado(idTarima);
+                    //Muestra el mensaje de confirmacion
+                    MessageBox.Show("La tarima ha sido desmarcada como detenida.");
+                    // Recarga los datos del inventario y de tarimas detenidas
+                    CargarDatosTraspasosMezclado();
+                    CargarDatosDetenidosMezclado();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+                MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
