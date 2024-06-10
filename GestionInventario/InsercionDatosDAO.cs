@@ -67,7 +67,7 @@ namespace GestionInventario
 
         public bool InsertarDatosRecepcionCarne(string id, string linea, string procedencia, DateTime fechaSacrificio, DateTime fechaEmpaque, string fleje, string turno, float cantidad, int cajas, string factura, string ordenCompra, string marca, string lote, string producto, DateTime fecha, int tara, float peso, string departamento, float disponible, string nombreUsuario)
         {
-            try
+            /*try
             {
                 string consulta = "INSERT INTO recepcion_carne (id, linea, procedencia, fecha_sacrificio, fecha_empaque, fleje, turno, cantidad, cajas, factura, orden_compra, marca, lote, producto, fecha, tara, peso, departamento, cantidad_disponible, nombreUsuario) " +
                                   "VALUES (@id, @Linea, @Procedencia, @FechaSacrificio, @FechaEmpaque, @Fleje, @Turno, @Cantidad, @Cajas, @Factura, @OrdenCompra, @Marca, @Lote, @Producto, @Fecha, @tara, @peso, @departamento, @disponible, @nombreUsuario)";
@@ -101,6 +101,68 @@ namespace GestionInventario
                         int filasAfectadas = cmd.ExecuteNonQuery();
                         return filasAfectadas > 0;
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al insertar datos: " + ex.Message);
+                return false;
+            }*/
+            try
+            {
+                string consulta = @"INSERT INTO recepcion_carne 
+                            (id, linea, procedencia, fecha_sacrificio, fecha_empaque, fleje, turno, cantidad, cajas, factura, orden_compra, marca, lote, producto, fecha, tara, peso, departamento, cantidad_disponible, nombreUsuario) 
+                            VALUES 
+                            (@id, @Linea, @Procedencia, @FechaSacrificio, @FechaEmpaque, @Fleje, @Turno, @Cantidad, @Cajas, @Factura, @OrdenCompra, @Marca, @Lote, @Producto, @Fecha, @tara, @peso, @departamento, @disponible, @nombreUsuario)";
+
+                string consultaMovimientos = @"INSERT INTO salidas_devoluciones 
+                                       (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento) 
+                                       VALUES 
+                                       (@idTarima, @producto, @lote, @disponible, 'Recepcion', NOW(), 'Almacen', @usuario, @departamento)";
+
+                using (MySqlConnection con = conexion.ObtenerConexion())
+                {
+                    con.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@Linea", linea);
+                        cmd.Parameters.AddWithValue("@Procedencia", procedencia);
+                        cmd.Parameters.AddWithValue("@FechaSacrificio", fechaSacrificio);
+                        cmd.Parameters.AddWithValue("@FechaEmpaque", fechaEmpaque);
+                        cmd.Parameters.AddWithValue("@Fleje", fleje);
+                        cmd.Parameters.AddWithValue("@Turno", turno);
+                        cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                        cmd.Parameters.AddWithValue("@Cajas", cajas);
+                        cmd.Parameters.AddWithValue("@Factura", factura);
+                        cmd.Parameters.AddWithValue("@OrdenCompra", ordenCompra);
+                        cmd.Parameters.AddWithValue("@Marca", marca);
+                        cmd.Parameters.AddWithValue("@Lote", lote);
+                        cmd.Parameters.AddWithValue("@Producto", producto);
+                        cmd.Parameters.AddWithValue("@Fecha", fecha);
+                        cmd.Parameters.AddWithValue("@tara", tara);
+                        cmd.Parameters.AddWithValue("@peso", peso);
+                        cmd.Parameters.AddWithValue("@departamento", departamento);
+                        cmd.Parameters.AddWithValue("@disponible", disponible);
+                        cmd.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    using (MySqlCommand cmdMovimientos = new MySqlCommand(consultaMovimientos, con))
+                    {
+                        cmdMovimientos.Parameters.AddWithValue("@idTarima", id);
+                        cmdMovimientos.Parameters.AddWithValue("@producto", producto);
+                        cmdMovimientos.Parameters.AddWithValue("@lote", lote);
+                        cmdMovimientos.Parameters.AddWithValue("@disponible", disponible);
+                        cmdMovimientos.Parameters.AddWithValue("@usuario", nombreUsuario);
+                        cmdMovimientos.Parameters.AddWithValue("@departamento", departamento);
+
+                        cmdMovimientos.ExecuteNonQuery();
+                    }
+
+                    return true;
                 }
             }
             catch (Exception ex)
