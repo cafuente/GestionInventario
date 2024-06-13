@@ -36,9 +36,9 @@ namespace GestionInventario
             txtIdTarimaBusqueda.LostFocus += new EventHandler(txtIdTarimaBusqueda_LostFocus);
             lbFiltro.Enabled = false;
             txtBuscar.Enabled = false;
-            pbGuardar.Visible = false;
-            pbImpresion.Visible = false;
-            pbVistaPrevia.Visible = false;
+            pbGuardar.Enabled = false;
+            pbImpresion.Enabled = false;
+            pbVistaPrevia.Enabled = false;
             //impresion
             printDocument = new PrintDocument();
             printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
@@ -124,9 +124,9 @@ namespace GestionInventario
                         dgvTrazabilidad.DataSource = BusquedaBD.ObtenerTrazabilidad(idTarima);
                         lbFiltro.Enabled = true;
                         txtBuscar.Enabled = true;
-                        pbGuardar.Visible = true;
-                        pbImpresion.Visible = true;
-                        pbVistaPrevia.Visible = true;
+                        pbGuardar.Enabled = true;
+                        pbImpresion.Enabled = true;
+                        pbVistaPrevia.Enabled = true;
                         ConfigurarColumnasTrazabilidad();
                         ResaltarFilas();
                     }
@@ -344,9 +344,9 @@ namespace GestionInventario
                 dgvTrazabilidad.DataSource = dt;
                 lbFiltro.Enabled = true;
                 txtBuscar.Enabled = true;
-                pbGuardar.Visible = true;
-                pbImpresion.Visible = true;
-                pbVistaPrevia.Visible = true;
+                pbGuardar.Enabled = true;
+                pbImpresion.Enabled = true;
+                pbVistaPrevia.Enabled = true;
                 ConfigurarColumnasTrazabilidad();
                 ResaltarFilas();
             }

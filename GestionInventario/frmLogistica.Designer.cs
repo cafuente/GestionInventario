@@ -443,7 +443,7 @@
             this.groupBox2.Size = new System.Drawing.Size(624, 218);
             this.groupBox2.TabIndex = 76;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Devoluciones";
+            this.groupBox2.Text = "FrmReportes";
             // 
             // lbIdTraspasoDv
             // 
@@ -602,7 +602,7 @@
             this.label1.TabIndex = 22;
             this.label1.Text = "Logistica";
             // 
-            // frmLogistica
+            // FrmLogistica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -610,7 +610,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel2);
-            this.Name = "frmLogistica";
+            this.Name = "FrmLogistica";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogistica";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogistica_FormClosed);

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabMezclado = new System.Windows.Forms.TabControl();
             this.tabConciliacion = new System.Windows.Forms.TabPage();
+            this.dgvPendientesConfirmacionMezclado = new System.Windows.Forms.DataGridView();
+            this.btnConfirmarRecepcionMezclado = new System.Windows.Forms.Button();
             this.tabInventarioTotal = new System.Windows.Forms.TabPage();
             this.dgvInventarioTotalMezclado = new System.Windows.Forms.DataGridView();
             this.tabTraspaso = new System.Windows.Forms.TabPage();
@@ -83,10 +85,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbNombreMezclado = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvPendientesConfirmacionMezclado = new System.Windows.Forms.DataGridView();
-            this.btnConfirmarRecepcionMezclado = new System.Windows.Forms.Button();
             this.tabMezclado.SuspendLayout();
             this.tabConciliacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMezclado)).BeginInit();
             this.tabInventarioTotal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalMezclado)).BeginInit();
             this.tabTraspaso.SuspendLayout();
@@ -101,7 +102,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMezclado)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMezclado
@@ -130,6 +130,27 @@
             this.tabConciliacion.Text = "Conciliación";
             this.tabConciliacion.UseVisualStyleBackColor = true;
             // 
+            // dgvPendientesConfirmacionMezclado
+            // 
+            this.dgvPendientesConfirmacionMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPendientesConfirmacionMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPendientesConfirmacionMezclado.Location = new System.Drawing.Point(10, 33);
+            this.dgvPendientesConfirmacionMezclado.Name = "dgvPendientesConfirmacionMezclado";
+            this.dgvPendientesConfirmacionMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPendientesConfirmacionMezclado.Size = new System.Drawing.Size(792, 316);
+            this.dgvPendientesConfirmacionMezclado.TabIndex = 9;
+            // 
+            // btnConfirmarRecepcionMezclado
+            // 
+            this.btnConfirmarRecepcionMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmarRecepcionMezclado.Location = new System.Drawing.Point(309, 396);
+            this.btnConfirmarRecepcionMezclado.Name = "btnConfirmarRecepcionMezclado";
+            this.btnConfirmarRecepcionMezclado.Size = new System.Drawing.Size(192, 36);
+            this.btnConfirmarRecepcionMezclado.TabIndex = 10;
+            this.btnConfirmarRecepcionMezclado.Text = "Confirmar recepción";
+            this.btnConfirmarRecepcionMezclado.UseVisualStyleBackColor = true;
+            this.btnConfirmarRecepcionMezclado.Click += new System.EventHandler(this.btnConfirmarRecepcionMezclado_Click);
+            // 
             // tabInventarioTotal
             // 
             this.tabInventarioTotal.Controls.Add(this.dgvInventarioTotalMezclado);
@@ -145,33 +166,33 @@
             // dgvInventarioTotalMezclado
             // 
             this.dgvInventarioTotalMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalMezclado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalMezclado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInventarioTotalMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventarioTotalMezclado.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventarioTotalMezclado.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvInventarioTotalMezclado.Location = new System.Drawing.Point(20, 44);
             this.dgvInventarioTotalMezclado.Name = "dgvInventarioTotalMezclado";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventarioTotalMezclado.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventarioTotalMezclado.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInventarioTotalMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventarioTotalMezclado.Size = new System.Drawing.Size(773, 404);
             this.dgvInventarioTotalMezclado.TabIndex = 75;
@@ -438,7 +459,7 @@
             this.groupBox2.Size = new System.Drawing.Size(624, 218);
             this.groupBox2.TabIndex = 76;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Devoluciones";
+            this.groupBox2.Text = "FrmReportes";
             // 
             // lbIdTraspasoMezcladoDv
             // 
@@ -681,28 +702,7 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Mezclado de carne";
             // 
-            // dgvPendientesConfirmacionMezclado
-            // 
-            this.dgvPendientesConfirmacionMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPendientesConfirmacionMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPendientesConfirmacionMezclado.Location = new System.Drawing.Point(10, 33);
-            this.dgvPendientesConfirmacionMezclado.Name = "dgvPendientesConfirmacionMezclado";
-            this.dgvPendientesConfirmacionMezclado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPendientesConfirmacionMezclado.Size = new System.Drawing.Size(792, 316);
-            this.dgvPendientesConfirmacionMezclado.TabIndex = 9;
-            // 
-            // btnConfirmarRecepcionMezclado
-            // 
-            this.btnConfirmarRecepcionMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarRecepcionMezclado.Location = new System.Drawing.Point(309, 396);
-            this.btnConfirmarRecepcionMezclado.Name = "btnConfirmarRecepcionMezclado";
-            this.btnConfirmarRecepcionMezclado.Size = new System.Drawing.Size(192, 36);
-            this.btnConfirmarRecepcionMezclado.TabIndex = 10;
-            this.btnConfirmarRecepcionMezclado.Text = "Confirmar recepción";
-            this.btnConfirmarRecepcionMezclado.UseVisualStyleBackColor = true;
-            this.btnConfirmarRecepcionMezclado.Click += new System.EventHandler(this.btnConfirmarRecepcionMezclado_Click);
-            // 
-            // frmMezclado
+            // FrmMezclado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -710,13 +710,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tabMezclado);
-            this.Name = "frmMezclado";
+            this.Name = "FrmMezclado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMezclado";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMezclado_FormClosed);
             this.Load += new System.EventHandler(this.frmMezclado_Load);
             this.tabMezclado.ResumeLayout(false);
             this.tabConciliacion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMezclado)).EndInit();
             this.tabInventarioTotal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalMezclado)).EndInit();
             this.tabTraspaso.ResumeLayout(false);
@@ -734,7 +735,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMezclado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -225,5 +225,12 @@ namespace GestionInventario
             frmTrazalibildad.Show();
             this.Hide() ;
         }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            FrmReportes frmReportes = new FrmReportes(FrmLogin.UsuarioActual);
+            frmReportes.Show();
+            this.Hide() ;
+        }
     }
 }

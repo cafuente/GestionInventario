@@ -49,6 +49,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
+            this.btnReporte = new System.Windows.Forms.Button();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelVertical.SuspendLayout();
@@ -121,6 +122,7 @@
             // 
             // panelVertical
             // 
+            this.panelVertical.Controls.Add(this.btnReporte);
             this.panelVertical.Controls.Add(this.btnTrazabilidad);
             this.panelVertical.Controls.Add(this.btnLogistica);
             this.panelVertical.Controls.Add(this.pictureBox2);
@@ -136,7 +138,7 @@
             this.panelVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelVertical.Location = new System.Drawing.Point(0, 0);
             this.panelVertical.Name = "panelVertical";
-            this.panelVertical.Size = new System.Drawing.Size(245, 616);
+            this.panelVertical.Size = new System.Drawing.Size(245, 664);
             this.panelVertical.TabIndex = 2;
             // 
             // btnTrazabilidad
@@ -193,7 +195,7 @@
             this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
             this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 555);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 598);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(245, 45);
             this.btnCerrarSesion.TabIndex = 0;
@@ -262,14 +264,14 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(245, 90);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(702, 526);
+            this.panel3.Size = new System.Drawing.Size(702, 574);
             this.panel3.TabIndex = 4;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(0, 168);
+            this.pictureBox3.Location = new System.Drawing.Point(0, 216);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(702, 358);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -280,7 +282,7 @@
             // 
             this.btnGestion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnGestion.BackColor = System.Drawing.Color.LightGray;
-            this.btnGestion.Location = new System.Drawing.Point(386, 61);
+            this.btnGestion.Location = new System.Drawing.Point(386, 85);
             this.btnGestion.Name = "btnGestion";
             this.btnGestion.Size = new System.Drawing.Size(153, 50);
             this.btnGestion.TabIndex = 1;
@@ -292,7 +294,7 @@
             // 
             this.btnRecepcion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRecepcion.BackColor = System.Drawing.Color.LightGray;
-            this.btnRecepcion.Location = new System.Drawing.Point(152, 61);
+            this.btnRecepcion.Location = new System.Drawing.Point(152, 85);
             this.btnRecepcion.Name = "btnRecepcion";
             this.btnRecepcion.Size = new System.Drawing.Size(153, 50);
             this.btnRecepcion.TabIndex = 0;
@@ -300,15 +302,28 @@
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnRecepcion_Click);
             // 
-            // frmPrincipal
+            // btnReporte
+            // 
+            this.btnReporte.FlatAppearance.BorderSize = 0;
+            this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporte.Location = new System.Drawing.Point(0, 531);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(245, 57);
+            this.btnReporte.TabIndex = 18;
+            this.btnReporte.Text = "Reportes";
+            this.btnReporte.UseVisualStyleBackColor = true;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+            // 
+            // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 616);
+            this.ClientSize = new System.Drawing.Size(947, 664);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelTitulo);
             this.Controls.Add(this.panelVertical);
-            this.Name = "frmPrincipal";
+            this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
@@ -348,5 +363,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnLogistica;
         private System.Windows.Forms.Button btnTrazabilidad;
+        private System.Windows.Forms.Button btnReporte;
     }
 }

@@ -516,7 +516,7 @@
             this.groupBox2.Size = new System.Drawing.Size(624, 218);
             this.groupBox2.TabIndex = 76;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Devoluciones";
+            this.groupBox2.Text = "FrmReportes";
             // 
             // lbIdTraspasoLyfcDv
             // 
@@ -702,7 +702,7 @@
             this.btnDesmarcarDetenidoLyfc.UseVisualStyleBackColor = true;
             this.btnDesmarcarDetenidoLyfc.Click += new System.EventHandler(this.btnDesmarcarDetenidoLyfc_Click);
             // 
-            // frmLyfc
+            // FrmLyfc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -710,7 +710,7 @@
             this.Controls.Add(this.tabControlLyfc);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
-            this.Name = "frmLyfc";
+            this.Name = "FrmLyfc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimientos carnicos de Lyfc";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLyfc_FormClosed);

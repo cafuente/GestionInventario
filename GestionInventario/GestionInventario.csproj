@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,11 +62,11 @@
     <Compile Include="BusquedaBD.cs" />
     <Compile Include="BusquedaCb.cs" />
     <Compile Include="ConexionBD.cs" />
-    <Compile Include="frmDevoluciones.cs">
+    <Compile Include="FrmReportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDevoluciones.Designer.cs">
-      <DependentUpon>frmDevoluciones.cs</DependentUpon>
+    <Compile Include="FrmReportes.Designer.cs">
+      <DependentUpon>FrmReportes.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGestionInventario.cs">
       <SubType>Form</SubType>
@@ -138,8 +139,8 @@
     <None Include="Resources\logo negro.png" />
     <None Include="Resources\sigma rojo.jpg" />
     <None Include="Resources\user-account.png" />
-    <EmbeddedResource Include="frmDevoluciones.resx">
-      <DependentUpon>frmDevoluciones.cs</DependentUpon>
+    <EmbeddedResource Include="FrmReportes.resx">
+      <DependentUpon>FrmReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGestionInventario.resx">
       <DependentUpon>FrmGestionInventario.cs</DependentUpon>
