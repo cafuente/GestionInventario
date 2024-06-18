@@ -66,7 +66,6 @@ namespace GestionInventario
                 lbNombreLyfc.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoLyfc.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilLyfc.Text = $"{nombrePerfil}";
-
             }
         }
 
@@ -231,7 +230,6 @@ namespace GestionInventario
                 btnCancelarLyfcTraspaso.Enabled = false;
                 btnMarcarDetenidoLyfc.Enabled = false;
             }
-            
         }
 
         private void btnCancelarLyfcTraspaso_Click(object sender, EventArgs e)
@@ -531,27 +529,7 @@ namespace GestionInventario
                 dtpFechaLyfcDv.Value = DateTime.Now;
                 btnCancelarLyfcDv.Enabled = false;                
             }
-
-            /*try
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = dgvTraspasosLyfc.Rows[e.RowIndex];
-                    lbIdTraspasoLyfcDv.Text = row.Cells["idTraspaso"].Value.ToString();
-                    lbIdTarimaLyfcDv.Text = row.Cells["idTarima"].Value.ToString();
-                    txtProductoLyfcDv.Text = row.Cells["producto"].Value.ToString();
-                    txtLoteLyfcDv.Text = row.Cells["lote"].Value.ToString();
-                    txtCantidadLyfcDv.Text = row.Cells["cantidad"].Value.ToString();
-                    cbDestinoLyfcDv.Text = "LyFC(traslado)";
-                    btnCancelarLyfcDv.Enabled = true;
-                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
-                btnCancelarLyfcDv.Enabled = false;                
-            }*/
-        }
 
         private void btnCancelarLyfcDv_Click(object sender, EventArgs e)
         {

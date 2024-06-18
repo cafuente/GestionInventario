@@ -58,7 +58,6 @@ namespace GestionInventario
                 lbNombreTr.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoTr.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilTr.Text = $"{nombrePerfil}";
-
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -243,7 +242,6 @@ namespace GestionInventario
             {
                 printDocument.Print();
             }
-
         }
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {            

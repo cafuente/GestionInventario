@@ -39,19 +39,6 @@ namespace GestionInventario
         
         private void MostrarInformacionUsuario()
         {
-            /*
-            // Verificar si hay información del usuario actual disponible
-            if (frmLogin.UsuarioActual != null)
-            {
-
-                // Obtener el nombre y perfil del usuario actual
-                string nombrePerfil = ObtenerNombrePerfil(frmLogin.UsuarioActual.IdPerfil);
-
-                // Mostrar el nombre y el perfil del usuario en el panel superior
-                lbNombrePr.Text = $"{frmLogin.UsuarioActual.Nombre}";
-                lbDepartamentoMu.Text = $"{frmLogin.UsuarioActual.Departamento}";
-                lbPerfilPr.Text = $"{nombrePerfil}";
-            }*/
             // Verificar si hay información del usuario actual disponible
             if (usuarioAutenticado != null)
             {
@@ -163,22 +150,6 @@ namespace GestionInventario
                 login.Show();
                 this.Hide();
             }
-        }
-
-        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //if (!cerrarSesion)
-            //{
-            //    // Mostrar un mensaje de confirmación antes de cerrar la aplicación
-            //    DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas salir de la aplicación?", "Cerrar aplicación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            //    if (resultado != DialogResult.Yes)
-            //    {
-            //        // Cancelar el cierre del formulario si el usuario elige No
-            //        e.Cancel = true;
-            //    }
-                
-            //}
         }
 
         private void btnTraslado_Click(object sender, EventArgs e)

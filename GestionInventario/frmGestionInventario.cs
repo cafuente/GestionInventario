@@ -105,11 +105,6 @@ namespace GestionInventario
                 //columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-
-            //otra opcion
-            //dgvInventario.DataSource = BusquedaBD.ObtenerInventario(); 
-            //dgvInventario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
 
         private void frmGestionInventario_FormClosed(object sender, FormClosedEventArgs e)
@@ -236,7 +231,6 @@ namespace GestionInventario
             dtpFechaGi.Value = DateTime.Now;
             btnCancelarGi.Enabled = false;
             btnMarcarDetenido.Enabled = false;
-
         }
 
         private void dgvInventario_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -387,7 +381,6 @@ namespace GestionInventario
             }
         }
             
-
         //limpiar campos devoluciones
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -436,7 +429,6 @@ namespace GestionInventario
                 dtpFechaDevolucion.Value = DateTime.Now;
                 txtBusquedaDevoGi.Clear();
             }
-            
         }
 
         private void BuscarYMostrarInformacionDev()
@@ -514,7 +506,6 @@ namespace GestionInventario
             {
                 txtBusquedaDevoGi.Text = "DXXXXXXX";
                 txtBusquedaDevoGi.ForeColor = Color.LightGray;
-                
             }
         }
 
@@ -555,8 +546,6 @@ namespace GestionInventario
                 txtCodigoBarrasGi.Clear();
             }
             
-        }
-
         private void BuscarYMostrarInformacionTrasp()
         {
             // Obtener el código de barras ingresado por el usuario
@@ -571,7 +560,6 @@ namespace GestionInventario
 
         private int BuscarFilaPorCodigoBarrasTrasp(string codigoBarras)
         {
-
             // Iterar sobre todas las filas del DataGridView
             for (int i = 0; i < dgvInventario.Rows.Count; i++)
             {
@@ -812,78 +800,6 @@ namespace GestionInventario
             }
             return estaDetenida;
         }
-        /*
-        public void DesactivarDevolucionesYDetenidos()
-        {
-            // Deshabilitar los botones o pestañas correspondientes
-            tabDevoluciones.Enabled = false;
-            btnMarcarDetenido.Enabled = false;
-            btnDesmarcarDetenido.Enabled = false;
-        }
-        
-        private void RegistrarDevolucion(int idTraspaso, String idTarima, string producto, string lote, float cantidad, string tipoOperacion, DateTime fechaOperacion, string destino, string usuario, string departamento)
-        {
-            using (MySqlConnection con = conexion.ObtenerConexion()) //using (MySqlConnection conexion = new MySqlConnection("connection_string"))
-            {
-                try
-                {
-                    con.Open();
-
-                    // Actualizar cantidad disponible en recepcion_carne
-                    string updateQuery = "UPDATE recepcion_carne SET cantidad_disponible = cantidad_disponible + @cantidad WHERE id = @idTarima";
-                    using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, con))
-                    {
-                        updateCmd.Parameters.AddWithValue("@cantidad", cantidad);
-                        updateCmd.Parameters.AddWithValue("@idTarima", idTarima);
-                        updateCmd.ExecuteNonQuery();
-                    }
-
-                    // Insertar la devolución en salidas_devoluciones
-                    string insertQuery = @"
-                        INSERT INTO salidas_devoluciones 
-                        (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento) 
-                        VALUES (@idTarima, @producto, @lote, @cantidad, @tipoOperacion, @fechaOperacion, @destino, @usuario, @departamento)";
-                    using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, con))
-                    {
-                        insertCmd.Parameters.AddWithValue("@idTarima", idTarima);
-                        insertCmd.Parameters.AddWithValue("@producto", producto);
-                        insertCmd.Parameters.AddWithValue("@lote", lote);
-                        insertCmd.Parameters.AddWithValue("@cantidad", cantidad);
-                        insertCmd.Parameters.AddWithValue("@tipoOperacion", tipoOperacion);
-                        insertCmd.Parameters.AddWithValue("@fechaOperacion", fechaOperacion);
-                        insertCmd.Parameters.AddWithValue("@destino", destino);
-                        insertCmd.Parameters.AddWithValue("@usuario", usuario);
-                        insertCmd.Parameters.AddWithValue("@departamento", departamento);
-                        insertCmd.ExecuteNonQuery();
-                    }
-
-                    // Eliminar la entrada de inventario_lyfc
-                    string deleteLyfcQuery = "DELETE FROM inventario_lyfc WHERE idTarima = @idTarima";
-                    using (MySqlCommand deleteLyfcCmd = new MySqlCommand(deleteLyfcQuery, con))
-                    {
-                        deleteLyfcCmd.Parameters.AddWithValue("@idTarima", idTarima);
-                        deleteLyfcCmd.ExecuteNonQuery();
-                    }
-
-                    // Eliminar el traspaso original de salidas_devoluciones
-                    string deleteQuery = "DELETE FROM salidas_devoluciones WHERE idTraspaso = @idTraspaso";
-                    using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, con))
-                    {
-                        deleteCmd.Parameters.AddWithValue("@idTraspaso", idTraspaso);
-                        deleteCmd.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Devolución registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarDatosTraspasos(); // Recargar datos de traspasos después de la devolución
-                    CargarDatosInventario(); // Recargar datos del inventario después de la devolución
-                    CargarDatosInventarioTotal(); // Recargar datos del inventario despues de la devolución
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al registrar la devolución: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }*/
     }
 }
 

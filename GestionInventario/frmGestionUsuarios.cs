@@ -17,7 +17,6 @@ namespace GestionInventario
         public FrmGestionUsuarios()
         {
             InitializeComponent();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -74,7 +73,6 @@ namespace GestionInventario
                 lbNombreGu.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoCa.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilGu.Text = $"{nombrePerfil}";
-
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -117,19 +115,16 @@ namespace GestionInventario
                 MessageBox.Show("Por favor, seleccione una fila valida");
                 return;
             }  
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
             string usuario = txtUsuario.Text;
             string password = txtPassword.Text;
             string nombre = txtNombre.Text;
             string departamento = cbDepartamento.Text;
             string perfil = cbPerfil.Text;
            
-
             // Verificar que todos los campos estén completos
             if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(departamento) || string.IsNullOrEmpty(perfil))
             {
@@ -171,7 +166,6 @@ namespace GestionInventario
             string departamento = cbDepartamento.Text;
             string perfil = cbPerfil.Text;
             
-
             UsuariosDAO usuariosDAO = new UsuariosDAO();
             bool usuarioActualizado = usuariosDAO.ActualizarUsuario(idUsuario, usuario, password, nombre, departamento, perfil);
 
@@ -229,103 +223,10 @@ namespace GestionInventario
             txtNombre.Text = "";
             cbDepartamento.SelectedIndex = -1;
             cbPerfil.SelectedIndex = -1; // O establece el valor por defecto
-            
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            /*  string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
-
-              // Recorremos todas las filas del DataGridView
-              foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
-              {
-                  // Verificamos si la fila no es una fila nueva sin confirmar
-                  if (!row.IsNewRow)
-                  {
-                      bool encontrada = false;
-
-                      // Recorremos todas las celdas de la fila actual
-                      foreach (DataGridViewCell cell in row.Cells)
-                      {
-                          // Verificamos si el valor de la celda contiene el texto de búsqueda
-                          if (cell.Value != null && cell.Value.ToString().ToLowerInvariant().Contains(textoBusqueda))
-                          {
-                              encontrada = true;
-                              break; // Si encontramos una coincidencia, salimos del bucle interno
-                          }
-                      }
-
-                      // Mostramos u ocultamos la fila dependiendo de si se encontró alguna coincidencia
-                      row.Visible = encontrada;
-                  }
-              }*/
-            //  --------------------------------------------------------------------------------------------
-            /*string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
-
-            // Recorremos todas las filas del DataGridView
-            foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
-            {
-                // Verificamos si la fila no es una fila nueva sin confirmar
-                if (!row.IsNewRow)
-                {
-                    bool encontrada = false;
-
-                    // Recorremos todas las celdas de la fila actual
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        // Verificamos si el CheckBox correspondiente a la columna está seleccionado
-                        if (ShouldSearchColumn(cell.ColumnIndex))
-                        {
-                            // Verificamos si el valor de la celda contiene el texto de búsqueda
-                            if (cell.Value != null && cell.Value.ToString().ToLowerInvariant().Contains(textoBusqueda))
-                            {
-                                encontrada = true;
-                                break; // Si encontramos una coincidencia, salimos del bucle interno
-                            }
-                        }
-                    }
-
-                    // Mostramos u ocultamos la fila dependiendo de si se encontró alguna coincidencia
-                    row.Visible = encontrada;
-                }
-            }
-            ---------------------hasta aqui es solo busqueda--------------------------------------------------------------------*/
-            //aqui empieza busqueda solo con check
-            /*
-            string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
-
-            // Recorremos todas las filas del DataGridView
-            foreach (DataGridViewRow row in dgGestionUsuarios.Rows)
-            {
-                // Verificamos si la fila no es una fila nueva sin confirmar
-                if (!row.IsNewRow)
-                {
-                    bool encontrada = false;
-
-                    // Recorremos las columnas del DataGridView
-                    foreach (DataGridViewColumn column in dgGestionUsuarios.Columns)
-                    {
-                        // Verificamos si la columna actual debe ser considerada para la búsqueda
-                        if (ShouldSearchColumn(column.Index))
-                        {
-                            // Obtenemos el valor de la celda en la fila actual y la columna correspondiente
-                            DataGridViewCell cell = row.Cells[column.Index];
-
-                            // Verificamos si el valor de la celda contiene el texto de búsqueda
-                            if (cell.Value != null && cell.Value.ToString().ToLowerInvariant().Contains(textoBusqueda))
-                            {
-                                encontrada = true;
-                                break; // Si encontramos una coincidencia, salimos del bucle interno
-                            }
-                        }
-                    }
-
-                    // Mostramos u ocultamos la fila dependiendo de si se encontró alguna coincidencia
-                    row.Visible = encontrada;
-                }
-            }
-            //-------------------------aqui termina la busqueda con check
-            */
             string textoBusqueda = txtBuscar.Text.Trim().ToLowerInvariant(); // Convertir texto de búsqueda a minúsculas
 
             // Verificar si algún CheckBox está seleccionado

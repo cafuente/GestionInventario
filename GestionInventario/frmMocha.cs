@@ -66,7 +66,6 @@ namespace GestionInventario
                 lbNombreMocha.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoMocha.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilLyfc.Text = $"{nombrePerfil}";
-
             }
         }
 

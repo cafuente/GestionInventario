@@ -28,7 +28,6 @@ namespace GestionInventario
 
             // Agrega los supervisores al ComboBox
             cbTurno.Items.AddRange(supervisores);
-
         }
 
         private void frmRecepcionCarne_Load(object sender, EventArgs e)
@@ -79,15 +78,9 @@ namespace GestionInventario
                 // Obtener el nombre y perfil del usuario actual
                 string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
 
-                // Mostrar el nombre y el perfil del usuario en el panel superior
-                //lbNombreRc.Text = $"Usuario: {frmLogin.UsuarioActual.Nombre}";
-                //lbDepartamentoRc.Text = $"Deptto: { frmLogin.UsuarioActual.Departamento}";
-                //lbPerfilRc.Text = $"Perfil: {nombrePerfil}";
-
                 lbNombreRc.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoRc.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilRc.Text = $"{nombrePerfil}";
-
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -107,138 +100,6 @@ namespace GestionInventario
 
         private void btnGenerarCodigoBarras_Click(object sender, EventArgs e)
         {
-            /*
-            // Generar el código de barras y mostrarlo en el PictureBox
-            BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
-            Bitmap barcodeImage = barcodeGenerator.GenerateBarcode(txtFactura.Text);
-            pbCodigoBarras.Image = barcodeImage;            
-
-            // Deshabilitar todos los campos de entrada
-            txtLinea.Enabled = false;
-            txtProcedencia.Enabled = false;
-            txtFleje.Enabled = false;
-            cbTurno.Enabled = false;
-            txtFleje.Enabled = false;
-            txtCantidad.Enabled = false;
-            cbContenedor.Enabled = false;
-            txtFactura.Enabled = false;
-            txtOrdenCompra.Enabled = false;
-            txtMarca.Enabled = false;
-            txtLote.Enabled = false;
-            txtProducto.Enabled = false;
-            btnAgregarCarne.Enabled = false;
-            pbImpresionCb.Enabled = Enabled;
-            pbGuardarCb.Enabled = Enabled;
-            
-
-            // Otros campos aquí...
-
-            // Habilitar el botón para agregar carne
-            btnAgregarCarne.Enabled = true;
-
-            // Mostrar el botón para modificar y deshabilitarlo
-            btnModificarDatosCarne.Visible = true;
-            btnModificarDatosCarne.Enabled = true;
-
-            btnGenerarCodigoBarras.Visible = true;
-            btnGenerarCodigoBarras.Enabled = false;
-            */
-            //---------------------------------- aqui todo funcionando
-
-            /*----------- con leyecda-----
-            // Generar la leyenda que deseas agregar al código de barras
-            string leyenda = "Leyenda: " + DateTime.Now.ToString("dd/MM/yyyy");
-
-            // Generar el código de barras y mostrarlo en el PictureBox
-            BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
-            Bitmap barcodeImage = barcodeGenerator.GenerateBarcode(txtFactura.Text);
-
-            // Añadir la leyenda al código de barras
-            using (Graphics graphics = Graphics.FromImage(barcodeImage))
-            {
-                using (Font font = new Font("Arial", 10))
-                {
-                    // Se Define la posición y el color de la leyenda
-                    PointF point = new PointF(10, barcodeImage.Height - 20);
-                    SolidBrush brush = new SolidBrush(Color.Black);
-
-                    // Se dibuja la leyenda en el código de barras
-                    graphics.DrawString(leyenda, font, brush, point);
-                }
-            }
-
-            // Se mostra el código de barras modificado en el PictureBox
-            pbCodigoBarras.Image = barcodeImage;
-
-            // Deshabilitar el botón Generar Código de Barras
-            btnGenerarCodigoBarras.Enabled = false;
-
-            // Habilitar el botón Agregar Carne
-            btnAgregarCarne.Enabled = true;
-            */
-            //-----hasta aqui con leyenda----------------------
-
-            // desde aqui funciona todo bien
-            /*
-            // Obtener la información del producto, lote y cantidad
-            string producto = txtProducto.Text;
-            string lote = txtLote.Text;
-            string cantidad = txtCantidad.Text;
-
-            // Generar el código de barras
-            BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
-            Bitmap barcodeImage = barcodeGenerator.GenerateBarcode(txtFactura.Text);
-
-            // Agregar la leyenda al código de barras
-            using (Graphics graphics = Graphics.FromImage(barcodeImage))
-            {
-                // Definir el texto de la leyenda
-                string leyenda = $"P: {producto} | L: {lote} | Cant: {cantidad}";
-
-                // Definir la fuente y el color del texto
-                Font font = new Font("Arial", 15);
-                SolidBrush brush = new SolidBrush(Color.Red);
-
-                // Calcular la posición para centrar el texto horizontalmente y colocarlo en la parte superior del código de barras
-                float x = (barcodeImage.Width - graphics.MeasureString(leyenda, font).Width) / 2;
-                float y = 145; // Distancia desde la parte superior del código de barras
-
-                // Dibujar la leyenda en el código de barras
-                graphics.DrawString(leyenda, font, brush, x, y);
-            }
-
-            // Mostrar el código de barras con la leyenda en el PictureBox
-            pbCodigoBarras.Image = barcodeImage;
-
-            // Deshabilitar todos los campos de entrada
-            txtLinea.Enabled = false;
-            txtProcedencia.Enabled = false;
-            txtFleje.Enabled = false;
-            cbTurno.Enabled = false;
-            txtFleje.Enabled = false;
-            txtCantidad.Enabled = false;
-            cbContenedor.Enabled = false;
-            txtFactura.Enabled = false;
-            txtOrdenCompra.Enabled = false;
-            txtMarca.Enabled = false;
-            txtLote.Enabled = false;
-            txtProducto.Enabled = false;
-            btnAgregarCarne.Enabled = false;
-            pbImpresionCb.Enabled = Enabled;
-            pbGuardarCb.Enabled = Enabled;
-            
-            // Habilitar el botón para agregar carne
-            btnAgregarCarne.Enabled = true;
-
-            // Mostrar el botón para modificar y deshabilitarlo
-            btnModificarDatosCarne.Visible = true;
-            btnModificarDatosCarne.Enabled = true;
-
-            btnGenerarCodigoBarras.Visible = true;
-            btnGenerarCodigoBarras.Enabled = false;
-            */
-            //-----hasta aqui funciona todo bien
-
             // Verificar si todos los campos están llenos
             if (string.IsNullOrEmpty(txtLinea.Text) ||
                 string.IsNullOrEmpty(txtProcedencia.Text) ||
@@ -270,68 +131,6 @@ namespace GestionInventario
 
         private void GenerarCodigoBarras()
         {
-
-            // desde aqui funciona todo bien
-            /*
-            // Obtener la información del producto, lote y cantidad
-            string producto = txtProducto.Text;
-            string lote = txtLote.Text;
-            string cantidad = txtCantidad.Text;
-
-            // Generar el código de barras
-            BarcodeGenerator barcodeGenerator = new BarcodeGenerator();
-            Bitmap barcodeImage = barcodeGenerator.GenerateBarcode(txtFactura.Text);
-
-            // Agregar la leyenda al código de barras
-            using (Graphics graphics = Graphics.FromImage(barcodeImage))
-            {
-                // Definir el texto de la leyenda
-                string leyenda = $"P: {producto} | L: {lote} | Cant: {cantidad}";
-
-                // Definir la fuente y el color del texto
-                Font font = new Font("Arial", 15);
-                SolidBrush brush = new SolidBrush(Color.Red);
-
-                // Calcular la posición para centrar el texto horizontalmente y colocarlo en la parte superior del código de barras
-                float x = (barcodeImage.Width - graphics.MeasureString(leyenda, font).Width) / 2;
-                float y = 145; // Distancia desde la parte superior del código de barras
-
-                // Dibujar la leyenda en el código de barras
-                graphics.DrawString(leyenda, font, brush, x, y);
-            }
-
-            // Mostrar el código de barras con la leyenda en el PictureBox
-            pbCodigoBarras.Image = barcodeImage;
-
-            // Deshabilitar todos los campos de entrada
-            txtLinea.Enabled = false;
-            txtProcedencia.Enabled = false;
-            txtFleje.Enabled = false;
-            cbTurno.Enabled = false;
-            txtFleje.Enabled = false;
-            txtCantidad.Enabled = false;
-            cbContenedor.Enabled = false;
-            txtFactura.Enabled = false;
-            txtOrdenCompra.Enabled = false;
-            txtMarca.Enabled = false;
-            txtLote.Enabled = false;
-            txtProducto.Enabled = false;
-            btnAgregarCarne.Enabled = false;
-            pbImpresionCb.Enabled = Enabled;
-            pbGuardarCb.Enabled = Enabled;
-
-            // Habilitar el botón para agregar carne
-            btnAgregarCarne.Enabled = true;
-
-            // Mostrar el botón para modificar y deshabilitarlo
-            btnModificarDatosCarne.Visible = true;
-            btnModificarDatosCarne.Enabled = true;
-
-            btnGenerarCodigoBarras.Visible = true;
-            btnGenerarCodigoBarras.Enabled = false;
-            */
-            // hasta aqui todo funcina bien
-
             // Obtener la información del producto, lote y cantidad
             string producto = txtProducto.Text;
             string lote = txtLote.Text;
@@ -353,37 +152,7 @@ namespace GestionInventario
             // Mostrar el código de barras con la leyenda en el PictureBox
             pbCodigoBarras.Image = combinedImage;
 
-            // Deshabilitar todos los campos de entrada
-            //txtLinea.Enabled = false;
-            //txtProcedencia.Enabled = false;
-            //dpSacrificio.Enabled = false;
-            //dpEmpaque.Enabled = false;
-            //txtFleje.Enabled = false;
-            //cbTurno.Enabled = false;
-            //txtCantidad.Enabled = false;
-            //txtCajas.Enabled = false;
-            //txtFactura.Enabled = false;
-            //txtOrdenCompra.Enabled = false;
-            //txtMarca.Enabled = false;
-            //txtLote.Enabled = false;
-            //txtProducto.Enabled = false;
-            //dpFecha.Enabled = false;
             HabilitarCampos(false);
-
-            //btnAgregarCarne.Enabled = false;
-            //btnActualizar.Enabled = true;
-            //btnEliminar.Enabled = true;
-            //pbImpresionCb.Enabled = true;
-            //pbGuardarCb.Enabled = true;
-            //pbCodigoBarras.Enabled = true;            
-
-            //// Mostrar el botón para modificar y deshabilitarlo
-            //btnActualizarCodigoBarras.Visible = true;
-            //btnActualizarCodigoBarras.Enabled = true;
-
-            //btnGenerarCodigoBarras.Visible = true;
-            //btnGenerarCodigoBarras.Enabled = false;
-
         }
 
         private void pbImpresionCb_Click(object sender, EventArgs e)
@@ -483,8 +252,6 @@ namespace GestionInventario
             float disponible = float.Parse(txtPeso.Text);
             string nombreUsuario = lbNombreRc.Text;
 
-
-
             // Crear una instancia de la clase InsercionDatosDAO
             InsercionDatosDAO insercionDatosDAO = new InsercionDatosDAO();
 
@@ -517,7 +284,6 @@ namespace GestionInventario
                 }
                 else
                 {
-                                        
                     HabilitarCampos(true);
                     LimpiarCampos();
                     string nuevoId = insercionDatosDAO.ObtenerUltimoId();
@@ -535,9 +301,7 @@ namespace GestionInventario
             else
             {
                 MessageBox.Show("Error al agregar los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
-
         }
 
         private void HabilitarCampos(bool habilitar) 
@@ -610,8 +374,6 @@ namespace GestionInventario
             Image imagenPredeterminada = Properties.Resources.barcode_scan;
             // Asignar la imagen predeterminada al PictureBox
             pbCodigoBarras.Image = imagenPredeterminada;
-
-
         }
 
         //Metodo para hacer zoom al codigo de barras
@@ -762,8 +524,6 @@ namespace GestionInventario
                 btnCancelar.Enabled = false;
                 btnActualizar.Enabled = false;
             }
-            
-           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -797,7 +557,6 @@ namespace GestionInventario
             btnEliminar.Enabled = false;
             btnCancelar.Enabled = false;
             btnActualizar.Enabled = false;
-            
         }
 
         private void btnActualizarCodigoBarras_Click(object sender, EventArgs e)
@@ -914,14 +673,6 @@ namespace GestionInventario
                 MessageBox.Show("Error al actualizar los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            //HabilitarCampos(true);
-            //LimpiarCampos();
-            //btnGenerarCodigoBarras.Enabled = true;
-            //btnActualizar.Enabled = false;
-            //btnEliminar.Enabled = false;
-            //btnCancelar.Enabled = false;
-            //chbFijarDatos.Enabled = true;
-            //CargarDatosRecepcionCarne();
             string nuevoId = insercionDatosDAO.ObtenerUltimoId();
             idLabel.Text = nuevoId;
         }
@@ -980,144 +731,10 @@ namespace GestionInventario
                 // Si no hay ningún CheckBox activado, ejecutar la búsqueda sin condiciones
                 EjecutarBusquedaNoCondicionada(terminoBusqueda);
             }
-
-
-            /*
-            // Obtener el término de búsqueda ingresado por el usuario
-            string terminoBusqueda = txtBusquedaRc.Text.Trim();
-
-            // Construir la consulta SQL para buscar en varias columnas
-            string consulta = "SELECT * FROM recepcion_carne WHERE " +
-                              "id LIKE @termino OR " +
-                              "linea LIKE @termino OR " +
-                              "procedencia LIKE @termino OR " +
-                              "fecha_sacrificio LIKE @termino OR " +
-                              "fecha_empaque LIKE @termino OR " +
-                              "fleje LIKE @termino OR " +
-                              "turno LIKE @termino OR " +
-                              "cantidad LIKE @termino OR " +
-                              "cajas LIKE @termino OR " +
-                              "factura LIKE @termino OR " +
-                              "orden_compra LIKE @termino OR " +
-                              "marca LIKE @termino OR " +
-                              "lote LIKE @termino OR " +
-                              "producto LIKE @termino OR " +
-                              "fecha LIKE @termino OR " +
-                              "tara LIKE @termino OR " +
-                              "peso LIKE @termino OR " +
-                              "departamento LIKE @termino OR " +
-                              "cantidad_disponible LIKE @termino OR " +
-                              "nombreUsuario LIKE @termino";
-
-            try
-            {
-                // Crear la conexión a la base de datos
-                using (MySqlConnection con = conexion.ObtenerConexion())
-                {
-                    // Abrir la conexión
-                    con.Open();
-
-                    // Crear el comando SQL
-                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
-                    {
-                        // Asignar el término de búsqueda como parámetro
-                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
-
-                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-
-                            // Llenar el DataTable con los resultados de la consulta
-                            adapter.Fill(dt);
-
-                            // Asignar el DataTable como origen de datos del DataGridView
-                            dgRecepcionCarne.DataSource = dt;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */ //HandleProcessCorruptedStateExceptionsAttribute aqui funciona bien
-            
-            /*
-            // Obtener el término de búsqueda ingresado por el usuario
-            string terminoBusqueda = txtBusquedaRc.Text.Trim();
-
-            // Construir la consulta SQL base
-            string consultaBase = "SELECT * FROM recepcion_carne WHERE ";
-            StringBuilder condicion = new StringBuilder();
-
-            // Verificar qué columnas están seleccionadas para la búsqueda
-            if (chkId.Checked)
-            {
-                condicion.Append("id LIKE @termino OR ");
-            }
-            if (chkFechaSacrificio.Checked)
-            {
-                condicion.Append("fecha_sacrificio LIKE @termino OR ");
-            }
-            if (chkFechaEmpaque.Checked)
-            {
-                condicion.Append("fecha_empaque LIKE @termino OR ");                
-            }
-            if (chkMarca.Checked)
-            {
-                condicion.Append("marca LIKE");
-            }
-            // Repite este bloque para cada columna CheckBox que desees incluir en la búsqueda
-
-            // Eliminar el último "OR" si existe
-            if (condicion.Length > 0)
-            {
-                condicion.Remove(condicion.Length - 4, 4); // Elimina los últimos 4 caracteres (" OR ")
-            }
-
-            // Concatenar la consulta base con la condición de búsqueda
-            string consultaFinal = consultaBase + condicion.ToString();
-
-            try
-            {
-                // Crear la conexión a la base de datos
-                using (MySqlConnection con = conexion.ObtenerConexion())
-                {
-                    // Abrir la conexión
-                    con.Open();
-
-                    // Crear el comando SQL
-                    using (MySqlCommand cmd = new MySqlCommand(consultaFinal, con))
-                    {
-                        // Asignar el término de búsqueda como parámetro
-                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
-
-                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-
-                            // Llenar el DataTable con los resultados de la consulta
-                            adapter.Fill(dt);
-
-                            // Asignar el DataTable como origen de datos del DataGridView
-                            dgRecepcionCarne.DataSource = dt;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
         }
 
         private void EjecutarBusquedaCondicionada(string terminoBusqueda)
         {
-
-
             // Construir la consulta SQL dinámica según los CheckBox activados
             List<string> condiciones = new List<string>();
 
@@ -1166,80 +783,6 @@ namespace GestionInventario
             {
                 MessageBox.Show("Error al realizar la búsqueda condicionada: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            /*
-            // Obtener el término de búsqueda ingresado por el usuario
-            string terminoBusqueda = txtBusquedaRc.Text.Trim();
-
-            // Construir la consulta SQL base
-            string consultaBase = "SELECT * FROM recepcion_carne WHERE ";
-            StringBuilder condicion = new StringBuilder();
-
-            // Verificar qué columnas están seleccionadas para la búsqueda
-            if (chkId.Checked)
-            {
-                condicion.Append("id LIKE @termino OR ");
-            }
-            if (chkFechaSacrificio.Checked)
-            {
-                condicion.Append("fecha_sacrificio LIKE @termino OR ");
-            }
-            if (chkFechaEmpaque.Checked)
-            {
-                condicion.Append("fecha_empaque LIKE @termino OR ");
-            }
-            if (chkProducto.Checked)
-            {
-                condicion.Append("producto LIKE @termino OR ");
-            }
-            if (chkMarca.Checked)
-            {
-                condicion.Append("marca LIKE");
-            }
-            // Repite este bloque para cada columna CheckBox que desees incluir en la búsqueda
-
-            // Eliminar el último "OR" si existe
-            if (condicion.Length > 0)
-            {
-                condicion.Remove(condicion.Length - 4, 4); // Elimina los últimos 4 caracteres (" OR ")
-            }
-
-            // Concatenar la consulta base con la condición de búsqueda
-            string consultaFinal = consultaBase + condicion.ToString();
-
-            try
-            {
-                // Crear la conexión a la base de datos
-                using (MySqlConnection con = conexion.ObtenerConexion())
-                {
-                    // Abrir la conexión
-                    con.Open();
-
-                    // Crear el comando SQL
-                    using (MySqlCommand cmd = new MySqlCommand(consultaFinal, con))
-                    {
-                        // Asignar el término de búsqueda como parámetro
-                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
-
-                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-
-                            // Llenar el DataTable con los resultados de la consulta
-                            adapter.Fill(dt);
-
-                            // Asignar el DataTable como origen de datos del DataGridView
-                            dgRecepcionCarne.DataSource = dt;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
         }
 
         private void EjecutarBusquedaNoCondicionada(string terminoBusqueda)
@@ -1266,7 +809,6 @@ namespace GestionInventario
                               "departamento LIKE @termino OR " +
                               "cantidad_disponible LIKE @termino OR " +
                               "nombreUsuario LIKE @termino";
-
             try
             {
                 // Crear la conexión a la base de datos
@@ -1299,66 +841,6 @@ namespace GestionInventario
             {
                 MessageBox.Show("Error al realizar la búsqueda sin condición: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            /*
-            // Obtener el término de búsqueda ingresado por el usuario
-            string terminoBusqueda = txtBusquedaRc.Text.Trim();
-
-            // Construir la consulta SQL para buscar en varias columnas
-            string consulta = "SELECT * FROM recepcion_carne WHERE " +
-                              "id LIKE @termino OR " +
-                              "linea LIKE @termino OR " +
-                              "procedencia LIKE @termino OR " +
-                              "fecha_sacrificio LIKE @termino OR " +
-                              "fecha_empaque LIKE @termino OR " +
-                              "fleje LIKE @termino OR " +
-                              "turno LIKE @termino OR " +
-                              "cantidad LIKE @termino OR " +
-                              "cajas LIKE @termino OR " +
-                              "factura LIKE @termino OR " +
-                              "orden_compra LIKE @termino OR " +
-                              "marca LIKE @termino OR " +
-                              "lote LIKE @termino OR " +
-                              "producto LIKE @termino OR " +
-                              "fecha LIKE @termino OR " +
-                              "tara LIKE @termino OR " +
-                              "peso LIKE @termino OR " +
-                              "departamento LIKE @termino OR " +
-                              "cantidad_disponible LIKE @termino OR " +
-                              "nombreUsuario LIKE @termino";
-
-            try
-            {
-                // Crear la conexión a la base de datos
-                using (MySqlConnection con = conexion.ObtenerConexion())
-                {
-                    // Abrir la conexión
-                    con.Open();
-
-                    // Crear el comando SQL
-                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
-                    {
-                        // Asignar el término de búsqueda como parámetro
-                        cmd.Parameters.AddWithValue("@termino", $"%{terminoBusqueda}%");
-
-                        // Crear un adaptador de datos y un DataTable para almacenar los resultados
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-
-                            // Llenar el DataTable con los resultados de la consulta
-                            adapter.Fill(dt);
-
-                            // Asignar el DataTable como origen de datos del DataGridView
-                            dgRecepcionCarne.DataSource = dt;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al realizar la búsqueda: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
         } 
 
         private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)
