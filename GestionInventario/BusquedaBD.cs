@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using OfficeOpenXml.Drawing.Chart;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -91,7 +92,7 @@ namespace GestionInventario
     }*/
     public class BusquedaBD
     {
-        private static DataTable EjecutarConsulta(string consulta)
+        /*private static DataTable EjecutarConsulta(string consulta)
         {
             DataTable dt = new DataTable();
              using (ConexionBD conexionBD = new ConexionBD())
@@ -110,7 +111,62 @@ namespace GestionInventario
                  }
              }
              return dt;            
+        }*/
+        // en esta conexion la clase consulta ya admite 2 argumentos
+        //private static DataTable EjecutarConsulta(string consulta, Dictionary<string, object> parametros = null)
+        //{
+        //    DataTable dt = new DataTable();
+        //    using (ConexionBD conexionBD = new ConexionBD())
+        //    {
+        //        MySqlConnection conexion = conexionBD.ObtenerConexion();
+        //        try
+        //        {
+        //            conexion.Open();
+        //            MySqlCommand comando = new MySqlCommand(consulta, conexion);
+
+        //            if (parametros != null)
+        //            {
+        //                foreach (var param in parametros)
+        //                {
+        //                    comando.Parameters.AddWithValue(param.Key, param.Value);
+        //                }
+        //            }
+
+        //            MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+        //            adaptador.Fill(dt);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+        //        }
+        //    }
+        //    return dt;
+        //}
+        private static DataTable EjecutarConsulta(string consulta, List<MySqlParameter> parametros = null)
+        {
+            DataTable dt = new DataTable();
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                MySqlConnection conexion = conexionBD.ObtenerConexion();
+                try
+                {
+                    conexion.Open();
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    if (parametros != null)
+                    {
+                        comando.Parameters.AddRange(parametros.ToArray());
+                    }
+                    MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                    adaptador.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                }
+            }
+            return dt;
         }
+
 
         public static DataTable ObtenerInventario()
         {
@@ -304,6 +360,88 @@ namespace GestionInventario
             FROM salidas_devoluciones
             ORDER BY fechaOperacion DESC";
             return EjecutarConsulta(consulta);
+        }
+
+        // reporteria
+        public static DataTable ObtenerInventarioActual(string departamento)
+        {
+            if (departamento == "Almacen Carnicos")
+            {
+                string consulta = "SELECT id AS ID, producto AS Producto, lote AS Lote, cantidad_disponible AS Cantidad, estado AS Estado FROM recepcion_carne WHERE cantidad_disponible > 0 AND departamento = @departamento";
+                var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("@departamento", departamento)
+            };
+                return EjecutarConsulta(consulta, parametros);
+            }
+            else
+            {
+                string consulta = "SELECT idTarima AS ID, producto AS Producto, lote AS Lote, cantidad AS Cantidad, estado AS Estado FROM salidas_devoluciones WHERE cantidad > 0 AND departamento = @departamento";
+                var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("@departamento", departamento)
+            };
+                return EjecutarConsulta(consulta, parametros);
+            }
+        }
+
+        public static DataTable ObtenerMovimientosPorProducto(DateTime fechaInicio, DateTime fechaFin, string departamento)
+        {
+            string consulta = @"
+            SELECT idTarima AS ID, producto AS Producto, lote AS Lote, cantidad AS Cantidad, tipoOperacion AS Movimientos, fechaOperacion AS Fecha_Mov, destino AS Destino, usuario AS Usuario 
+            FROM salidas_devoluciones 
+            WHERE departamento = @departamento AND fechaOperacion BETWEEN @fechaInicio AND @fechaFin";
+            var parametros = new List<MySqlParameter>
+        {
+            new MySqlParameter("@fechaInicio", fechaInicio),
+            new MySqlParameter("@fechaFin", fechaFin),
+            new MySqlParameter("@departamento", departamento)
+        };
+            return EjecutarConsulta(consulta, parametros);
+        }
+
+        public static DataTable ObtenerProductosConBajoInventario(int umbral, string departamento)
+        {
+            //string consulta = "SELECT producto AS Producto, cantidad AS Cantidad, lote AS Lote FROM salidas_devoluciones WHERE departamento = @departamento AND cantidad < @umbral";
+            string consulta = @"
+            SELECT producto AS Producto, SUM(cantidad) AS Cantidad_total 
+            FROM salidas_devoluciones 
+            WHERE departamento = @departamento 
+            GROUP BY producto 
+            HAVING SUM(cantidad) < @umbral";
+            var parametros = new List<MySqlParameter>
+        {
+            new MySqlParameter("@umbral", umbral),
+            new MySqlParameter("@departamento", departamento)
+        };
+            return EjecutarConsulta(consulta, parametros);
+        }
+
+        public static DataTable ObtenerTarimasDetenidas(string departamento)
+        {
+            string consulta = "SELECT idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Detenido' AND departamento = @departamento";
+            var parametros = new List<MySqlParameter>
+        {
+            new MySqlParameter("@departamento", departamento)
+        };
+            return EjecutarConsulta(consulta, parametros);
+        }
+
+        public static DataTable ObtenerConsumoPorDepartamento(DateTime fechaInicio, DateTime fechaFin, string departamento)
+        {
+            string consulta = @"
+            SELECT producto, SUM(cantidad) AS cantidad_total 
+            FROM salidas_devoluciones 
+            WHERE tipoOperacion = 'Traspaso' AND fechaOperacion BETWEEN @fechaInicio AND @fechaFin AND departamento = @departamento
+            GROUP BY producto
+            ORDER BY cantidad_total DESC";
+            var parametros = new List<MySqlParameter>
+        {
+            new MySqlParameter("@fechaInicio", fechaInicio),
+            new MySqlParameter("@fechaFin", fechaFin),
+            new MySqlParameter("@departamento", departamento)
+        };
+            return EjecutarConsulta(consulta, parametros);
         }
     }// aqui arriba va todo
 }

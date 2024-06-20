@@ -25,6 +25,7 @@ namespace GestionInventario
         {
             InitializeComponent();
         }
+
         private void frmTrazalibildad_Load(object sender, EventArgs e)
         {
             // Mostrar la información del usuario de sesion en el panel superior
@@ -46,6 +47,7 @@ namespace GestionInventario
             printPreviewDialog = new PrintPreviewDialog();
             printPreviewDialog.Document = printDocument;
         }
+
         private void MostrarInformacionUsuario()
         {
             // Verificar si hay información del usuario actual disponible
@@ -60,6 +62,7 @@ namespace GestionInventario
                 lbPerfilTr.Text = $"{nombrePerfil}";
             }
         }
+
         private string ObtenerNombrePerfil(int idPerfil)
         {
             switch (idPerfil)
@@ -86,6 +89,7 @@ namespace GestionInventario
             txtIdTarimaBusqueda.Text = "";
             txtIdTarimaBusqueda.ForeColor = Color.Black;
         }
+
         private void txtIdTarimaBusqueda_GotFocus(object sender, EventArgs e)
         {
             if (txtIdTarimaBusqueda.Text.Trim().Length == 0)
@@ -93,6 +97,7 @@ namespace GestionInventario
                 txtIdTarimaBusqueda.Text = "";
             }
         }
+
         private void txtIdTarimaBusqueda_LostFocus(object sender, EventArgs e)
         {
             if (txtIdTarimaBusqueda.Text.Trim().Length == 0)
@@ -101,6 +106,7 @@ namespace GestionInventario
                 txtIdTarimaBusqueda.ForeColor = Color.LightGray;
             }
         }
+
         private void txtIdTarimaBusqueda_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -138,6 +144,7 @@ namespace GestionInventario
                 }                
             }            
         }
+
         private void ConfigurarColumnasTrazabilidad()
         {
             //dgvTrazabilidad.Columns["idTraspaso"].HeaderText = "ID Traspaso";
@@ -161,7 +168,7 @@ namespace GestionInventario
                     string tipoOperacion = row.Cells["tipoOperacion"].Value.ToString();
                     if (tipoOperacion == "Traspaso")
                     {
-                        row.DefaultCellStyle.BackColor = Color.LightBlue;
+                        //row.DefaultCellStyle.BackColor = Color.LightBlue;
                     }
                     else if (tipoOperacion == "Confirmacion Recepcion")
                     {
@@ -175,10 +182,10 @@ namespace GestionInventario
                     {
                         row.DefaultCellStyle.BackColor = Color.LightCoral;
                     }
-                    else if (tipoOperacion == "Desbloqueado")
-                    {
-                        row.DefaultCellStyle.BackColor = Color.MediumSeaGreen;
-                    }
+                    //else if (tipoOperacion == "Desbloqueado")
+                    //{
+                    //    row.DefaultCellStyle.BackColor = Color.MediumSeaGreen;
+                    //}
                 }
                 catch (Exception)
                 {
@@ -187,10 +194,11 @@ namespace GestionInventario
                 
             }
         }
+
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             (dgvTrazabilidad.DataSource as DataTable).DefaultView.RowFilter =
-                string.Format("tipoOperacion LIKE '%{0}%' OR destino LIKE '%{0}%'", txtBuscar.Text);
+                string.Format("usuario like '%{0}%' OR tipoOperacion LIKE '%{0}%' OR destino LIKE '%{0}%' OR departamento LIKE '%{0}%'", txtBuscar.Text);
         }
 
         private void pbGuardar_Click(object sender, EventArgs e)
@@ -206,6 +214,7 @@ namespace GestionInventario
                 ExportarDataTableAExcel(dt, sfd.FileName);
             }
         }
+
         private void ExportarDataTableAExcel(DataTable dt, string filePath)
         {
             StringBuilder sb = new StringBuilder();
@@ -243,6 +252,7 @@ namespace GestionInventario
                 printDocument.Print();
             }
         }
+
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {            
             int startX = 10;

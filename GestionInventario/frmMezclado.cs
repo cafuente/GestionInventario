@@ -66,7 +66,6 @@ namespace GestionInventario
                 lbNombreMezclado.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoMezclado.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilMezclado.Text = $"{nombrePerfil}";
-
             }
         }
 
@@ -269,24 +268,33 @@ namespace GestionInventario
 
         private void txtCodigoBarrasMezcladoTraspaso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Regex regex = new Regex(@"^D\d{7}$");
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                txtCodigoBarrasMezcladoTraspaso.Text = txtCodigoBarrasMezcladoTraspaso.Text.ToUpper();
-                Match match = regex.Match(txtCodigoBarrasMezcladoTraspaso.Text);
-                if (!match.Success)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtCodigoBarrasMezcladoTraspaso.Text = "";
-                }
-                else
-                {
-                    BuscarYMostrarInformacionTraspMezclado();
-                    txtCodigoBarrasMezcladoTraspaso.Clear();
+                    Regex regex = new Regex(@"^D\d{7}$");
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    txtCodigoBarrasMezcladoTraspaso.Text = txtCodigoBarrasMezcladoTraspaso.Text.ToUpper();
+                    Match match = regex.Match(txtCodigoBarrasMezcladoTraspaso.Text);
+                    if (!match.Success)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtCodigoBarrasMezcladoTraspaso.Text = "";
+                    }
+                    else
+                    {
+                        BuscarYMostrarInformacionTraspMezclado();
+                        txtCodigoBarrasMezcladoTraspaso.Clear();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+            }
+            
         }
         private void BuscarYMostrarInformacionTraspMezclado()
         {
@@ -722,24 +730,33 @@ namespace GestionInventario
 
         private void txtBusquedaMezcladoDv_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Regex regex = new Regex(@"^D\d{7}$");
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                txtBusquedaMezcladoDv.Text = txtBusquedaMezcladoDv.Text.ToUpper();
-                Match match = regex.Match(txtBusquedaMezcladoDv.Text);
-                if (!match.Success)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtBusquedaMezcladoDv.Text = "";
-                }
-                else
-                {
-                    BuscarYMostrarInformacionTraspDv();
-                    txtBusquedaMezcladoDv.Clear();
+                    Regex regex = new Regex(@"^D\d{7}$");
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    txtBusquedaMezcladoDv.Text = txtBusquedaMezcladoDv.Text.ToUpper();
+                    Match match = regex.Match(txtBusquedaMezcladoDv.Text);
+                    if (!match.Success)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBusquedaMezcladoDv.Text = "";
+                    }
+                    else
+                    {
+                        BuscarYMostrarInformacionTraspDv();
+                        txtBusquedaMezcladoDv.Clear();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+            }
+            
         }
 
         //--------------------------Detenidos--------------------------------------------------------

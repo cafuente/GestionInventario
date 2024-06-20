@@ -246,12 +246,13 @@ namespace GestionInventario
                     string producto = fila.Cells["Producto"].Value.ToString();
                     string lote = fila.Cells["Lote"].Value.ToString();
                     float cantidad_disponible = Convert.ToSingle(fila.Cells["Cantidad_disponible"].Value);
-
+                    
                     // Asignar los valores a los controles correspondientes
                     lbIdTarima.Text = id;
                     txtProductoGi.Text = producto;
                     txtLoteGi.Text = lote;
                     txtCantidadGi.Text = cantidad_disponible.ToString();
+                    cbDestinoGi.Text = "LyFC(traslado)";
                     btnCancelarGi.Enabled = true;
                     btnMarcarDetenido.Enabled = true;
                 }
@@ -379,8 +380,8 @@ namespace GestionInventario
             {
                 MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-            
+        }            
+
         //limpiar campos devoluciones
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -428,7 +429,7 @@ namespace GestionInventario
                 cbDestinoDv.SelectedIndex = -1;
                 dtpFechaDevolucion.Value = DateTime.Now;
                 txtBusquedaDevoGi.Clear();
-            }
+            }            
         }
 
         private void BuscarYMostrarInformacionDev()
@@ -505,7 +506,7 @@ namespace GestionInventario
             if (txtBusquedaDevoGi.Text.Trim().Length == 0)
             {
                 txtBusquedaDevoGi.Text = "DXXXXXXX";
-                txtBusquedaDevoGi.ForeColor = Color.LightGray;
+                txtBusquedaDevoGi.ForeColor = Color.LightGray;                
             }
         }
 
@@ -536,16 +537,17 @@ namespace GestionInventario
             catch (Exception ex)
             {
                 MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
-                lbIdTarima.Text = "ID Tarima";
-                txtProductoGi.Text = null;
-                txtLoteGi.Text = null;
-                txtCantidadGi.Text = null;
-                cbDestinoGi.SelectedIndex = -1;
-                dtpFechaGi.Value = DateTime.Now;
-                txtCodigoBarrasGi.Clear();
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);                
             }
-            
+            lbIdTarima.Text = "ID Tarima";
+            txtProductoGi.Text = null;
+            txtLoteGi.Text = null;
+            txtCantidadGi.Text = null;
+            cbDestinoGi.SelectedIndex = -1;
+            dtpFechaGi.Value = DateTime.Now;
+            txtCodigoBarrasGi.Clear();
+        }
+
         private void BuscarYMostrarInformacionTrasp()
         {
             // Obtener el código de barras ingresado por el usuario

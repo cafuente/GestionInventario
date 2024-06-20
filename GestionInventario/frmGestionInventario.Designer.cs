@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionInventario));
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoGi = new System.Windows.Forms.Label();
             this.lbPerfilGi = new System.Windows.Forms.Label();
@@ -82,6 +83,7 @@
             this.tabDetenidos = new System.Windows.Forms.TabPage();
             this.dgvDetenidos = new System.Windows.Forms.DataGridView();
             this.btnDesmarcarDetenido = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -97,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasos)).BeginInit();
             this.tabDetenidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -663,11 +666,23 @@
             this.btnDesmarcarDetenido.UseVisualStyleBackColor = true;
             this.btnDesmarcarDetenido.Click += new System.EventHandler(this.btnDesmarcarDetenido_Click);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(725, 9);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(101, 74);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 68;
+            this.pictureBox4.TabStop = false;
+            // 
             // FrmGestionInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 626);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
@@ -694,6 +709,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasos)).EndInit();
             this.tabDetenidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -751,5 +767,6 @@
         private System.Windows.Forms.Button btnMarcarDetenido;
         private System.Windows.Forms.Button btnDesmarcarDetenido;
         private System.Windows.Forms.DataGridView dgvDetenidos;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }

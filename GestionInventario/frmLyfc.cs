@@ -229,7 +229,7 @@ namespace GestionInventario
                 dtpFechaLyfcTraspaso.Value = DateTime.Now;
                 btnCancelarLyfcTraspaso.Enabled = false;
                 btnMarcarDetenidoLyfc.Enabled = false;
-            }
+            }            
         }
 
         private void btnCancelarLyfcTraspaso_Click(object sender, EventArgs e)
@@ -262,31 +262,40 @@ namespace GestionInventario
         {
             if (txtCodigoBarrasLyfcTraspaso.Text.Trim().Length == 0)
             {
-                txtCodigoBarrasLyfcTraspaso.Text = "DXXXXXX";
+                txtCodigoBarrasLyfcTraspaso.Text = "DXXXXXXX";
                 txtCodigoBarrasLyfcTraspaso.ForeColor = Color.LightGray;
             }
         }
 
         private void txtCodigoBarrasLyfcTraspaso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Regex regex = new Regex(@"^D\d{7}$");
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                txtCodigoBarrasLyfcTraspaso.Text = txtCodigoBarrasLyfcTraspaso.Text.ToUpper();
-                Match match = regex.Match(txtCodigoBarrasLyfcTraspaso.Text);
-                if (!match.Success)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtCodigoBarrasLyfcTraspaso.Text = "";
-                }
-                else
-                {
-                    BuscarYMostrarInformacionTraspLyfc();
-                    txtCodigoBarrasLyfcTraspaso.Clear();
+                    Regex regex = new Regex(@"^D\d{7}$");
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    txtCodigoBarrasLyfcTraspaso.Text = txtCodigoBarrasLyfcTraspaso.Text.ToUpper();
+                    Match match = regex.Match(txtCodigoBarrasLyfcTraspaso.Text);
+                    if (!match.Success)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtCodigoBarrasLyfcTraspaso.Text = "";
+                    }
+                    else
+                    {
+                        BuscarYMostrarInformacionTraspLyfc();
+                        txtCodigoBarrasLyfcTraspaso.Clear();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+            }
+            
         }
 
         private void BuscarYMostrarInformacionTraspLyfc()
@@ -529,7 +538,7 @@ namespace GestionInventario
                 dtpFechaLyfcDv.Value = DateTime.Now;
                 btnCancelarLyfcDv.Enabled = false;                
             }
-            }
+        }
 
         private void btnCancelarLyfcDv_Click(object sender, EventArgs e)
         {
@@ -727,24 +736,32 @@ namespace GestionInventario
 
         private void txtBusquedaLyfcDv_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Regex regex = new Regex(@"^D\d{7}$");
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                txtBusquedaLyfcDv.Text = txtBusquedaLyfcDv.Text.ToUpper();
-                Match match = regex.Match(txtBusquedaLyfcDv.Text);
-                if (!match.Success)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtBusquedaLyfcDv.Text = "";
-                }
-                else
-                {
-                    BuscarYMostrarInformacionTraspDv();
-                    txtBusquedaLyfcDv.Clear();
+                    Regex regex = new Regex(@"^D\d{7}$");
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    txtBusquedaLyfcDv.Text = txtBusquedaLyfcDv.Text.ToUpper();
+                    Match match = regex.Match(txtBusquedaLyfcDv.Text);
+                    if (!match.Success)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBusquedaLyfcDv.Text = "";
+                    }
+                    else
+                    {
+                        BuscarYMostrarInformacionTraspDv();
+                        txtBusquedaLyfcDv.Clear();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+            }            
         }
 
         //-----------------------------------------------

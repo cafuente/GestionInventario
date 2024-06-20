@@ -77,7 +77,7 @@ namespace GestionInventario
             {
                 // Obtener el nombre y perfil del usuario actual
                 string nombrePerfil = ObtenerNombrePerfil(FrmLogin.UsuarioActual.IdPerfil);
-
+                
                 lbNombreRc.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoRc.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilRc.Text = $"{nombrePerfil}";
@@ -283,7 +283,7 @@ namespace GestionInventario
                     CargarDatosRecepcionCarne();
                 }
                 else
-                {
+                {                                        
                     HabilitarCampos(true);
                     LimpiarCampos();
                     string nuevoId = insercionDatosDAO.ObtenerUltimoId();
@@ -408,7 +408,7 @@ namespace GestionInventario
         {
             try
             {
-                string consulta = "SELECT * FROM recepcion_carne";
+                string consulta = "SELECT * FROM recepcion_carne ORDER BY id DESC";
 
                 using (MySqlConnection con = conexion.ObtenerConexion())
                 {
@@ -523,7 +523,7 @@ namespace GestionInventario
                 btnEliminar.Enabled = false;
                 btnCancelar.Enabled = false;
                 btnActualizar.Enabled = false;
-            }
+            }           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -556,7 +556,7 @@ namespace GestionInventario
             LimpiarCampos();
             btnEliminar.Enabled = false;
             btnCancelar.Enabled = false;
-            btnActualizar.Enabled = false;
+            btnActualizar.Enabled = false;            
         }
 
         private void btnActualizarCodigoBarras_Click(object sender, EventArgs e)
@@ -840,7 +840,7 @@ namespace GestionInventario
             catch (Exception ex)
             {
                 MessageBox.Show("Error al realizar la búsqueda sin condición: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }            
         } 
 
         private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)

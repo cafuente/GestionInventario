@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRecepcionCarne));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -93,6 +94,7 @@
             this.chkMarca = new System.Windows.Forms.CheckBox();
             this.chkProducto = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gbFactura.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -103,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardarCb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -675,6 +678,9 @@
             // 
             // dgRecepcionCarne
             // 
+            this.dgRecepcionCarne.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgRecepcionCarne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgRecepcionCarne.Location = new System.Drawing.Point(7, 549);
             this.dgRecepcionCarne.Name = "dgRecepcionCarne";
@@ -779,13 +785,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de tarima o combo";
             // 
-            // frmRecepcionCarne
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(1128, 6);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(101, 74);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 68;
+            this.pictureBox3.TabStop = false;
+            // 
+            // FrmRecepcionCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1271, 800);
             this.ClientSize = new System.Drawing.Size(1254, 731);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkProducto);
             this.Controls.Add(this.chkMarca);
@@ -801,7 +819,7 @@
             this.Controls.Add(this.btnAgregarCarne);
             this.Controls.Add(this.gbFactura);
             this.Controls.Add(this.label15);
-            this.Name = "frmRecepcionCarne";
+            this.Name = "FrmRecepcionCarne";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recepcion de Carne";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRecepcionCarne_FormClosed);
@@ -820,6 +838,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgRecepcionCarne)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -892,5 +911,6 @@
         private System.Windows.Forms.TextBox txtCodigoBarrasRc;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

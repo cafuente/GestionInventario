@@ -114,7 +114,7 @@ namespace GestionInventario
             {
                 MessageBox.Show("Por favor, seleccione una fila valida");
                 return;
-            }  
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -123,8 +123,8 @@ namespace GestionInventario
             string password = txtPassword.Text;
             string nombre = txtNombre.Text;
             string departamento = cbDepartamento.Text;
-            string perfil = cbPerfil.Text;
-           
+            string perfil = cbPerfil.Text;           
+
             // Verificar que todos los campos estén completos
             if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(departamento) || string.IsNullOrEmpty(perfil))
             {
@@ -164,8 +164,8 @@ namespace GestionInventario
             string password = txtPassword.Text;
             string nombre = txtNombre.Text;
             string departamento = cbDepartamento.Text;
-            string perfil = cbPerfil.Text;
-            
+            string perfil = cbPerfil.Text;            
+
             UsuariosDAO usuariosDAO = new UsuariosDAO();
             bool usuarioActualizado = usuariosDAO.ActualizarUsuario(idUsuario, usuario, password, nombre, departamento, perfil);
 
@@ -222,7 +222,7 @@ namespace GestionInventario
             txtPassword.Text = "";
             txtNombre.Text = "";
             cbDepartamento.SelectedIndex = -1;
-            cbPerfil.SelectedIndex = -1; // O establece el valor por defecto
+            cbPerfil.SelectedIndex = -1; // O establece el valor por defecto            
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)

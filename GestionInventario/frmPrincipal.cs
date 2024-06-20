@@ -150,7 +150,7 @@ namespace GestionInventario
                 login.Show();
                 this.Hide();
             }
-        }
+        }      
 
         private void btnTraslado_Click(object sender, EventArgs e)
         {

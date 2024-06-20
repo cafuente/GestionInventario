@@ -267,24 +267,33 @@ namespace GestionInventario
 
         private void txtCodigoBarrasMochaTraspaso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Regex regex = new Regex(@"^D\d{7}$");
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                txtCodigoBarrasMochaTraspaso.Text = txtCodigoBarrasMochaTraspaso.Text.ToUpper();
-                Match match = regex.Match(txtCodigoBarrasMochaTraspaso.Text);
-                if (!match.Success)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtCodigoBarrasMochaTraspaso.Text = "";
-                }
-                else
-                {
-                    BuscarYMostrarInformacionTraspMocha();
-                    txtCodigoBarrasMochaTraspaso.Clear();
+                    Regex regex = new Regex(@"^D\d{7}$");
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    txtCodigoBarrasMochaTraspaso.Text = txtCodigoBarrasMochaTraspaso.Text.ToUpper();
+                    Match match = regex.Match(txtCodigoBarrasMochaTraspaso.Text);
+                    if (!match.Success)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtCodigoBarrasMochaTraspaso.Text = "";
+                    }
+                    else
+                    {
+                        BuscarYMostrarInformacionTraspMocha();
+                        txtCodigoBarrasMochaTraspaso.Clear();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+            }
+            
         }
 
         private void BuscarYMostrarInformacionTraspMocha()
@@ -721,24 +730,33 @@ namespace GestionInventario
 
         private void txtBusquedaMochaDv_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Regex regex = new Regex(@"^D\d{7}$");
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                txtBusquedaMochaDv.Text = txtBusquedaMochaDv.Text.ToUpper();
-                Match match = regex.Match(txtBusquedaMochaDv.Text);
-                if (!match.Success)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    // Mostrar mensaje de error
-                    MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtBusquedaMochaDv.Text = "";
-                }
-                else
-                {
-                    BuscarYMostrarInformacionTraspDv();
-                    txtBusquedaMochaDv.Clear();
+                    Regex regex = new Regex(@"^D\d{7}$");
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    txtBusquedaMochaDv.Text = txtBusquedaMochaDv.Text.ToUpper();
+                    Match match = regex.Match(txtBusquedaMochaDv.Text);
+                    if (!match.Success)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtBusquedaMochaDv.Text = "";
+                    }
+                    else
+                    {
+                        BuscarYMostrarInformacionTraspDv();
+                        txtBusquedaMochaDv.Clear();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+            }
+            
         }
 
         //-----------------------detenidos-----------------------------------------------------------

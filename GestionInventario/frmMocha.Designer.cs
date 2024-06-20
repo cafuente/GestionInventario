@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMocha));
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoMocha = new System.Windows.Forms.Label();
             this.lbPerfilLyfc = new System.Windows.Forms.Label();
@@ -88,6 +89,7 @@
             this.dgvDetenidosMocha = new System.Windows.Forms.DataGridView();
             this.btnDesmarcarDetenidoMocha = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControlMocha.SuspendLayout();
@@ -105,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosMocha)).BeginInit();
             this.tabDetanidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMocha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -732,11 +735,23 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Recibo de traslado";
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(725, 9);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(101, 74);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 68;
+            this.pictureBox4.TabStop = false;
+            // 
             // FrmMocha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 626);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControlMocha);
             this.Controls.Add(this.panel2);
@@ -765,6 +780,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraspasosMocha)).EndInit();
             this.tabDetanidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMocha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -826,5 +842,6 @@
         private System.Windows.Forms.TabPage tabConciliacion;
         private System.Windows.Forms.DataGridView dgvPendientesConfirmacionMocha;
         private System.Windows.Forms.Button btnConfirmarRecepcionMocha;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
