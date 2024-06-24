@@ -76,10 +76,11 @@
             this.btnGenerarCodigoBarras = new System.Windows.Forms.Button();
             this.btnActualizarCodigoBarras = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbCargarImagenRc = new System.Windows.Forms.PictureBox();
             this.lbDepartamentoRc = new System.Windows.Forms.Label();
             this.lbPerfilRc = new System.Windows.Forms.Label();
             this.lbNombreRc = new System.Windows.Forms.Label();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.pbLogoRc = new System.Windows.Forms.PictureBox();
             this.gbCodigoBarras = new System.Windows.Forms.GroupBox();
             this.txtCodigoBarrasRc = new System.Windows.Forms.TextBox();
             this.pbCodigoBarras = new System.Windows.Forms.PictureBox();
@@ -100,7 +101,8 @@
             this.chkAlertasRc = new System.Windows.Forms.CheckBox();
             this.gbFactura.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenRc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoRc)).BeginInit();
             this.gbCodigoBarras.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -580,14 +582,26 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pbCargarImagenRc);
             this.panel1.Controls.Add(this.lbDepartamentoRc);
             this.panel1.Controls.Add(this.lbPerfilRc);
             this.panel1.Controls.Add(this.lbNombreRc);
-            this.panel1.Controls.Add(this.pbLogo);
+            this.panel1.Controls.Add(this.pbLogoRc);
             this.panel1.Location = new System.Drawing.Point(3, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(290, 85);
             this.panel1.TabIndex = 43;
+            // 
+            // pbCargarImagenRc
+            // 
+            this.pbCargarImagenRc.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenRc.Image")));
+            this.pbCargarImagenRc.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenRc.Name = "pbCargarImagenRc";
+            this.pbCargarImagenRc.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenRc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenRc.TabIndex = 72;
+            this.pbCargarImagenRc.TabStop = false;
+            this.pbCargarImagenRc.Click += new System.EventHandler(this.pbCargarImagenRc_Click);
             // 
             // lbDepartamentoRc
             // 
@@ -616,15 +630,15 @@
             this.lbNombreRc.TabIndex = 31;
             this.lbNombreRc.Text = "Nombre";
             // 
-            // pbLogo
+            // pbLogoRc
             // 
-            this.pbLogo.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pbLogo.Location = new System.Drawing.Point(3, 3);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(75, 85);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLogo.TabIndex = 30;
-            this.pbLogo.TabStop = false;
+            this.pbLogoRc.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoRc.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoRc.Name = "pbLogoRc";
+            this.pbLogoRc.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoRc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoRc.TabIndex = 30;
+            this.pbLogoRc.TabStop = false;
             // 
             // gbCodigoBarras
             // 
@@ -863,7 +877,8 @@
             this.gbFactura.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenRc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoRc)).EndInit();
             this.gbCodigoBarras.ResumeLayout(false);
             this.gbCodigoBarras.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCodigoBarras)).EndInit();
@@ -905,7 +920,7 @@
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.TextBox txtLote;
         private System.Windows.Forms.TextBox txtProducto;
-        private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.PictureBox pbLogoRc;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox gbFactura;
         private System.Windows.Forms.Button btnAgregarCarne;
@@ -950,5 +965,6 @@
         private System.Windows.Forms.CheckBox chkAlertasRc;
         private System.Windows.Forms.TextBox txtUmbralRc;
         private System.Windows.Forms.Label lbAlerta;
+        private System.Windows.Forms.PictureBox pbCargarImagenRc;
     }
 }

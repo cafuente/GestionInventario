@@ -35,7 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoLyfc = new System.Windows.Forms.Label();
             this.lbPerfilLyfc = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogoLyfc = new System.Windows.Forms.PictureBox();
             this.lbNombreLyfc = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControlLyfc = new System.Windows.Forms.TabControl();
@@ -87,8 +87,9 @@
             this.dgvDetenidosLyfc = new System.Windows.Forms.DataGridView();
             this.btnDesmarcarDetenidoLyfc = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbCargarImagenLyfc = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoLyfc)).BeginInit();
             this.tabControlLyfc.SuspendLayout();
             this.tabConciliacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionLyfc)).BeginInit();
@@ -105,13 +106,15 @@
             this.tabDetenidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosLyfc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenLyfc)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbCargarImagenLyfc);
             this.panel2.Controls.Add(this.lbDepartamentoLyfc);
             this.panel2.Controls.Add(this.lbPerfilLyfc);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pbLogoLyfc);
             this.panel2.Controls.Add(this.lbNombreLyfc);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
@@ -136,15 +139,15 @@
             this.lbPerfilLyfc.TabIndex = 1;
             this.lbPerfilLyfc.Text = "perfil";
             // 
-            // pictureBox1
+            // pbLogoLyfc
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.pbLogoLyfc.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoLyfc.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoLyfc.Name = "pbLogoLyfc";
+            this.pbLogoLyfc.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoLyfc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoLyfc.TabIndex = 13;
+            this.pbLogoLyfc.TabStop = false;
             // 
             // lbNombreLyfc
             // 
@@ -716,6 +719,17 @@
             this.pictureBox4.TabIndex = 68;
             this.pictureBox4.TabStop = false;
             // 
+            // pbCargarImagenLyfc
+            // 
+            this.pbCargarImagenLyfc.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenLyfc.Image")));
+            this.pbCargarImagenLyfc.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenLyfc.Name = "pbCargarImagenLyfc";
+            this.pbCargarImagenLyfc.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenLyfc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenLyfc.TabIndex = 75;
+            this.pbCargarImagenLyfc.TabStop = false;
+            this.pbCargarImagenLyfc.Click += new System.EventHandler(this.pbCargarImagenLyfc_Click);
+            // 
             // FrmLyfc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -732,7 +746,7 @@
             this.Load += new System.EventHandler(this.frmLyfc_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoLyfc)).EndInit();
             this.tabControlLyfc.ResumeLayout(false);
             this.tabConciliacion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionLyfc)).EndInit();
@@ -751,6 +765,7 @@
             this.tabDetenidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosLyfc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenLyfc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -761,7 +776,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbDepartamentoLyfc;
         private System.Windows.Forms.Label lbPerfilLyfc;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogoLyfc;
         private System.Windows.Forms.Label lbNombreLyfc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControlLyfc;
@@ -813,5 +828,6 @@
         private System.Windows.Forms.DataGridView dgvPendientesConfirmacionLyfc;
         private System.Windows.Forms.Button btnConfirmarRecepcionLyfc;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pbCargarImagenLyfc;
     }
 }

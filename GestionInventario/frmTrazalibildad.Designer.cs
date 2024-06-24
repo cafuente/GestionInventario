@@ -34,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTrazalibildad));
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoTr = new System.Windows.Forms.Label();
-            this.pbFotoPerfil = new System.Windows.Forms.PictureBox();
+            this.pbLogoTraz = new System.Windows.Forms.PictureBox();
             this.lbPerfilTr = new System.Windows.Forms.Label();
             this.lbNombreTr = new System.Windows.Forms.Label();
             this.dgvTrazabilidad = new System.Windows.Forms.DataGridView();
@@ -49,8 +49,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pbCargarImagenTraz = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFotoPerfil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoTraz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrazabilidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardar)).BeginInit();
@@ -58,12 +59,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbVistaPrevia)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenTraz)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbCargarImagenTraz);
             this.panel2.Controls.Add(this.lbDepartamentoTr);
-            this.panel2.Controls.Add(this.pbFotoPerfil);
+            this.panel2.Controls.Add(this.pbLogoTraz);
             this.panel2.Controls.Add(this.lbPerfilTr);
             this.panel2.Controls.Add(this.lbNombreTr);
             this.panel2.Location = new System.Drawing.Point(3, 6);
@@ -80,15 +83,15 @@
             this.lbDepartamentoTr.TabIndex = 15;
             this.lbDepartamentoTr.Text = "Deptto";
             // 
-            // pbFotoPerfil
+            // pbLogoTraz
             // 
-            this.pbFotoPerfil.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pbFotoPerfil.Location = new System.Drawing.Point(3, 3);
-            this.pbFotoPerfil.Name = "pbFotoPerfil";
-            this.pbFotoPerfil.Size = new System.Drawing.Size(75, 85);
-            this.pbFotoPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFotoPerfil.TabIndex = 14;
-            this.pbFotoPerfil.TabStop = false;
+            this.pbLogoTraz.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoTraz.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoTraz.Name = "pbLogoTraz";
+            this.pbLogoTraz.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoTraz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoTraz.TabIndex = 14;
+            this.pbLogoTraz.TabStop = false;
             // 
             // lbPerfilTr
             // 
@@ -269,6 +272,17 @@
             this.pictureBox3.TabIndex = 87;
             this.pictureBox3.TabStop = false;
             // 
+            // pbCargarImagenTraz
+            // 
+            this.pbCargarImagenTraz.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenTraz.Image")));
+            this.pbCargarImagenTraz.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenTraz.Name = "pbCargarImagenTraz";
+            this.pbCargarImagenTraz.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenTraz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenTraz.TabIndex = 88;
+            this.pbCargarImagenTraz.TabStop = false;
+            this.pbCargarImagenTraz.Click += new System.EventHandler(this.pbCargarImagenTraz_Click);
+            // 
             // FrmTrazalibildad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,7 +305,7 @@
             this.Load += new System.EventHandler(this.frmTrazalibildad_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFotoPerfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoTraz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrazabilidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuardar)).EndInit();
@@ -299,6 +313,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbVistaPrevia)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenTraz)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,7 +322,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pbFotoPerfil;
+        private System.Windows.Forms.PictureBox pbLogoTraz;
         private System.Windows.Forms.Label lbPerfilTr;
         private System.Windows.Forms.Label lbNombreTr;
         private System.Windows.Forms.Label lbDepartamentoTr;
@@ -323,5 +338,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pbCargarImagenTraz;
     }
 }

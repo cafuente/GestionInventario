@@ -38,7 +38,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoMocha = new System.Windows.Forms.Label();
             this.lbPerfilLyfc = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogoMocha = new System.Windows.Forms.PictureBox();
             this.lbNombreMocha = new System.Windows.Forms.Label();
             this.tabControlMocha = new System.Windows.Forms.TabControl();
             this.tabConciliacion = new System.Windows.Forms.TabPage();
@@ -90,8 +90,9 @@
             this.btnDesmarcarDetenidoMocha = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbCargarImagenMocha = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoMocha)).BeginInit();
             this.tabControlMocha.SuspendLayout();
             this.tabConciliacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMocha)).BeginInit();
@@ -108,13 +109,15 @@
             this.tabDetanidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMocha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMocha)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbCargarImagenMocha);
             this.panel2.Controls.Add(this.lbDepartamentoMocha);
             this.panel2.Controls.Add(this.lbPerfilLyfc);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pbLogoMocha);
             this.panel2.Controls.Add(this.lbNombreMocha);
             this.panel2.Location = new System.Drawing.Point(6, 6);
             this.panel2.Name = "panel2";
@@ -139,15 +142,15 @@
             this.lbPerfilLyfc.TabIndex = 1;
             this.lbPerfilLyfc.Text = "perfil";
             // 
-            // pictureBox1
+            // pbLogoMocha
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.pbLogoMocha.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoMocha.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoMocha.Name = "pbLogoMocha";
+            this.pbLogoMocha.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoMocha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoMocha.TabIndex = 13;
+            this.pbLogoMocha.TabStop = false;
             // 
             // lbNombreMocha
             // 
@@ -746,6 +749,17 @@
             this.pictureBox4.TabIndex = 68;
             this.pictureBox4.TabStop = false;
             // 
+            // pbCargarImagenMocha
+            // 
+            this.pbCargarImagenMocha.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMocha.Image")));
+            this.pbCargarImagenMocha.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenMocha.Name = "pbCargarImagenMocha";
+            this.pbCargarImagenMocha.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenMocha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenMocha.TabIndex = 77;
+            this.pbCargarImagenMocha.TabStop = false;
+            this.pbCargarImagenMocha.Click += new System.EventHandler(this.pbCargarImagenMocha_Click);
+            // 
             // FrmMocha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,7 +776,7 @@
             this.Load += new System.EventHandler(this.frmMocha_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoMocha)).EndInit();
             this.tabControlMocha.ResumeLayout(false);
             this.tabConciliacion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMocha)).EndInit();
@@ -781,6 +795,7 @@
             this.tabDetanidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMocha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMocha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -791,7 +806,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbDepartamentoMocha;
         private System.Windows.Forms.Label lbPerfilLyfc;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogoMocha;
         private System.Windows.Forms.Label lbNombreMocha;
         private System.Windows.Forms.TabControl tabControlMocha;
         private System.Windows.Forms.TabPage tabInventarioTotal;
@@ -843,5 +858,6 @@
         private System.Windows.Forms.DataGridView dgvPendientesConfirmacionMocha;
         private System.Windows.Forms.Button btnConfirmarRecepcionMocha;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pbCargarImagenMocha;
     }
 }

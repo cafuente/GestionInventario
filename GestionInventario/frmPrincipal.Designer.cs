@@ -36,9 +36,10 @@
             this.lbPerfilPr = new System.Windows.Forms.Label();
             this.lbNombrePr = new System.Windows.Forms.Label();
             this.panelVertical = new System.Windows.Forms.Panel();
+            this.btnReporte = new System.Windows.Forms.Button();
             this.btnTrazabilidad = new System.Windows.Forms.Button();
             this.btnLogistica = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pbLogoMenu = new System.Windows.Forms.PictureBox();
             this.btnAdministrador = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnMezclado = new System.Windows.Forms.Button();
@@ -49,13 +50,14 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
-            this.btnReporte = new System.Windows.Forms.Button();
+            this.pbCargarImagenMenu = new System.Windows.Forms.PictureBox();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelVertical.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoMenu)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitulo
@@ -122,10 +124,11 @@
             // 
             // panelVertical
             // 
+            this.panelVertical.Controls.Add(this.pbCargarImagenMenu);
             this.panelVertical.Controls.Add(this.btnReporte);
             this.panelVertical.Controls.Add(this.btnTrazabilidad);
             this.panelVertical.Controls.Add(this.btnLogistica);
-            this.panelVertical.Controls.Add(this.pictureBox2);
+            this.panelVertical.Controls.Add(this.pbLogoMenu);
             this.panelVertical.Controls.Add(this.lbDepartamentoMu);
             this.panelVertical.Controls.Add(this.btnAdministrador);
             this.panelVertical.Controls.Add(this.btnCerrarSesion);
@@ -140,6 +143,19 @@
             this.panelVertical.Name = "panelVertical";
             this.panelVertical.Size = new System.Drawing.Size(245, 664);
             this.panelVertical.TabIndex = 2;
+            // 
+            // btnReporte
+            // 
+            this.btnReporte.FlatAppearance.BorderSize = 0;
+            this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporte.Location = new System.Drawing.Point(0, 531);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(245, 57);
+            this.btnReporte.TabIndex = 18;
+            this.btnReporte.Text = "Reportes";
+            this.btnReporte.UseVisualStyleBackColor = true;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // btnTrazabilidad
             // 
@@ -167,15 +183,15 @@
             this.btnLogistica.UseVisualStyleBackColor = true;
             this.btnLogistica.Click += new System.EventHandler(this.btnLogistica_Click);
             // 
-            // pictureBox2
+            // pbLogoMenu
             // 
-            this.pictureBox2.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.pbLogoMenu.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoMenu.Location = new System.Drawing.Point(4, 4);
+            this.pbLogoMenu.Name = "pbLogoMenu";
+            this.pbLogoMenu.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoMenu.TabIndex = 2;
+            this.pbLogoMenu.TabStop = false;
             // 
             // btnAdministrador
             // 
@@ -302,18 +318,16 @@
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnRecepcion_Click);
             // 
-            // btnReporte
+            // pbCargarImagenMenu
             // 
-            this.btnReporte.FlatAppearance.BorderSize = 0;
-            this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReporte.Location = new System.Drawing.Point(0, 531);
-            this.btnReporte.Name = "btnReporte";
-            this.btnReporte.Size = new System.Drawing.Size(245, 57);
-            this.btnReporte.TabIndex = 18;
-            this.btnReporte.Text = "Reportes";
-            this.btnReporte.UseVisualStyleBackColor = true;
-            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+            this.pbCargarImagenMenu.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMenu.Image")));
+            this.pbCargarImagenMenu.Location = new System.Drawing.Point(54, 63);
+            this.pbCargarImagenMenu.Name = "pbCargarImagenMenu";
+            this.pbCargarImagenMenu.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenMenu.TabIndex = 73;
+            this.pbCargarImagenMenu.TabStop = false;
+            this.pbCargarImagenMenu.Click += new System.EventHandler(this.pbCargarImagenMenu_Click);
             // 
             // FrmPrincipal
             // 
@@ -325,7 +339,7 @@
             this.Controls.Add(this.panelVertical);
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu";            
+            this.Text = "Menu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.panelTitulo.ResumeLayout(false);
@@ -333,9 +347,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelVertical.ResumeLayout(false);
             this.panelVertical.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoMenu)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMenu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -357,11 +372,12 @@
         private System.Windows.Forms.Button btnRecepcion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbDepartamentoMu;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbLogoMenu;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnLogistica;
         private System.Windows.Forms.Button btnTrazabilidad;
         private System.Windows.Forms.Button btnReporte;
+        private System.Windows.Forms.PictureBox pbCargarImagenMenu;
     }
 }

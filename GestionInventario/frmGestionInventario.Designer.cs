@@ -35,7 +35,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoGi = new System.Windows.Forms.Label();
             this.lbPerfilGi = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogoGi = new System.Windows.Forms.PictureBox();
             this.lbNombreGi = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -84,8 +84,9 @@
             this.dgvDetenidos = new System.Windows.Forms.DataGridView();
             this.btnDesmarcarDetenido = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbCargarImagenGi = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoGi)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabInventarioTotal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotal)).BeginInit();
@@ -100,13 +101,15 @@
             this.tabDetenidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenGi)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbCargarImagenGi);
             this.panel2.Controls.Add(this.lbDepartamentoGi);
             this.panel2.Controls.Add(this.lbPerfilGi);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pbLogoGi);
             this.panel2.Controls.Add(this.lbNombreGi);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
@@ -131,15 +134,15 @@
             this.lbPerfilGi.TabIndex = 1;
             this.lbPerfilGi.Text = "perfil";
             // 
-            // pictureBox1
+            // pbLogoGi
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.pbLogoGi.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoGi.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoGi.Name = "pbLogoGi";
+            this.pbLogoGi.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoGi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoGi.TabIndex = 13;
+            this.pbLogoGi.TabStop = false;
             // 
             // lbNombreGi
             // 
@@ -677,6 +680,17 @@
             this.pictureBox4.TabIndex = 68;
             this.pictureBox4.TabStop = false;
             // 
+            // pbCargarImagenGi
+            // 
+            this.pbCargarImagenGi.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenGi.Image")));
+            this.pbCargarImagenGi.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenGi.Name = "pbCargarImagenGi";
+            this.pbCargarImagenGi.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenGi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenGi.TabIndex = 74;
+            this.pbCargarImagenGi.TabStop = false;
+            this.pbCargarImagenGi.Click += new System.EventHandler(this.pbCargarImagenGi_Click);
+            // 
             // FrmGestionInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -693,7 +707,7 @@
             this.Load += new System.EventHandler(this.frmGestionInventario_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoGi)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabInventarioTotal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotal)).EndInit();
@@ -710,6 +724,7 @@
             this.tabDetenidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenGi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -720,7 +735,7 @@
         private System.Windows.Forms.Label lbPerfilGi;
         private System.Windows.Forms.Label lbNombreGi;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogoGi;
         private System.Windows.Forms.Label lbDepartamentoGi;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabInventarioTotal;
@@ -768,5 +783,6 @@
         private System.Windows.Forms.Button btnDesmarcarDetenido;
         private System.Windows.Forms.DataGridView dgvDetenidos;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pbCargarImagenGi;
     }
 }

@@ -61,18 +61,18 @@
             this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbCargarImagen = new System.Windows.Forms.PictureBox();
             this.lbDepartamentoCa = new System.Windows.Forms.Label();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.pbLogoGu = new System.Windows.Forms.PictureBox();
             this.lbPerfilGu = new System.Windows.Forms.Label();
             this.lbNombreGu = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pbCargarImagen = new System.Windows.Forms.PictureBox();
             this.gbUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoGu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -386,13 +386,24 @@
             // 
             this.panel2.Controls.Add(this.pbCargarImagen);
             this.panel2.Controls.Add(this.lbDepartamentoCa);
-            this.panel2.Controls.Add(this.pbLogo);
+            this.panel2.Controls.Add(this.pbLogoGu);
             this.panel2.Controls.Add(this.lbPerfilGu);
             this.panel2.Controls.Add(this.lbNombreGu);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(230, 83);
             this.panel2.TabIndex = 17;
+            // 
+            // pbCargarImagen
+            // 
+            this.pbCargarImagen.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagen.Image")));
+            this.pbCargarImagen.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagen.Name = "pbCargarImagen";
+            this.pbCargarImagen.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagen.TabIndex = 69;
+            this.pbCargarImagen.TabStop = false;
+            this.pbCargarImagen.Click += new System.EventHandler(this.pbCargarImagen_Click);
             // 
             // lbDepartamentoCa
             // 
@@ -403,15 +414,15 @@
             this.lbDepartamentoCa.TabIndex = 15;
             this.lbDepartamentoCa.Text = "Deptto";
             // 
-            // pbLogo
+            // pbLogoGu
             // 
-            this.pbLogo.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pbLogo.Location = new System.Drawing.Point(3, 3);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(75, 85);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLogo.TabIndex = 14;
-            this.pbLogo.TabStop = false;
+            this.pbLogoGu.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoGu.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoGu.Name = "pbLogoGu";
+            this.pbLogoGu.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoGu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoGu.TabIndex = 14;
+            this.pbLogoGu.TabStop = false;
             // 
             // lbPerfilGu
             // 
@@ -442,17 +453,6 @@
             this.pictureBox3.TabIndex = 68;
             this.pictureBox3.TabStop = false;
             // 
-            // pbCargarImagen
-            // 
-            this.pbCargarImagen.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagen.Image")));
-            this.pbCargarImagen.Location = new System.Drawing.Point(53, 63);
-            this.pbCargarImagen.Name = "pbCargarImagen";
-            this.pbCargarImagen.Size = new System.Drawing.Size(20, 16);
-            this.pbCargarImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCargarImagen.TabIndex = 69;
-            this.pbCargarImagen.TabStop = false;
-            this.pbCargarImagen.Click += new System.EventHandler(this.pbCargarImagen_Click);
-            // 
             // FrmGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,9 +473,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoGu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,7 +513,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.PictureBox pbLogoGu;
         private System.Windows.Forms.Label lbPerfilGu;
         private System.Windows.Forms.Label lbNombreGu;
         private System.Windows.Forms.Label lbDepartamentoCa;

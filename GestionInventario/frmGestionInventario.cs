@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -62,6 +63,23 @@ namespace GestionInventario
                 lbNombreGi.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoGi.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilGi.Text = $"{nombrePerfil}";
+
+                // Crear instancia de UsuariosDAO
+                UsuariosDAO usuariosDAO = new UsuariosDAO();
+
+                // Cargar la imagen del usuario desde la base de datos
+                byte[] imagenUsuario = usuariosDAO.ObtenerImagenUsuario(FrmLogin.UsuarioActual.IdUsuario);
+                if (imagenUsuario != null && imagenUsuario.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream(imagenUsuario))
+                    {
+                        pbLogoGi.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    pbLogoGi.Image = Properties.Resources.user_account; // Imagen predeterminada
+                }
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -801,6 +819,31 @@ namespace GestionInventario
                 }
             }
             return estaDetenida;
+        }
+                
+        private void pbCargarImagenGi_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    byte[] imageBytes = File.ReadAllBytes(filePath);
+
+                    // Crear instancia de UsuariosDAO
+                    UsuariosDAO usuariosDAO = new UsuariosDAO();
+
+                    // Guardar la imagen en la base de datos
+                    usuariosDAO.GuardarImagenUsuario(FrmLogin.UsuarioActual.IdUsuario, imageBytes);
+
+                    // Mostrar la imagen en el PictureBox
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        pbLogoGi.Image = Image.FromStream(ms);
+                    }
+                }
+            }
         }
     }
 }

@@ -35,26 +35,29 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoLyfc = new System.Windows.Forms.Label();
             this.lbPerfilLyfc = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogoLo = new System.Windows.Forms.PictureBox();
             this.lbNombreLyfc = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabInventarioTotal = new System.Windows.Forms.TabPage();
             this.dgvInventarioTotalLogistica = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pbCargarImagenLogistica = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoLo)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabInventarioTotal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLogistica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenLogistica)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbCargarImagenLogistica);
             this.panel2.Controls.Add(this.lbDepartamentoLyfc);
             this.panel2.Controls.Add(this.lbPerfilLyfc);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pbLogoLo);
             this.panel2.Controls.Add(this.lbNombreLyfc);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
@@ -79,15 +82,15 @@
             this.lbPerfilLyfc.TabIndex = 1;
             this.lbPerfilLyfc.Text = "perfil";
             // 
-            // pictureBox1
+            // pbLogoLo
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.pbLogoLo.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoLo.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoLo.Name = "pbLogoLo";
+            this.pbLogoLo.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoLo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoLo.TabIndex = 13;
+            this.pbLogoLo.TabStop = false;
             // 
             // lbNombreLyfc
             // 
@@ -175,6 +178,17 @@
             this.pictureBox3.TabIndex = 68;
             this.pictureBox3.TabStop = false;
             // 
+            // pbCargarImagenLogistica
+            // 
+            this.pbCargarImagenLogistica.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenLogistica.Image")));
+            this.pbCargarImagenLogistica.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenLogistica.Name = "pbCargarImagenLogistica";
+            this.pbCargarImagenLogistica.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenLogistica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenLogistica.TabIndex = 74;
+            this.pbCargarImagenLogistica.TabStop = false;
+            this.pbCargarImagenLogistica.Click += new System.EventHandler(this.pbCargarImagenLogistica_Click);
+            // 
             // FrmLogistica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,11 +205,12 @@
             this.Load += new System.EventHandler(this.frmLogistica_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoLo)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabInventarioTotal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventarioTotalLogistica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenLogistica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,12 +221,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbDepartamentoLyfc;
         private System.Windows.Forms.Label lbPerfilLyfc;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogoLo;
         private System.Windows.Forms.Label lbNombreLyfc;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabInventarioTotal;
         private System.Windows.Forms.DataGridView dgvInventarioTotalLogistica;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pbCargarImagenLogistica;
     }
 }

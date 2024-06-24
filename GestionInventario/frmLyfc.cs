@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -66,6 +67,23 @@ namespace GestionInventario
                 lbNombreLyfc.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoLyfc.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilLyfc.Text = $"{nombrePerfil}";
+
+                // Crear instancia de UsuariosDAO
+                UsuariosDAO usuariosDAO = new UsuariosDAO();
+
+                // Cargar la imagen del usuario desde la base de datos
+                byte[] imagenUsuario = usuariosDAO.ObtenerImagenUsuario(FrmLogin.UsuarioActual.IdUsuario);
+                if (imagenUsuario != null && imagenUsuario.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream(imagenUsuario))
+                    {
+                        pbLogoLyfc.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    pbLogoLyfc.Image = Properties.Resources.user_account; // Imagen predeterminada
+                }
             }
         }
 
@@ -923,6 +941,31 @@ namespace GestionInventario
                     MessageBox.Show("Error al desmarcar tarima como detenida: " + ex.Message);
                 }
             }
-        }        
+        }
+
+        private void pbCargarImagenLyfc_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    byte[] imageBytes = File.ReadAllBytes(filePath);
+
+                    // Crear instancia de UsuariosDAO
+                    UsuariosDAO usuariosDAO = new UsuariosDAO();
+
+                    // Guardar la imagen en la base de datos
+                    usuariosDAO.GuardarImagenUsuario(FrmLogin.UsuarioActual.IdUsuario, imageBytes);
+
+                    // Mostrar la imagen en el PictureBox
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        pbLogoLyfc.Image = Image.FromStream(ms);
+                    }
+                }
+            }
+        }
     }
 }

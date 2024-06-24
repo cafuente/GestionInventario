@@ -300,6 +300,44 @@ namespace GestionInventario
             }
         }
 
+        public void GuardarImagenUsuario(int idUsuario, byte[] imagen)
+        {
+            string query = "UPDATE usuarios SET imagen = @imagen WHERE id_usuario = @idUsuario";
+            using (MySqlConnection con = conexion.ObtenerConexion())
+            {
+                con.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@imagen", imagen);
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public byte[] ObtenerImagenUsuario(int idUsuario)
+        {
+            string query = "SELECT imagen FROM usuarios WHERE id_usuario = @idUsuario";
+            using (MySqlConnection con = conexion.ObtenerConexion())
+            {
+                con.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    object resultado = cmd.ExecuteScalar();
+                    if (resultado != DBNull.Value)
+                    {
+                        return (byte[])resultado;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
+
         public Usuario ObtenerInformacionUsuario(string nombreUsuario)
         {
             /*

@@ -60,6 +60,23 @@ namespace GestionInventario
                 lbNombreTr.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoTr.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilTr.Text = $"{nombrePerfil}";
+
+                // Crear instancia de UsuariosDAO
+                UsuariosDAO usuariosDAO = new UsuariosDAO();
+
+                // Cargar la imagen del usuario desde la base de datos
+                byte[] imagenUsuario = usuariosDAO.ObtenerImagenUsuario(FrmLogin.UsuarioActual.IdUsuario);
+                if (imagenUsuario != null && imagenUsuario.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream(imagenUsuario))
+                    {
+                        pbLogoTraz.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    pbLogoTraz.Image = Properties.Resources.user_account; // Imagen predeterminada
+                }
             }
         }
 
@@ -361,6 +378,31 @@ namespace GestionInventario
             else
             {
                 MessageBox.Show("No se encontraron registros de trazabilidad.");
+            }
+        }
+
+        private void pbCargarImagenTraz_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    byte[] imageBytes = File.ReadAllBytes(filePath);
+
+                    // Crear instancia de UsuariosDAO
+                    UsuariosDAO usuariosDAO = new UsuariosDAO();
+
+                    // Guardar la imagen en la base de datos
+                    usuariosDAO.GuardarImagenUsuario(FrmLogin.UsuarioActual.IdUsuario, imageBytes);
+
+                    // Mostrar la imagen en el PictureBox
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        pbLogoTraz.Image = Image.FromStream(ms);
+                    }
+                }
             }
         }
     }

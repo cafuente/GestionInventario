@@ -83,10 +83,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoMezclado = new System.Windows.Forms.Label();
             this.lbPerfilMezclado = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogoMezclado = new System.Windows.Forms.PictureBox();
             this.lbNombreMezclado = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbCargarImagenMezclado = new System.Windows.Forms.PictureBox();
             this.tabMezclado.SuspendLayout();
             this.tabConciliacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMezclado)).BeginInit();
@@ -103,8 +104,9 @@
             this.tabDetenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoMezclado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMezclado)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMezclado
@@ -649,9 +651,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbCargarImagenMezclado);
             this.panel2.Controls.Add(this.lbDepartamentoMezclado);
             this.panel2.Controls.Add(this.lbPerfilMezclado);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pbLogoMezclado);
             this.panel2.Controls.Add(this.lbNombreMezclado);
             this.panel2.Location = new System.Drawing.Point(3, 6);
             this.panel2.Name = "panel2";
@@ -676,15 +679,15 @@
             this.lbPerfilMezclado.TabIndex = 1;
             this.lbPerfilMezclado.Text = "perfil";
             // 
-            // pictureBox1
+            // pbLogoMezclado
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.pbLogoMezclado.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoMezclado.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoMezclado.Name = "pbLogoMezclado";
+            this.pbLogoMezclado.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoMezclado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoMezclado.TabIndex = 13;
+            this.pbLogoMezclado.TabStop = false;
             // 
             // lbNombreMezclado
             // 
@@ -715,6 +718,17 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 68;
             this.pictureBox4.TabStop = false;
+            // 
+            // pbCargarImagenMezclado
+            // 
+            this.pbCargarImagenMezclado.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMezclado.Image")));
+            this.pbCargarImagenMezclado.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenMezclado.Name = "pbCargarImagenMezclado";
+            this.pbCargarImagenMezclado.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenMezclado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenMezclado.TabIndex = 76;
+            this.pbCargarImagenMezclado.TabStop = false;
+            this.pbCargarImagenMezclado.Click += new System.EventHandler(this.pbCargarImagenMezclado_Click);
             // 
             // FrmMezclado
             // 
@@ -749,8 +763,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoMezclado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMezclado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -802,7 +817,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbDepartamentoMezclado;
         private System.Windows.Forms.Label lbPerfilMezclado;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogoMezclado;
         private System.Windows.Forms.Label lbNombreMezclado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabDetenido;
@@ -813,5 +828,6 @@
         private System.Windows.Forms.DataGridView dgvPendientesConfirmacionMezclado;
         private System.Windows.Forms.Button btnConfirmarRecepcionMezclado;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pbCargarImagenMezclado;
     }
 }

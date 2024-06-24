@@ -34,13 +34,12 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportes));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbDepartamentoRep = new System.Windows.Forms.Label();
             this.lbPerfilRep = new System.Windows.Forms.Label();
             this.lbNombreRep = new System.Windows.Forms.Label();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.pbLogoRep = new System.Windows.Forms.PictureBox();
             this.btnGenerarReporte = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -73,8 +72,9 @@
             this.btnImprimirTendencia = new System.Windows.Forms.PictureBox();
             this.btnExportarTendencia = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pbCargarImagenRep = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoRep)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTendencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartConsumo)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -88,14 +88,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnImprimirTendencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExportarTendencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenRep)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pbCargarImagenRep);
             this.panel1.Controls.Add(this.lbDepartamentoRep);
             this.panel1.Controls.Add(this.lbPerfilRep);
             this.panel1.Controls.Add(this.lbNombreRep);
-            this.panel1.Controls.Add(this.pbLogo);
+            this.panel1.Controls.Add(this.pbLogoRep);
             this.panel1.Location = new System.Drawing.Point(3, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(290, 85);
@@ -128,15 +130,15 @@
             this.lbNombreRep.TabIndex = 31;
             this.lbNombreRep.Text = "Nombre";
             // 
-            // pbLogo
+            // pbLogoRep
             // 
-            this.pbLogo.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pbLogo.Location = new System.Drawing.Point(3, 3);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(75, 85);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLogo.TabIndex = 30;
-            this.pbLogo.TabStop = false;
+            this.pbLogoRep.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogoRep.Location = new System.Drawing.Point(3, 3);
+            this.pbLogoRep.Name = "pbLogoRep";
+            this.pbLogoRep.Size = new System.Drawing.Size(75, 85);
+            this.pbLogoRep.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogoRep.TabIndex = 30;
+            this.pbLogoRep.TabStop = false;
             // 
             // btnGenerarReporte
             // 
@@ -311,14 +313,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvReporte.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReporte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReporte.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReporte.Location = new System.Drawing.Point(23, 191);
             this.dgvReporte.Name = "dgvReporte";
             this.dgvReporte.Size = new System.Drawing.Size(1160, 365);
@@ -529,6 +523,17 @@
             this.pictureBox3.TabIndex = 67;
             this.pictureBox3.TabStop = false;
             // 
+            // pbCargarImagenRep
+            // 
+            this.pbCargarImagenRep.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenRep.Image")));
+            this.pbCargarImagenRep.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenRep.Name = "pbCargarImagenRep";
+            this.pbCargarImagenRep.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenRep.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenRep.TabIndex = 73;
+            this.pbCargarImagenRep.TabStop = false;
+            this.pbCargarImagenRep.Click += new System.EventHandler(this.pbCargarImagenRep_Click);
+            // 
             // FrmReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -545,7 +550,7 @@
             this.Load += new System.EventHandler(this.FrmReportes_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogoRep)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartTendencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartConsumo)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -562,6 +567,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnImprimirTendencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExportarTendencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenRep)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,7 +579,7 @@
         private System.Windows.Forms.Label lbDepartamentoRep;
         private System.Windows.Forms.Label lbPerfilRep;
         private System.Windows.Forms.Label lbNombreRep;
-        private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.PictureBox pbLogoRep;
         private System.Windows.Forms.Button btnGenerarReporte;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -606,5 +612,6 @@
         private System.Windows.Forms.PictureBox pbImprimirReporte;
         private System.Windows.Forms.PictureBox pbGuardarReporte;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pbCargarImagenRep;
     }
 }
