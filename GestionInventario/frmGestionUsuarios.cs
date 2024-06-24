@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GestionInventario
 {
@@ -73,6 +74,20 @@ namespace GestionInventario
                 lbNombreGu.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoCa.Text = $"{FrmLogin.UsuarioActual.Departamento}";
                 lbPerfilGu.Text = $"{nombrePerfil}";
+
+                // Mostrar la imagen del usuario si está disponible
+                if (FrmLogin.UsuarioActual.Imagen != null)
+                {
+                    using (MemoryStream ms = new MemoryStream(FrmLogin.UsuarioActual.Imagen))
+                    {
+                        pbLogo.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    // Si no hay imagen, puede mostrar una imagen predeterminada o dejar en blanco
+                    pbLogo.Image = Properties.Resources.user_account; // Cambia "user_account" por el nombre del recurso por default
+                }
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -312,6 +327,45 @@ namespace GestionInventario
             btnActualizar.Enabled = false;
             btnEliminar.Enabled = false;
             btnCancelar.Enabled = false;
+        }
+
+        private void pbCargarImagen_Click(object sender, EventArgs e)
+        {
+            CambiarImagenUsuario();
+        }
+
+        private void CambiarImagenUsuario()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Title = "Seleccionar Imagen de Usuario",
+                Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp",
+                Multiselect = false
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                byte[] imageBytes = File.ReadAllBytes(filePath);
+
+                // Asignar la imagen al PictureBox
+                using (MemoryStream ms = new MemoryStream(imageBytes))
+                {
+                    pbLogo.Image = Image.FromStream(ms);
+                }
+
+                // Actualizar la imagen del usuario en la base de datos
+                UsuariosDAO usuariosDAO = new UsuariosDAO();
+                usuariosDAO.ActualizarImagenUsuario(FrmLogin.UsuarioActual.IdUsuario, imageBytes);
+
+                // Actualizar la imagen del usuario actual
+                FrmLogin.UsuarioActual.Imagen = imageBytes;
+            }
+            else
+            {
+                // Si no se selecciona una imagen, mostrar la imagen predeterminada
+                pbLogo.Image = Properties.Resources.user_account; // Cambia "user_account" por el nombre de tu recurso
+            }
         }
     }
 }

@@ -55,6 +55,8 @@
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.gbFactura = new System.Windows.Forms.GroupBox();
+            this.lbAlerta = new System.Windows.Forms.Label();
+            this.txtUmbralRc = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtBusquedaRc = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -95,6 +97,7 @@
             this.chkProducto = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.chkAlertasRc = new System.Windows.Forms.CheckBox();
             this.gbFactura.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
@@ -341,6 +344,8 @@
             // 
             // gbFactura
             // 
+            this.gbFactura.Controls.Add(this.lbAlerta);
+            this.gbFactura.Controls.Add(this.txtUmbralRc);
             this.gbFactura.Controls.Add(this.label20);
             this.gbFactura.Controls.Add(this.txtBusquedaRc);
             this.gbFactura.Controls.Add(this.label17);
@@ -383,6 +388,24 @@
             this.gbFactura.TabIndex = 32;
             this.gbFactura.TabStop = false;
             this.gbFactura.Text = "Datos Factura";
+            // 
+            // lbAlerta
+            // 
+            this.lbAlerta.AutoSize = true;
+            this.lbAlerta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAlerta.Location = new System.Drawing.Point(741, 237);
+            this.lbAlerta.Name = "lbAlerta";
+            this.lbAlerta.Size = new System.Drawing.Size(91, 15);
+            this.lbAlerta.TabIndex = 71;
+            this.lbAlerta.Text = "Umbral Alertas:";
+            // 
+            // txtUmbralRc
+            // 
+            this.txtUmbralRc.Location = new System.Drawing.Point(837, 232);
+            this.txtUmbralRc.Name = "txtUmbralRc";
+            this.txtUmbralRc.Size = new System.Drawing.Size(100, 22);
+            this.txtUmbralRc.TabIndex = 70;
+            this.txtUmbralRc.TextChanged += new System.EventHandler(this.txtUmbralRc_TextChanged);
             // 
             // label20
             // 
@@ -440,7 +463,7 @@
             this.dpFecha.Name = "dpFecha";
             this.dpFecha.Size = new System.Drawing.Size(113, 22);
             this.dpFecha.TabIndex = 13;
-            this.dpFecha.Value = new System.DateTime(2024, 4, 22, 7, 53, 14, 0);
+            this.dpFecha.Value = new System.DateTime(2024, 6, 24, 6, 45, 22, 0);
             // 
             // dpEmpaque
             // 
@@ -459,7 +482,7 @@
             this.dpSacrificio.Name = "dpSacrificio";
             this.dpSacrificio.Size = new System.Drawing.Size(113, 22);
             this.dpSacrificio.TabIndex = 2;
-            this.dpSacrificio.Value = new System.DateTime(2024, 4, 22, 7, 48, 0, 0);
+            this.dpSacrificio.Value = new System.DateTime(2024, 6, 24, 6, 46, 20, 0);
             // 
             // IdRegistro
             // 
@@ -796,13 +819,25 @@
             this.pictureBox3.TabIndex = 68;
             this.pictureBox3.TabStop = false;
             // 
+            // chkAlertasRc
+            // 
+            this.chkAlertasRc.AutoSize = true;
+            this.chkAlertasRc.Location = new System.Drawing.Point(1001, 63);
+            this.chkAlertasRc.Name = "chkAlertasRc";
+            this.chkAlertasRc.Size = new System.Drawing.Size(93, 17);
+            this.chkAlertasRc.TabIndex = 69;
+            this.chkAlertasRc.Text = "Activar alertas";
+            this.chkAlertasRc.UseVisualStyleBackColor = true;
+            this.chkAlertasRc.CheckedChanged += new System.EventHandler(this.chkAlertasRc_CheckedChanged);
+            // 
             // FrmRecepcionCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1271, 800);
-            this.ClientSize = new System.Drawing.Size(1254, 731);
+            this.ClientSize = new System.Drawing.Size(1271, 748);
+            this.Controls.Add(this.chkAlertasRc);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkProducto);
@@ -912,5 +947,8 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.CheckBox chkAlertasRc;
+        private System.Windows.Forms.TextBox txtUmbralRc;
+        private System.Windows.Forms.Label lbAlerta;
     }
 }

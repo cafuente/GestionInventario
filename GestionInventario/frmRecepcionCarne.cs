@@ -17,11 +17,16 @@ namespace GestionInventario
 {
     public partial class FrmRecepcionCarne : Form
     {
-        private ConexionBD conexion;
+        private AlertaInventarioService alertaInventarioService;
+        private AlertaVencimientoService alertaVencimientoService;
+        private ConexionBD conexion;        
+
         public FrmRecepcionCarne()
         {
             InitializeComponent();
             conexion = new ConexionBD();
+            InicializarServicios();
+            ConfigurarControles();
 
             // Define los supervisores disponibles
             string[] supervisores = { "Pablo B.", "Hugo B.", "José R." };
@@ -69,6 +74,12 @@ namespace GestionInventario
             //mostrar informacion en el datagrid
             dgRecepcionCarne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             CargarDatosRecepcionCarne();
+            //alertas
+            chkAlertasRc.Checked = true;
+            chkAlertasRc.Visible = false;
+            //InicializarServicios();
+            ConfigurarControles();
+
         }
         private void MostrarInformacionUsuario()
         {
@@ -80,7 +91,8 @@ namespace GestionInventario
                 
                 lbNombreRc.Text = $"{FrmLogin.UsuarioActual.Nombre}";
                 lbDepartamentoRc.Text = $"{FrmLogin.UsuarioActual.Departamento}";
-                lbPerfilRc.Text = $"{nombrePerfil}";
+                //lbPerfilRc.Text = $"{nombrePerfil}";
+                lbPerfilRc.Text = $"{FrmLogin.UsuarioActual.PerfilNombre}";
             }
         }
         private string ObtenerNombrePerfil(int idPerfil)
@@ -96,6 +108,12 @@ namespace GestionInventario
                 default:
                     return "Desconocido";
             }
+        }
+
+        private void InicializarServicios()
+        {
+            alertaInventarioService = new AlertaInventarioService(txtUmbralRc, chkAlertasRc, "Almacen carnicos");
+            alertaVencimientoService = new AlertaVencimientoService(chkAlertasRc, "Almacen carnicos");
         }
 
         private void btnGenerarCodigoBarras_Click(object sender, EventArgs e)
@@ -965,5 +983,127 @@ namespace GestionInventario
                 MessageBox.Show("Error al procesar el ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }*/
+
+        // Servicio de Alertas
+        public class AlertaInventarioService
+        {
+            private TextBox txtUmbral;
+            private CheckBox chkAlertas;
+            private string departamento;
+
+            public AlertaInventarioService(TextBox umbral, CheckBox alertas, string depto)
+            {
+                txtUmbral = umbral;
+                chkAlertas = alertas;
+                departamento = depto;
+            }
+
+            public void VerificarInventario()
+            {
+                if (!chkAlertas.Checked) return;
+
+                int umbral = int.Parse(txtUmbral.Text);
+                DataTable inventario = BusquedaBD.ObtenerInventarioAgrupadoPorDepartamento(departamento);
+                foreach (DataRow row in inventario.Rows)
+                {
+                    int cantidad = Convert.ToInt32(row["cantidad_total"]);
+                    if (cantidad < umbral)
+                    {
+                        MostrarNotificacion($"El producto {row["producto"]} (Lote: {row["lote"]}) tiene un inventario bajo de {cantidad} unidades.");
+                    }
+                }
+            }
+
+            private void MostrarNotificacion(string mensaje)
+            {
+                MessageBox.Show(mensaje, "Alerta de Bajo Inventario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public class AlertaVencimientoService
+        {
+            private CheckBox chkAlertas;
+            private string departamento;
+
+            public AlertaVencimientoService(CheckBox alertas, string depto)
+            {
+                chkAlertas = alertas;
+                departamento = depto;
+            }
+
+            public void VerificarVencimientos()
+            {
+                if (!chkAlertas.Checked) return;
+
+                DataTable inventario = BusquedaBD.ObtenerInventarioConFechasAgrupadoPorDepartamento(departamento);
+                foreach (DataRow row in inventario.Rows)
+                {
+                    DateTime fechaSacrificio = Convert.ToDateTime(row["fecha_sacrificio"]);
+                    DateTime fechaVencimiento;
+                    string producto = row["producto"].ToString();
+                    string lote = row["lote"].ToString();
+                    int cantidadTotal = Convert.ToInt32(row["cantidad_total"]);
+
+                    if (producto.EndsWith("FCA"))
+                    {
+                        fechaVencimiento = fechaSacrificio.AddDays(10);
+                    }
+                    else if (producto.EndsWith("CONG"))
+                    {
+                        fechaVencimiento = fechaSacrificio.AddYears(1);
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    if (fechaVencimiento <= DateTime.Now)
+                    {
+                        MostrarNotificacion($"El producto {producto} (Lote: {lote}) con cantidad total de {cantidadTotal} está próximo a vencer el {fechaVencimiento.ToShortDateString()}.");
+                    }
+                }
+            }
+
+            private void MostrarNotificacion(string mensaje)
+            {
+                MessageBox.Show(mensaje, "Alerta de Vencimiento de Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void ConfigurarControles()
+        {
+            txtUmbralRc.Text = "10000"; // Umbral por defecto
+
+            // Solo el administrador puede editar el umbral
+            if (lbPerfilRc.Text == "Administrador")
+            {
+                txtUmbralRc.Visible = true;
+                lbAlerta.Visible = true;
+                chkAlertasRc.Visible = true;
+            }
+            else
+            {
+                txtUmbralRc.Visible = false;
+                lbAlerta.Visible = false;
+            }
+
+            // Verificar inventario y vencimientos automáticamente al abrir el formulario
+            this.Load += (s, e) =>
+            {
+                alertaInventarioService.VerificarInventario();
+                alertaVencimientoService.VerificarVencimientos();
+            };
+        }
+
+        private void txtUmbralRc_TextChanged(object sender, EventArgs e)
+        {
+            alertaInventarioService.VerificarInventario();
+        }
+
+        private void chkAlertasRc_CheckedChanged(object sender, EventArgs e)
+        {
+            alertaInventarioService.VerificarInventario();
+            alertaVencimientoService.VerificarVencimientos();
+        }
     }
 }

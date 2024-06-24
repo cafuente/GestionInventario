@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 
@@ -574,5 +575,12 @@ namespace GestionInventario
                 }
             }
         }
+
+        public string txtUmbralValue
+        {
+            get { return txtUmbral.Text; }
+            set { txtUmbral.Text = value; }
+        }
+
     }
 }

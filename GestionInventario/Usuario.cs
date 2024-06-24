@@ -15,5 +15,6 @@ namespace GestionInventario
         public string Departamento { get; set; }
         public int IdPerfil { get; set; }
         public string PerfilNombre { get; set; }
+        public byte[] Imagen { get; set; }
     }
 }

@@ -62,15 +62,17 @@
             this.Perfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbDepartamentoCa = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lbPerfilGu = new System.Windows.Forms.Label();
             this.lbNombreGu = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pbCargarImagen = new System.Windows.Forms.PictureBox();
             this.gbUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -382,8 +384,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbCargarImagen);
             this.panel2.Controls.Add(this.lbDepartamentoCa);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pbLogo);
             this.panel2.Controls.Add(this.lbPerfilGu);
             this.panel2.Controls.Add(this.lbNombreGu);
             this.panel2.Location = new System.Drawing.Point(3, 6);
@@ -400,15 +403,15 @@
             this.lbDepartamentoCa.TabIndex = 15;
             this.lbDepartamentoCa.Text = "Deptto";
             // 
-            // pictureBox1
+            // pbLogo
             // 
-            this.pictureBox1.Image = global::GestionInventario.Properties.Resources.user_account;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 14;
-            this.pictureBox1.TabStop = false;
+            this.pbLogo.Image = global::GestionInventario.Properties.Resources.user_account;
+            this.pbLogo.Location = new System.Drawing.Point(3, 3);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(75, 85);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 14;
+            this.pbLogo.TabStop = false;
             // 
             // lbPerfilGu
             // 
@@ -439,6 +442,17 @@
             this.pictureBox3.TabIndex = 68;
             this.pictureBox3.TabStop = false;
             // 
+            // pbCargarImagen
+            // 
+            this.pbCargarImagen.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagen.Image")));
+            this.pbCargarImagen.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagen.Name = "pbCargarImagen";
+            this.pbCargarImagen.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagen.TabIndex = 69;
+            this.pbCargarImagen.TabStop = false;
+            this.pbCargarImagen.Click += new System.EventHandler(this.pbCargarImagen_Click);
+            // 
             // FrmGestionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,8 +473,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionUsuarios)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,12 +513,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Perfil;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Label lbPerfilGu;
         private System.Windows.Forms.Label lbNombreGu;
         private System.Windows.Forms.Label lbDepartamentoCa;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pbCargarImagen;
     }
 }
 

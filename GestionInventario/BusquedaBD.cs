@@ -443,5 +443,35 @@ namespace GestionInventario
         };
             return EjecutarConsulta(consulta, parametros);
         }
+
+        public static DataTable ObtenerInventarioAgrupadoPorDepartamento(string departamento)
+        {
+            string consulta = @"
+        SELECT producto, lote, SUM(cantidad_disponible) AS cantidad_total
+        FROM recepcion_carne
+        WHERE departamento = @departamento
+        GROUP BY producto, lote";
+
+            List<MySqlParameter> parametros = new List<MySqlParameter>
+    {
+        new MySqlParameter("@departamento", departamento)
+    };
+            return EjecutarConsulta(consulta, parametros);
+        }
+
+        public static DataTable ObtenerInventarioConFechasAgrupadoPorDepartamento(string departamento)
+        {
+            string consulta = @"
+        SELECT producto, lote, SUM(cantidad_disponible) AS cantidad_total, fecha_sacrificio
+        FROM recepcion_carne
+        WHERE departamento = @departamento
+        GROUP BY producto, lote, fecha_sacrificio";
+
+            List<MySqlParameter> parametros = new List<MySqlParameter>
+    {
+        new MySqlParameter("@departamento", departamento)
+    };
+            return EjecutarConsulta(consulta, parametros);
+        }
     }// aqui arriba va todo
 }

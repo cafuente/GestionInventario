@@ -219,7 +219,7 @@ namespace GestionInventario
             }
         }
 
-        public List<Usuario> ObtenerUsuarios()
+        /*public List<Usuario> ObtenerUsuarios()
         {
             List<Usuario> usuarios = new List<Usuario>();
             string query = "SELECT * FROM usuarios";
@@ -249,6 +249,55 @@ namespace GestionInventario
             }
 
             return usuarios;
+        }*/
+
+        public List<Usuario> ObtenerUsuarios()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            string query = "SELECT * FROM usuarios";
+
+            using (MySqlConnection con = conexion.ObtenerConexion())
+            {
+                con.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Usuario usuario = new Usuario
+                            {
+                                IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                                usuario = reader["usuario"].ToString(),
+                                Password = reader["password"].ToString(),
+                                Nombre = reader["nombre"].ToString(),
+                                Departamento = reader["departamento"].ToString(),
+                                IdPerfil = Convert.ToInt32(reader["id_perfil"]),
+                                Imagen = reader["imagen"] != DBNull.Value ? (byte[])reader["imagen"] : null
+                            };
+                            usuarios.Add(usuario);
+                        }
+                    }
+                }
+            }
+
+            return usuarios;
+        }
+
+        public void ActualizarImagenUsuario(int idUsuario, byte[] imagen)
+        {
+            string query = "UPDATE usuarios SET imagen = @imagen WHERE id_usuario = @idUsuario";
+
+            using (MySqlConnection con = conexion.ObtenerConexion())
+            {
+                con.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@imagen", imagen);
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public Usuario ObtenerInformacionUsuario(string nombreUsuario)
