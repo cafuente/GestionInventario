@@ -34,12 +34,13 @@ namespace GestionInventario
         private void FrmReportes_Load(object sender, EventArgs e)
         {
             MostrarInformacionUsuario();
-            cbDepartamentos.Items.AddRange(new string[] { "Almacen Carnicos", "Limpieza y Formulacion", "Recepcion(mocha)", "Mezclado" });
-            // Seleccionar el primer elemento por defecto (opcional)            
-            cbDepartamentos.SelectedItem = $"{FrmLogin.UsuarioActual.Departamento}";
-            cbDepartamentosRep.Items.AddRange(new string[] { "Almacen Carnicos", "Limpieza y Formulacion", "Recepcion(mocha)", "Mezclado" });
-            // Seleccionar el primer elemento por defecto (opcional)
-            cbDepartamentos.SelectedItem = $"{FrmLogin.UsuarioActual.Departamento}";
+            cbDepartamentosTen.Items.AddRange(new string[] { "Almacen carnicos", "Limpieza y Formulacion", "Recepcion(mocha)", "Mezclado" });
+            // Seleccionar el departamento del perfil        
+            cbDepartamentosTen.SelectedItem = lbDepartamentoRep.Text;
+
+            cbDepartamentosRep.Items.AddRange(new string[] { "Almacen carnicos", "Limpieza y Formulacion", "Recepcion(mocha)", "Mezclado" });
+            // Seleccionar el departamento del perfil  
+            cbDepartamentosRep.SelectedItem = lbDepartamentoRep.Text;
 
             // Llenar el ComboBox con las opciones de reportes disponibles
             cbReportes.Items.Add("Inventario Actual");
@@ -272,14 +273,14 @@ namespace GestionInventario
         {
             if (string.IsNullOrEmpty(dtpFechaInicio.Text) ||
                 string.IsNullOrEmpty(dtpFechaFin.Text) ||
-                cbDepartamentos.SelectedItem == null)
+                cbDepartamentosTen.SelectedItem == null)
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             DateTime fechaInicio = dtpFechaInicio.Value;
             DateTime fechaFin = dtpFechaFin.Value;
-            string departamento = cbDepartamentos.SelectedItem.ToString();
+            string departamento = cbDepartamentosTen.SelectedItem.ToString();
 
             DataTable tendenciaData = ObtenerTendenciaMensual(fechaInicio, fechaFin, departamento);
             CrearGraficoTendencia(tendenciaData);
@@ -325,8 +326,8 @@ namespace GestionInventario
                 DateTime fechaInicio = dtpFechaInicio.Value;
                 DateTime fechaFin = dtpFechaFin.Value;
 
-                DataTable tendenciaData = ObtenerTendenciaMensual(fechaInicio, fechaFin, cbDepartamentos.SelectedItem.ToString());
-                DataTable consumoData = ObtenerConsumoPorTipo(fechaInicio, fechaFin, cbDepartamentos.SelectedItem.ToString());
+                DataTable tendenciaData = ObtenerTendenciaMensual(fechaInicio, fechaFin, cbDepartamentosTen.SelectedItem.ToString());
+                DataTable consumoData = ObtenerConsumoPorTipo(fechaInicio, fechaFin, cbDepartamentosTen.SelectedItem.ToString());
 
                 List<DataTable> dataTables = new List<DataTable> { tendenciaData, consumoData };
                 List<string> nombresHojas = new List<string> { "Tendencia Mensual", "Consumo Cárnico" };
@@ -591,12 +592,6 @@ namespace GestionInventario
                 }
             }
         }
-
-        //public string txtUmbralValue
-        //{
-        //    get { return txtUmbral.Text; }
-        //    set { txtUmbral.Text = value; }
-        //}
 
         private void pbCargarImagenRep_Click(object sender, EventArgs e)
         {

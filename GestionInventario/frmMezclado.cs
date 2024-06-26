@@ -141,22 +141,30 @@ namespace GestionInventario
         // ------- confirmar recepcion de tarima o combo
         private void btnConfirmarRecepcionMezclado_Click(object sender, EventArgs e)
         {
-            if (dgvPendientesConfirmacionMezclado.SelectedRows.Count > 0)
+            try
             {
-                string idTarima = dgvPendientesConfirmacionMezclado.SelectedRows[0].Cells["idTarima"].Value.ToString();
-                ConfirmarRecepcionTarimaMezclado(idTarima);
-                MessageBox.Show("La recepción de la tarima ha sido confirmada de recibido.");
-                CargarDatosPendientesConfirmacionMezclado();
-                //CargarDatosInventarioLyfc(); // Actualizar la lista de tarimas confirmadas
-                CargarDatosInventarioTotalMezclado();
-                CargarDatosTraspasosMezclado();
-                CargarDatosDevolucionesMezclado();
-                CargarDatosDetenidosMezclado();
+                if (dgvPendientesConfirmacionMezclado.SelectedRows.Count > 0)
+                {
+                    string idTarima = dgvPendientesConfirmacionMezclado.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                    ConfirmarRecepcionTarimaMezclado(idTarima);
+                    MessageBox.Show("La recepción de la tarima ha sido confirmada de recibido.");
+                    CargarDatosPendientesConfirmacionMezclado();
+                    //CargarDatosInventarioLyfc(); // Actualizar la lista de tarimas confirmadas
+                    CargarDatosInventarioTotalMezclado();
+                    CargarDatosTraspasosMezclado();
+                    CargarDatosDevolucionesMezclado();
+                    CargarDatosDetenidosMezclado();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione una tarima para confirmar su recepción.");
+                }
             }
-            else
+            catch (Exception)
             {
                 MessageBox.Show("Seleccione una tarima para confirmar su recepción.");
             }
+            
         }
 
         private void ConfirmarRecepcionTarimaMezclado(string idTarima)
@@ -566,7 +574,7 @@ namespace GestionInventario
 
         private void btnRegistrarMezcladoDv_Click(object sender, EventArgs e)
         {
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre == "Administrador")
             {
                 if (string.IsNullOrEmpty(txtProductoMezcladoDv.Text) ||
                     string.IsNullOrEmpty(txtLoteMezcladoDv.Text) ||
@@ -780,7 +788,7 @@ namespace GestionInventario
         //--------------------------Detenidos--------------------------------------------------------
         private void btnMarcarDetenidoMezclado_Click(object sender, EventArgs e)
         {
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre == "Administrador")
             {
                 if (dgvInventarioMezclado.SelectedRows.Count > 0)
                 {
@@ -831,8 +839,8 @@ namespace GestionInventario
                     // Registrar el movimiento en salidas_devoluciones
                     string registrarMovimiento = @"
                     INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
-                    SELECT id, producto, lote, cantidad_disponible, 'Detenido', NOW(), 'Mezclado', @usuario, @departamento
-                    FROM recepcion_carne WHERE id = @idTarima";
+                    SELECT idTarima, producto, lote, cantidad, 'Detenido', NOW(), 'Mezclado', @usuario, @departamento
+                    FROM inventario_mezclado WHERE idTarima = @idTarima";
                     MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
                     comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
                     comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreMezclado.Text); // el nombre del usuario con inicio de sesion
@@ -872,25 +880,31 @@ namespace GestionInventario
 
         private void btnDesmarcarDetenidoMezclado_Click(object sender, EventArgs e)
         {
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre == "Administrador")
             {
-
-                if (dgvDetenidosMezclado.SelectedRows.Count > 0)
+                try
                 {
-                    // Se obtiene el ID de la tarima seleccionada
-                    string idTarima = dgvDetenidosMezclado.SelectedRows[0].Cells["idTarima"].Value.ToString();
-                    // Desmarca la tarima detenida
-                    DesmarcarTarimaComoDetenidaMezclado(idTarima);
-                    //Muestra el mensaje de confirmacion
-                    MessageBox.Show("La tarima ha sido desmarcada como detenida.");
-                    // Recarga los datos del inventario y de tarimas detenidas
-                    CargarDatosTraspasosMezclado();
-                    CargarDatosDetenidosMezclado();
+                    if (dgvDetenidosMezclado.SelectedRows.Count > 0)
+                    {
+                        // Se obtiene el ID de la tarima seleccionada
+                        string idTarima = dgvDetenidosMezclado.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                        // Desmarca la tarima detenida
+                        DesmarcarTarimaComoDetenidaMezclado(idTarima);
+                        //Muestra el mensaje de confirmacion
+                        MessageBox.Show("La tarima ha sido desmarcada como detenida.");
+                        // Recarga los datos del inventario y de tarimas detenidas
+                        CargarDatosTraspasosMezclado();
+                        CargarDatosDetenidosMezclado();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+                    }
                 }
-                else
+                catch (Exception)
                 {
                     MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
-                }
+                }                
             }
             else
             {
@@ -914,8 +928,8 @@ namespace GestionInventario
                     // Registrar el movimiento de desbloqueo en salidas_devoluciones
                     string registrarMovimiento = @"
                 INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
-                SELECT id, producto, lote, cantidad_disponible, 'Desbloqueado', NOW(), 'Mezclado', @usuario, @departamento
-                FROM recepcion_carne WHERE id = @idTarima";
+                SELECT idTarima, producto, lote, cantidad, 'Desbloqueado', NOW(), 'Mezclado', @usuario, @departamento
+                FROM inventario_mezclado WHERE idTarima = @idTarima";
                     MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
                     comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
                     comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreMezclado.Text); // Asume que tienes el nombre del usuario en lbNombreGi

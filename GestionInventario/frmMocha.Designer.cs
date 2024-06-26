@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMocha));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMocha));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbCargarImagenMocha = new System.Windows.Forms.PictureBox();
             this.lbDepartamentoMocha = new System.Windows.Forms.Label();
             this.lbPerfilLyfc = new System.Windows.Forms.Label();
             this.pbLogoMocha = new System.Windows.Forms.PictureBox();
@@ -90,8 +91,8 @@
             this.btnDesmarcarDetenidoMocha = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pbCargarImagenMocha = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMocha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMocha)).BeginInit();
             this.tabControlMocha.SuspendLayout();
             this.tabConciliacion.SuspendLayout();
@@ -109,7 +110,6 @@
             this.tabDetanidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMocha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMocha)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -123,6 +123,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(239, 85);
             this.panel2.TabIndex = 3;
+            // 
+            // pbCargarImagenMocha
+            // 
+            this.pbCargarImagenMocha.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMocha.Image")));
+            this.pbCargarImagenMocha.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenMocha.Name = "pbCargarImagenMocha";
+            this.pbCargarImagenMocha.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenMocha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenMocha.TabIndex = 77;
+            this.pbCargarImagenMocha.TabStop = false;
+            this.pbCargarImagenMocha.Click += new System.EventHandler(this.pbCargarImagenMocha_Click);
             // 
             // lbDepartamentoMocha
             // 
@@ -163,6 +174,9 @@
             // 
             // tabControlMocha
             // 
+            this.tabControlMocha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlMocha.Controls.Add(this.tabConciliacion);
             this.tabControlMocha.Controls.Add(this.tabInventarioTotal);
             this.tabControlMocha.Controls.Add(this.tabTraspaso);
@@ -189,6 +203,9 @@
             // 
             // dgvPendientesConfirmacionMocha
             // 
+            this.dgvPendientesConfirmacionMocha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPendientesConfirmacionMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPendientesConfirmacionMocha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPendientesConfirmacionMocha.Location = new System.Drawing.Point(10, 33);
@@ -199,6 +216,7 @@
             // 
             // btnConfirmarRecepcionMocha
             // 
+            this.btnConfirmarRecepcionMocha.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnConfirmarRecepcionMocha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmarRecepcionMocha.Location = new System.Drawing.Point(309, 396);
             this.btnConfirmarRecepcionMocha.Name = "btnConfirmarRecepcionMocha";
@@ -222,6 +240,9 @@
             // 
             // dgvInventarioTotalMocha
             // 
+            this.dgvInventarioTotalMocha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvInventarioTotalMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -460,6 +481,9 @@
             // 
             // dgvInventarioMocha
             // 
+            this.dgvInventarioMocha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvInventarioMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInventarioMocha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInventarioMocha.Location = new System.Drawing.Point(19, 267);
@@ -663,6 +687,9 @@
             // 
             // dgvTraspasosMocha
             // 
+            this.dgvTraspasosMocha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTraspasosMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTraspasosMocha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTraspasosMocha.Location = new System.Drawing.Point(6, 255);
@@ -685,6 +712,9 @@
             // 
             // dgvDetenidosMocha
             // 
+            this.dgvDetenidosMocha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDetenidosMocha.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -719,6 +749,7 @@
             // 
             // btnDesmarcarDetenidoMocha
             // 
+            this.btnDesmarcarDetenidoMocha.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDesmarcarDetenidoMocha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesmarcarDetenidoMocha.Location = new System.Drawing.Point(309, 396);
             this.btnDesmarcarDetenidoMocha.Name = "btnDesmarcarDetenidoMocha";
@@ -749,17 +780,6 @@
             this.pictureBox4.TabIndex = 68;
             this.pictureBox4.TabStop = false;
             // 
-            // pbCargarImagenMocha
-            // 
-            this.pbCargarImagenMocha.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMocha.Image")));
-            this.pbCargarImagenMocha.Location = new System.Drawing.Point(53, 63);
-            this.pbCargarImagenMocha.Name = "pbCargarImagenMocha";
-            this.pbCargarImagenMocha.Size = new System.Drawing.Size(20, 16);
-            this.pbCargarImagenMocha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCargarImagenMocha.TabIndex = 77;
-            this.pbCargarImagenMocha.TabStop = false;
-            this.pbCargarImagenMocha.Click += new System.EventHandler(this.pbCargarImagenMocha_Click);
-            // 
             // FrmMocha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -776,6 +796,7 @@
             this.Load += new System.EventHandler(this.frmMocha_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMocha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMocha)).EndInit();
             this.tabControlMocha.ResumeLayout(false);
             this.tabConciliacion.ResumeLayout(false);
@@ -795,7 +816,6 @@
             this.tabDetanidos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMocha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMocha)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

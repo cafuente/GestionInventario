@@ -141,22 +141,29 @@ namespace GestionInventario
         // ------- confirmar recepcion de tarima o combo
         private void btnConfirmarRecepcion_Click(object sender, EventArgs e)
         {
-            if (dgvPendientesConfirmacionLyfc.SelectedRows.Count > 0)
+            try
             {
-                string idTarima = dgvPendientesConfirmacionLyfc.SelectedRows[0].Cells["idTarima"].Value.ToString();
-                ConfirmarRecepcionTarimaLyfc(idTarima);
-                MessageBox.Show("La recepción de la tarima ha sido confirmada de recibido.");
-                CargarDatosPendientesConfirmacion();
-                //CargarDatosInventarioLyfc(); // Actualizar la lista de tarimas confirmadas
-                CargarDatosInventarioTotalLyfc();
-                CargarDatosTraspasosLyfc();
-                CargarDatosDevolucionesLyfc();
-                CargarDatosDetenidosLyfc();                
+                if (dgvPendientesConfirmacionLyfc.SelectedRows.Count > 0)
+                {
+                    string idTarima = dgvPendientesConfirmacionLyfc.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                    ConfirmarRecepcionTarimaLyfc(idTarima);
+                    MessageBox.Show("La recepción de la tarima ha sido confirmada de recibido.");
+                    CargarDatosPendientesConfirmacion();
+                    //CargarDatosInventarioLyfc(); // Actualizar la lista de tarimas confirmadas
+                    CargarDatosInventarioTotalLyfc();
+                    CargarDatosTraspasosLyfc();
+                    CargarDatosDevolucionesLyfc();
+                    CargarDatosDetenidosLyfc();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione una tarima para confirmar su recepción.");
+                }
             }
-            else
+            catch (Exception)
             {
                 MessageBox.Show("Seleccione una tarima para confirmar su recepción.");
-            }
+            }            
         }
 
         private void ConfirmarRecepcionTarimaLyfc(string idTarima)
@@ -582,7 +589,7 @@ namespace GestionInventario
                 return;
             }
 
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre == "Administrador")
             {
                 string idTarima = lbIdTarimaLyfcDv.Text;
                 if (VerificarEstadoTarimaLyfc(idTarima))
@@ -788,7 +795,7 @@ namespace GestionInventario
         
         private void btnMarcarDetenidoLyfc_Click(object sender, EventArgs e)
         {
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre == "Administrador")
             {
                 if (dgvInventarioLyfc.SelectedRows.Count > 0)
                 {
@@ -838,8 +845,8 @@ namespace GestionInventario
                     // Registrar el movimiento en salidas_devoluciones
                     string registrarMovimiento = @"
                     INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
-                    SELECT id, producto, lote, cantidad_disponible, 'Detenido', NOW(), 'Recibo(Mocha)', @usuario, @departamento
-                    FROM recepcion_carne WHERE id = @idTarima";
+                    SELECT idTarima, producto, lote, cantidad, 'detenido', NOW(), 'LyFC(traslado)', @usuario, @departamento
+                    FROM inventario_lyfc WHERE idTarima = @idTarima";
                     MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
                     comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
                     comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreLyfc.Text); // el nombre del usuario con inicio de sesion
@@ -878,38 +885,37 @@ namespace GestionInventario
         }
 
         private void btnDesmarcarDetenidoLyfc_Click(object sender, EventArgs e)
-        {
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+        {            
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre == "Administrador")
             {
-
-                if (usuarioAutenticado.PerfilNombre == "Supervisor")
+                try
                 {
                     if (dgvDetenidosLyfc.SelectedRows.Count > 0)
-                    {
-                        // Se obtiene el ID de la tarima seleccionada
-                        string idTarima = dgvDetenidosLyfc.SelectedRows[0].Cells["idTarima"].Value.ToString();
-                        // Desmarca la tarima detenida
-                        DesmarcarTarimaComoDetenidaLyfc(idTarima);
-                        //Muestra el mensaje de confirmacion
-                        MessageBox.Show("La tarima ha sido desmarcada como detenida.");
-                        // Recarga los datos del inventario y de tarimas detenidas
-                        CargarDatosTraspasosLyfc();
-                        CargarDatosDetenidosLyfc();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
-                    }
+                {
+                    // Se obtiene el ID de la tarima seleccionada
+                    string idTarima = dgvDetenidosLyfc.SelectedRows[0].Cells["idTarima"].Value.ToString();
+                    // Desmarca la tarima detenida
+                    DesmarcarTarimaComoDetenidaLyfc(idTarima);
+                    //Muestra el mensaje de confirmacion
+                    MessageBox.Show("La tarima ha sido desmarcada como detenida.");
+                    // Recarga los datos del inventario y de tarimas detenidas
+                    CargarDatosTraspasosLyfc();
+                    CargarDatosDetenidosLyfc();
                 }
                 else
                 {
-                    MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
                 }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+                }                
             }
             else
             {
                 MessageBox.Show("No tienes permiso para realizar esta acción.", "Permiso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            }            
         }
 
         private void DesmarcarTarimaComoDetenidaLyfc(string idTarima)
@@ -928,8 +934,8 @@ namespace GestionInventario
                     // Registrar el movimiento de desbloqueo en salidas_devoluciones
                     string registrarMovimiento = @"
                 INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
-                SELECT id, producto, lote, cantidad_disponible, 'Desbloqueado', NOW(), 'Recibo(Mocha)', @usuario, @departamento
-                FROM recepcion_carne WHERE id = @idTarima";
+                SELECT idTarima, producto, lote, cantidad, 'Desbloqueado', NOW(), 'LyFC(traslado)', @usuario, @departamento
+                FROM inventario_lyfc WHERE idTarima = @idTarima";
                     MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
                     comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
                     comandoMovimiento.Parameters.AddWithValue("@usuario", lbNombreLyfc.Text); // Asume que tienes el nombre del usuario en lbNombreGi

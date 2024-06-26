@@ -17,8 +17,7 @@ namespace GestionInventario
         public FrmPrincipal(Usuario usuario)
         {
             InitializeComponent();
-            usuarioAutenticado = usuario;
-            //ConfigurarPermisos();
+            usuarioAutenticado = usuario;            
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -88,6 +87,14 @@ namespace GestionInventario
                 btnRecepcion.Visible = true;
                 btnGestion.Visible = true;
             }
+            else if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            {
+                if (usuarioAutenticado.Departamento == "Limpieza y Formulacion")
+                {
+                    btnTraslado.Visible = true;
+                    btnRecibo.Visible = true;
+                }
+            }
             else if (usuarioAutenticado.Departamento == "Limpieza y Formulacion")
             {                
                 btnTraslado.Visible = true;
@@ -100,15 +107,7 @@ namespace GestionInventario
             {
                 btnMezclado.Visible = true;
                 btnLogistica.Visible = true;
-            }
-            else if (usuarioAutenticado.PerfilNombre == "Supervisor")
-            {
-                if (usuarioAutenticado.Departamento == "Limpieza y Formulacion")
-                {
-                    btnTraslado.Visible = true;
-                    btnRecibo.Visible = true;
-                }
-            }
+            }            
         }
         private string ObtenerNombrePerfil(int idPerfil)
         {
@@ -154,8 +153,7 @@ namespace GestionInventario
         {
             Application.Exit();
         }
-
-        //private bool cerrarSesion = false;
+                
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             // Mostrar un mensaje de confirmación antes de cerrar sesión

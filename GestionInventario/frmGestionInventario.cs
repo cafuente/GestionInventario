@@ -40,6 +40,7 @@ namespace GestionInventario
             cbDestinoDv.Items.AddRange(destino);
             btnCancelarGi.Enabled = false;
             btnMarcarDetenido.Enabled = false;
+            btnCancelar.Enabled = false;            
             dtpFechaGi.Value = DateTime.Now;
             dtpFechaDevolucion.Value = DateTime.Now;
             txtBusquedaDevoGi.ForeColor = Color.LightGray;
@@ -50,6 +51,7 @@ namespace GestionInventario
             txtCodigoBarrasGi.Text = "DXXXXXXX";
             txtCodigoBarrasGi.GotFocus += new EventHandler(txtCodigoBarrasGi_GotFocus);
             txtCodigoBarrasGi.LostFocus += new EventHandler(txtCodigoBarrasGi_LostFocus);
+            
         }
         private void MostrarInformacionUsuario()
         {
@@ -302,6 +304,8 @@ namespace GestionInventario
                 txtLoteDv.Text = row.Cells["lote"].Value.ToString();
                 txtCantidadDv.Text = row.Cells["cantidad"].Value.ToString();
                 cbDestinoDv.Text = "Almacen";
+                btnCancelar.Enabled = true;
+                btnRegistrarDevolucion.Enabled = true;
             }
         }
 
@@ -315,7 +319,7 @@ namespace GestionInventario
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre == "Administrador")
             {
                 string idTarima = lbIdTarimaDv.Text;
                 if (VerificarEstadoTarima(idTarima))
@@ -410,6 +414,7 @@ namespace GestionInventario
             txtCantidadDv.Text = null;
             cbDestinoDv.SelectedIndex = -1;
             dtpFechaDevolucion.Value = DateTime.Now;
+            btnCancelar.Enabled= false;            
         }
 
         private void txtBusquedaDevoGi_KeyPress(object sender, KeyPressEventArgs e)
@@ -646,7 +651,7 @@ namespace GestionInventario
         // detenidos
         private void btnMarcarDetenido_Click(object sender, EventArgs e)
         {
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre=="Administrador")
             {
                 if (dgvInventario.SelectedRows.Count > 0)
                 {
@@ -739,24 +744,32 @@ namespace GestionInventario
 
         private void btnDesmarcarDetenido_Click(object sender, EventArgs e)
         {
-            if (usuarioAutenticado.PerfilNombre == "Supervisor")
+            if (usuarioAutenticado.PerfilNombre == "Supervisor" || usuarioAutenticado.PerfilNombre == "Administrador")
             {
-                if (dgvDetenidos.SelectedRows.Count > 0)
+                try
                 {
-                    // Se obtiene el ID de la tarima seleccionada
-                    string idTarima = dgvDetenidos.SelectedRows[0].Cells["id"].Value.ToString();
-                    // Desmarca la tarima detenida
-                    DesmarcarTarimaComoDetenida(idTarima);
-                    //Muestra el mensaje de confirmacion
-                    MessageBox.Show("La tarima ha sido desmarcada como detenida.");
-                    // Recarga los datos del inventario y de tarimas detenidas
-                    CargarDatosInventario();
-                    CargarDatosDetenidos();
+                    if (dgvDetenidos.SelectedRows.Count > 0)
+                    {
+                        // Se obtiene el ID de la tarima seleccionada
+                        string idTarima = dgvDetenidos.SelectedRows[0].Cells["id"].Value.ToString();
+                        // Desmarca la tarima detenida
+                        DesmarcarTarimaComoDetenida(idTarima);
+                        //Muestra el mensaje de confirmacion
+                        MessageBox.Show("La tarima ha sido desmarcada como detenida.");
+                        // Recarga los datos del inventario y de tarimas detenidas
+                        CargarDatosInventario();
+                        CargarDatosDetenidos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
+                    }
                 }
-                else
+                catch (Exception)
                 {
                     MessageBox.Show("Seleccione una tarima para desmarcarla como detenida.");
                 }
+                
             }
             else
             {

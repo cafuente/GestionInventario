@@ -81,13 +81,13 @@
             this.dgvDetenidosMezclado = new System.Windows.Forms.DataGridView();
             this.btnDesmarcarDetenidoMezclado = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbCargarImagenMezclado = new System.Windows.Forms.PictureBox();
             this.lbDepartamentoMezclado = new System.Windows.Forms.Label();
             this.lbPerfilMezclado = new System.Windows.Forms.Label();
             this.pbLogoMezclado = new System.Windows.Forms.PictureBox();
             this.lbNombreMezclado = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pbCargarImagenMezclado = new System.Windows.Forms.PictureBox();
             this.tabMezclado.SuspendLayout();
             this.tabConciliacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendientesConfirmacionMezclado)).BeginInit();
@@ -104,13 +104,16 @@
             this.tabDetenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMezclado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMezclado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMezclado)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMezclado
             // 
+            this.tabMezclado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabMezclado.Controls.Add(this.tabConciliacion);
             this.tabMezclado.Controls.Add(this.tabInventarioTotal);
             this.tabMezclado.Controls.Add(this.tabTraspaso);
@@ -137,6 +140,9 @@
             // 
             // dgvPendientesConfirmacionMezclado
             // 
+            this.dgvPendientesConfirmacionMezclado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPendientesConfirmacionMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPendientesConfirmacionMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPendientesConfirmacionMezclado.Location = new System.Drawing.Point(10, 33);
@@ -147,6 +153,7 @@
             // 
             // btnConfirmarRecepcionMezclado
             // 
+            this.btnConfirmarRecepcionMezclado.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnConfirmarRecepcionMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmarRecepcionMezclado.Location = new System.Drawing.Point(309, 396);
             this.btnConfirmarRecepcionMezclado.Name = "btnConfirmarRecepcionMezclado";
@@ -170,6 +177,9 @@
             // 
             // dgvInventarioTotalMezclado
             // 
+            this.dgvInventarioTotalMezclado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvInventarioTotalMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -408,6 +418,9 @@
             // 
             // dgvInventarioMezclado
             // 
+            this.dgvInventarioMezclado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvInventarioMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInventarioMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInventarioMezclado.Location = new System.Drawing.Point(19, 267);
@@ -609,6 +622,9 @@
             // 
             // dgvTraspasosMezclado
             // 
+            this.dgvTraspasosMezclado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTraspasosMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTraspasosMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTraspasosMezclado.Location = new System.Drawing.Point(6, 255);
@@ -630,6 +646,9 @@
             // 
             // dgvDetenidosMezclado
             // 
+            this.dgvDetenidosMezclado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDetenidosMezclado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetenidosMezclado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetenidosMezclado.Location = new System.Drawing.Point(10, 33);
@@ -640,6 +659,7 @@
             // 
             // btnDesmarcarDetenidoMezclado
             // 
+            this.btnDesmarcarDetenidoMezclado.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDesmarcarDetenidoMezclado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesmarcarDetenidoMezclado.Location = new System.Drawing.Point(309, 396);
             this.btnDesmarcarDetenidoMezclado.Name = "btnDesmarcarDetenidoMezclado";
@@ -660,6 +680,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(239, 85);
             this.panel2.TabIndex = 19;
+            // 
+            // pbCargarImagenMezclado
+            // 
+            this.pbCargarImagenMezclado.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMezclado.Image")));
+            this.pbCargarImagenMezclado.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenMezclado.Name = "pbCargarImagenMezclado";
+            this.pbCargarImagenMezclado.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenMezclado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenMezclado.TabIndex = 76;
+            this.pbCargarImagenMezclado.TabStop = false;
+            this.pbCargarImagenMezclado.Click += new System.EventHandler(this.pbCargarImagenMezclado_Click);
             // 
             // lbDepartamentoMezclado
             // 
@@ -719,17 +750,6 @@
             this.pictureBox4.TabIndex = 68;
             this.pictureBox4.TabStop = false;
             // 
-            // pbCargarImagenMezclado
-            // 
-            this.pbCargarImagenMezclado.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMezclado.Image")));
-            this.pbCargarImagenMezclado.Location = new System.Drawing.Point(53, 63);
-            this.pbCargarImagenMezclado.Name = "pbCargarImagenMezclado";
-            this.pbCargarImagenMezclado.Size = new System.Drawing.Size(20, 16);
-            this.pbCargarImagenMezclado.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCargarImagenMezclado.TabIndex = 76;
-            this.pbCargarImagenMezclado.TabStop = false;
-            this.pbCargarImagenMezclado.Click += new System.EventHandler(this.pbCargarImagenMezclado_Click);
-            // 
             // FrmMezclado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -763,9 +783,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetenidosMezclado)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMezclado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMezclado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMezclado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
