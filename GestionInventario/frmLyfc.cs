@@ -578,6 +578,32 @@ namespace GestionInventario
             btnCancelarLyfcDv.Enabled = false;
         }
 
+        //---- metodo para devoluciones
+        public static int ObtenerInventarioDisponiblePorTarima(string idTarima)
+        {
+            int cantidadDisponible = 0;
+
+            using (ConexionBD conexionBD = new ConexionBD())
+            {
+                using (MySqlConnection con = conexionBD.ObtenerConexion())
+                {
+                    con.Open();
+                    string query = "SELECT cantidad FROM inventario_mocha WHERE idTarima = @idTarima";
+                    using (MySqlCommand cmd = new MySqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@idTarima", idTarima);
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != DBNull.Value)
+                        {
+                            cantidadDisponible = Convert.ToInt32(result);
+                        }
+                    }
+                }
+            }
+            return cantidadDisponible;
+        }
+
         private void btnRegistrarLyfcDv_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtProductoLyfcDv.Text) ||
@@ -598,11 +624,19 @@ namespace GestionInventario
                     return;
                 }
 
-                int idTraspaso = Convert.ToInt32(lbIdTraspasoLyfcDv.Text);
-                //String idTarima = lbIdTarimaDv.Text;
                 string producto = txtProductoLyfcDv.Text;
                 string lote = txtLoteLyfcDv.Text;
                 float cantidad = Convert.ToInt32(txtCantidadLyfcDv.Text);
+
+                // Verificar inventario disponible
+                int inventarioDisponible = ObtenerInventarioDisponiblePorTarima(idTarima);
+                if (cantidad > inventarioDisponible)
+                {
+                    MessageBox.Show("No hay suficiente inventario disponible para realizar la devolución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int idTraspaso = Convert.ToInt32(lbIdTraspasoLyfcDv.Text);                
                 string destino = "LyFC(traslado)";
                 string tipoOperacion = "Devolucion";
                 DateTime fechaOperacion = DateTime.Now;
@@ -643,8 +677,15 @@ namespace GestionInventario
                         comandoActualizarInventario.Parameters.AddWithValue("@idTarima", idTarima);
                         comandoActualizarInventario.ExecuteNonQuery();
 
-                        // Elimina la entrada de inventario_lyfc
-                        string consultaEliminarLyfc = "DELETE FROM inventario_mocha WHERE idTarima = @idTarima";
+                        // Actualiza la cantidad en la tabla inventario_mocha en lugar de eliminar
+                        string consultaActualizarLyfc = "UPDATE inventario_mocha SET cantidad = cantidad - @cantidad WHERE idTarima = @idTarima";
+                        MySqlCommand comandoActualizarLyfc = new MySqlCommand(consultaActualizarLyfc, conexion);
+                        comandoActualizarLyfc.Parameters.AddWithValue("@cantidad", cantidad);
+                        comandoActualizarLyfc.Parameters.AddWithValue("@idTarima", idTarima);
+                        comandoActualizarLyfc.ExecuteNonQuery();
+
+                        // Elimina la entrada de inventario_mocha
+                        string consultaEliminarLyfc = "DELETE FROM inventario_mocha WHERE idTarima = @idTarima AND cantidad = 0";
                         MySqlCommand comandoEliminarLyfc = new MySqlCommand(consultaEliminarLyfc, conexion);
                         comandoEliminarLyfc.Parameters.AddWithValue("@idTarima", idTarima);
                         comandoEliminarLyfc.ExecuteNonQuery();

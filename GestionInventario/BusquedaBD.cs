@@ -167,7 +167,7 @@ namespace GestionInventario
             return dt;
         }
 
-
+        // frmGestionInventario
         public static DataTable ObtenerInventario()
         {
             string consulta = "SELECT id, producto, lote, cantidad_disponible, estado FROM recepcion_carne WHERE cantidad_disponible > 0";
@@ -196,11 +196,11 @@ namespace GestionInventario
             return EjecutarConsulta(consulta);
         }
 
-        //pendientes por confirmar recepcion
+        //pendientes por confirmar recepcion------------------------------------
         // frmLyfc datagrid obtener pendientes de pestaña conciliacion
         public static DataTable ObtenerPendientesConfirmacionLyfc()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, estado_confirmacion FROM inventario_lyfc WHERE estado_confirmacion = 'Pendiente'";
+            string consulta = "SELECT idEntradaLyfc, idTarima, producto, lote, cantidad, estado_confirmacion FROM inventario_lyfc WHERE estado_confirmacion = 'Pendiente'";
             return EjecutarConsulta(consulta);
         }
 
@@ -219,7 +219,7 @@ namespace GestionInventario
         // FrmLyfc datagrid traspasos-----------------------------------------------------------------
         public static DataTable ObtenerInventarioLyfc()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_lyfc WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
+            string consulta = "SELECT idEntradaLyfc, idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_lyfc WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
             return EjecutarConsulta(consulta);
         }
 
@@ -362,7 +362,7 @@ namespace GestionInventario
             return EjecutarConsulta(consulta);
         }
 
-        // reporteria
+        // reporteria ----------------------------------------------------------------------------------------
         public static DataTable ObtenerInventarioActual(string departamento)
         {
             if (departamento == "Almacen Carnicos")
