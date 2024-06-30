@@ -477,7 +477,7 @@
             this.groupBox2.Size = new System.Drawing.Size(624, 218);
             this.groupBox2.TabIndex = 76;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "FrmReportes";
+            this.groupBox2.Text = "Devoluciones";
             // 
             // lbIdTraspasoMezcladoDv
             // 

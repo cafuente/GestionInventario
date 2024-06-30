@@ -200,7 +200,7 @@ namespace GestionInventario
         // frmLyfc datagrid obtener pendientes de pestaña conciliacion
         public static DataTable ObtenerPendientesConfirmacionLyfc()
         {
-            string consulta = "SELECT idEntradaLyfc, idTarima, producto, lote, cantidad, estado_confirmacion FROM inventario_lyfc WHERE estado_confirmacion = 'Pendiente'";
+            string consulta = "SELECT idTarima, producto, lote, cantidad, estado_confirmacion FROM inventario_lyfc WHERE estado_confirmacion = 'Pendiente'";
             return EjecutarConsulta(consulta);
         }
 
@@ -257,7 +257,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerInventarioMocha()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_mocha WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
+            string consulta = "SELECT idEntradaMocha, idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_mocha WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
             return EjecutarConsulta(consulta);
         }
 
@@ -295,7 +295,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerInventarioMezclado()
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_mezclado WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
+            string consulta = "SELECT idEntradaMezclado, idTarima, producto, lote, cantidad, estado, estado_confirmacion FROM inventario_mezclado WHERE cantidad > 0 AND estado_confirmacion = 'Recibido'";
             return EjecutarConsulta(consulta);
         }
 
