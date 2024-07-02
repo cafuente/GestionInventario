@@ -743,9 +743,9 @@ namespace GestionInventario
                         string consultaActualizarMezclado = "UPDATE inventario_logistica SET cantidad = cantidad - @cantidad WHERE idEntradaLogistica = @idEntradaLogistica";
                         MySqlCommand comandoActualizarMezclado = new MySqlCommand(consultaActualizarMezclado, conexion);
                         comandoActualizarMezclado.Parameters.AddWithValue("@cantidad", cantidadDevolver);
-                        comandoActualizarMezclado.Parameters.AddWithValue("@idEntradaMezclado", idEntradaLogistica);
+                        comandoActualizarMezclado.Parameters.AddWithValue("@idEntradaLogistica", idEntradaLogistica);
                         comandoActualizarMezclado.ExecuteNonQuery();
-
+                        
                         // Verifica si la cantidad en el traspaso es igual a cero y anula el traspaso si es necesario
                         string consultaVerificarCantidad = "SELECT cantidad FROM salidas_devoluciones WHERE idTraspaso = @idTraspaso";
                         MySqlCommand comandoVerificarCantidad = new MySqlCommand(consultaVerificarCantidad, conexion);

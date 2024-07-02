@@ -199,7 +199,7 @@ namespace GestionInventario
         {
             btnRecepcion.Visible=false;
             btnGestion.Visible=false;
-            FrmLogistica frmLogistica = new FrmLogistica();
+            FrmLogistica frmLogistica = new FrmLogistica(FrmLogin.UsuarioActual);
             frmLogistica.Show();
             this.Hide() ;
         }

@@ -341,6 +341,12 @@ namespace GestionInventario
             return EjecutarConsulta(consulta);
         }
 
+        public static DataTable ObtenerInventarioLogistica()
+        {
+            string consulta = "SELECT idEntradaLogistica, idTarima, producto, lote, cantidad, estado FROM inventario_logistica WHERE cantidad > 0";
+            return EjecutarConsulta(consulta);
+        }
+
         //--------------------Trazabilidad--------------------------------------------------------------
         public static DataTable ObtenerTrazabilidad(string idTarima)
         {
