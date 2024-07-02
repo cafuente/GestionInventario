@@ -425,7 +425,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerTarimasDetenidas(string departamento)
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'Detenido' AND departamento = @departamento";
+            string consulta = "SELECT idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'detenido' AND departamento = @departamento";
             var parametros = new List<MySqlParameter>
         {
             new MySqlParameter("@departamento", departamento)

@@ -162,6 +162,15 @@ namespace GestionInventario
             string usuario = lbNombreGi.Text;
             string departamento = lbDepartamentoGi.Text;
 
+            // Verificar cantidad disponible
+            float cantidadDisponible = ObtenerCantidadDisponible(idTarima);
+
+            if (cantidad > cantidadDisponible)
+            {
+                MessageBox.Show("No hay suficiente inventario disponible para realizar el traspaso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             RegistrarTraspaso(idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento);
         }
 
@@ -238,6 +247,30 @@ namespace GestionInventario
 
                 CargarDatosInventarioTotal();
                 CargarDatosTraspasos();
+            }
+        }
+
+        private float ObtenerCantidadDisponible(string idTarima)
+        {
+            using (MySqlConnection con = conexion.ObtenerConexion())
+            {
+                con.Open();
+
+                string query = "SELECT cantidad_disponible FROM recepcion_carne WHERE id = @idTarima";
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@idTarima", idTarima);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && float.TryParse(result.ToString(), out float cantidadDisponible))
+                    {
+                        return cantidadDisponible;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
         }
 
@@ -805,7 +838,7 @@ namespace GestionInventario
                     // Registrar el movimiento en salidas_devoluciones
                     string registrarMovimiento = @"
                 INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
-                SELECT id, producto, lote, cantidad_disponible, 'Detenido', NOW(), 'Almacen', @usuario, @departamento
+                SELECT id, producto, lote, cantidad_disponible, 'Detenido', NOW(), 'Almacen carnicos', @usuario, @departamento
                 FROM recepcion_carne WHERE id = @idTarima";
                     MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
                     comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);
@@ -895,7 +928,7 @@ namespace GestionInventario
                     // Registrar el movimiento de desbloqueo en salidas_devoluciones
                     string registrarMovimiento = @"
                 INSERT INTO salidas_devoluciones (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento)
-                SELECT id, producto, lote, cantidad_disponible, 'Desbloqueado', NOW(), 'Almacen', @usuario, @departamento
+                SELECT id, producto, lote, cantidad_disponible, 'Desbloqueado', NOW(), 'Almacen carnicos', @usuario, @departamento
                 FROM recepcion_carne WHERE id = @idTarima";
                     MySqlCommand comandoMovimiento = new MySqlCommand(registrarMovimiento, conexion);
                     comandoMovimiento.Parameters.AddWithValue("@idTarima", idTarima);

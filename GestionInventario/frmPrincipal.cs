@@ -87,13 +87,10 @@ namespace GestionInventario
                 btnRecepcion.Visible = true;
                 btnGestion.Visible = true;
             }
-            else if (usuarioAutenticado.PerfilNombre == "Supervisor")
-            {
-                if (usuarioAutenticado.Departamento == "Limpieza y Formulacion")
-                {
-                    btnTraslado.Visible = true;
-                    btnRecibo.Visible = true;
-                }
+            else if (usuarioAutenticado.PerfilNombre == "Supervisor" && usuarioAutenticado.Departamento == "Limpieza y Formulacion")
+            {               
+                btnTraslado.Visible = true;
+                btnRecibo.Visible = true;               
             }
             else if (usuarioAutenticado.Departamento == "Limpieza y Formulacion")
             {                

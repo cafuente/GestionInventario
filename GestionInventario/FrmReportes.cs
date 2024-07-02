@@ -476,7 +476,7 @@ namespace GestionInventario
             { "Productos con Bajo Inventario", new int[] { 100, 100 } },
             { "Tarimas Detenidas", new int[] { 100, 170, 100, 90, 100, 100 } },
             { "Consumo por Departamento", new int[] { 170, 100 } }
-        };
+        };        
 
         private void ImprimirReporte(DataGridView dgv, string tituloReporte)
         {

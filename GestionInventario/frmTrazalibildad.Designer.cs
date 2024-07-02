@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTrazalibildad));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTrazalibildad));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbCargarImagenTraz = new System.Windows.Forms.PictureBox();
             this.lbDepartamentoTr = new System.Windows.Forms.Label();
             this.pbLogoTraz = new System.Windows.Forms.PictureBox();
             this.lbPerfilTr = new System.Windows.Forms.Label();
@@ -49,8 +50,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pbCargarImagenTraz = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenTraz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoTraz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrazabilidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -59,7 +60,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbVistaPrevia)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenTraz)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -73,6 +73,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(239, 85);
             this.panel2.TabIndex = 4;
+            // 
+            // pbCargarImagenTraz
+            // 
+            this.pbCargarImagenTraz.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenTraz.Image")));
+            this.pbCargarImagenTraz.Location = new System.Drawing.Point(53, 63);
+            this.pbCargarImagenTraz.Name = "pbCargarImagenTraz";
+            this.pbCargarImagenTraz.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenTraz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenTraz.TabIndex = 88;
+            this.pbCargarImagenTraz.TabStop = false;
+            this.pbCargarImagenTraz.Click += new System.EventHandler(this.pbCargarImagenTraz_Click);
             // 
             // lbDepartamentoTr
             // 
@@ -272,17 +283,6 @@
             this.pictureBox3.TabIndex = 87;
             this.pictureBox3.TabStop = false;
             // 
-            // pbCargarImagenTraz
-            // 
-            this.pbCargarImagenTraz.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenTraz.Image")));
-            this.pbCargarImagenTraz.Location = new System.Drawing.Point(53, 63);
-            this.pbCargarImagenTraz.Name = "pbCargarImagenTraz";
-            this.pbCargarImagenTraz.Size = new System.Drawing.Size(20, 16);
-            this.pbCargarImagenTraz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCargarImagenTraz.TabIndex = 88;
-            this.pbCargarImagenTraz.TabStop = false;
-            this.pbCargarImagenTraz.Click += new System.EventHandler(this.pbCargarImagenTraz_Click);
-            // 
             // FrmTrazalibildad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,11 +300,12 @@
             this.Controls.Add(this.panel2);
             this.Name = "FrmTrazalibildad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmTrazalibildad";
+            this.Text = "Trazalibildad";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmTrazalibildad_FormClosed);
             this.Load += new System.EventHandler(this.frmTrazalibildad_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenTraz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoTraz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrazabilidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -313,7 +314,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbVistaPrevia)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenTraz)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

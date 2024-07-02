@@ -761,7 +761,7 @@
             this.Controls.Add(this.tabMezclado);
             this.Name = "FrmMezclado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMezclado";
+            this.Text = "Movimientos carnicos Mezclado";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMezclado_FormClosed);
             this.Load += new System.EventHandler(this.frmMezclado_Load);
             this.tabMezclado.ResumeLayout(false);

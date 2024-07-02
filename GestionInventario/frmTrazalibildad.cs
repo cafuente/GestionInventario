@@ -193,7 +193,7 @@ namespace GestionInventario
                     }
                     else if (tipoOperacion == "Devolucion")
                     {
-                        row.DefaultCellStyle.BackColor = Color.LightSalmon;
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
                     }
                     else if (tipoOperacion == "Detenido")
                     {

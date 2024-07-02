@@ -413,6 +413,15 @@ namespace GestionInventario
             string usuario = lbNombreMocha.Text;
             string departamento = lbDepartamentoMocha.Text;
 
+            // Verificar cantidad disponible
+            float cantidadDisponible = ObtenerCantidadDisponible(idTarima);
+
+            if (cantidad > cantidadDisponible)
+            {
+                MessageBox.Show("No hay suficiente inventario disponible para realizar el traspaso.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             RegistrarTraspasoMocha (idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion, destino, usuario, departamento);
         }
 
@@ -489,6 +498,30 @@ namespace GestionInventario
                 CargarDatosInventarioTotalMocha();
                 //CargarDatosTraspasosMocha();
                 CargarDatosDevolucionesMocha();
+            }
+        }
+
+        private float ObtenerCantidadDisponible(string idTarima)
+        {
+            using (MySqlConnection con = conexion.ObtenerConexion())
+            {
+                con.Open();
+
+                string query = "SELECT cantidad FROM inventario_mocha WHERE idTarima = @idTarima";
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@idTarima", idTarima);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && float.TryParse(result.ToString(), out float cantidadDisponible))
+                    {
+                        return cantidadDisponible;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
         }
 

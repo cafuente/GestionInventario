@@ -36,6 +36,7 @@
             this.lbPerfilPr = new System.Windows.Forms.Label();
             this.lbNombrePr = new System.Windows.Forms.Label();
             this.panelVertical = new System.Windows.Forms.Panel();
+            this.pbCargarImagenMenu = new System.Windows.Forms.PictureBox();
             this.btnReporte = new System.Windows.Forms.Button();
             this.btnTrazabilidad = new System.Windows.Forms.Button();
             this.btnLogistica = new System.Windows.Forms.Button();
@@ -50,14 +51,13 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnGestion = new System.Windows.Forms.Button();
             this.btnRecepcion = new System.Windows.Forms.Button();
-            this.pbCargarImagenMenu = new System.Windows.Forms.PictureBox();
             this.panelTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelVertical.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMenu)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitulo
@@ -73,9 +73,7 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(202, 39);
@@ -143,6 +141,17 @@
             this.panelVertical.Name = "panelVertical";
             this.panelVertical.Size = new System.Drawing.Size(245, 664);
             this.panelVertical.TabIndex = 2;
+            // 
+            // pbCargarImagenMenu
+            // 
+            this.pbCargarImagenMenu.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMenu.Image")));
+            this.pbCargarImagenMenu.Location = new System.Drawing.Point(54, 63);
+            this.pbCargarImagenMenu.Name = "pbCargarImagenMenu";
+            this.pbCargarImagenMenu.Size = new System.Drawing.Size(20, 16);
+            this.pbCargarImagenMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCargarImagenMenu.TabIndex = 73;
+            this.pbCargarImagenMenu.TabStop = false;
+            this.pbCargarImagenMenu.Click += new System.EventHandler(this.pbCargarImagenMenu_Click);
             // 
             // btnReporte
             // 
@@ -318,17 +327,6 @@
             this.btnRecepcion.UseVisualStyleBackColor = true;
             this.btnRecepcion.Click += new System.EventHandler(this.btnRecepcion_Click);
             // 
-            // pbCargarImagenMenu
-            // 
-            this.pbCargarImagenMenu.Image = ((System.Drawing.Image)(resources.GetObject("pbCargarImagenMenu.Image")));
-            this.pbCargarImagenMenu.Location = new System.Drawing.Point(54, 63);
-            this.pbCargarImagenMenu.Name = "pbCargarImagenMenu";
-            this.pbCargarImagenMenu.Size = new System.Drawing.Size(20, 16);
-            this.pbCargarImagenMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCargarImagenMenu.TabIndex = 73;
-            this.pbCargarImagenMenu.TabStop = false;
-            this.pbCargarImagenMenu.Click += new System.EventHandler(this.pbCargarImagenMenu_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,10 +345,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelVertical.ResumeLayout(false);
             this.panelVertical.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoMenu)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCargarImagenMenu)).EndInit();
             this.ResumeLayout(false);
 
         }
