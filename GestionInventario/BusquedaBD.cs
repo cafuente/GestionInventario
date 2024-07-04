@@ -92,56 +92,6 @@ namespace GestionInventario
     }*/
     public class BusquedaBD
     {
-        /*private static DataTable EjecutarConsulta(string consulta)
-        {
-            DataTable dt = new DataTable();
-             using (ConexionBD conexionBD = new ConexionBD())
-             {
-                 MySqlConnection conexion = conexionBD.ObtenerConexion();
-                 try
-                 {
-                     conexion.Open();
-                     MySqlCommand comando = new MySqlCommand(consulta, conexion);
-                     MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-                     adaptador.Fill(dt);
-                 }
-                 catch (Exception ex)
-                 {
-                     Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
-                 }
-             }
-             return dt;            
-        }*/
-        // en esta conexion la clase consulta ya admite 2 argumentos
-        //private static DataTable EjecutarConsulta(string consulta, Dictionary<string, object> parametros = null)
-        //{
-        //    DataTable dt = new DataTable();
-        //    using (ConexionBD conexionBD = new ConexionBD())
-        //    {
-        //        MySqlConnection conexion = conexionBD.ObtenerConexion();
-        //        try
-        //        {
-        //            conexion.Open();
-        //            MySqlCommand comando = new MySqlCommand(consulta, conexion);
-
-        //            if (parametros != null)
-        //            {
-        //                foreach (var param in parametros)
-        //                {
-        //                    comando.Parameters.AddWithValue(param.Key, param.Value);
-        //                }
-        //            }
-
-        //            MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
-        //            adaptador.Fill(dt);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
-        //        }
-        //    }
-        //    return dt;
-        //}
         private static DataTable EjecutarConsulta(string consulta, List<MySqlParameter> parametros = null)
         {
             DataTable dt = new DataTable();
@@ -371,23 +321,37 @@ namespace GestionInventario
         // reporteria ----------------------------------------------------------------------------------------
         public static DataTable ObtenerInventarioActual(string departamento)
         {
-            if (departamento == "Almacen Carnicos")
+            string consulta = ""; // Inicializar la variable consulta
+            var parametros = new List<MySqlParameter>(); // Inicializar la lista de parámetros
+
+            switch (departamento) // Utilizar un switch-case para determinar la tabla y la consulta
             {
-                string consulta = "SELECT id AS ID, producto AS Producto, lote AS Lote, cantidad_disponible AS Cantidad, estado AS Estado FROM recepcion_carne WHERE cantidad_disponible > 0 AND departamento = @departamento";
-                var parametros = new List<MySqlParameter>
+                case "Almacen carnicos":
+                    consulta = "SELECT id AS ID, producto AS Producto, lote AS Lote, cantidad_disponible AS Cantidad, estado AS Estado FROM recepcion_carne WHERE cantidad_disponible > 0 AND departamento = @departamento";
+                    break;
+                case "Limpieza y Formulacion":
+                    consulta = "SELECT idTarima AS ID, producto AS Producto, lote AS Lote, cantidad AS Cantidad, estado AS Estado FROM inventario_lyfc WHERE cantidad > 0"; 
+                    break;
+                case "Recepcion(mocha)":
+                    consulta = "SELECT idTarima AS ID, producto AS Producto, lote AS Lote, cantidad AS Cantidad, estado AS Estado FROM inventario_mocha WHERE cantidad > 0"; 
+                    break;
+                case "Mezclado":
+                    consulta = "SELECT idTarima AS ID, producto AS Producto, lote AS Lote, cantidad AS Cantidad, estado AS Estado FROM inventario_mezclado WHERE cantidad > 0"; 
+                    break;
+                default:
+                    // Manejar el caso de departamento no válido
+                    break;
+            }
+
+            if (!string.IsNullOrEmpty(consulta)) // Verificar si se ha definido una consulta
             {
-                new MySqlParameter("@departamento", departamento)
-            };
+                parametros.Add(new MySqlParameter("@departamento", departamento));
                 return EjecutarConsulta(consulta, parametros);
             }
             else
             {
-                string consulta = "SELECT idTarima AS ID, producto AS Producto, lote AS Lote, cantidad AS Cantidad, estado AS Estado FROM salidas_devoluciones WHERE cantidad > 0 AND departamento = @departamento";
-                var parametros = new List<MySqlParameter>
-            {
-                new MySqlParameter("@departamento", departamento)
-            };
-                return EjecutarConsulta(consulta, parametros);
+                // Maneja el caso de departamento sin consulta definida
+                return null;
             }
         }
 
@@ -425,7 +389,7 @@ namespace GestionInventario
 
         public static DataTable ObtenerTarimasDetenidas(string departamento)
         {
-            string consulta = "SELECT idTarima, producto, lote, cantidad, tipoOperacion, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'detenido' AND departamento = @departamento";
+            string consulta = @"SELECT idTarima AS ID, producto, lote, cantidad, tipoOperacion, fechaOperacion FROM salidas_devoluciones WHERE tipoOperacion = 'detenido' AND departamento = @departamento";
             var parametros = new List<MySqlParameter>
         {
             new MySqlParameter("@departamento", departamento)
@@ -450,6 +414,7 @@ namespace GestionInventario
             return EjecutarConsulta(consulta, parametros);
         }
 
+        // Alertas por bajo inventario
         public static DataTable ObtenerInventarioAgrupadoPorDepartamento(string departamento)
         {
             string consulta = @"
@@ -465,6 +430,7 @@ namespace GestionInventario
             return EjecutarConsulta(consulta, parametros);
         }
 
+        // Alertas venciomiento
         public static DataTable ObtenerInventarioConFechasAgrupadoPorDepartamento(string departamento)
         {
             string consulta = @"
@@ -479,5 +445,5 @@ namespace GestionInventario
     };
             return EjecutarConsulta(consulta, parametros);
         }
-    }// aqui arriba va todo
+    }
 }

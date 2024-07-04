@@ -880,24 +880,32 @@ namespace GestionInventario
         } 
 
         private void txtCodigoBarrasRc_KeyPress(object sender, KeyPressEventArgs e)
-        {       
+        {
             /* // opcion con clase busqueda
             BusquedaCb objetoBusqueda = new BusquedaCb();
             objetoBusqueda.ProcesarCodigoBarras(txtCodigoBarrasRc, idLabel, txtLinea, txtProcedencia, dpSacrificio);
             */
 
             // otra opcion
-
-            // Verificar si se presionó la tecla Enter
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                // Realizar la búsqueda y mostrar la información en los campos del formulario
-                BuscarYMostrarInformacion();
-                txtCodigoBarrasRc.Clear();
-                btnActualizarCodigoBarras.Enabled = true;
-                btnGenerarCodigoBarras.Enabled = false;
-                btnCancelar.Enabled = true;
-            }            
+                // Verificar si se presionó la tecla Enter
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    // Realizar la búsqueda y mostrar la información en los campos del formulario
+                    BuscarYMostrarInformacion();
+                    txtCodigoBarrasRc.Clear();
+                    btnActualizarCodigoBarras.Enabled = true;
+                    btnGenerarCodigoBarras.Enabled = false;
+                    btnCancelar.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+            }
+                
         }
 
         private void BuscarYMostrarInformacion()
@@ -1090,7 +1098,7 @@ namespace GestionInventario
 
         private void ConfigurarControles()
         {
-            txtUmbralRc.Text = "10000"; // Umbral por defecto
+            txtUmbralRc.Text = "20000"; // Umbral por defecto
 
             // Solo el administrador puede editar el umbral
             if (lbPerfilRc.Text == "Administrador")

@@ -135,7 +135,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlertaInventarioService.cs" />
     <Compile Include="AyudanteImagen.cs" />
     <Compile Include="BarcodeGenerator.cs" />
     <Compile Include="BusquedaBD.cs" />
