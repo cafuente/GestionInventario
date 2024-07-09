@@ -683,7 +683,7 @@ namespace GestionInventario
                     {
                         // Mostrar mensaje de error
                         MessageBox.Show("El formato del texto ingresado no es válido. Debe ser DXXXXXXX.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtCodigoBarrasGi.Text = "";
+                        txtCodigoBarrasGi.Clear();
                     }
                     else
                     {
@@ -695,15 +695,16 @@ namespace GestionInventario
             catch (Exception ex)
             {
                 MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);                
-            }
-            lbIdTarima.Text = "ID Tarima";
-            txtProductoGi.Text = null;
-            txtLoteGi.Text = null;
-            txtCantidadGi.Text = null;
-            cbDestinoGi.SelectedIndex = -1;
-            dtpFechaGi.Value = DateTime.Now;
-            txtCodigoBarrasGi.Clear();
+                Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+
+                lbIdTarima.Text = "ID Tarima";
+                txtProductoGi.Text = null;
+                txtLoteGi.Text = null;
+                txtCantidadGi.Text = null;
+                cbDestinoGi.SelectedIndex = -1;
+                dtpFechaGi.Value = DateTime.Now;
+                txtCodigoBarrasGi.Clear();
+            }            
         }
 
         private void BuscarYMostrarInformacionTrasp()
