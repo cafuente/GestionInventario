@@ -904,8 +904,7 @@ namespace GestionInventario
             {
                 MessageBox.Show("No se encontró ninguna tarima o combo con el código de barras proporcionado.2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
-            }
-                
+            }                
         }
 
         private void BuscarYMostrarInformacion()

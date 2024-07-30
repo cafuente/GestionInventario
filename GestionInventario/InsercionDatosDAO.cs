@@ -66,48 +66,7 @@ namespace GestionInventario
         }
 
         public bool InsertarDatosRecepcionCarne(string id, string linea, string procedencia, DateTime fechaSacrificio, DateTime fechaEmpaque, string fleje, string turno, float cantidad, int cajas, string factura, string ordenCompra, string marca, string lote, string producto, DateTime fecha, int tara, float peso, string departamento, float disponible, string nombreUsuario)
-        {
-            /*try
-            {
-                string consulta = "INSERT INTO recepcion_carne (id, linea, procedencia, fecha_sacrificio, fecha_empaque, fleje, turno, cantidad, cajas, factura, orden_compra, marca, lote, producto, fecha, tara, peso, departamento, cantidad_disponible, nombreUsuario) " +
-                                  "VALUES (@id, @Linea, @Procedencia, @FechaSacrificio, @FechaEmpaque, @Fleje, @Turno, @Cantidad, @Cajas, @Factura, @OrdenCompra, @Marca, @Lote, @Producto, @Fecha, @tara, @peso, @departamento, @disponible, @nombreUsuario)";
-
-                using (MySqlConnection con = conexion.ObtenerConexion())
-                {
-                    con.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
-                    {
-                        cmd.Parameters.AddWithValue("@id", id);
-                        cmd.Parameters.AddWithValue("@Linea", linea);
-                        cmd.Parameters.AddWithValue("@Procedencia", procedencia);
-                        cmd.Parameters.AddWithValue("@FechaSacrificio", fechaSacrificio);
-                        cmd.Parameters.AddWithValue("@FechaEmpaque", fechaEmpaque);
-                        cmd.Parameters.AddWithValue("@Fleje", fleje);
-                        cmd.Parameters.AddWithValue("@Turno", turno);
-                        cmd.Parameters.AddWithValue("@Cantidad", cantidad);
-                        cmd.Parameters.AddWithValue("@Cajas", cajas);
-                        cmd.Parameters.AddWithValue("@Factura", factura);
-                        cmd.Parameters.AddWithValue("@OrdenCompra", ordenCompra);
-                        cmd.Parameters.AddWithValue("@Marca", marca);
-                        cmd.Parameters.AddWithValue("@Lote", lote);
-                        cmd.Parameters.AddWithValue("@Producto", producto);
-                        cmd.Parameters.AddWithValue("@Fecha", fecha);
-                        cmd.Parameters.AddWithValue("@tara", tara);
-                        cmd.Parameters.AddWithValue("@peso", peso);
-                        cmd.Parameters.AddWithValue("@departamento", departamento);
-                        cmd.Parameters.AddWithValue("@disponible", disponible);
-                        cmd.Parameters.AddWithValue("@nombreUsuario",nombreUsuario);
-
-                        int filasAfectadas = cmd.ExecuteNonQuery();
-                        return filasAfectadas > 0;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al insertar datos: " + ex.Message);
-                return false;
-            }*/
+        {            
             try
             {
                 string consulta = @"INSERT INTO recepcion_carne 
@@ -219,16 +178,56 @@ namespace GestionInventario
         {
             try
             {
-                string consulta = "DELETE FROM recepcion_carne WHERE id = @id";
-
                 using (MySqlConnection con = conexion.ObtenerConexion())
                 {
                     con.Open();
-                    using (MySqlCommand cmd = new MySqlCommand(consulta, con))
-                    {
-                        cmd.Parameters.AddWithValue("@id", id);
 
-                        int filasAfectadas = cmd.ExecuteNonQuery();
+                    // Verificar el valor de 'cantidad_disponible' y 'peso'
+                    string consultaVerificacion = "SELECT cantidad_disponible, peso FROM recepcion_carne WHERE id = @id";
+                    using (MySqlCommand cmdVerificacion = new MySqlCommand(consultaVerificacion, con))
+                    {
+                        cmdVerificacion.Parameters.AddWithValue("@id", id);
+                        using (MySqlDataReader reader = cmdVerificacion.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int cantidadDisponible = Convert.ToInt32(reader["cantidad_disponible"]);
+                                int peso = Convert.ToInt32(reader["peso"]);
+
+                                if (cantidadDisponible != peso)
+                                {
+                                    return false; // No eliminar si 'cantidad_disponible' no es igual a 'peso'
+                                }
+                            }
+                            else
+                            {
+                                return false; // No se encontró el registro
+                            }
+                        }
+                    }
+
+                    // Eliminar registros dependientes en 'inventario_lyfc'
+                    string consultaEliminarInventario = "DELETE FROM inventario_lyfc WHERE idTarima = @idTarima";
+                    using (MySqlCommand cmdEliminarInventario = new MySqlCommand(consultaEliminarInventario, con))
+                    {
+                        cmdEliminarInventario.Parameters.AddWithValue("@idTarima", id);
+                        cmdEliminarInventario.ExecuteNonQuery();
+                    }
+
+                    // Eliminar registros dependientes en 'salidas_devoluciones'
+                    string consultaEliminarSalidas = "DELETE FROM salidas_devoluciones WHERE idTarima = @idTarima";
+                    using (MySqlCommand cmdEliminarSalidas = new MySqlCommand(consultaEliminarSalidas, con))
+                    {
+                        cmdEliminarSalidas.Parameters.AddWithValue("@idTarima", id);
+                        cmdEliminarSalidas.ExecuteNonQuery();
+                    }
+
+                    // Eliminar el registro en 'recepcion_carne'
+                    string consultaEliminar = "DELETE FROM recepcion_carne WHERE id = @id";
+                    using (MySqlCommand cmdEliminar = new MySqlCommand(consultaEliminar, con))
+                    {
+                        cmdEliminar.Parameters.AddWithValue("@id", id);
+                        int filasAfectadas = cmdEliminar.ExecuteNonQuery();
                         return filasAfectadas > 0;
                     }
                 }
