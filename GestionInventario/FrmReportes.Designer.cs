@@ -35,7 +35,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbCargarImagenRep = new System.Windows.Forms.PictureBox();
             this.lbDepartamentoRep = new System.Windows.Forms.Label();
@@ -282,7 +281,7 @@
             this.tabControl1.Location = new System.Drawing.Point(14, 136);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1215, 613);
+            this.tabControl1.Size = new System.Drawing.Size(1215, 601);
             this.tabControl1.TabIndex = 66;
             // 
             // tabVarios
@@ -294,7 +293,7 @@
             this.tabVarios.Location = new System.Drawing.Point(4, 34);
             this.tabVarios.Name = "tabVarios";
             this.tabVarios.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVarios.Size = new System.Drawing.Size(1207, 575);
+            this.tabVarios.Size = new System.Drawing.Size(1207, 563);
             this.tabVarios.TabIndex = 1;
             this.tabVarios.Text = "Varios reportes";
             this.tabVarios.UseVisualStyleBackColor = true;
@@ -325,17 +324,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvReporte.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReporte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReporte.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReporte.Location = new System.Drawing.Point(23, 191);
             this.dgvReporte.Name = "dgvReporte";
-            this.dgvReporte.Size = new System.Drawing.Size(1160, 365);
+            this.dgvReporte.Size = new System.Drawing.Size(1160, 353);
             this.dgvReporte.TabIndex = 68;
             // 
             // groupBox2
@@ -481,7 +472,7 @@
             this.tabTendencia.Location = new System.Drawing.Point(4, 34);
             this.tabTendencia.Name = "tabTendencia";
             this.tabTendencia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTendencia.Size = new System.Drawing.Size(1207, 575);
+            this.tabTendencia.Size = new System.Drawing.Size(1207, 563);
             this.tabTendencia.TabIndex = 0;
             this.tabTendencia.Text = "Tendencia";
             this.tabTendencia.UseVisualStyleBackColor = true;
@@ -539,7 +530,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(1132, 9);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(101, 74);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 67;
             this.pictureBox3.TabStop = false;
             // 
@@ -547,7 +538,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1244, 761);
+            this.ClientSize = new System.Drawing.Size(1244, 749);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label7);

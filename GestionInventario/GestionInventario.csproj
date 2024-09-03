@@ -213,9 +213,6 @@
     <Compile Include="UsuariosDAO.cs" />
     <None Include="Resources\vista de impresion.png" />
     <None Include="Resources\buscar_barcode.png" />
-    <None Include="Resources\logo amarillo.png" />
-    <None Include="Resources\logo negro.png" />
-    <None Include="Resources\sigma rojo.jpg" />
     <None Include="Resources\user-account.png" />
     <EmbeddedResource Include="FrmReportes.resx">
       <DependentUpon>FrmReportes.cs</DependentUpon>

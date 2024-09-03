@@ -89,7 +89,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(593, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(101, 74);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
@@ -250,7 +250,7 @@
             this.btnRecibo.Name = "btnRecibo";
             this.btnRecibo.Size = new System.Drawing.Size(245, 57);
             this.btnRecibo.TabIndex = 4;
-            this.btnRecibo.Text = "Recibo (mocha)";
+            this.btnRecibo.Text = "Recibo";
             this.btnRecibo.UseVisualStyleBackColor = true;
             this.btnRecibo.Click += new System.EventHandler(this.btnRecibo_Click);
             // 
@@ -263,7 +263,7 @@
             this.btnTraslado.Name = "btnTraslado";
             this.btnTraslado.Size = new System.Drawing.Size(245, 57);
             this.btnTraslado.TabIndex = 3;
-            this.btnTraslado.Text = "LyFC (traslado)";
+            this.btnTraslado.Text = "Traslado";
             this.btnTraslado.UseVisualStyleBackColor = true;
             this.btnTraslado.Click += new System.EventHandler(this.btnTraslado_Click);
             // 
@@ -299,7 +299,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(0, 216);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(702, 358);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             // 
